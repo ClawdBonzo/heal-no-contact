@@ -10,6 +10,7 @@ struct DailyCheckInSheet: View {
     @State private var note = ""
     @State private var didContact = false
     @State private var showConfirmReset = false
+    @State private var gamificationService: GameificationService?
 
     private var profile: UserProfile? { profiles.first }
 
@@ -148,6 +149,15 @@ struct DailyCheckInSheet: View {
     }
 
     private func finishSave() {
+        if gamificationService == nil, let userId = profile?.id {
+            let service = GameificationService(modelContext: modelContext)
+            service.initializeGamification(for: userId)
+            gamificationService = service
+        }
+
+        gamificationService?.addXP(10, reason: "Daily Check-In")
+        gamificationService?.refreshQuests(for: profile?.id ?? UUID())
+
         HapticService.notification(.success)
         dismiss()
     }

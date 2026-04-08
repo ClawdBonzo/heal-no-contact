@@ -13,7 +13,11 @@ struct HealNoContactApp: App {
             MoodEntry.self,
             Milestone.self,
             EmergencyLog.self,
-            LetterEntry.self
+            LetterEntry.self,
+            UserGamification.self,
+            Quest.self,
+            Badge.self,
+            StreakFlame.self
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,
