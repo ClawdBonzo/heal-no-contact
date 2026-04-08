@@ -9,29 +9,21 @@ struct WelcomePageView: View {
         VStack(spacing: 40) {
             Spacer()
 
-            VStack(spacing: 20) {
-                ZStack {
-                    Circle()
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    Color.theme.healPurple.opacity(0.3),
-                                    Color.clear
-                                ],
-                                center: .center,
-                                startRadius: 20,
-                                endRadius: 80
-                            )
-                        )
-                        .frame(width: 160, height: 160)
+            VStack(spacing: 16) {
+                Image("Onboarding-1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 220)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .opacity(showContent ? 1 : 0)
+                    .scaleEffect(showContent ? 1 : 0.9)
 
-                    Image(systemName: "heart.circle.fill")
-                        .font(.system(size: 80))
-                        .foregroundStyle(Color.theme.gradientPrimary)
-                        .symbolEffect(.breathe, options: .repeating)
-                }
-                .opacity(showContent ? 1 : 0)
-                .scaleEffect(showContent ? 1 : 0.5)
+                Image("BrandIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 64, height: 64)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .opacity(showContent ? 1 : 0)
 
                 Text("Heal")
                     .font(.system(size: 42, weight: .bold, design: .rounded))

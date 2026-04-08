@@ -1,10 +1,10 @@
 import SwiftUI
-import StoreKit
+import RevenueCat
 
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var storeService = StoreKitService.shared
-    @State private var selectedProduct: Product?
+    @State private var storeService = RevenueCatService.shared
+    @State private var selectedPackage: Package?
     @State private var isPurchasing = false
     @State private var showError = false
     @State private var errorMessage = ""
@@ -15,10 +15,15 @@ struct PaywallView: View {
                 VStack(spacing: 28) {
                     // Header
                     VStack(spacing: 12) {
-                        Image(systemName: "crown.fill")
-                            .font(.system(size: 52))
-                            .foregroundStyle(Color.theme.healGold)
-                            .symbolEffect(.bounce, options: .repeating.speed(0.3))
+                        Image("BrandIcon")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 72, height: 72)
+                            .clipShape(RoundedRectangle(cornerRadius: 17))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 17)
+                                    .stroke(Color.theme.healGold.opacity(0.4), lineWidth: 1.5)
+                            )
 
                         Text("Heal Premium")
                             .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -47,28 +52,36 @@ struct PaywallView: View {
                         ProgressView()
                             .tint(Color.theme.healPurple)
                             .padding()
-                    } else if storeService.products.isEmpty {
-                        // Fallback display when products haven't loaded
+                    } else if storeService.availablePackages.isEmpty {
+                        // Fallback display when offerings haven't loaded
                         VStack(spacing: 12) {
                             PricingCard(
-                                title: "Monthly",
-                                price: "$4.99/mo",
-                                subtitle: "Cancel anytime",
+                                title: "Weekly",
+                                price: "$4.99/wk",
+                                subtitle: "3 days free",
                                 isPopular: false,
                                 isSelected: false,
                                 action: {}
                             )
                             PricingCard(
-                                title: "Yearly",
-                                price: "$29.99/yr",
-                                subtitle: "Save 50%",
+                                title: "Monthly",
+                                price: "$9.99/mo",
+                                subtitle: "3 days free • BEST VALUE",
                                 isPopular: true,
                                 isSelected: false,
                                 action: {}
                             )
                             PricingCard(
+                                title: "Yearly",
+                                price: "$49.99/yr",
+                                subtitle: "Save 58%",
+                                isPopular: false,
+                                isSelected: false,
+                                action: {}
+                            )
+                            PricingCard(
                                 title: "Lifetime",
-                                price: "$49.99",
+                                price: "$79.99",
                                 subtitle: "One-time purchase",
                                 isPopular: false,
                                 isSelected: false,
@@ -78,14 +91,15 @@ struct PaywallView: View {
                         .padding(.horizontal, 24)
                     } else {
                         VStack(spacing: 12) {
-                            ForEach(storeService.products) { product in
+                            ForEach(storeService.availablePackages, id: \.identifier) { package in
+                                let isMonthly = package.storeProduct.productIdentifier.contains("monthly")
                                 PricingCard(
-                                    title: product.displayName,
-                                    price: product.displayPrice,
-                                    subtitle: product.description,
-                                    isPopular: product.id == StoreKitService.premiumYearly,
-                                    isSelected: selectedProduct?.id == product.id,
-                                    action: { selectedProduct = product }
+                                    title: package.storeProduct.localizedTitle,
+                                    price: package.localizedPriceString,
+                                    subtitle: package.storeProduct.localizedDescription,
+                                    isPopular: isMonthly,
+                                    isSelected: selectedPackage?.identifier == package.identifier,
+                                    action: { selectedPackage = package }
                                 )
                             }
                         }
@@ -109,18 +123,29 @@ struct PaywallView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
                         .background(
-                            selectedProduct != nil
+                            selectedPackage != nil
                             ? AnyShapeStyle(Color.theme.gradientPrimary)
                             : AnyShapeStyle(Color.theme.textTertiary)
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                     }
-                    .disabled(selectedProduct == nil || isPurchasing)
+                    .disabled(selectedPackage == nil || isPurchasing)
                     .padding(.horizontal, 32)
 
                     // Restore
                     Button {
-                        Task { await storeService.restorePurchases() }
+                        Task {
+                            do {
+                                try await storeService.restorePurchases()
+                                if storeService.isPremium {
+                                    HapticService.notification(.success)
+                                    dismiss()
+                                }
+                            } catch {
+                                errorMessage = error.localizedDescription
+                                showError = true
+                            }
+                        }
                     } label: {
                         Text("Restore Purchases")
                             .font(.subheadline)
@@ -158,12 +183,13 @@ struct PaywallView: View {
     }
 
     private func purchase() async {
-        guard let product = selectedProduct else { return }
+        guard let package = selectedPackage else { return }
         isPurchasing = true
         defer { isPurchasing = false }
 
         do {
-            if let _ = try await storeService.purchase(product) {
+            let success = try await storeService.purchase(package)
+            if success {
                 HapticService.milestone()
                 dismiss()
             }

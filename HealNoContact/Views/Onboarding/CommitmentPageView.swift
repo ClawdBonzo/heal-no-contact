@@ -13,10 +13,11 @@ struct CommitmentPageView: View {
                 Spacer().frame(height: 20)
 
                 VStack(spacing: 12) {
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 48))
-                        .foregroundStyle(Color.theme.healGold)
-                        .symbolEffect(.variableColor, options: .repeating)
+                    Image("Onboarding-4")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 160)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
 
                     Text("Make your commitment")
                         .font(.system(size: 28, weight: .bold, design: .rounded))

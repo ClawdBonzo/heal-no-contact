@@ -42,9 +42,11 @@ struct CustomTabBar: View {
                     HapticService.selection()
                 } label: {
                     VStack(spacing: 4) {
-                        Image(systemName: tab.icon)
-                            .font(.system(size: 20))
-                            .symbolEffect(.bounce, value: selectedTab == tab)
+                        Image(tab.customIcon)
+                            .renderingMode(.template)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 22, height: 22)
 
                         Text(tab.title)
                             .font(.system(size: 10, weight: .medium))

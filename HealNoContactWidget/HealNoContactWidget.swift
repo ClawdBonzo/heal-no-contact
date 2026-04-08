@@ -87,7 +87,13 @@ private struct SmallStreakView: View {
                 .foregroundStyle(.secondary)
         }
         .containerBackground(for: .widget) {
-            Color(red: 0.06, green: 0.04, blue: 0.12)
+            ZStack {
+                Color(red: 0.06, green: 0.04, blue: 0.12)
+                Image("Widget-Small")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .opacity(0.15)
+            }
         }
     }
 }
@@ -145,7 +151,13 @@ private struct MediumStreakView: View {
             }
         }
         .containerBackground(for: .widget) {
-            Color(red: 0.06, green: 0.04, blue: 0.12)
+            ZStack {
+                Color(red: 0.06, green: 0.04, blue: 0.12)
+                Image("Widget-Medium")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .opacity(0.12)
+            }
         }
     }
 }
@@ -211,7 +223,13 @@ struct MantraWidgetView: View {
         }
         .padding()
         .containerBackground(for: .widget) {
-            Color(red: 0.06, green: 0.04, blue: 0.12)
+            ZStack {
+                Color(red: 0.06, green: 0.04, blue: 0.12)
+                Image("Widget-Small")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .opacity(0.12)
+            }
         }
     }
 }

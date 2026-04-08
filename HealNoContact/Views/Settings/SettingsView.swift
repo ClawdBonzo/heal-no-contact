@@ -130,7 +130,30 @@ struct SettingsView: View {
                 .listRowBackground(Color.theme.cardBackground)
 
                 // About
-                Section("About") {
+                Section {
+                    VStack(spacing: 12) {
+                        Image("BrandIcon")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 64, height: 64)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+
+                        Text("Heal")
+                            .font(.headline)
+                            .foregroundStyle(Color.theme.textPrimary)
+
+                        Text("No-Contact Recovery")
+                            .font(.caption)
+                            .foregroundStyle(Color.theme.textSecondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                } header: {
+                    Text("About")
+                }
+                .listRowBackground(Color.theme.cardBackground)
+
+                Section {
                     SettingsRow(
                         icon: "lock.shield.fill",
                         label: "Privacy",

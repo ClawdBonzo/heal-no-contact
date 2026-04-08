@@ -15,8 +15,14 @@ struct ReasonPageView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 32) {
-            Spacer().frame(height: 20)
+        VStack(spacing: 24) {
+            Image("Onboarding-2")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxHeight: 160)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .opacity(showContent ? 1 : 0)
+                .padding(.top, 12)
 
             VStack(spacing: 12) {
                 Text("Why are you going\nno contact?")

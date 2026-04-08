@@ -7,7 +7,11 @@ final class AppState {
     var showEmergencySOS: Bool = false
     var showDailyCheckIn: Bool = false
     var showPaywall: Bool = false
-    var isPremium: Bool = false
+
+    /// Derives premium status from RevenueCat — always in sync
+    var isPremium: Bool {
+        RevenueCatService.shared.isPremium
+    }
 
     enum AppTab: Int, CaseIterable, Identifiable {
         case dashboard = 0
@@ -35,6 +39,17 @@ final class AppState {
             case .progress: "chart.line.uptrend.xyaxis"
             case .insights: "brain.head.profile.fill"
             case .settings: "gearshape.fill"
+            }
+        }
+
+        /// Custom asset-based tab icon name (from asset pack)
+        var customIcon: String {
+            switch self {
+            case .dashboard: "Tab-Home"
+            case .journal: "Tab-Journal"
+            case .progress: "Tab-Streak"
+            case .insights: "Tab-Community"
+            case .settings: "Tab-Settings"
             }
         }
     }

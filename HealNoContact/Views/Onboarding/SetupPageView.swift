@@ -20,7 +20,13 @@ struct SetupPageView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 28) {
-                Spacer().frame(height: 20)
+                Image("Onboarding-3")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 140)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .opacity(showContent ? 1 : 0)
+                    .padding(.top, 12)
 
                 VStack(spacing: 12) {
                     Text("Let's set things up")
