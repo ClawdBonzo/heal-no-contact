@@ -16,9 +16,10 @@ final class AppState {
     enum AppTab: Int, CaseIterable, Identifiable {
         case dashboard = 0
         case journal = 1
-        case progress = 2
-        case insights = 3
-        case settings = 4
+        case growth = 2
+        case progress = 3
+        case insights = 4
+        case settings = 5
 
         var id: Int { rawValue }
 
@@ -26,6 +27,7 @@ final class AppState {
             switch self {
             case .dashboard: "Home"
             case .journal: "Journal"
+            case .growth: "Growth"
             case .progress: "Progress"
             case .insights: "Insights"
             case .settings: "Settings"
@@ -36,6 +38,7 @@ final class AppState {
             switch self {
             case .dashboard: "heart.fill"
             case .journal: "book.fill"
+            case .growth: "flame.fill"
             case .progress: "chart.line.uptrend.xyaxis"
             case .insights: "brain.head.profile.fill"
             case .settings: "gearshape.fill"
@@ -47,6 +50,7 @@ final class AppState {
             switch self {
             case .dashboard: "Tab-Home"
             case .journal: "Tab-Journal"
+            case .growth: "Tab-Streak"
             case .progress: "Tab-Streak"
             case .insights: "Tab-Community"
             case .settings: "Tab-Settings"

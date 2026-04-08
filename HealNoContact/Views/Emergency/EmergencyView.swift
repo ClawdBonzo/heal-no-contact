@@ -12,6 +12,7 @@ struct EmergencyView: View {
     @State private var breatheIn = false
     @State private var urgeStartTime = Date.now
     @State private var showCompleted = false
+    @State private var gamificationService: GameificationService?
 
     private var profile: UserProfile? { profiles.first }
 
@@ -181,6 +182,15 @@ struct EmergencyView: View {
             intensityLevel: Int(intensityLevel)
         )
         modelContext.insert(log)
+
+        // Award XP for resisting emergency SOS
+        if gamificationService == nil, let userId = profile?.id {
+            let service = GameificationService(modelContext: modelContext)
+            service.initializeGamification(for: userId)
+            gamificationService = service
+        }
+        gamificationService?.addXP(25, reason: "SOS Resisted")
+
         HapticService.milestone()
 
         withAnimation(.spring(response: 0.4)) {

@@ -7,16 +7,31 @@ struct DashboardView: View {
     @Query private var profiles: [UserProfile]
     @Query(sort: \MoodEntry.createdAt, order: .reverse) private var recentMoods: [MoodEntry]
     @Query(sort: \Milestone.dayTarget) private var milestones: [Milestone]
+    @Query private var gamifications: [UserGamification]
+    @Query private var streakFlames: [StreakFlame]
     @State private var showCheckIn = false
     @State private var animateRing = false
+    @State private var gamificationService: GameificationService?
+    @State private var showLevelUpModal = false
+    @State private var levelUpData: (oldLevel: Int, newLevel: Int)? = nil
 
     private var profile: UserProfile? { profiles.first }
+    private var gamification: UserGamification? { gamifications.first }
+    private var streakFlame: StreakFlame? { streakFlames.first }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
                     if let profile {
+                        // Level & XP progress (Gamification)
+                        if let gamification = gamification {
+                            VStack(spacing: 16) {
+                                LevelBadgeView(gamification: gamification, showAnimation: true)
+                                XPBarView(gamification: gamification)
+                            }
+                        }
+
                         // Streak ring
                         StreakRingView(
                             currentDays: profile.currentStreakDays,
@@ -24,6 +39,11 @@ struct DashboardView: View {
                             animate: animateRing
                         )
                         .padding(.top, 8)
+
+                        // Streak flame (Gamification)
+                        if let flame = streakFlame {
+                            StreakFlameView(flame: flame)
+                        }
 
                         // Mantra card
                         if !profile.personalMantra.isEmpty {
@@ -78,9 +98,33 @@ struct DashboardView: View {
             }
         }
         .onAppear {
+            setupGamification()
             checkMilestones()
             withAnimation(.easeInOut(duration: 1.0).delay(0.3)) {
                 animateRing = true
+            }
+        }
+        .onChange(of: gamificationService?.levelUpAward) { _, newValue in
+            if let award = newValue {
+                levelUpData = award
+                showLevelUpModal = true
+            }
+        }
+        .sheet(isPresented: $showLevelUpModal) {
+            if let levelUp = levelUpData, let gamification = gamification {
+                ZStack {
+                    Color.black.opacity(0.5).ignoresSafeArea()
+
+                    LevelUpModalView(
+                        oldLevel: levelUp.oldLevel,
+                        newLevel: levelUp.newLevel,
+                        levelName: gamification.levelName
+                    ) {
+                        showLevelUpModal = false
+                        gamificationService?.levelUpAward = nil
+                    }
+                }
+                .presentationBackground(.clear)
             }
         }
     }
@@ -89,8 +133,19 @@ struct DashboardView: View {
         milestones.first { !$0.isUnlocked && $0.dayTarget > profile.currentStreakDays }
     }
 
+    private func setupGamification() {
+        guard let profile = profile else { return }
+
+        if gamificationService == nil {
+            let service = GameificationService(modelContext: modelContext)
+            service.initializeGamification(for: profile.id)
+            gamificationService = service
+        }
+    }
+
     private func checkMilestones() {
         guard let profile else { return }
+
         for milestone in milestones where !milestone.isUnlocked {
             if profile.currentStreakDays >= milestone.dayTarget {
                 milestone.isUnlocked = true
@@ -102,6 +157,15 @@ struct DashboardView: View {
                 )
             }
         }
+
+        // Check badge milestones
+        let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
+        let moodCount = recentMoods.count
+        gamificationService?.checkMilestoneBadges(
+            streakDays: profile.currentStreakDays,
+            journalEntryCount: journalCount,
+            moodCheckInCount: moodCount
+        )
     }
 }
 

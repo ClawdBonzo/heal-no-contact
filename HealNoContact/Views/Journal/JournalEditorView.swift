@@ -4,14 +4,17 @@ import SwiftData
 struct JournalEditorView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Query private var profiles: [UserProfile]
     var existingEntry: JournalEntry?
 
     @State private var title = ""
     @State private var body_ = ""
     @State private var selectedMood: JournalEntry.MoodType = .neutral
     @State private var isFavorite = false
+    @State private var gamificationService: GameificationService?
 
     private var isEditing: Bool { existingEntry != nil }
+    private var profile: UserProfile? { profiles.first }
 
     private let prompts = [
         "What's on your mind right now?",
@@ -160,7 +163,17 @@ struct JournalEditorView: View {
                 isFavorite: isFavorite
             )
             modelContext.insert(entry)
+
+            // Award XP for new journal entry
+            if gamificationService == nil, let userId = profile?.id {
+                let service = GameificationService(modelContext: modelContext)
+                service.initializeGamification(for: userId)
+                gamificationService = service
+            }
+            gamificationService?.addXP(15, reason: "Journal Entry")
+            gamificationService?.progressQuest(questId: UUID()) // Progress journal quest
         }
+
         HapticService.notification(.success)
         dismiss()
     }

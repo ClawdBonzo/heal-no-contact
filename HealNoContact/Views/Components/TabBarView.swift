@@ -14,6 +14,9 @@ struct MainTabBarView: View {
                 JournalListView()
                     .tag(AppState.AppTab.journal)
 
+                GameificationDashboardView(userId: UUID())
+                    .tag(AppState.AppTab.growth)
+
                 HealProgressView()
                     .tag(AppState.AppTab.progress)
 
