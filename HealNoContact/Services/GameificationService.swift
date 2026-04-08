@@ -2,6 +2,11 @@ import SwiftData
 import Observation
 import Foundation
 
+struct LevelUpAward: Equatable {
+    let oldLevel: Int
+    let newLevel: Int
+}
+
 @Observable
 @MainActor
 final class GameificationService {
@@ -10,7 +15,7 @@ final class GameificationService {
     var badges: [Badge] = []
     var streakFlame: StreakFlame?
     var recentXPGain: Int? = nil
-    var levelUpAward: (oldLevel: Int, newLevel: Int)? = nil
+    var levelUpAward: LevelUpAward? = nil
 
     private let modelContext: ModelContext
 
@@ -64,7 +69,7 @@ final class GameificationService {
         HapticService.xpGain()
 
         if gamification.currentLevel > oldLevel {
-            levelUpAward = (oldLevel, gamification.currentLevel)
+            levelUpAward = LevelUpAward(oldLevel: oldLevel, newLevel: gamification.currentLevel)
             HapticService.levelUp()
         }
 
@@ -200,7 +205,7 @@ final class GameificationService {
         modelContext.insert(badge)
         badges.append(badge)
 
-        HapticService.badgeUnlock(rarity)
+        HapticService.badgeUnlock(rarity.rawValue)
         try? modelContext.save()
     }
 
@@ -256,13 +261,13 @@ final class GameificationService {
     // MARK: - Private Helpers
 
     private func loadQuests(for userId: UUID) {
-        let descriptor = FetchDescriptor<Quest>(predicate: #Predicate { $0.userId == userId })
-        descriptor.sortBy = [SortDescriptor(\.type)]
+        var descriptor = FetchDescriptor<Quest>(predicate: #Predicate { $0.userId == userId })
+        descriptor.sortBy = [SortDescriptor(\.createdAt)]
         quests = (try? modelContext.fetch(descriptor)) ?? []
     }
 
     private func loadBadges(for userId: UUID) {
-        let descriptor = FetchDescriptor<Badge>(predicate: #Predicate { $0.userId == userId })
+        var descriptor = FetchDescriptor<Badge>(predicate: #Predicate { $0.userId == userId })
         descriptor.sortBy = [SortDescriptor(\.unlockedAt, order: .reverse)]
         badges = (try? modelContext.fetch(descriptor)) ?? []
     }

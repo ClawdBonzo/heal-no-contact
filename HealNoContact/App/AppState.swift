@@ -2,6 +2,7 @@ import SwiftUI
 import Observation
 
 @Observable
+@MainActor
 final class AppState {
     var selectedTab: AppTab = .dashboard
     var showEmergencySOS: Bool = false

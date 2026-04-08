@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 final class QuoteService {
     static let shared = QuoteService()
 

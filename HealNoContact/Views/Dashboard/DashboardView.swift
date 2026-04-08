@@ -13,7 +13,7 @@ struct DashboardView: View {
     @State private var animateRing = false
     @State private var gamificationService: GameificationService?
     @State private var showLevelUpModal = false
-    @State private var levelUpData: (oldLevel: Int, newLevel: Int)? = nil
+    @State private var levelUpData: LevelUpAward? = nil
 
     private var profile: UserProfile? { profiles.first }
     private var gamification: UserGamification? { gamifications.first }

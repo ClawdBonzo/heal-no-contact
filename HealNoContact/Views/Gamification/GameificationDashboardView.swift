@@ -5,7 +5,7 @@ struct GameificationDashboardView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var gamificationService: GameificationService?
     @State private var showLevelUpModal = false
-    @State private var levelUpData: (oldLevel: Int, newLevel: Int)? = nil
+    @State private var levelUpData: LevelUpAward? = nil
 
     var userId: UUID
     var gamification: UserGamification?
