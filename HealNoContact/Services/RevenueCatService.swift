@@ -7,7 +7,9 @@ import Observation
 final class RevenueCatService: NSObject {
     static let shared = RevenueCatService()
 
-    // TODO: Replace with live RevenueCat key before App Store release
+    // TODO: Replace with live key (format: appl_xxxxxxxxxxxxxxxxxxxx) before App Store submission.
+    //       Find it in RevenueCat Dashboard → Apps → [Your App] → API Keys → Public app SDK key.
+    //       NEVER ship the test_ key to production — it will NOT validate real purchases.
     private static let apiKey = "test_AFpuFmRxwiYCSJV0rgzxFqKjZDa"
 
     // Entitlement identifier configured in RevenueCat dashboard

@@ -174,8 +174,10 @@ struct DashboardView: View {
                 // Trigger phoenix rising for key milestones
                 let keyMilestones = [1, 7, 14, 21, 30, 45, 60, 90, 180, 365]
                 if keyMilestones.contains(milestone.dayTarget) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                        phoenixMilestoneDay = milestone.dayTarget
+                    let targetDay = milestone.dayTarget
+                    Task { @MainActor in
+                        try? await Task.sleep(for: .seconds(0.6))
+                        phoenixMilestoneDay = targetDay
                         showPhoenixOverlay = true
                     }
                 }

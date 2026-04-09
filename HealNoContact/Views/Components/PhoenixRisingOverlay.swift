@@ -8,7 +8,6 @@ private struct PhoenixParticle: Identifiable {
     var y: CGFloat
     var opacity: Double
     var scale: CGFloat
-    var speed: CGFloat
     var drift: CGFloat
     var symbol: String
     var color: Color
@@ -17,10 +16,12 @@ private struct PhoenixParticle: Identifiable {
 // MARK: - PhoenixRisingOverlay
 
 /// Full-screen celebration overlay triggered on streak milestones and level-ups.
-/// Reads `showPhoenixRisingAnimation` from the environment GamificationManager (or receives bindings).
+/// Respects `accessibilityReduceMotion` — skips particles and springs when enabled.
 struct PhoenixRisingOverlay: View {
     let day: Int?           // nil = level-up context
     let onDismiss: () -> Void
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @State private var particles: [PhoenixParticle] = []
     @State private var showContent = false
@@ -29,8 +30,9 @@ struct PhoenixRisingOverlay: View {
     @State private var glowPulse = false
     @State private var textScale: CGFloat = 0.7
     @State private var emojiOffset: CGFloat = 40
+    @State private var containerSize: CGSize = .zero
 
-    private let symbols = ["✦", "✧", "◆", "❋", "✿", "❀", "✦"]
+    private let symbols = ["✦", "✧", "◆", "❋", "✿", "❀"]
     private let particleColors: [Color] = [
         Color(red: 0.95, green: 0.75, blue: 0.30),  // gold
         Color(red: 0.90, green: 0.35, blue: 0.55),  // rose
@@ -43,12 +45,12 @@ struct PhoenixRisingOverlay: View {
             // Scrim
             Color.black.opacity(0.78)
                 .ignoresSafeArea()
-                .onTapGesture { dismiss() }
+                .onTapGesture { dismissOverlay() }
 
-            // Ambient radial glow
+            // Ambient radial glow — static when reduceMotion
             RadialGradient(
                 colors: [
-                    Color(red: 0.95, green: 0.55, blue: 0.25).opacity(glowPulse ? 0.30 : 0.15),
+                    Color(red: 0.95, green: 0.55, blue: 0.25).opacity(reduceMotion ? 0.22 : (glowPulse ? 0.30 : 0.15)),
                     Color(red: 0.55, green: 0.35, blue: 0.95).opacity(0.10),
                     Color.clear
                 ],
@@ -57,44 +59,61 @@ struct PhoenixRisingOverlay: View {
                 endRadius: 280
             )
             .ignoresSafeArea()
-            .animation(.easeInOut(duration: 2.2).repeatForever(autoreverses: true), value: glowPulse)
+            .animation(
+                reduceMotion ? nil : .easeInOut(duration: 2.2).repeatForever(autoreverses: true),
+                value: glowPulse
+            )
 
-            // Floating particles
-            GeometryReader { geo in
-                ForEach(particles) { p in
-                    Text(p.symbol)
-                        .font(.system(size: 14 * p.scale))
-                        .foregroundStyle(p.color)
-                        .opacity(p.opacity)
-                        .position(x: p.x, y: p.y)
+            // Floating particles — hidden entirely when reduceMotion
+            if !reduceMotion {
+                GeometryReader { geo in
+                    let _ = Task { @MainActor in
+                        if containerSize == .zero {
+                            containerSize = geo.size
+                        }
+                    }
+                    ForEach(particles) { p in
+                        Text(p.symbol)
+                            .font(.system(size: 14 * p.scale))
+                            .foregroundStyle(p.color)
+                            .opacity(p.opacity)
+                            .position(x: p.x, y: p.y)
+                    }
                 }
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             }
 
-            // Main card
+            // Main celebration card
             VStack(spacing: 0) {
                 // Phoenix emoji with glow ring
                 ZStack {
-                    Circle()
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    Color(red: 0.95, green: 0.65, blue: 0.20).opacity(0.35),
-                                    Color.clear
-                                ],
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 80
+                    if !reduceMotion {
+                        Circle()
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color(red: 0.95, green: 0.65, blue: 0.20).opacity(0.35),
+                                        Color.clear
+                                    ],
+                                    center: .center,
+                                    startRadius: 0,
+                                    endRadius: 80
+                                )
                             )
-                        )
-                        .frame(width: 160, height: 160)
-                        .scaleEffect(glowPulse ? 1.12 : 1.0)
-                        .animation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true), value: glowPulse)
+                            .frame(width: 160, height: 160)
+                            .scaleEffect(glowPulse ? 1.12 : 1.0)
+                            .animation(
+                                .easeInOut(duration: 1.8).repeatForever(autoreverses: true),
+                                value: glowPulse
+                            )
+                    }
 
                     Text("🔥")
                         .font(.system(size: 72))
-                        .offset(y: -emojiOffset)
+                        .offset(y: reduceMotion ? 0 : -emojiOffset)
                         .opacity(showContent ? 1 : 0)
+                        .accessibilityHidden(true) // decorative; context given by headline
                 }
                 .frame(height: 110)
                 .padding(.bottom, 8)
@@ -114,13 +133,15 @@ struct PhoenixRisingOverlay: View {
                                 endPoint: .trailing
                             )
                         )
-                        .scaleEffect(textScale)
+                        .scaleEffect(reduceMotion ? 1 : textScale)
                         .opacity(showContent ? 1 : 0)
+                        .accessibilityLabel("Milestone: Day \(day)")
 
                     Text(milestoneLabel(for: day))
                         .font(.system(size: 17, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white.opacity(0.85))
                         .multilineTextAlignment(.center)
+                        .padding(.horizontal, 24)
                         .padding(.top, 6)
                         .opacity(showContent ? 1 : 0)
                 } else {
@@ -136,17 +157,19 @@ struct PhoenixRisingOverlay: View {
                                 endPoint: .trailing
                             )
                         )
-                        .scaleEffect(textScale)
+                        .scaleEffect(reduceMotion ? 1 : textScale)
                         .opacity(showContent ? 1 : 0)
+                        .accessibilityLabel("Level Up! Your healing grows stronger.")
 
                     Text("Your healing grows stronger")
                         .font(.system(size: 17, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white.opacity(0.85))
                         .padding(.top, 6)
                         .opacity(showContent ? 1 : 0)
+                        .accessibilityHidden(true) // already in label above
                 }
 
-                // Gold star row
+                // Gold star row — hidden from VoiceOver (decorative)
                 HStack(spacing: 8) {
                     ForEach(0..<5, id: \.self) { i in
                         Image(systemName: "star.fill")
@@ -155,15 +178,17 @@ struct PhoenixRisingOverlay: View {
                             .opacity(showContent ? 1 : 0)
                             .scaleEffect(showContent ? 1 : 0.3)
                             .animation(
-                                .spring(response: 0.5, dampingFraction: 0.6).delay(0.4 + Double(i) * 0.07),
+                                reduceMotion ? nil : .spring(response: 0.5, dampingFraction: 0.6)
+                                    .delay(0.4 + Double(i) * 0.07),
                                 value: showContent
                             )
                     }
                 }
+                .accessibilityHidden(true)
                 .padding(.top, 18)
 
                 // CTA
-                Button(action: dismiss) {
+                Button(action: dismissOverlay) {
                     Text("Keep Going")
                         .font(.headline)
                         .foregroundStyle(.black)
@@ -182,37 +207,88 @@ struct PhoenixRisingOverlay: View {
                         .clipShape(Capsule())
                         .shadow(color: Color(red: 0.95, green: 0.65, blue: 0.20).opacity(0.55), radius: 16, y: 6)
                 }
+                .accessibilityLabel("Continue — Keep Going")
                 .padding(.top, 28)
                 .opacity(showContent ? 1 : 0)
             }
-            .scaleEffect(ringScale)
+            .scaleEffect(reduceMotion ? 1 : ringScale)
             .opacity(ringOpacity)
         }
+        .background(GeometryReader { geo in
+            Color.clear.onAppear { containerSize = geo.size }
+        })
         .onAppear {
-            spawnParticles()
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+            if reduceMotion {
+                // Instantly show everything, no motion
                 ringScale = 1.0
                 ringOpacity = 1.0
-            }
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.75).delay(0.15)) {
                 showContent = true
                 textScale = 1.0
                 emojiOffset = 0
+            } else {
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                    ringScale = 1.0
+                    ringOpacity = 1.0
+                }
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.75).delay(0.15)) {
+                    showContent = true
+                    textScale = 1.0
+                    emojiOffset = 0
+                }
+                glowPulse = true
+                spawnAndAnimateParticles()
             }
-            glowPulse = true
-            animateParticles()
         }
     }
 
-    private func dismiss() {
-        withAnimation(.easeIn(duration: 0.25)) {
-            ringOpacity = 0
-            ringScale = 0.9
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+    // MARK: - Actions
+
+    private func dismissOverlay() {
+        if reduceMotion {
             onDismiss()
+        } else {
+            withAnimation(.easeIn(duration: 0.25)) {
+                ringOpacity = 0
+                ringScale = 0.9
+            }
+            Task { @MainActor in
+                try? await Task.sleep(for: .seconds(0.25))
+                onDismiss()
+            }
         }
     }
+
+    // MARK: - Particle system
+
+    private func spawnAndAnimateParticles() {
+        let w = containerSize.width > 0 ? containerSize.width : 390
+        let h = containerSize.height > 0 ? containerSize.height : 844
+
+        // 20 particles — balanced for 60fps on A15 and newer
+        particles = (0..<20).map { _ in
+            PhoenixParticle(
+                x: CGFloat.random(in: 0...w),
+                y: CGFloat.random(in: 0...h),
+                opacity: Double.random(in: 0.3...0.8),
+                scale: CGFloat.random(in: 0.6...1.6),
+                drift: CGFloat.random(in: -30...30),
+                symbol: symbols.randomElement()!,
+                color: particleColors.randomElement()!
+            )
+        }
+
+        for i in particles.indices {
+            let duration = Double.random(in: 3.0...6.0)
+            let delay    = Double.random(in: 0...1.5)
+            withAnimation(.linear(duration: duration).delay(delay).repeatForever(autoreverses: false)) {
+                particles[i].y -= h + 100
+                particles[i].x += particles[i].drift
+                particles[i].opacity = 0
+            }
+        }
+    }
+
+    // MARK: - Milestone copy
 
     private func milestoneLabel(for day: Int) -> String {
         switch day {
@@ -227,36 +303,6 @@ struct PhoenixRisingOverlay: View {
         case 180: return "Half a year. Unbreakable."
         case 365: return "One year. You are the phoenix."
         default:  return "Every day you choose yourself."
-        }
-    }
-
-    private func spawnParticles() {
-        let screenW = UIScreen.main.bounds.width
-        let screenH = UIScreen.main.bounds.height
-        particles = (0..<40).map { _ in
-            PhoenixParticle(
-                x: CGFloat.random(in: 0...screenW),
-                y: CGFloat.random(in: 0...screenH),
-                opacity: Double.random(in: 0.3...0.8),
-                scale: CGFloat.random(in: 0.6...1.8),
-                speed: CGFloat.random(in: 60...160),
-                drift: CGFloat.random(in: -30...30),
-                symbol: symbols.randomElement()!,
-                color: particleColors.randomElement()!
-            )
-        }
-    }
-
-    private func animateParticles() {
-        let screenH = UIScreen.main.bounds.height
-        for i in particles.indices {
-            let duration = Double.random(in: 3.0...6.0)
-            let delay = Double.random(in: 0...2.0)
-            withAnimation(.linear(duration: duration).delay(delay).repeatForever(autoreverses: false)) {
-                particles[i].y -= screenH + 100
-                particles[i].x += particles[i].drift
-                particles[i].opacity = 0
-            }
         }
     }
 }

@@ -6,47 +6,61 @@ struct LevelUpModalView: View {
     let levelName: String
     let onDismiss: () -> Void
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     @State private var scale: CGFloat = 0.5
     @State private var opacity: Double = 0
     @State private var showStars = false
     @State private var glowPulse = false
     @State private var numberScale: CGFloat = 0.6
     @State private var confetti: [ConfettiPiece] = []
+    @State private var containerSize: CGSize = .zero
 
     var body: some View {
         ZStack {
             Color.black.opacity(0.7).ignoresSafeArea()
 
-            // Confetti layer
-            GeometryReader { geo in
-                ForEach(confetti) { piece in
-                    Text(piece.symbol)
-                        .font(.system(size: piece.size))
-                        .foregroundStyle(piece.color)
-                        .opacity(piece.opacity)
-                        .position(x: piece.x, y: piece.y)
+            // Confetti — skipped entirely when reduceMotion
+            if !reduceMotion {
+                GeometryReader { geo in
+                    let _ = Task { @MainActor in
+                        if containerSize == .zero { containerSize = geo.size }
+                    }
+                    ForEach(confetti) { piece in
+                        Text(piece.symbol)
+                            .font(.system(size: piece.size))
+                            .foregroundStyle(piece.color)
+                            .opacity(piece.opacity)
+                            .position(x: piece.x, y: piece.y)
+                    }
                 }
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
             }
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
 
             VStack(spacing: 20) {
-                // Phoenix glow ring + number
+                // Phoenix glow ring + level number
                 ZStack {
-                    Circle()
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    Color.theme.healGold.opacity(glowPulse ? 0.35 : 0.15),
-                                    Color.clear
-                                ],
-                                center: .center,
-                                startRadius: 10,
-                                endRadius: 75
+                    if !reduceMotion {
+                        Circle()
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color.theme.healGold.opacity(glowPulse ? 0.35 : 0.15),
+                                        Color.clear
+                                    ],
+                                    center: .center,
+                                    startRadius: 10,
+                                    endRadius: 75
+                                )
                             )
-                        )
-                        .frame(width: 150, height: 150)
-                        .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true), value: glowPulse)
+                            .frame(width: 150, height: 150)
+                            .animation(
+                                .easeInOut(duration: 1.6).repeatForever(autoreverses: true),
+                                value: glowPulse
+                            )
+                    }
 
                     Circle()
                         .stroke(
@@ -67,6 +81,7 @@ struct LevelUpModalView: View {
                     VStack(spacing: 0) {
                         Text("🔥")
                             .font(.system(size: 32))
+                            .accessibilityHidden(true)
                         Text("\(newLevel)")
                             .font(.system(size: 36, weight: .black, design: .rounded))
                             .foregroundStyle(
@@ -76,11 +91,13 @@ struct LevelUpModalView: View {
                                     endPoint: .bottom
                                 )
                             )
-                            .scaleEffect(numberScale)
+                            .scaleEffect(reduceMotion ? 1 : numberScale)
+                            .accessibilityHidden(true) // context given by VStack label below
                     }
                 }
+                .accessibilityLabel("Level \(newLevel): \(levelName)")
 
-                // Title
+                // Title + level chips
                 VStack(spacing: 6) {
                     Text("LEVEL UP!")
                         .font(.system(size: 28, weight: .black, design: .rounded))
@@ -92,22 +109,27 @@ struct LevelUpModalView: View {
                             )
                         )
                         .shadow(color: Color.theme.healGold.opacity(0.3), radius: 8)
+                        .accessibilityHidden(true) // redundant with VStack accessibilityLabel
 
                     Text(levelName)
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(Color.theme.textPrimary)
+                        .accessibilityLabel("New title: \(levelName)")
 
                     HStack(spacing: 12) {
                         levelChip(level: oldLevel, label: "Was", dimmed: true)
                         Image(systemName: "arrow.right")
                             .foregroundStyle(Color.theme.healGold)
                             .font(.body.weight(.bold))
+                            .accessibilityHidden(true)
                         levelChip(level: newLevel, label: "Now", dimmed: false)
                     }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("Advanced from level \(oldLevel) to level \(newLevel)")
                     .padding(.top, 4)
                 }
 
-                // Star row
+                // Star row — decorative, hidden from VoiceOver
                 HStack(spacing: 10) {
                     ForEach(0..<5, id: \.self) { i in
                         Image(systemName: "star.fill")
@@ -117,11 +139,13 @@ struct LevelUpModalView: View {
                             .scaleEffect(showStars ? 1 : 0.2)
                             .rotationEffect(.degrees(showStars ? 0 : -30))
                             .animation(
-                                .spring(response: 0.5, dampingFraction: 0.55).delay(0.35 + Double(i) * 0.08),
+                                reduceMotion ? nil : .spring(response: 0.5, dampingFraction: 0.55)
+                                    .delay(0.35 + Double(i) * 0.08),
                                 value: showStars
                             )
                     }
                 }
+                .accessibilityHidden(true)
 
                 // CTA
                 Button(action: onDismiss) {
@@ -140,6 +164,7 @@ struct LevelUpModalView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                         .shadow(color: Color.theme.healPurple.opacity(0.4), radius: 10, y: 4)
                 }
+                .accessibilityLabel("Continue your journey")
             }
             .padding(28)
             .background(
@@ -158,20 +183,31 @@ struct LevelUpModalView: View {
                     )
             )
             .padding(.horizontal, 28)
-            .scaleEffect(scale)
+            .scaleEffect(reduceMotion ? 1 : scale)
             .opacity(opacity)
         }
+        .background(GeometryReader { geo in
+            Color.clear.onAppear { containerSize = geo.size }
+        })
         .onAppear {
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
-                scale = 1.0
+            if reduceMotion {
+                scale   = 1.0
                 opacity = 1.0
-            }
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.6).delay(0.2)) {
                 numberScale = 1.0
+                showStars = true
+                // No confetti spawned
+            } else {
+                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                    scale   = 1.0
+                    opacity = 1.0
+                }
+                withAnimation(.spring(response: 0.4, dampingFraction: 0.6).delay(0.2)) {
+                    numberScale = 1.0
+                }
+                showStars = true
+                glowPulse = true
+                spawnConfetti()
             }
-            showStars = true
-            glowPulse = true
-            spawnConfetti()
         }
     }
 
@@ -198,25 +234,27 @@ struct LevelUpModalView: View {
     }
 
     private func spawnConfetti() {
+        let w = containerSize.width  > 0 ? containerSize.width  : 390
+        let h = containerSize.height > 0 ? containerSize.height : 844
         let symbols = ["✦", "✧", "★", "◆", "✿", "❀"]
         let colors: [Color] = [Color.theme.healGold, Color.theme.healPink, Color.theme.healTeal, .white.opacity(0.7)]
-        let w = UIScreen.main.bounds.width
-        confetti = (0..<30).map { _ in
+
+        // 20 pieces — performant on all iOS 18 devices
+        confetti = (0..<20).map { _ in
             ConfettiPiece(
-                x: CGFloat.random(in: 0...w),
-                y: CGFloat.random(in: -20...200),
+                x:       CGFloat.random(in: 0...w),
+                y:       CGFloat.random(in: -20...120),
                 opacity: Double.random(in: 0.5...0.9),
-                size: CGFloat.random(in: 10...20),
-                symbol: symbols.randomElement()!,
-                color: colors.randomElement()!
+                size:    CGFloat.random(in: 10...20),
+                symbol:  symbols.randomElement()!,
+                color:   colors.randomElement()!
             )
         }
-        let h = UIScreen.main.bounds.height
         for i in confetti.indices {
             let duration = Double.random(in: 2.5...4.5)
             withAnimation(.linear(duration: duration).repeatForever(autoreverses: false)) {
-                confetti[i].y += h + 60
-                confetti[i].opacity = 0
+                confetti[i].y       += h + 60
+                confetti[i].opacity  = 0
             }
         }
     }
