@@ -12,6 +12,7 @@ struct JournalEditorView: View {
     @State private var selectedMood: JournalEntry.MoodType = .neutral
     @State private var isFavorite = false
     @State private var gamificationService: GameificationService?
+    @State private var showSaveFlash = false
 
     private var isEditing: Bool { existingEntry != nil }
     private var profile: UserProfile? { profiles.first }
@@ -27,8 +28,9 @@ struct JournalEditorView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
+            ZStack {
+                ScrollView {
+                    VStack(spacing: 24) {
                     // Mood selector
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Mood")
@@ -104,9 +106,22 @@ struct JournalEditorView: View {
                             .frame(minHeight: 200)
                     }
                 }
-                .padding(20)
-            }
-            .background(Color.theme.deepBackground)
+                    .padding(20)
+                }
+                .background(Color.theme.deepBackground)
+
+                // Golden save flash overlay
+                if showSaveFlash {
+                    Color(red: 0.95, green: 0.75, blue: 0.30).opacity(0.18)
+                        .ignoresSafeArea()
+                        .allowsHitTesting(false)
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 64))
+                        .foregroundStyle(Color(red: 0.95, green: 0.75, blue: 0.30))
+                        .shadow(color: Color(red: 0.95, green: 0.75, blue: 0.30).opacity(0.6), radius: 20)
+                        .transition(.scale.combined(with: .opacity))
+                }
+            } // end ZStack
             .navigationTitle(isEditing ? "Edit Entry" : "New Entry")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -175,6 +190,8 @@ struct JournalEditorView: View {
         }
 
         HapticService.notification(.success)
-        dismiss()
+        // Brief golden flash before dismiss
+        withAnimation(.easeOut(duration: 0.2)) { showSaveFlash = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { dismiss() }
     }
 }

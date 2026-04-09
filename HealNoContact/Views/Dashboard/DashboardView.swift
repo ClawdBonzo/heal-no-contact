@@ -14,6 +14,8 @@ struct DashboardView: View {
     @State private var gamificationService: GameificationService?
     @State private var showLevelUpModal = false
     @State private var levelUpData: LevelUpAward? = nil
+    @State private var showPhoenixOverlay = false
+    @State private var phoenixMilestoneDay: Int? = nil
 
     private var profile: UserProfile? { profiles.first }
     private var gamification: UserGamification? { gamifications.first }
@@ -32,12 +34,20 @@ struct DashboardView: View {
                             }
                         }
 
-                        // Streak ring
-                        StreakRingView(
-                            currentDays: profile.currentStreakDays,
-                            goalDays: profile.noContactGoalDays,
-                            animate: animateRing
-                        )
+                        // Streak ring + share button
+                        VStack(spacing: 12) {
+                            StreakRingView(
+                                currentDays: profile.currentStreakDays,
+                                goalDays: profile.noContactGoalDays,
+                                animate: animateRing
+                            )
+
+                            HealingShareButton(
+                                streakDays: profile.currentStreakDays,
+                                userName: "",
+                                mantra: profile.personalMantra
+                            )
+                        }
                         .padding(.top, 8)
 
                         // Streak flame (Gamification)
@@ -127,6 +137,12 @@ struct DashboardView: View {
                 .presentationBackground(.clear)
             }
         }
+        .fullScreenCover(isPresented: $showPhoenixOverlay) {
+            PhoenixRisingOverlay(day: phoenixMilestoneDay) {
+                showPhoenixOverlay = false
+                phoenixMilestoneDay = nil
+            }
+        }
     }
 
     private func nextMilestone(for profile: UserProfile) -> Milestone? {
@@ -155,6 +171,14 @@ struct DashboardView: View {
                     dayCount: milestone.dayTarget,
                     title: milestone.title
                 )
+                // Trigger phoenix rising for key milestones
+                let keyMilestones = [1, 7, 14, 21, 30, 45, 60, 90, 180, 365]
+                if keyMilestones.contains(milestone.dayTarget) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        phoenixMilestoneDay = milestone.dayTarget
+                        showPhoenixOverlay = true
+                    }
+                }
             }
         }
 
