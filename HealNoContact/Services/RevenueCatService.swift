@@ -14,10 +14,10 @@ final class RevenueCatService: NSObject {
     static let premiumEntitlement = "pro"
 
     // Product identifiers — must match App Store Connect
-    static let premiumWeekly = "com.healnocontact.premium.weekly"
-    static let premiumMonthly = "com.healnocontact.premium.monthly"
-    static let premiumYearly = "com.healnocontact.premium.yearly"
-    static let premiumLifetime = "com.healnocontact.premium.lifetime"
+    static let premiumWeekly   = "com.clawdbonzo.healnocontact.weekly"
+    static let premiumMonthly  = "com.clawdbonzo.healnocontact.monthly"
+    static let premiumYearly   = "com.clawdbonzo.healnocontact.yearly"
+    static let premiumLifetime = "com.clawdbonzo.healnocontact.lifetime"
 
     private(set) var customerInfo: CustomerInfo?
     private(set) var offerings: Offerings?
