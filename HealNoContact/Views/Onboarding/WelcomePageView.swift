@@ -4,29 +4,44 @@ struct WelcomePageView: View {
     let onNext: () -> Void
     @State private var showContent = false
     @State private var showButton = false
+    @State private var heartbeat = false
+    @State private var glowPulse = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 32) {
             Spacer()
 
-            VStack(spacing: 16) {
-                Image("Onboarding-1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 220)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .opacity(showContent ? 1 : 0)
-                    .scaleEffect(showContent ? 1 : 0.9)
+            // Single large logo with heartbeat animation + glow
+            ZStack {
+                // Outer soft glow
+                Circle()
+                    .fill(Color.theme.healPurple.opacity(0.18))
+                    .frame(width: 260, height: 260)
+                    .blur(radius: 40)
+                    .scaleEffect(glowPulse ? 1.15 : 0.9)
+
+                // Inner glow
+                Circle()
+                    .fill(Color.theme.healPurple.opacity(0.25))
+                    .frame(width: 200, height: 200)
+                    .blur(radius: 25)
+                    .scaleEffect(glowPulse ? 1.12 : 0.95)
 
                 Image("BrandIcon")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 64, height: 64)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    .opacity(showContent ? 1 : 0)
+                    .frame(width: 160, height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 38))
+                    .shadow(color: Color.theme.healPurple.opacity(0.5), radius: 24, y: 8)
+                    .scaleEffect(heartbeat ? 1.06 : 1.0)
+            }
+            .opacity(showContent ? 1 : 0)
+            .scaleEffect(showContent ? 1 : 0.7)
 
+            VStack(spacing: 12) {
                 Text("Heal")
-                    .font(.system(size: 42, weight: .bold, design: .rounded))
+                    .font(.system(size: 52, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.theme.gradientPrimary)
                     .opacity(showContent ? 1 : 0)
                     .offset(y: showContent ? 0 : 20)
@@ -38,7 +53,7 @@ struct WelcomePageView: View {
                     .offset(y: showContent ? 0 : 10)
             }
 
-            VStack(spacing: 16) {
+            VStack(spacing: 14) {
                 FeatureRow(
                     icon: "shield.checkered",
                     title: "Stay Strong",
@@ -73,6 +88,7 @@ struct WelcomePageView: View {
                     .padding(.vertical, 18)
                     .background(Color.theme.gradientPrimary)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(color: Color.theme.healPurple.opacity(0.35), radius: 14, y: 4)
             }
             .padding(.horizontal, 32)
             .opacity(showButton ? 1 : 0)
@@ -86,6 +102,29 @@ struct WelcomePageView: View {
             }
             withAnimation(.easeOut(duration: 0.6).delay(0.5)) {
                 showButton = true
+            }
+            // Heartbeat — double-pulse pattern (fast-fast-rest) at ~1Hz
+            if !reduceMotion {
+                startHeartbeat()
+                withAnimation(.easeInOut(duration: 3.5).repeatForever(autoreverses: true)) {
+                    glowPulse = true
+                }
+            }
+        }
+    }
+
+    /// Heartbeat pattern: quick contraction, quick release, pause, repeat.
+    private func startHeartbeat() {
+        Task { @MainActor in
+            while !Task.isCancelled {
+                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+                try? await Task.sleep(for: .milliseconds(180))
+                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = false }
+                try? await Task.sleep(for: .milliseconds(120))
+                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+                try? await Task.sleep(for: .milliseconds(180))
+                withAnimation(.easeInOut(duration: 0.25)) { heartbeat = false }
+                try? await Task.sleep(for: .milliseconds(900))
             }
         }
     }

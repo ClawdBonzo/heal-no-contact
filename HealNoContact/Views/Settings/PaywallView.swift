@@ -4,36 +4,36 @@ import RevenueCat
 // MARK: - Plan Model
 
 enum HealPlanOption: String, CaseIterable, Identifiable {
-    case weekly   = "com.clawdbonzo.healnocontact.weekly"
-    case monthly  = "com.clawdbonzo.healnocontact.monthly"
-    case yearly   = "com.clawdbonzo.healnocontact.yearly"
-    case lifetime = "com.clawdbonzo.healnocontact.lifetime"
+    case weekly   = "com.healnocontact.premium.weekly"
+    case monthly  = "com.healnocontact.premium.monthly"
+    case yearly   = "com.healnocontact.premium.yearly"
+    case lifetime = "com.healnocontact.premium.lifetime"
 
     var id: String { rawValue }
 
     var displayName: String {
         switch self {
-        case .weekly:   return "Weekly"
-        case .monthly:  return "Monthly"
-        case .yearly:   return "Yearly"
-        case .lifetime: return "Lifetime"
+        case .weekly:   return String(localized: "Weekly")
+        case .monthly:  return String(localized: "Monthly")
+        case .yearly:   return String(localized: "Yearly")
+        case .lifetime: return String(localized: "Lifetime")
         }
     }
 
     var fallbackPrice: String {
         switch self {
-        case .weekly:   return "$4.99"
-        case .monthly:  return "$9.99"
-        case .yearly:   return "$49.99"
-        case .lifetime: return "$79.99"
+        case .weekly:   return "$6.99"
+        case .monthly:  return "$14.99"
+        case .yearly:   return "$59.99"
+        case .lifetime: return "$99.99"
         }
     }
 
     var fallbackPerWeek: String {
         switch self {
-        case .weekly:   return "$4.99/wk"
-        case .monthly:  return "$2.50/wk"
-        case .yearly:   return "$0.96/wk"
+        case .weekly:   return "$6.99/wk"
+        case .monthly:  return "$3.46/wk"
+        case .yearly:   return "$1.15/wk"
         case .lifetime: return "one-time"
         }
     }
@@ -49,7 +49,7 @@ enum HealPlanOption: String, CaseIterable, Identifiable {
     var isBestValue: Bool { self == .monthly }
 
     var savingsLabel: String? {
-        self == .yearly ? "Save 58%" : nil
+        self == .yearly ? String(localized: "Save 67%") : nil
     }
 
     var packageType: PackageType {
@@ -141,10 +141,10 @@ struct PaywallView: View {
 
                 // ── Features ──────────────────────────────────────────────────
                 VStack(spacing: 9) {
-                    HealFeatureRow(icon: "brain.head.profile.fill", text: "Advanced mood insights & pattern detection")
-                    HealFeatureRow(icon: "widget.small.badge.plus",  text: "Home screen widgets & streak tracker")
-                    HealFeatureRow(icon: "bell.badge.fill",          text: "AI-timed smart reminders")
-                    HealFeatureRow(icon: "chart.xyaxis.line",        text: "Export journal & progress as PDF")
+                    HealFeatureRow(icon: "brain.head.profile.fill", text: String(localized: "Advanced insights & mood pattern detection"))
+                    HealFeatureRow(icon: "doc.richtext.fill",        text: String(localized: "Export your journal & progress as a PDF"))
+                    HealFeatureRow(icon: "bell.badge.fill",          text: String(localized: "Daily encouragement reminders"))
+                    HealFeatureRow(icon: "heart.fill",               text: String(localized: "Support an independent developer"))
                 }
                 .padding(.horizontal, 22)
                 .opacity(showFeatures ? 1 : 0)
@@ -258,9 +258,9 @@ struct PaywallView: View {
 
     private var ctaLabel: String {
         switch selectedPlan {
-        case .monthly, .yearly: return "Start 3-Day Free Trial"
-        case .weekly:           return "Get Weekly Access"
-        case .lifetime:         return "Purchase Lifetime"
+        case .monthly, .yearly: return String(localized: "Start 3-Day Free Trial")
+        case .weekly:           return String(localized: "Get Weekly Access")
+        case .lifetime:         return String(localized: "Purchase Lifetime")
         }
     }
 
@@ -301,11 +301,11 @@ struct PaywallView: View {
            let yearlyPkg = package(for: .yearly) {
             let monthlyAnnual = NSDecimalNumber(decimal: monthlyPkg.storeProduct.price as Decimal).doubleValue * 12
             let yearlyPrice   = NSDecimalNumber(decimal: yearlyPkg.storeProduct.price as Decimal).doubleValue
-            guard monthlyAnnual > 0 else { return "Save 58%" }
+            guard monthlyAnnual > 0 else { return String(localized: "Save 58%") }
             let pct = Int(((monthlyAnnual - yearlyPrice) / monthlyAnnual) * 100)
-            return "Save \(pct)%"
+            return String(localized: "Save \(pct)%")
         }
-        return "Save 58%"
+        return String(localized: "Save 58%")
     }
 
     private func purchase() async {

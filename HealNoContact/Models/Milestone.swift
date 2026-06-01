@@ -30,15 +30,15 @@ final class Milestone {
     }
 
     static let defaultMilestones: [(String, String, Int, String)] = [
-        ("First Step", "You started your healing journey", 1, "foot.fill"),
-        ("One Week Strong", "7 days of choosing yourself", 7, "star.fill"),
-        ("Two Weeks", "Building new habits takes time", 14, "leaf.fill"),
-        ("21-Day Mark", "New neural pathways are forming", 21, "brain.fill"),
-        ("One Month", "A full month of growth", 30, "moon.fill"),
-        ("45 Days", "You're rewriting your story", 45, "pencil.and.outline"),
-        ("Two Months", "60 days of resilience", 60, "shield.fill"),
-        ("90-Day Triumph", "The hardest part is behind you", 90, "trophy.fill"),
-        ("Half Year Hero", "180 days of transformation", 180, "sun.max.fill"),
-        ("One Year Free", "365 days — you are renewed", 365, "sparkles")
+        (String(localized: "First Step"), String(localized: "You started your healing journey"), 1, "foot.fill"),
+        (String(localized: "One Week Strong"), String(localized: "7 days of choosing yourself"), 7, "star.fill"),
+        (String(localized: "Two Weeks"), String(localized: "Building new habits takes time"), 14, "leaf.fill"),
+        (String(localized: "21-Day Mark"), String(localized: "New neural pathways are forming"), 21, "brain.fill"),
+        (String(localized: "One Month"), String(localized: "A full month of growth"), 30, "moon.fill"),
+        (String(localized: "45 Days"), String(localized: "You're rewriting your story"), 45, "pencil.and.outline"),
+        (String(localized: "Two Months"), String(localized: "60 days of resilience"), 60, "shield.fill"),
+        (String(localized: "90-Day Triumph"), String(localized: "The hardest part is behind you"), 90, "trophy.fill"),
+        (String(localized: "Half Year Hero"), String(localized: "180 days of transformation"), 180, "sun.max.fill"),
+        (String(localized: "One Year Free"), String(localized: "365 days — you are renewed"), 365, "sparkles")
     ]
 }

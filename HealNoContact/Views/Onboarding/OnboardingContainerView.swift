@@ -3,6 +3,7 @@ import SwiftData
 
 struct OnboardingContainerView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppState.self) private var appState
     @State private var currentPage = 0
     @State private var exName = ""
     @State private var breakupDate = Date.now
@@ -45,6 +46,14 @@ struct OnboardingContainerView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut(duration: 0.3), value: currentPage)
+            .onAppear {
+                #if DEBUG
+                if let p = DemoConfig.shared.onboardingPage {
+                    currentPage = p
+                    if p == 3 { personalMantra = "I choose my peace over their chaos." }
+                }
+                #endif
+            }
 
             // Page indicator
             VStack {
@@ -110,5 +119,8 @@ struct OnboardingContainerView: View {
         }
 
         HapticService.milestone()
+
+        // Show the intro paywall once the main UI appears (top conversion moment).
+        appState.pendingIntroPaywall = true
     }
 }

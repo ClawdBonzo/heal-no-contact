@@ -42,17 +42,17 @@ import Foundation
 
     var levelName: String {
         switch currentLevel {
-        case 1: return "Broken Heart"
-        case 2: return "First Light"
-        case 3: return "Healing Heart"
-        case 4: return "Growing Stronger"
-        case 5: return "Inner Strength"
-        case 6: return "Whole Again"
-        case 7: return "Free Spirit"
-        case 8: return "Phoenix Rising"
-        case 9: return "Unstoppable"
-        case 10: return "Fully Healed"
-        default: return "Legend"
+        case 1: return String(localized: "Broken Heart")
+        case 2: return String(localized: "First Light")
+        case 3: return String(localized: "Healing Heart")
+        case 4: return String(localized: "Growing Stronger")
+        case 5: return String(localized: "Inner Strength")
+        case 6: return String(localized: "Whole Again")
+        case 7: return String(localized: "Free Spirit")
+        case 8: return String(localized: "Phoenix Rising")
+        case 9: return String(localized: "Unstoppable")
+        case 10: return String(localized: "Fully Healed")
+        default: return String(localized: "Legend")
         }
     }
 

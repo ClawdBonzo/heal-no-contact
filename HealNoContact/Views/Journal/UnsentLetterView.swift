@@ -9,8 +9,9 @@ struct UnsentLetterView: View {
     @State private var selectedMood: JournalEntry.MoodType = .sad
     @State private var showSaved = false
 
-    private var recipientName: String {
-        profiles.first?.exName.isEmpty == false ? profiles.first!.exName : "them"
+    private var exName: String? {
+        guard let name = profiles.first?.exName, !name.isEmpty else { return nil }
+        return name
     }
 
     var body: some View {
@@ -35,9 +36,11 @@ struct UnsentLetterView: View {
 
                     // Letter
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Dear \(recipientName),")
-                            .font(.subheadline.italic())
-                            .foregroundStyle(Color.theme.textSecondary)
+                        if let exName {
+                            Text("Dear \(exName),")
+                                .font(.subheadline.italic())
+                                .foregroundStyle(Color.theme.textSecondary)
+                        }
 
                         ZStack(alignment: .topLeading) {
                             if letterBody.isEmpty {
@@ -98,15 +101,15 @@ struct UnsentLetterView: View {
 
     private func saveLetter() {
         let letter = LetterEntry(
-            recipient: recipientName,
+            recipient: exName ?? "",
             body: letterBody,
             mood: selectedMood
         )
         modelContext.insert(letter)
 
-        // Also save as a journal entry
+        let title = exName.map { "Unsent Letter to \($0)" } ?? "Unsent Letter"
         let journalEntry = JournalEntry(
-            title: "Unsent Letter to \(recipientName)",
+            title: title,
             body: letterBody,
             mood: selectedMood,
             tags: ["unsent-letter"]

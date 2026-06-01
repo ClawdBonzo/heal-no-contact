@@ -9,6 +9,8 @@ struct DashboardView: View {
     @Query(sort: \Milestone.dayTarget) private var milestones: [Milestone]
     @Query private var gamifications: [UserGamification]
     @Query private var streakFlames: [StreakFlame]
+    @Query private var allQuests: [Quest]
+    @Query(sort: \Badge.unlockedAt, order: .reverse) private var allBadges: [Badge]
     @State private var showCheckIn = false
     @State private var animateRing = false
     @State private var gamificationService: GameificationService?
@@ -21,70 +23,98 @@ struct DashboardView: View {
     private var gamification: UserGamification? { gamifications.first }
     private var streakFlame: StreakFlame? { streakFlames.first }
 
+    private var activeDailyQuest: Quest? {
+        guard let userId = profile?.id else { return nil }
+        return allQuests
+            .filter { $0.userId == userId && $0.type == .daily && !$0.isExpired }
+            .sorted { !$0.isCompleted && $1.isCompleted }
+            .first
+    }
+
+    private var unlockedBadges: [Badge] {
+        guard let userId = profile?.id else { return [] }
+        return allBadges.filter { $0.userId == userId }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 24) {
+                VStack(spacing: 28) {
                     if let profile {
-                        // Level & XP progress (Gamification)
-                        if let gamification = gamification {
-                            VStack(spacing: 16) {
-                                LevelBadgeView(gamification: gamification, showAnimation: true)
-                                XPBarView(gamification: gamification)
-                            }
-                        }
-
-                        // Streak ring + share button
-                        VStack(spacing: 12) {
+                        // 1. HERO — streak ring + mantra + SOS chip
+                        VStack(spacing: 16) {
                             StreakRingView(
                                 currentDays: profile.currentStreakDays,
                                 goalDays: profile.noContactGoalDays,
                                 animate: animateRing
                             )
 
-                            HealingShareButton(
-                                streakDays: profile.currentStreakDays,
-                                userName: "",
-                                mantra: profile.personalMantra
-                            )
+                            if !profile.personalMantra.isEmpty {
+                                MantraCard(mantra: profile.personalMantra)
+                            }
+
+                            SOSChip {
+                                appState.showEmergencySOS = true
+                            }
                         }
-                        .padding(.top, 8)
+                        .padding(.top, 4)
 
-                        // Streak flame (Gamification)
-                        if let flame = streakFlame {
-                            StreakFlameView(flame: flame)
-                        }
-
-                        // Mantra card
-                        if !profile.personalMantra.isEmpty {
-                            MantraCard(mantra: profile.personalMantra)
-                        }
-
-                        // Daily quote
-                        DailyQuoteCard()
-
-                        // Quick actions
-                        QuickActionsGrid(
-                            onEmergency: { appState.showEmergencySOS = true },
+                        // 2. TODAY — check-in + journal
+                        TodayActions(
                             onCheckIn: { showCheckIn = true },
                             onJournal: { appState.selectedTab = .journal }
                         )
 
-                        // Stats row
-                        StatsRow(profile: profile)
-
-                        // Next milestone
-                        if let next = nextMilestone(for: profile) {
-                            NextMilestoneCard(
-                                milestone: next,
-                                currentDays: profile.currentStreakDays
-                            )
+                        // 3. DAILY QUEST
+                        if let activeQuest = activeDailyQuest {
+                            VStack(alignment: .leading, spacing: 12) {
+                                SectionHeader(title: String(localized: "Today's Quest"))
+                                DailyQuestView(quest: activeQuest) {
+                                    gamificationService?.progressQuest(questId: activeQuest.id)
+                                    HapticService.impact(.light)
+                                }
+                            }
                         }
 
-                        // Recent mood
+                        // 4. YOUR JOURNEY — 3-card row
+                        if let gamification {
+                            VStack(alignment: .leading, spacing: 12) {
+                                SectionHeader(title: String(localized: "Your Journey"))
+                                JourneyStrip(
+                                    gamification: gamification,
+                                    flame: streakFlame,
+                                    nextMilestone: nextMilestone(for: profile),
+                                    currentDays: profile.currentStreakDays
+                                )
+                            }
+                        }
+
+                        // 5. BADGES
+                        if !unlockedBadges.isEmpty {
+                            VStack(alignment: .leading, spacing: 12) {
+                                SectionHeader(
+                                    title: String(localized: "Badges"),
+                                    trailing: "\(unlockedBadges.count)"
+                                )
+                                BadgesStrip(badges: unlockedBadges)
+                            }
+                        }
+
+                        // 6. RECENT MOOD
                         if let lastMood = recentMoods.first {
                             RecentMoodCard(mood: lastMood)
                         }
+
+                        // 7. DAILY QUOTE
+                        DailyQuoteCard()
+
+                        // Share footer
+                        HealingShareButton(
+                            streakDays: profile.currentStreakDays,
+                            userName: "",
+                            mantra: profile.personalMantra
+                        )
+                        .padding(.top, 8)
                     }
                 }
                 .padding(.horizontal, 20)
@@ -171,7 +201,6 @@ struct DashboardView: View {
                     dayCount: milestone.dayTarget,
                     title: milestone.title
                 )
-                // Trigger phoenix rising for key milestones
                 let keyMilestones = [1, 7, 14, 21, 30, 45, 60, 90, 180, 365]
                 if keyMilestones.contains(milestone.dayTarget) {
                     let targetDay = milestone.dayTarget
@@ -184,7 +213,6 @@ struct DashboardView: View {
             }
         }
 
-        // Check badge milestones
         let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
         let moodCount = recentMoods.count
         gamificationService?.checkMilestoneBadges(
@@ -195,35 +223,319 @@ struct DashboardView: View {
     }
 }
 
-// MARK: - Sub-components
+// MARK: - Section Header
+
+private struct SectionHeader: View {
+    let title: String
+    var trailing: String? = nil
+
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(Color.theme.textPrimary)
+            Spacer()
+            if let trailing {
+                Text(trailing)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Color.theme.textTertiary)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(Color.theme.cardBackground, in: Capsule())
+            }
+        }
+    }
+}
+
+// MARK: - Mantra Card
 
 private struct MantraCard: View {
     let mantra: String
 
     var body: some View {
-        VStack(spacing: 8) {
+        HStack(spacing: 12) {
             Image(systemName: "quote.opening")
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundStyle(Color.theme.healGold)
 
             Text(mantra)
                 .font(.subheadline.weight(.medium).italic())
                 .foregroundStyle(Color.theme.textPrimary)
-                .multilineTextAlignment(.center)
-                .lineSpacing(4)
+                .multilineTextAlignment(.leading)
+                .lineSpacing(3)
+
+            Spacer(minLength: 0)
         }
-        .padding(20)
-        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 18)
+        .padding(.vertical, 14)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 14)
                 .fill(Color.theme.cardBackground)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.theme.healGold.opacity(0.15), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 14)
+                        .stroke(Color.theme.healGold.opacity(0.18), lineWidth: 1)
                 )
         )
     }
 }
+
+// MARK: - SOS Chip
+
+private struct SOSChip: View {
+    let action: () -> Void
+    @State private var pulse = false
+
+    var body: some View {
+        Button {
+            action()
+            HapticService.impact(.medium)
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "heart.fill")
+                    .font(.subheadline.weight(.bold))
+                    .scaleEffect(pulse ? 1.15 : 1.0)
+
+                Text("I need help now")
+                    .font(.subheadline.weight(.semibold))
+            }
+            .foregroundStyle(.white)
+            .padding(.horizontal, 22)
+            .padding(.vertical, 12)
+            .background(
+                Capsule()
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.theme.healPink, Color.theme.healPurple],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .shadow(color: Color.theme.healPink.opacity(0.4), radius: 12, y: 4)
+            )
+        }
+        .buttonStyle(.plain)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
+                pulse = true
+            }
+        }
+    }
+}
+
+// MARK: - Today Actions (2 big buttons)
+
+private struct TodayActions: View {
+    let onCheckIn: () -> Void
+    let onJournal: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            BigActionButton(
+                icon: "checkmark.circle.fill",
+                title: String(localized: "Check In"),
+                subtitle: String(localized: "Log your mood"),
+                tint: Color.theme.healTeal,
+                action: onCheckIn
+            )
+            BigActionButton(
+                icon: "pencil.and.outline",
+                title: String(localized: "Journal"),
+                subtitle: String(localized: "Write it out"),
+                tint: Color.theme.healPurple,
+                action: onJournal
+            )
+        }
+    }
+}
+
+private struct BigActionButton: View {
+    let icon: String
+    let title: String
+    let subtitle: String
+    let tint: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button {
+            action()
+            HapticService.impact(.light)
+        } label: {
+            VStack(alignment: .leading, spacing: 10) {
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundStyle(tint)
+                    .frame(width: 40, height: 40)
+                    .background(tint.opacity(0.15), in: RoundedRectangle(cornerRadius: 10))
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.theme.textPrimary)
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(Color.theme.textTertiary)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(16)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.theme.cardBackground)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Journey Strip (Level / Flame / Next Milestone)
+
+private struct JourneyStrip: View {
+    let gamification: UserGamification
+    let flame: StreakFlame?
+    let nextMilestone: Milestone?
+    let currentDays: Int
+
+    var body: some View {
+        HStack(spacing: 10) {
+            JourneyCard(
+                tint: Color.theme.healPurple,
+                topText: "Lvl \(gamification.currentLevel)",
+                bigText: gamification.levelName,
+                bottomText: "\(gamification.xpTowardsNextLevel)/\(gamification.xpForNextLevel) XP",
+                progress: gamification.levelProgress
+            )
+
+            if let flame {
+                JourneyCard(
+                    tint: Color.theme.healGold,
+                    topText: "Flame",
+                    bigText: flame.flameName,
+                    bottomText: String(format: "×%.1f · %dd", flame.flameMultiplier, flame.consecutiveDaysWithoutContact),
+                    progress: nil,
+                    iconName: "flame.fill"
+                )
+            }
+
+            if let nextMilestone {
+                let remaining = max(nextMilestone.dayTarget - currentDays, 0)
+                JourneyCard(
+                    tint: Color.theme.healTeal,
+                    topText: "Next",
+                    bigText: nextMilestone.title,
+                    bottomText: "\(remaining)d to go",
+                    progress: Double(currentDays) / Double(max(nextMilestone.dayTarget, 1)),
+                    iconName: nextMilestone.iconName
+                )
+            }
+        }
+    }
+}
+
+private struct JourneyCard: View {
+    let tint: Color
+    let topText: String
+    let bigText: String
+    let bottomText: String
+    var progress: Double? = nil
+    var iconName: String? = nil
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 6) {
+                if let iconName {
+                    Image(systemName: iconName)
+                        .font(.caption2)
+                        .foregroundStyle(tint)
+                }
+                Text(topText)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(tint)
+                    .textCase(.uppercase)
+            }
+
+            Text(bigText)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(Color.theme.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+
+            Spacer(minLength: 2)
+
+            if let progress {
+                ProgressView(value: min(progress, 1.0))
+                    .tint(tint)
+                    .frame(height: 4)
+            }
+
+            Text(bottomText)
+                .font(.caption2)
+                .foregroundStyle(Color.theme.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(height: 110)
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.theme.cardBackground)
+        )
+    }
+}
+
+// MARK: - Badges Strip
+
+private struct BadgesStrip: View {
+    let badges: [Badge]
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 10) {
+                ForEach(badges.prefix(10)) { badge in
+                    BadgeChip(badge: badge)
+                }
+            }
+            .padding(.horizontal, 2)
+        }
+        .scrollClipDisabled()
+    }
+}
+
+private struct BadgeChip: View {
+    let badge: Badge
+
+    private var rarityColor: Color {
+        switch badge.rarity {
+        case .common: Color.theme.textSecondary
+        case .rare: Color.theme.healTeal
+        case .epic: Color.theme.healPurple
+        case .legendary: Color.theme.healGold
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 6) {
+            Image(systemName: badge.icon)
+                .font(.title2)
+                .foregroundStyle(rarityColor)
+                .frame(width: 52, height: 52)
+                .background(
+                    Circle()
+                        .fill(rarityColor.opacity(0.15))
+                        .overlay(Circle().stroke(rarityColor.opacity(0.4), lineWidth: 1))
+                )
+
+            Text(badge.title)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(Color.theme.textSecondary)
+                .lineLimit(1)
+                .frame(maxWidth: 70)
+        }
+    }
+}
+
+// MARK: - Daily Quote
 
 private struct DailyQuoteCard: View {
     private let quote = QuoteService.shared.dailyQuote()
@@ -249,192 +561,7 @@ private struct DailyQuoteCard: View {
     }
 }
 
-private struct QuickActionsGrid: View {
-    let onEmergency: () -> Void
-    let onCheckIn: () -> Void
-    let onJournal: () -> Void
-
-    var body: some View {
-        HStack(spacing: 12) {
-            QuickActionButton(
-                icon: "sos",
-                label: "SOS",
-                color: Color.theme.healPink,
-                action: onEmergency
-            )
-
-            QuickActionButton(
-                icon: "checkmark.circle.fill",
-                label: "Check In",
-                color: Color.theme.healTeal,
-                action: onCheckIn
-            )
-
-            QuickActionButton(
-                icon: "pencil.and.outline",
-                label: "Journal",
-                color: Color.theme.healPurple,
-                action: onJournal
-            )
-        }
-    }
-}
-
-private struct QuickActionButton: View {
-    let icon: String
-    let label: String
-    let color: Color
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: {
-            action()
-            HapticService.impact(.light)
-        }) {
-            VStack(spacing: 10) {
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundStyle(color)
-
-                Text(label)
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(Color.theme.textSecondary)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.theme.cardBackground)
-            )
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-private struct StatsRow: View {
-    let profile: UserProfile
-
-    var body: some View {
-        HStack(spacing: 12) {
-            StatPill(
-                label: "Current",
-                value: "\(profile.currentStreakDays)d",
-                icon: "flame.fill",
-                color: Color.theme.healPurple
-            )
-            StatPill(
-                label: "Best",
-                value: "\(max(profile.streakBestDays, profile.currentStreakDays))d",
-                icon: "trophy.fill",
-                color: Color.theme.healGold
-            )
-            StatPill(
-                label: "Since BU",
-                value: "\(profile.daysSinceBreakup)d",
-                icon: "calendar",
-                color: Color.theme.healTeal
-            )
-        }
-    }
-}
-
-private struct StatPill: View {
-    let label: String
-    let value: String
-    let icon: String
-    let color: Color
-
-    var body: some View {
-        VStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.caption)
-                .foregroundStyle(color)
-
-            Text(value)
-                .font(.title3.weight(.bold).monospacedDigit())
-                .foregroundStyle(Color.theme.textPrimary)
-
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(Color.theme.textTertiary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 14)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(Color.theme.cardBackground)
-        )
-    }
-}
-
-private struct NextMilestoneCard: View {
-    let milestone: Milestone
-    let currentDays: Int
-
-    private var daysRemaining: Int {
-        max(milestone.dayTarget - currentDays, 0)
-    }
-
-    var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: milestone.iconName)
-                .font(.title2)
-                .foregroundStyle(Color.theme.healGold)
-                .frame(width: 48, height: 48)
-                .background(Color.theme.healGold.opacity(0.15))
-                .clipShape(Circle())
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Next: \(milestone.title)")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Color.theme.textPrimary)
-
-                Text("\(daysRemaining) \(daysRemaining == 1 ? "day" : "days") to go")
-                    .font(.caption)
-                    .foregroundStyle(Color.theme.textSecondary)
-            }
-
-            Spacer()
-
-            CircularProgressView(
-                progress: Double(currentDays) / Double(milestone.dayTarget),
-                lineWidth: 4,
-                size: 40
-            )
-        }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.theme.cardBackground)
-        )
-    }
-}
-
-private struct CircularProgressView: View {
-    let progress: Double
-    let lineWidth: CGFloat
-    let size: CGFloat
-
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(Color.theme.textTertiary.opacity(0.3), lineWidth: lineWidth)
-
-            Circle()
-                .trim(from: 0, to: min(progress, 1.0))
-                .stroke(
-                    Color.theme.healPurple,
-                    style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
-                )
-                .rotationEffect(.degrees(-90))
-
-            Text("\(Int(progress * 100))%")
-                .font(.system(size: 10, weight: .bold).monospacedDigit())
-                .foregroundStyle(Color.theme.textSecondary)
-        }
-        .frame(width: size, height: size)
-    }
-}
+// MARK: - Recent Mood
 
 private struct RecentMoodCard: View {
     let mood: MoodEntry
@@ -445,7 +572,7 @@ private struct RecentMoodCard: View {
                 .font(.title)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("Latest mood: \(mood.mood.rawValue)")
+                Text("Latest mood: \(mood.mood.localizedName)")
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Color.theme.textPrimary)
 

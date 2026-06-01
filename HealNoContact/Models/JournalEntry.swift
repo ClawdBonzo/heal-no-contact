@@ -75,5 +75,18 @@ final class JournalEntry {
             case .grateful: 7
             }
         }
+
+        /// Localized display name (rawValue stays the stable persisted identifier).
+        var localizedName: String {
+            switch self {
+            case .devastated: String(localized: "Devastated")
+            case .sad: String(localized: "Sad")
+            case .anxious: String(localized: "Anxious")
+            case .neutral: String(localized: "Neutral")
+            case .hopeful: String(localized: "Hopeful")
+            case .strong: String(localized: "Strong")
+            case .grateful: String(localized: "Grateful")
+            }
+        }
     }
 }

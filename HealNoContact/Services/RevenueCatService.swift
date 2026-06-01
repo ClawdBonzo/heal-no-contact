@@ -7,19 +7,26 @@ import Observation
 final class RevenueCatService: NSObject {
     static let shared = RevenueCatService()
 
-    // TODO: Replace with live key (format: appl_xxxxxxxxxxxxxxxxxxxx) before App Store submission.
-    //       Find it in RevenueCat Dashboard → Apps → [Your App] → API Keys → Public app SDK key.
-    //       NEVER ship the test_ key to production — it will NOT validate real purchases.
-    private static let apiKey = "test_AFpuFmRxwiYCSJV0rgzxFqKjZDa"
+    // RevenueCat SDK key. Debug builds use the test key; Release builds MUST use a production
+    // `appl_…` key. Replace the Release placeholder below with the Public app SDK key from
+    // RevenueCat Dashboard → Apps → [Your App] → API Keys before archiving for the App Store.
+    // Runtime guard (below in configure) will crash Release builds that still have the placeholder.
+    private static var apiKey: String {
+        #if DEBUG
+        return "test_AFpuFmRxwiYCSJV0rgzxFqKjZDa"
+        #else
+        return "appl_CUdvixEmGuhoIAjaPziSxjXgSAE"
+        #endif
+    }
 
     // Entitlement identifier configured in RevenueCat dashboard
     static let premiumEntitlement = "pro"
 
     // Product identifiers — must match App Store Connect
-    static let premiumWeekly   = "com.clawdbonzo.healnocontact.weekly"
-    static let premiumMonthly  = "com.clawdbonzo.healnocontact.monthly"
-    static let premiumYearly   = "com.clawdbonzo.healnocontact.yearly"
-    static let premiumLifetime = "com.clawdbonzo.healnocontact.lifetime"
+    static let premiumWeekly   = "com.healnocontact.premium.weekly"
+    static let premiumMonthly  = "com.healnocontact.premium.monthly"
+    static let premiumYearly   = "com.healnocontact.premium.yearly"
+    static let premiumLifetime = "com.healnocontact.premium.lifetime"
 
     private(set) var customerInfo: CustomerInfo?
     private(set) var offerings: Offerings?
@@ -43,6 +50,12 @@ final class RevenueCatService: NSObject {
 
     /// Call once at app launch from HealNoContactApp
     func configure() {
+        #if !DEBUG
+        precondition(
+            Self.apiKey.hasPrefix("appl_"),
+            "RevenueCat: Release build requires a production 'appl_…' key. Replace the placeholder in RevenueCatService.swift."
+        )
+        #endif
         Purchases.logLevel = .warn
         Purchases.configure(withAPIKey: Self.apiKey)
         Purchases.shared.delegate = self

@@ -15,25 +15,21 @@ struct ReasonPageView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 24) {
-            Image("Onboarding-2")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxHeight: 160)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .opacity(showContent ? 1 : 0)
-                .padding(.top, 12)
+        VStack(spacing: 20) {
+            Spacer().frame(height: 20)
 
             VStack(spacing: 12) {
                 Text("Why are you going\nno contact?")
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundStyle(Color.theme.textPrimary)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 Text("This helps us personalize your journey.\nYour answer stays private on this device.")
                     .font(.subheadline)
                     .foregroundStyle(Color.theme.textSecondary)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .opacity(showContent ? 1 : 0)
 
@@ -110,6 +106,8 @@ private struct ReasonButton: View {
                         isSelected ? Color.theme.textPrimary : Color.theme.textSecondary
                     )
                     .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(nil)
 
                 Spacer()
 

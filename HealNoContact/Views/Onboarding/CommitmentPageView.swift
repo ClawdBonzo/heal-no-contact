@@ -9,18 +9,17 @@ struct CommitmentPageView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 32) {
-                Spacer().frame(height: 20)
+            VStack(spacing: 22) {
+                Spacer().frame(height: 8)
 
-                VStack(spacing: 12) {
+                VStack(spacing: 10) {
                     Image("Onboarding-4")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 160)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        .frame(maxHeight: 130)
 
                     Text("Make your commitment")
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
                         .foregroundStyle(Color.theme.textPrimary)
 
                     Text("Write a mantra to remind yourself\nwhy you're doing this.")
@@ -52,7 +51,7 @@ struct CommitmentPageView: View {
                 .opacity(showContent ? 1 : 0)
 
                 // Pledge card
-                VStack(spacing: 16) {
+                VStack(spacing: 12) {
                     Text("Your Pledge")
                         .font(.headline)
                         .foregroundStyle(Color.theme.healGold)
@@ -86,9 +85,9 @@ struct CommitmentPageView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .padding(.top, 8)
+                    .padding(.top, 4)
                 }
-                .padding(24)
+                .padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.theme.cardBackground)

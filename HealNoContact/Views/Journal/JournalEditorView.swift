@@ -47,7 +47,7 @@ struct JournalEditorView: View {
                                         VStack(spacing: 4) {
                                             Text(mood.emoji)
                                                 .font(.title3)
-                                            Text(mood.rawValue)
+                                            Text(mood.localizedName)
                                                 .font(.system(size: 9))
                                                 .foregroundStyle(
                                                     selectedMood == mood

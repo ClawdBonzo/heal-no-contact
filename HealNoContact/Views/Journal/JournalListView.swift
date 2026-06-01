@@ -43,7 +43,7 @@ struct JournalListView: View {
                                     )
                                     ForEach(JournalEntry.MoodType.allCases) { mood in
                                         FilterChip(
-                                            label: "\(mood.emoji) \(mood.rawValue)",
+                                            label: "\(mood.emoji) \(mood.localizedName)",
                                             isSelected: filterMood == mood,
                                             action: { filterMood = mood }
                                         )

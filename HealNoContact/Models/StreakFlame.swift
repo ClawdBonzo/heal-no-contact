@@ -21,11 +21,11 @@ import Foundation
 
     var flameName: String {
         switch currentFlameLevel {
-        case 1...3: return "Ember"
-        case 4...7: return "Flame"
-        case 8...14: return "Inferno"
-        case 15...30: return "Phoenix"
-        default: return "Eternal Phoenix"
+        case 1...3: return String(localized: "Ember")
+        case 4...7: return String(localized: "Flame")
+        case 8...14: return String(localized: "Inferno")
+        case 15...30: return String(localized: "Phoenix")
+        default: return String(localized: "Eternal Phoenix")
         }
     }
 

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct MainTabBarView: View {
     @Environment(AppState.self) private var appState
@@ -14,14 +15,8 @@ struct MainTabBarView: View {
                 JournalListView()
                     .tag(AppState.AppTab.journal)
 
-                GameificationDashboardView(userId: UUID())
-                    .tag(AppState.AppTab.growth)
-
-                HealProgressView()
-                    .tag(AppState.AppTab.progress)
-
-                InsightsView()
-                    .tag(AppState.AppTab.insights)
+                StatsView()
+                    .tag(AppState.AppTab.stats)
 
                 SettingsView()
                     .tag(AppState.AppTab.settings)
@@ -30,6 +25,18 @@ struct MainTabBarView: View {
 
             // Custom tab bar
             CustomTabBar(selectedTab: $state.selectedTab)
+        }
+        .sheet(isPresented: $state.showPaywall) {
+            PaywallView()
+        }
+        .onAppear {
+            // Present the intro paywall once, right after onboarding finishes.
+            if state.pendingIntroPaywall {
+                state.pendingIntroPaywall = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    state.showPaywall = true
+                }
+            }
         }
     }
 }
@@ -44,18 +51,18 @@ struct CustomTabBar: View {
                     selectedTab = tab
                     HapticService.selection()
                 } label: {
+                    let isActive = selectedTab == tab
                     VStack(spacing: 4) {
-                        Image(tab.customIcon)
-                            .renderingMode(.template)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 22, height: 22)
+                        Image(systemName: isActive ? tab.icon : tab.iconInactive)
+                            .font(.system(size: 20, weight: isActive ? .semibold : .regular))
+                            .symbolEffect(.bounce, value: selectedTab)
+                            .frame(height: 22)
 
                         Text(tab.title)
-                            .font(.system(size: 10, weight: .medium))
+                            .font(.system(size: 10, weight: isActive ? .semibold : .medium))
                     }
                     .foregroundStyle(
-                        selectedTab == tab
+                        isActive
                         ? Color.theme.healPurple
                         : Color.theme.textTertiary
                     )

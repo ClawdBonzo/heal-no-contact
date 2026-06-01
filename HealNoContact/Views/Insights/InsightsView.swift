@@ -11,46 +11,35 @@ struct InsightsView: View {
     private var profile: UserProfile? { profiles.first }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Healing score
-                    if let profile {
-                        HealingScoreCard(profile: profile, moods: moods)
-                    }
-
-                    // Weekly summary
-                    WeeklySummaryCard(
-                        journalCount: weeklyJournals.count,
-                        checkInCount: weeklyMoods.count,
-                        emergencyCount: weeklyEmergencies.count
-                    )
-
-                    // Patterns
-                    if moods.count >= 7 {
-                        PatternsCard(moods: moods)
-                    }
-
-                    // Journaling streak
-                    JournalingStreakCard(entries: journals)
-
-                    // Letters written
-                    if !letters.isEmpty {
-                        LettersCard(count: letters.count)
-                    }
-
-                    // Motivational
-                    InsightQuoteCard()
+        ScrollView {
+            VStack(spacing: 24) {
+                if let profile {
+                    HealingScoreCard(profile: profile, moods: moods)
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 100)
+
+                WeeklySummaryCard(
+                    journalCount: weeklyJournals.count,
+                    checkInCount: weeklyMoods.count,
+                    emergencyCount: weeklyEmergencies.count
+                )
+
+                if moods.count >= 7 {
+                    PatternsCard(moods: moods)
+                }
+
+                JournalingStreakCard(entries: journals)
+
+                if !letters.isEmpty {
+                    LettersCard(count: letters.count)
+                }
+
+                InsightQuoteCard()
             }
-            .scrollIndicators(.hidden)
-            .background(Color.theme.deepBackground)
-            .navigationTitle("Insights")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .padding(.horizontal, 20)
+            .padding(.bottom, 100)
         }
+        .scrollIndicators(.hidden)
+        .background(Color.theme.deepBackground)
     }
 
     private var weeklyJournals: [JournalEntry] {
@@ -143,11 +132,11 @@ private struct HealingScoreCard: View {
 
     private var scoreMessage: String {
         switch score {
-        case 0..<20: return "Just starting out. Every journey begins here."
-        case 20..<40: return "Building momentum. Keep going!"
-        case 40..<60: return "You're making real progress."
-        case 60..<80: return "Strong and steady. You're thriving."
-        default: return "Incredible healing. You're inspiring."
+        case 0..<20: return String(localized: "Just starting out. Every journey begins here.")
+        case 20..<40: return String(localized: "Building momentum. Keep going!")
+        case 40..<60: return String(localized: "You're making real progress.")
+        case 60..<80: return String(localized: "Strong and steady. You're thriving.")
+        default: return String(localized: "Incredible healing. You're inspiring.")
         }
     }
 }
@@ -216,14 +205,14 @@ private struct PatternsCard: View {
         }.mapValues(\.count)
 
         guard let peak = hourCounts.max(by: { $0.value < $1.value })?.key else {
-            return "No pattern yet"
+            return String(localized: "No pattern yet")
         }
 
         switch peak {
-        case 6..<12: return "Mornings"
-        case 12..<17: return "Afternoons"
-        case 17..<21: return "Evenings"
-        default: return "Late nights"
+        case 6..<12: return String(localized: "Mornings")
+        case 12..<17: return String(localized: "Afternoons")
+        case 17..<21: return String(localized: "Evenings")
+        default: return String(localized: "Late nights")
         }
     }
 
@@ -237,7 +226,7 @@ private struct PatternsCard: View {
                 PatternRow(
                     icon: mood.emoji,
                     label: "Most common mood",
-                    value: mood.rawValue
+                    value: mood.localizedName
                 )
             }
 

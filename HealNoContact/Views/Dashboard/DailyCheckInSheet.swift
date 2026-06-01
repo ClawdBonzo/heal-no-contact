@@ -174,7 +174,7 @@ private struct MoodButton: View {
                 Text(mood.emoji)
                     .font(.title2)
 
-                Text(mood.rawValue)
+                Text(mood.localizedName)
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(
                         isSelected ? Color.theme.textPrimary : Color.theme.textTertiary

@@ -127,10 +127,10 @@ final class GameificationService {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date.now)!
 
         let dailyQuests: [(String, String, String, Int)] = [
-            ("Daily Check-In", "Log your mood today", "heart.fill", 10),
-            ("Journal Feelings", "Write a journal entry", "book.fill", 15),
-            ("No-Contact Victory", "Go 24 hours without contact", "lock.fill", 25),
-            ("Self-Care Time", "Complete a self-care activity", "leaf.fill", 20)
+            (String(localized: "Daily Check-In"), String(localized: "Log your mood today"), "heart.fill", 10),
+            (String(localized: "Journal Feelings"), String(localized: "Write a journal entry"), "book.fill", 15),
+            (String(localized: "No-Contact Victory"), String(localized: "Go 24 hours without contact"), "lock.fill", 25),
+            (String(localized: "Self-Care Time"), String(localized: "Complete a self-care activity"), "leaf.fill", 20)
         ]
 
         for (title, details, icon, xp) in dailyQuests {
@@ -150,10 +150,10 @@ final class GameificationService {
 
     private func createWeeklyQuests(for userId: UUID, expiresAt: Date) {
         let weeklyQuests: [(String, String, String, Int, Int)] = [
-            ("Journal Warrior", "Write 5 journal entries", "book.fill", 5, 50),
-            ("No-Contact Champion", "7 days without contact", "lock.fill", 7, 100),
-            ("Mood Master", "Log mood 7 times", "heart.fill", 7, 50),
-            ("Quest Crusader", "Complete 3 daily quests", "star.fill", 3, 75)
+            (String(localized: "Journal Warrior"), String(localized: "Write 5 journal entries"), "book.fill", 5, 50),
+            (String(localized: "No-Contact Champion"), String(localized: "7 days without contact"), "lock.fill", 7, 100),
+            (String(localized: "Mood Master"), String(localized: "Log mood 7 times"), "heart.fill", 7, 50),
+            (String(localized: "Quest Crusader"), String(localized: "Complete 3 daily quests"), "star.fill", 3, 75)
         ]
 
         for (title, details, icon, target, xp) in weeklyQuests {
@@ -216,11 +216,11 @@ final class GameificationService {
         let weeklyQuestCount = quests.filter { $0.type == .weekly && $0.isCompleted }.count
 
         if dailyQuestCount == 1 && !badges.contains(where: { $0.badgeId == "first_quest" }) {
-            unlockBadge(badgeId: "first_quest", title: "Quest Starter", details: "Complete your first daily quest", icon: "star.fill", rarity: .common)
+            unlockBadge(badgeId: "first_quest", title: String(localized: "Quest Starter"), details: String(localized: "Complete your first daily quest"), icon: "star.fill", rarity: .common)
         }
 
         if weeklyQuestCount == 1 && !badges.contains(where: { $0.badgeId == "weekly_champion" }) {
-            unlockBadge(badgeId: "weekly_champion", title: "Weekly Champion", details: "Complete a weekly quest", icon: "crown.fill", rarity: .rare)
+            unlockBadge(badgeId: "weekly_champion", title: String(localized: "Weekly Champion"), details: String(localized: "Complete a weekly quest"), icon: "crown.fill", rarity: .rare)
         }
     }
 
@@ -230,31 +230,31 @@ final class GameificationService {
         guard let gamification = userGamification else { return }
 
         if streakDays >= 7 && !badges.contains(where: { $0.badgeId == "week_strong" }) {
-            unlockBadge(badgeId: "week_strong", title: "One Week Strong", details: "7 days of no-contact", icon: "flame.fill", rarity: .rare)
+            unlockBadge(badgeId: "week_strong", title: String(localized: "One Week Strong"), details: String(localized: "7 days of no-contact"), icon: "flame.fill", rarity: .rare)
         }
 
         if streakDays >= 30 && !badges.contains(where: { $0.badgeId == "month_warrior" }) {
-            unlockBadge(badgeId: "month_warrior", title: "30-Day Warrior", details: "One month of healing", icon: "shield.fill", rarity: .epic)
+            unlockBadge(badgeId: "month_warrior", title: String(localized: "30-Day Warrior"), details: String(localized: "One month of healing"), icon: "shield.fill", rarity: .epic)
         }
 
         if streakDays >= 100 && !badges.contains(where: { $0.badgeId == "century_club" }) {
-            unlockBadge(badgeId: "century_club", title: "Century Club", details: "100 days free", icon: "100.circle.fill", rarity: .epic)
+            unlockBadge(badgeId: "century_club", title: String(localized: "Century Club"), details: String(localized: "100 days free"), icon: "100.circle.fill", rarity: .epic)
         }
 
         if journalEntryCount >= 10 && !badges.contains(where: { $0.badgeId == "journal_keeper" }) {
-            unlockBadge(badgeId: "journal_keeper", title: "Journal Keeper", details: "10 journal entries", icon: "book.fill", rarity: .common)
+            unlockBadge(badgeId: "journal_keeper", title: String(localized: "Journal Keeper"), details: String(localized: "10 journal entries"), icon: "book.fill", rarity: .common)
         }
 
         if moodCheckInCount >= 20 && !badges.contains(where: { $0.badgeId == "mood_tracker" }) {
-            unlockBadge(badgeId: "mood_tracker", title: "Mood Tracker", details: "20 mood check-ins", icon: "heart.fill", rarity: .rare)
+            unlockBadge(badgeId: "mood_tracker", title: String(localized: "Mood Tracker"), details: String(localized: "20 mood check-ins"), icon: "heart.fill", rarity: .rare)
         }
 
         if gamification.currentLevel >= 5 && !badges.contains(where: { $0.badgeId == "rising_phoenix" }) {
-            unlockBadge(badgeId: "rising_phoenix", title: "Rising Phoenix", details: "Reached level 5", icon: "flame.fill", rarity: .epic)
+            unlockBadge(badgeId: "rising_phoenix", title: String(localized: "Rising Phoenix"), details: String(localized: "Reached level 5"), icon: "flame.fill", rarity: .epic)
         }
 
         if gamification.currentLevel >= 10 && !badges.contains(where: { $0.badgeId == "fully_healed" }) {
-            unlockBadge(badgeId: "fully_healed", title: "Fully Healed", details: "Reached ultimate level", icon: "heart.fill", rarity: .legendary)
+            unlockBadge(badgeId: "fully_healed", title: String(localized: "Fully Healed"), details: String(localized: "Reached ultimate level"), icon: "heart.fill", rarity: .legendary)
         }
     }
 

@@ -10,43 +10,34 @@ struct HealProgressView: View {
     private var profile: UserProfile? { profiles.first }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Overall stats
-                    if let profile {
-                        OverallStatsSection(
-                            profile: profile,
-                            emergencyCount: emergencyLogs.count,
-                            resistedCount: emergencyLogs.filter(\.didResist).count
-                        )
-                    }
-
-                    // Milestones timeline
-                    MilestonesSection(
-                        milestones: milestones,
-                        currentDays: profile?.currentStreakDays ?? 0
+        ScrollView {
+            VStack(spacing: 24) {
+                if let profile {
+                    OverallStatsSection(
+                        profile: profile,
+                        emergencyCount: emergencyLogs.count,
+                        resistedCount: emergencyLogs.filter(\.didResist).count
                     )
-
-                    // Mood trend
-                    if moodEntries.count >= 2 {
-                        MoodTrendSection(entries: moodEntries)
-                    }
-
-                    // Emergency log summary
-                    if !emergencyLogs.isEmpty {
-                        EmergencyLogSection(logs: emergencyLogs)
-                    }
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 100)
+
+                MilestonesSection(
+                    milestones: milestones,
+                    currentDays: profile?.currentStreakDays ?? 0
+                )
+
+                if moodEntries.count >= 2 {
+                    MoodTrendSection(entries: moodEntries)
+                }
+
+                if !emergencyLogs.isEmpty {
+                    EmergencyLogSection(logs: emergencyLogs)
+                }
             }
-            .scrollIndicators(.hidden)
-            .background(Color.theme.deepBackground)
-            .navigationTitle("Progress")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .padding(.horizontal, 20)
+            .padding(.bottom, 100)
         }
+        .scrollIndicators(.hidden)
+        .background(Color.theme.deepBackground)
     }
 }
 
@@ -62,13 +53,13 @@ private struct OverallStatsSection: View {
             HStack(spacing: 12) {
                 StatCard(
                     value: "\(profile.currentStreakDays)",
-                    label: "Current Streak",
+                    label: String(localized: "Current Streak"),
                     icon: "flame.fill",
                     color: Color.theme.healPurple
                 )
                 StatCard(
                     value: "\(max(profile.streakBestDays, profile.currentStreakDays))",
-                    label: "Best Streak",
+                    label: String(localized: "Best Streak"),
                     icon: "trophy.fill",
                     color: Color.theme.healGold
                 )
@@ -76,13 +67,13 @@ private struct OverallStatsSection: View {
             HStack(spacing: 12) {
                 StatCard(
                     value: "\(profile.daysSinceBreakup)",
-                    label: "Days Since BU",
+                    label: String(localized: "Days Since BU"),
                     icon: "calendar",
                     color: Color.theme.healTeal
                 )
                 StatCard(
                     value: "\(resistedCount)/\(emergencyCount)",
-                    label: "Urges Resisted",
+                    label: String(localized: "Urges Resisted"),
                     icon: "shield.fill",
                     color: Color.theme.healPink
                 )
@@ -191,7 +182,7 @@ private struct MoodTrendSection: View {
                                 trend == "Trending down" ? Color.theme.healPink :
                                 Color.theme.textSecondary
                             )
-                        Text(trend)
+                        Text(LocalizedStringKey(trend))
                             .font(.subheadline.weight(.medium))
                             .foregroundStyle(Color.theme.textPrimary)
                     }

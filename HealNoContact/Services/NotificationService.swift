@@ -21,7 +21,7 @@ final class NotificationService {
         center.removePendingNotificationRequests(withIdentifiers: ["dailyCheckIn"])
 
         let content = UNMutableNotificationContent()
-        content.title = "Time for your check-in"
+        content.title = String(localized: "Time for your check-in")
         content.body = QuoteService.shared.randomMotivational()
         content.sound = .default
         content.interruptionLevel = .timeSensitive
@@ -39,8 +39,8 @@ final class NotificationService {
 
     func scheduleMilestoneReminder(dayCount: Int, title: String) {
         let content = UNMutableNotificationContent()
-        content.title = "Milestone Unlocked! 🏆"
-        content.body = "\(title) — \(dayCount) days of no contact!"
+        content.title = String(localized: "Milestone Unlocked! 🏆")
+        content.body = String(localized: "\(title) — \(dayCount) days of no contact!")
         content.sound = .default
         content.interruptionLevel = .active
 
@@ -54,12 +54,14 @@ final class NotificationService {
     }
 
     func scheduleEncouragementNotifications() {
+        // Premium feature: extra daily encouragement reminders.
+        guard RevenueCatService.shared.isPremium else { return }
         let center = UNUserNotificationCenter.current()
 
         let encouragements = [
-            (hour: 12, message: "You're doing amazing. Every hour counts."),
-            (hour: 18, message: "Evening check: You stayed strong today."),
-            (hour: 21, message: "Nights can be tough. You've got this.")
+            (hour: 12, message: String(localized: "You're doing amazing. Every hour counts.")),
+            (hour: 18, message: String(localized: "Evening check: You stayed strong today.")),
+            (hour: 21, message: String(localized: "Nights can be tough. You've got this."))
         ]
 
         for (index, item) in encouragements.enumerated() {

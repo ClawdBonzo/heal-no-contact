@@ -7,6 +7,10 @@ struct SetupPageView: View {
     @Binding var goalDays: Int
     let onNext: () -> Void
     @State private var showContent = false
+    @State private var glowPulse = false
+    @State private var showCustomGoal = false
+    @State private var customGoalText = ""
+    @FocusState private var customFieldFocused: Bool
 
     private let goalOptions = [14, 21, 30, 60, 90, 180, 365]
     private let durationOptions = [
@@ -17,37 +21,54 @@ struct SetupPageView: View {
         "5+ years"
     ]
 
+    private var isCustomGoal: Bool {
+        !goalOptions.contains(goalDays)
+    }
+
     var body: some View {
-        ScrollView {
-            VStack(spacing: 28) {
-                Image("Onboarding-3")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 140)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .opacity(showContent ? 1 : 0)
-                    .padding(.top, 12)
+        VStack(spacing: 22) {
+            Spacer().frame(height: 30)
 
-                VStack(spacing: 12) {
-                    Text("Let's set things up")
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundStyle(Color.theme.textPrimary)
+            // Header icon with purple glow
+            ZStack {
+                Circle()
+                    .fill(Color.theme.healPurple.opacity(0.18))
+                    .frame(width: 110, height: 110)
+                    .blur(radius: 20)
+                    .scaleEffect(glowPulse ? 1.12 : 0.95)
 
-                    Text("This information is stored only on your device.")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.theme.textSecondary)
-                }
-                .opacity(showContent ? 1 : 0)
+                Circle()
+                    .fill(Color.theme.healPurple.opacity(0.12))
+                    .frame(width: 84, height: 84)
 
-                VStack(spacing: 20) {
-                    // Ex name (optional)
-                    FormField(label: "Their name (optional)") {
-                        TextField("First name or initials", text: $exName)
+                Image(systemName: "calendar.badge.clock")
+                    .font(.system(size: 36, weight: .semibold))
+                    .foregroundStyle(Color.theme.gradientPrimary)
+                    .shadow(color: Color.theme.healPurple.opacity(0.5), radius: 10)
+            }
+            .opacity(showContent ? 1 : 0)
+            .scaleEffect(showContent ? 1 : 0.6)
+
+            VStack(spacing: 6) {
+                Text("Let's set things up")
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                    .foregroundStyle(Color.theme.textPrimary)
+
+                Text("Stored only on your device.")
+                    .font(.footnote)
+                    .foregroundStyle(Color.theme.textSecondary)
+            }
+            .opacity(showContent ? 1 : 0)
+
+            VStack(spacing: 20) {
+                // Name + Date side by side
+                HStack(alignment: .top, spacing: 12) {
+                    FormField(label: "Their name") {
+                        TextField("Optional", text: $exName)
                             .textFieldStyle(HealTextFieldStyle())
                     }
 
-                    // Breakup date
-                    FormField(label: "When did you break up?") {
+                    FormField(label: "Breakup date") {
                         DatePicker(
                             "Breakup date",
                             selection: $breakupDate,
@@ -57,59 +78,103 @@ struct SetupPageView: View {
                         .datePickerStyle(.compact)
                         .tint(Color.theme.healPurple)
                         .labelsHidden()
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.theme.cardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
+                }
 
-                    // Relationship duration
-                    FormField(label: "How long were you together?") {
-                        FlowLayout(spacing: 8) {
-                            ForEach(durationOptions, id: \.self) { option in
-                                ChipButton(
-                                    text: option,
-                                    isSelected: relationshipDuration == option,
-                                    action: { relationshipDuration = option }
-                                )
-                            }
+                // Relationship duration
+                FormField(label: "How long were you together?") {
+                    FlowLayout(spacing: 8) {
+                        ForEach(durationOptions, id: \.self) { option in
+                            ChipButton(
+                                text: option,
+                                isSelected: relationshipDuration == option,
+                                action: { relationshipDuration = option }
+                            )
                         }
                     }
+                }
 
-                    // Goal days
-                    FormField(label: "Your no-contact goal") {
+                // Goal days + custom
+                FormField(label: "Your no-contact goal") {
+                    VStack(alignment: .leading, spacing: 10) {
                         FlowLayout(spacing: 8) {
                             ForEach(goalOptions, id: \.self) { days in
                                 ChipButton(
                                     text: days == 365 ? "1 year" : "\(days) days",
-                                    isSelected: goalDays == days,
-                                    action: { goalDays = days }
+                                    isSelected: goalDays == days && !showCustomGoal,
+                                    action: {
+                                        showCustomGoal = false
+                                        customFieldFocused = false
+                                        goalDays = days
+                                    }
                                 )
                             }
+                            ChipButton(
+                                text: isCustomGoal ? "\(goalDays) days" : "Custom",
+                                isSelected: showCustomGoal || isCustomGoal,
+                                action: {
+                                    withAnimation(.spring(response: 0.3)) {
+                                        showCustomGoal.toggle()
+                                    }
+                                    if showCustomGoal {
+                                        customGoalText = isCustomGoal ? "\(goalDays)" : ""
+                                        customFieldFocused = true
+                                    }
+                                }
+                            )
+                        }
+
+                        if showCustomGoal {
+                            HStack(spacing: 10) {
+                                TextField("Enter days (1–365)", text: $customGoalText)
+                                    .keyboardType(.numberPad)
+                                    .focused($customFieldFocused)
+                                    .textFieldStyle(HealTextFieldStyle())
+                                    .onChange(of: customGoalText) { _, newValue in
+                                        if let value = Int(newValue), value >= 1, value <= 365 {
+                                            goalDays = value
+                                        }
+                                    }
+
+                                Text("days")
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color.theme.textSecondary)
+                            }
+                            .transition(.opacity.combined(with: .move(edge: .top)))
                         }
                     }
                 }
-                .padding(.horizontal, 24)
-                .opacity(showContent ? 1 : 0)
-
-                Button(action: onNext) {
-                    Text("Continue")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
-                        .background(Color.theme.gradientPrimary)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
-                .padding(.horizontal, 32)
-
-                Spacer().frame(height: 80)
             }
+            .padding(.horizontal, 24)
+            .opacity(showContent ? 1 : 0)
+
+            Spacer()
+
+            Button(action: onNext) {
+                Text("Continue")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 18)
+                    .background(Color.theme.gradientPrimary)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(color: Color.theme.healPurple.opacity(0.3), radius: 12, y: 4)
+            }
+            .padding(.horizontal, 32)
+
+            Spacer().frame(height: 70)
         }
-        .scrollIndicators(.hidden)
         .onAppear {
             withAnimation(.easeOut(duration: 0.6)) {
                 showContent = true
+            }
+            withAnimation(.easeInOut(duration: 3.5).repeatForever(autoreverses: true)) {
+                glowPulse = true
             }
         }
     }

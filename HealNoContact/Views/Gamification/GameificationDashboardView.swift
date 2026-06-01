@@ -14,27 +14,46 @@ struct GameificationDashboardView: View {
     var moodCheckInCount: Int = 0
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                if let gamification = gamification, let service = gamificationService {
-                    LevelBadgeView(gamification: gamification, showAnimation: true)
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    if let gamification = gamification, let service = gamificationService {
+                        LevelBadgeView(gamification: gamification, showAnimation: true)
 
-                    XPBarView(gamification: gamification)
+                        XPBarView(gamification: gamification)
 
-                    if let flame = service.streakFlame {
-                        StreakFlameView(flame: flame)
+                        if let flame = service.streakFlame {
+                            StreakFlameView(flame: flame)
+                        }
+
+                        QuestListView(quests: service.quests) { questId in
+                            service.progressQuest(questId: questId)
+                        }
+
+                        BadgeShowcaseView(badges: service.badges, allBadges: [])
+                    } else if gamificationService != nil {
+                        // Empty state while loading or no gamification record yet
+                        VStack(spacing: 12) {
+                            Image(systemName: "leaf.fill")
+                                .font(.system(size: 48))
+                                .foregroundStyle(Color.theme.gradientPrimary)
+                            Text("Your growth journey starts here")
+                                .font(.headline)
+                                .foregroundStyle(Color.theme.textPrimary)
+                            Text("Complete quests, earn XP, and unlock badges as you heal.")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.theme.textSecondary)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(.top, 60)
                     }
-
-                    QuestListView(quests: service.quests) { questId in
-                        service.progressQuest(questId: questId)
-                    }
-
-                    BadgeShowcaseView(badges: service.badges, allBadges: [])
                 }
+                .padding(20)
             }
-            .padding(20)
+            .background(Color.theme.deepBackground)
+            .navigationTitle("Growth")
+            .navigationBarTitleDisplayMode(.large)
         }
-        .background(Color.theme.deepBackground)
         .onAppear {
             setupGamification()
             checkMilestones()
