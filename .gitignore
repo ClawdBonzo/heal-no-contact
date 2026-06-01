@@ -7,7 +7,6 @@ xcuserdata/
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
-*.xcscheme
 
 # Build
 build/
@@ -23,7 +22,6 @@ DerivedData/
 Packages/
 Package.pins
 Package.resolved
-*.xcodeproj
 
 # CocoaPods (if ever used)
 Pods/
