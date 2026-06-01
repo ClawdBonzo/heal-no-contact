@@ -227,9 +227,16 @@ struct PaywallView: View {
 
                         Text("·").foregroundStyle(Color.theme.textTertiary).font(.caption2)
 
-                        Link("Privacy", destination: URL(string: "https://www.apple.com/privacy/")!)
+                        Link("Privacy", destination: URL(string: "https://gwlabs.app/privacy")!)
                             .font(.caption2).foregroundStyle(Color.theme.textTertiary)
                     }
+
+                    Text("Subscriptions auto-renew at the price and period shown above unless cancelled at least 24 hours before the end of the current period. Free trials (monthly and yearly) convert to a paid subscription after 3 days unless cancelled. Payment is charged to your Apple Account; manage or cancel anytime in Settings. Lifetime is a one-time purchase.")
+                        .font(.system(size: 9))
+                        .foregroundStyle(Color.theme.textTertiary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 2)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 28)
