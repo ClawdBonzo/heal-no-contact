@@ -1,11 +1,21 @@
+
 import SwiftUI
 import SwiftData
+
+/// Caps the dashboard's recent-mood fetch so power users with thousands of
+/// check-ins don't load the whole table just to read the latest entry.
+private func dashboardRecentMoodsDescriptor() -> FetchDescriptor<MoodEntry> {
+    var d = FetchDescriptor<MoodEntry>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+    d.fetchLimit = 30
+    return d
+}
 
 struct DashboardView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.modelContext) private var modelContext
     @Query private var profiles: [UserProfile]
-    @Query(sort: \MoodEntry.createdAt, order: .reverse) private var recentMoods: [MoodEntry]
+
+    @Query(dashboardRecentMoodsDescriptor()) private var recentMoods: [MoodEntry]
     @Query(sort: \Milestone.dayTarget) private var milestones: [Milestone]
     @Query private var gamifications: [UserGamification]
     @Query private var streakFlames: [StreakFlame]
@@ -40,7 +50,23 @@ struct DashboardView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 28) {
+
                     if let profile {
+                        // 0. STREAK RECOVERY — 48h safety net after a reset
+                        if profile.canRecoverStreak {
+                            StreakRecoveryBanner(hoursLeft: profile.recoveryWindowHoursRemaining) {
+                                profile.recoverStreak()
+                                try? modelContext.save()
+                                HapticService.notification(.success)
+                                animateRing = true
+                                WidgetSync.update(
+                                    streakDays: profile.currentStreakDays,
+                                    goalDays: profile.noContactGoalDays,
+                                    mantra: profile.personalMantra
+                                )
+                            }
+                        }
+
                         // 1. HERO — streak ring + mantra + SOS chip
                         VStack(spacing: 16) {
                             StreakRingView(
@@ -214,7 +240,8 @@ struct DashboardView: View {
         }
 
         let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
-        let moodCount = recentMoods.count
+
+        let moodCount = (try? modelContext.fetchCount(FetchDescriptor<MoodEntry>())) ?? recentMoods.count
         gamificationService?.checkMilestoneBadges(
             streakDays: profile.currentStreakDays,
             journalEntryCount: journalCount,
@@ -590,3 +617,55 @@ private struct RecentMoodCard: View {
         )
     }
 }
+
+// MARK: - Streak Recovery Banner
+
+/// Shown for 48 hours after a streak reset, offering a one-tap undo.
+/// A gentle loss-aversion safety net: slipping once shouldn't end the journey.
+private struct StreakRecoveryBanner: View {
+    let hoursLeft: Int
+    let onRecover: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 10) {
+                Image(systemName: "arrow.uturn.backward.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(Color.theme.healGold)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Restore your streak")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.theme.textPrimary)
+                    Text("A slip isn't the end. You can undo your reset for \(hoursLeft)h.")
+                        .font(.caption)
+                        .foregroundStyle(Color.theme.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+            }
+
+            Button(action: onRecover) {
+                Text("Restore my streak")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 11)
+                    .background(
+                        LinearGradient(
+                            colors: [Color.theme.healPurple, Color.theme.healBlue],
+                            startPoint: .leading, endPoint: .trailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+        }
+        .padding(16)
+        .background(Color.theme.healGold.opacity(0.10))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.theme.healGold.opacity(0.4), lineWidth: 1)
+        )
+    }
+}
+

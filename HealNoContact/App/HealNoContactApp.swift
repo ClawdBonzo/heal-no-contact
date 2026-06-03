@@ -46,11 +46,26 @@ struct HealNoContactApp: App {
     }
 }
 
+
 struct RootView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Query private var profiles: [UserProfile]
     @State private var showSplash = true
+
+    /// Pushes live state to the widgets and refreshes the re-engagement reminder ladder.
+    private func syncWidgetsAndReminders() {
+        guard let profile = profiles.first else { return }
+        WidgetSync.update(
+            streakDays: profile.currentStreakDays,
+            goalDays: profile.noContactGoalDays,
+            mantra: profile.personalMantra
+        )
+        if profile.notificationsEnabled {
+            NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -99,9 +114,13 @@ struct RootView: View {
             #endif
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                 withAnimation(.easeOut(duration: 0.6)) {
+
                     showSplash = false
                 }
             }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { syncWidgetsAndReminders() }
         }
     }
 }

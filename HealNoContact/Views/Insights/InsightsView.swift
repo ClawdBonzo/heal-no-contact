@@ -1,12 +1,38 @@
+
 import SwiftUI
 import SwiftData
 
+
+/// Bounded fetches for Insights. The score/patterns only use recent data
+/// (prefix 7-14 and a 7-day window), so generous caps protect power users'
+/// memory/scroll performance without changing behavior for typical users.
+private func insightsJournalsDescriptor() -> FetchDescriptor<JournalEntry> {
+    var d = FetchDescriptor<JournalEntry>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+    d.fetchLimit = 200
+    return d
+}
+private func insightsMoodsDescriptor() -> FetchDescriptor<MoodEntry> {
+    var d = FetchDescriptor<MoodEntry>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+    d.fetchLimit = 365
+    return d
+}
+private func insightsEmergenciesDescriptor() -> FetchDescriptor<EmergencyLog> {
+    var d = FetchDescriptor<EmergencyLog>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+    d.fetchLimit = 200
+    return d
+}
+private func insightsLettersDescriptor() -> FetchDescriptor<LetterEntry> {
+    var d = FetchDescriptor<LetterEntry>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+    d.fetchLimit = 200
+    return d
+}
+
 struct InsightsView: View {
-    @Query(sort: \JournalEntry.createdAt, order: .reverse) private var journals: [JournalEntry]
-    @Query(sort: \MoodEntry.createdAt, order: .reverse) private var moods: [MoodEntry]
-    @Query(sort: \EmergencyLog.createdAt, order: .reverse) private var emergencyLogs: [EmergencyLog]
+    @Query(insightsJournalsDescriptor()) private var journals: [JournalEntry]
+    @Query(insightsMoodsDescriptor()) private var moods: [MoodEntry]
+    @Query(insightsEmergenciesDescriptor()) private var emergencyLogs: [EmergencyLog]
     @Query private var profiles: [UserProfile]
-    @Query(sort: \LetterEntry.createdAt, order: .reverse) private var letters: [LetterEntry]
+    @Query(insightsLettersDescriptor()) private var letters: [LetterEntry]
 
     private var profile: UserProfile? { profiles.first }
 

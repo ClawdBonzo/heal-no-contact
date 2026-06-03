@@ -17,8 +17,13 @@ final class UserProfile {
     var streakBestDays: Int
     var currentStreakStartDate: Date?
     var lastCheckInDate: Date?
+
     var totalResets: Int
     var createdAt: Date
+    /// Streak start captured at the moment of a reset, enabling a 48h "undo".
+    var previousStreakStartDate: Date? = nil
+    /// When the most recent reset happened (for the recovery window).
+    var lastResetDate: Date? = nil
 
     init(
         exName: String = "",
@@ -65,11 +70,34 @@ final class UserProfile {
         Calendar.current.dateComponents([.day], from: breakupDate, to: .now).day ?? 0
     }
 
+
     func resetStreak() {
         totalResets += 1
         if currentStreakDays > streakBestDays {
             streakBestDays = currentStreakDays
         }
+        previousStreakStartDate = currentStreakStartDate
+        lastResetDate = .now
         currentStreakStartDate = .now
+    }
+
+    /// Whole hours left in the post-reset recovery window (0 if expired/none).
+    var recoveryWindowHoursRemaining: Int {
+        guard previousStreakStartDate != nil, let reset = lastResetDate else { return 0 }
+        let remaining = (48 * 3600) - Date.now.timeIntervalSince(reset)
+        return remaining > 0 ? Int(remaining / 3600) + 1 : 0
+    }
+
+    var canRecoverStreak: Bool { recoveryWindowHoursRemaining > 0 }
+
+    /// Restores the streak that was active before the most recent reset.
+    /// Available for 48 hours after a reset — a gentle safety net, not a cheat:
+    /// it only undoes the user's own most-recent reset.
+    func recoverStreak() {
+        guard canRecoverStreak, let prev = previousStreakStartDate else { return }
+        currentStreakStartDate = prev
+        previousStreakStartDate = nil
+        lastResetDate = nil
+        totalResets = max(0, totalResets - 1)
     }
 }

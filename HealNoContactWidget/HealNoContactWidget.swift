@@ -10,20 +10,28 @@ struct StreakEntry: TimelineEntry {
     let goalDays: Int
 }
 
+
+private let widgetAppGroup = "group.com.clawdbonzo.HealNoContact"
+
 struct StreakProvider: TimelineProvider {
+    private func liveEntry() -> StreakEntry {
+        let d = UserDefaults(suiteName: widgetAppGroup)
+        let days = d?.integer(forKey: "widget.streakDays") ?? 0
+        let goal = d?.integer(forKey: "widget.goalDays") ?? 0
+        return StreakEntry(date: .now, streakDays: days, goalDays: goal > 0 ? goal : 30)
+    }
+
     func placeholder(in context: Context) -> StreakEntry {
         StreakEntry(date: .now, streakDays: 12, goalDays: 30)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (StreakEntry) -> Void) {
-        completion(StreakEntry(date: .now, streakDays: 12, goalDays: 30))
+        completion(context.isPreview ? StreakEntry(date: .now, streakDays: 12, goalDays: 30) : liveEntry())
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<StreakEntry>) -> Void) {
-        // In production, read from shared UserDefaults or SwiftData
-        let entry = StreakEntry(date: .now, streakDays: 0, goalDays: 30)
         let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)!
-        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+        let timeline = Timeline(entries: [liveEntry()], policy: .after(nextUpdate))
         completion(timeline)
     }
 }
@@ -182,19 +190,27 @@ struct MantraEntry: TimelineEntry {
     let mantra: String
 }
 
+
 struct MantraProvider: TimelineProvider {
+    private static let fallback = "I choose myself today and every day"
+
+    private func liveEntry() -> MantraEntry {
+        let stored = UserDefaults(suiteName: widgetAppGroup)?.string(forKey: "widget.mantra")
+        let mantra = (stored?.isEmpty == false) ? stored! : Self.fallback
+        return MantraEntry(date: .now, mantra: mantra)
+    }
+
     func placeholder(in context: Context) -> MantraEntry {
-        MantraEntry(date: .now, mantra: "I choose myself today and every day")
+        MantraEntry(date: .now, mantra: Self.fallback)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (MantraEntry) -> Void) {
-        completion(MantraEntry(date: .now, mantra: "I choose myself today and every day"))
+        completion(context.isPreview ? MantraEntry(date: .now, mantra: Self.fallback) : liveEntry())
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<MantraEntry>) -> Void) {
-        let entry = MantraEntry(date: .now, mantra: "I choose myself today and every day")
         let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: .now)!
-        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+        let timeline = Timeline(entries: [liveEntry()], policy: .after(nextUpdate))
         completion(timeline)
     }
 }

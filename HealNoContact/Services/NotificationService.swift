@@ -87,6 +87,58 @@ final class NotificationService {
         }
     }
 
+
+    // MARK: - Re-engagement reminders
+
+    /// IDs for the dynamic re-engagement reminders. Cleared/rescheduled together.
+    private static let engagementIDs = ["missedCheckIn", "streakAtRisk", "winBack2", "winBack4", "winBack7"]
+
+    /// Schedules a ladder of one-shot reminders that only fire if the user stays away.
+    /// Call this every time the user checks in *and* when the app comes to the foreground
+    /// so the timers keep getting pushed forward while the user is active.
+    func rescheduleEngagementReminders(streakDays: Int) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: Self.engagementIDs)
+
+        let hour: TimeInterval = 3600
+        let day: TimeInterval = 86400
+
+        func schedule(_ id: String, after interval: TimeInterval, title: String, body: String,
+                      level: UNNotificationInterruptionLevel = .active) {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.sound = .default
+            content.interruptionLevel = level
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: max(interval, 60), repeats: false)
+            center.add(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
+        }
+
+        // Missed check-in — next day if they haven't returned.
+        schedule("missedCheckIn", after: 26 * hour,
+                 title: String(localized: "Your daily check-in is waiting"),
+                 body: String(localized: "A quick check-in keeps your momentum going. How are you today?"))
+
+        // Streak at risk — loss-aversion nudge ~1.5 days out.
+        if streakDays > 0 {
+            schedule("streakAtRisk", after: 36 * hour,
+                     title: String(localized: "Don't lose your \(streakDays)-day streak 🔥"),
+                     body: String(localized: "You've come so far. Open Heal to keep your streak alive."),
+                     level: .timeSensitive)
+        }
+
+        // Gentle win-back ladder for lapsed users.
+        schedule("winBack2", after: 2 * day,
+                 title: String(localized: "We're still here for you"),
+                 body: String(localized: "Healing isn't linear. Come back when you're ready — today is a good day."))
+        schedule("winBack4", after: 4 * day,
+                 title: String(localized: "Your peace is worth protecting"),
+                 body: String(localized: "It's been a few days. One small step forward is still progress."))
+        schedule("winBack7", after: 7 * day,
+                 title: String(localized: "A week is a fresh start"),
+                 body: String(localized: "Reopen Heal and pick up your journey — your future self will thank you."))
+    }
+
     func cancelAll() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }

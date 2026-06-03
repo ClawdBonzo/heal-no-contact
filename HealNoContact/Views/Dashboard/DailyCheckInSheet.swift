@@ -155,8 +155,20 @@ struct DailyCheckInSheet: View {
             gamificationService = service
         }
 
+
         gamificationService?.addXP(10, reason: "Daily Check-In")
         gamificationService?.refreshQuests(for: profile?.id ?? UUID())
+
+        if let profile {
+            WidgetSync.update(
+                streakDays: profile.currentStreakDays,
+                goalDays: profile.noContactGoalDays,
+                mantra: profile.personalMantra
+            )
+            if profile.notificationsEnabled {
+                NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+            }
+        }
 
         HapticService.notification(.success)
         dismiss()
