@@ -20,20 +20,21 @@ enum HealPlanOption: String, CaseIterable, Identifiable {
         }
     }
 
+
     var fallbackPrice: String {
         switch self {
-        case .weekly:   return "$6.99"
-        case .monthly:  return "$14.99"
-        case .yearly:   return "$59.99"
-        case .lifetime: return "$99.99"
+        case .weekly:   return "$4.99"
+        case .monthly:  return "$9.99"
+        case .yearly:   return "$49.99"
+        case .lifetime: return "$79.99"
         }
     }
 
     var fallbackPerWeek: String {
         switch self {
-        case .weekly:   return "$6.99/wk"
-        case .monthly:  return "$3.46/wk"
-        case .yearly:   return "$1.15/wk"
+        case .weekly:   return "$4.99/wk"
+        case .monthly:  return "$2.50/wk"
+        case .yearly:   return "$0.96/wk"
         case .lifetime: return "one-time"
         }
     }
