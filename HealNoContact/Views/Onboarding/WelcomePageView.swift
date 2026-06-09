@@ -144,16 +144,19 @@ private struct FeatureRow: View {
                 .background(Color.theme.healPurple.opacity(0.15))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
 
+
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.theme.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(subtitle)
                     .font(.caption)
                     .foregroundStyle(Color.theme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
-            Spacer()
+            Spacer(minLength: 0)
         }
     }
 }

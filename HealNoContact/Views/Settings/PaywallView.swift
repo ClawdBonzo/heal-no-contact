@@ -351,11 +351,13 @@ private struct HealFeatureRow: View {
                 .background(Color.theme.healGold.opacity(0.12))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
 
+
             Text(text)
                 .font(.subheadline)
                 .foregroundStyle(Color.theme.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
 
-            Spacer()
+            Spacer(minLength: 8)
 
             Image(systemName: "checkmark")
                 .font(.caption2.weight(.bold))
