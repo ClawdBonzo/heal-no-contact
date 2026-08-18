@@ -8,6 +8,11 @@ struct UnsentLetterView: View {
     @State private var letterBody = ""
     @State private var selectedMood: JournalEntry.MoodType = .sad
     @State private var showSaved = false
+    @State private var showDiscardDialog = false
+
+    private var hasUnsavedChanges: Bool {
+        !showSaved && !letterBody.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
 
     private var exName: String? {
         guard let name = profiles.first?.exName, !name.isEmpty else { return nil }
@@ -82,12 +87,22 @@ struct UnsentLetterView: View {
                 }
                 .padding(20)
             }
+            .scrollDismissesKeyboard(.interactively)
             .background(Color.theme.deepBackground)
             .navigationBarTitleDisplayMode(.inline)
+            .interactiveDismissDisabled(hasUnsavedChanges)
+            .confirmationDialog("Discard this letter?", isPresented: $showDiscardDialog, titleVisibility: .visible) {
+                Button("Discard", role: .destructive) { dismiss() }
+                Button("Keep Writing", role: .cancel) {}
+            } message: {
+                Text("Your letter hasn't been saved.")
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                        .foregroundStyle(Color.theme.textSecondary)
+                    Button("Cancel") {
+                        if hasUnsavedChanges { showDiscardDialog = true } else { dismiss() }
+                    }
+                    .foregroundStyle(Color.theme.textSecondary)
                 }
             }
             .overlay {
@@ -107,7 +122,7 @@ struct UnsentLetterView: View {
         )
         modelContext.insert(letter)
 
-        let title = exName.map { "Unsent Letter to \($0)" } ?? "Unsent Letter"
+        let title = exName.map { String(localized: "Unsent Letter to \($0)") } ?? String(localized: "Unsent Letter")
         let journalEntry = JournalEntry(
             title: title,
             body: letterBody,

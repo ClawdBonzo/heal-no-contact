@@ -11,6 +11,8 @@ struct OnboardingContainerView: View {
     @State private var reasonForNoContact = ""
     @State private var personalMantra = ""
     @State private var relationshipDuration = ""
+    /// Guards against a double-tap on "Start My Journey" creating two profiles.
+    @State private var isCompleting = false
 
     private let totalPages = 4
 
@@ -84,6 +86,16 @@ struct OnboardingContainerView: View {
     }
 
     private func completeOnboarding() {
+        guard !isCompleting else { return }
+        isCompleting = true
+
+        // Never create a second profile if one somehow already exists.
+        if let existing = (try? modelContext.fetch(FetchDescriptor<UserProfile>()))?.first {
+            existing.hasCompletedOnboarding = true
+            appState.pendingIntroPaywall = true
+            return
+        }
+
         let profile = UserProfile(
             exName: exName,
             relationshipDuration: relationshipDuration,
@@ -92,11 +104,19 @@ struct OnboardingContainerView: View {
             noContactGoalDays: noContactGoalDays,
             reasonForNoContact: reasonForNoContact,
             personalMantra: personalMantra.isEmpty
-                ? "I choose myself today and every day"
+                ? String(localized: "I choose myself today and every day")
                 : personalMantra,
             hasCompletedOnboarding: true
         )
         modelContext.insert(profile)
+        try? modelContext.save()
+
+        // Widgets show the real goal immediately instead of 0/30 until the next foreground.
+        WidgetSync.update(
+            streakDays: profile.currentStreakDays,
+            goalDays: profile.noContactGoalDays,
+            mantra: profile.personalMantra
+        )
 
         // Seed default milestones
         for milestone in Milestone.defaultMilestones {
@@ -112,9 +132,10 @@ struct OnboardingContainerView: View {
         // Request notification permissions
         Task {
             let granted = await NotificationService.shared.requestPermission()
+            profile.notificationsEnabled = granted
             if granted {
                 NotificationService.shared.scheduleDailyCheckIn(at: profile.dailyCheckInTime)
-                NotificationService.shared.scheduleEncouragementNotifications()
+                NotificationService.shared.syncPremiumReminders(notificationsEnabled: true)
             }
         }
 

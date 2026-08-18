@@ -8,11 +8,12 @@ struct EmergencyView: View {
     @State private var currentStrategy: String = QuoteService.shared.randomCopingStrategy()
     @State private var showUrgeWave = false
     @State private var intensityLevel: Double = 5
-    @State private var breathingActive = false
-    @State private var breatheIn = false
+    @State private var breathingActive = true
+    @State private var ambientPulse = false
     @State private var urgeStartTime = Date.now
     @State private var showCompleted = false
     @State private var gamificationService: GameificationService?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var profile: UserProfile? { profiles.first }
 
@@ -26,17 +27,17 @@ struct EmergencyView: View {
                 .fill(
                     RadialGradient(
                         colors: [
-                            Color.theme.healPink.opacity(breatheIn ? 0.2 : 0.05),
+                            Color.theme.healPink.opacity(ambientPulse ? 0.2 : 0.05),
                             Color.clear
                         ],
                         center: .center,
                         startRadius: 10,
-                        endRadius: breatheIn ? 250 : 100
+                        endRadius: ambientPulse ? 250 : 100
                     )
                 )
                 .animation(
-                    .easeInOut(duration: breathingActive ? 4 : 2).repeatForever(autoreverses: true),
-                    value: breatheIn
+                    reduceMotion ? nil : .easeInOut(duration: 4).repeatForever(autoreverses: true),
+                    value: ambientPulse
                 )
                 .ignoresSafeArea()
 
@@ -55,17 +56,26 @@ struct EmergencyView: View {
                     }
                     .padding(.top, 20)
 
-                    // Breathing exercise
-                    BreathingBubble(isActive: $breathingActive, breatheIn: $breatheIn)
+                    // Breathing exercise (4-4-6: in, hold, out)
+                    BreathingBubble(isActive: $breathingActive)
+
+                    // Urge intensity — captured so the log reflects reality, not a default
+                    UrgeIntensityCard(intensity: $intensityLevel)
 
                     // Current streak reminder
                     if let profile {
                         HStack(spacing: 12) {
                             Image(systemName: "flame.fill")
                                 .foregroundStyle(Color.theme.healPurple)
-                            Text("You're on a **\(profile.currentStreakDays)-day** streak. Don't break it now.")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.theme.textPrimary)
+                            Group {
+                                if profile.currentStreakDays > 0 {
+                                    Text("You're on a **\(profile.currentStreakDays)-day** streak. Don't break it now.")
+                                } else {
+                                    Text("Every streak starts at day 0. Get through this moment and day 1 is yours.")
+                                }
+                            }
+                            .font(.subheadline)
+                            .foregroundStyle(Color.theme.textPrimary)
                         }
                         .padding(16)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -126,7 +136,7 @@ struct EmergencyView: View {
                     }
 
                     // Urge wave timer
-                    UrgeWaveView()
+                    UrgeWaveView(startedAt: urgeStartTime)
 
                     // Action buttons
                     VStack(spacing: 12) {
@@ -166,13 +176,12 @@ struct EmergencyView: View {
         .onAppear {
             HapticService.urgePulse()
             urgeStartTime = .now
-            withAnimation {
-                breatheIn = true
-            }
+            ambientPulse = true
         }
     }
 
     private func logEmergencyResisted() {
+        guard !showCompleted else { return } // one log + one XP award per SOS session
         let duration = Int(Date.now.timeIntervalSince(urgeStartTime))
         let log = EmergencyLog(
             triggerReason: "Urge to contact",
@@ -190,6 +199,7 @@ struct EmergencyView: View {
             gamificationService = service
         }
         gamificationService?.addXP(25, reason: "SOS Resisted")
+        gamificationService?.progressQuests(ofKind: .selfCare)
 
         HapticService.milestone()
 
@@ -201,38 +211,134 @@ struct EmergencyView: View {
 
 // MARK: - Breathing Bubble
 
+/// Guided 4-4-6 breathing (inhale 4s, hold 4s, exhale 6s). One task drives both the
+/// label and the bubble so they can never disagree; Pause/Resume really pauses.
 private struct BreathingBubble: View {
     @Binding var isActive: Bool
-    @Binding var breatheIn: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var phase: Phase = .idle
+
+    private enum Phase { case idle, inhale, hold, exhale }
+
+    private var expanded: Bool { phase == .inhale || phase == .hold }
+
+    /// How long the bubble takes to reach the current phase's size.
+    private var bubbleDuration: Double {
+        switch phase {
+        case .idle:   return 0.6
+        case .inhale: return 4
+        case .hold:   return 4
+        case .exhale: return 6
+        }
+    }
+
+    private var label: LocalizedStringKey {
+        switch phase {
+        case .idle:   return "Ready when you are"
+        case .inhale: return "Breathe In"
+        case .hold:   return "Hold"
+        case .exhale: return "Breathe Out"
+        }
+    }
 
     var body: some View {
         VStack(spacing: 16) {
             ZStack {
-                Circle()
-                    .fill(Color.theme.healBlue.opacity(0.1))
-                    .frame(width: breatheIn ? 140 : 80, height: breatheIn ? 140 : 80)
+                // The bubble eases over the whole phase (4s in / 6s out)…
+                Group {
+                    Circle()
+                        .fill(Color.theme.healBlue.opacity(0.1))
+                        .frame(width: expanded ? 140 : 80, height: expanded ? 140 : 80)
 
-                Circle()
-                    .fill(Color.theme.healBlue.opacity(0.2))
-                    .frame(width: breatheIn ? 100 : 60, height: breatheIn ? 100 : 60)
+                    Circle()
+                        .fill(Color.theme.healBlue.opacity(0.2))
+                        .frame(width: expanded ? 100 : 60, height: expanded ? 100 : 60)
+                }
+                .animation(reduceMotion ? nil : .easeInOut(duration: bubbleDuration), value: expanded)
 
-                Text(breatheIn ? "Breathe In" : "Breathe Out")
+                // …while the label swaps quickly so two words never overlap.
+                Text(label)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(Color.theme.healBlue)
+                    .contentTransition(.opacity)
+                    .animation(.easeInOut(duration: 0.25), value: phase)
             }
-            .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: breatheIn)
+            .frame(height: 140)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Breathing exercise"))
+            .accessibilityValue(Text(label))
 
             Button {
                 isActive.toggle()
-                if isActive {
-                    breatheIn.toggle()
-                }
+                HapticService.selection()
             } label: {
-                Text(isActive ? "Stop Breathing Exercise" : "Start Breathing Exercise")
+                Text(isActive ? "Pause Breathing Exercise" : "Resume Breathing Exercise")
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Color.theme.healBlue)
             }
         }
+        .task(id: isActive) {
+            guard isActive else { phase = .idle; return }
+            while !Task.isCancelled {
+                await step(.inhale, seconds: 4)
+                await step(.hold,   seconds: 4)
+                await step(.exhale, seconds: 6)
+            }
+        }
+    }
+
+    private func step(_ next: Phase, seconds: Double) async {
+        guard !Task.isCancelled else { return }
+        phase = next
+        try? await Task.sleep(for: .seconds(seconds))
+    }
+}
+
+// MARK: - Urge Intensity
+
+private struct UrgeIntensityCard: View {
+    @Binding var intensity: Double
+
+    private var descriptor: LocalizedStringKey {
+        switch Int(intensity) {
+        case ...3:  return "Manageable"
+        case 4...6: return "Strong"
+        case 7...8: return "Very strong"
+        default:    return "Overwhelming"
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 10) {
+            HStack {
+                Text("How strong is the urge right now?")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.theme.textPrimary)
+                Spacer()
+                Text("\(Int(intensity))/10")
+                    .font(.subheadline.weight(.bold).monospacedDigit())
+                    .foregroundStyle(Color.theme.healPink)
+            }
+            Slider(value: $intensity, in: 1...10, step: 1) {
+                Text("Urge intensity")
+            } minimumValueLabel: {
+                Text("1").font(.caption2).foregroundStyle(Color.theme.textTertiary)
+            } maximumValueLabel: {
+                Text("10").font(.caption2).foregroundStyle(Color.theme.textTertiary)
+            }
+            .tint(Color.theme.healPink)
+            .onChange(of: intensity) { _, _ in HapticService.selection() }
+
+            Text(descriptor)
+                .font(.caption)
+                .foregroundStyle(Color.theme.textSecondary)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.theme.cardBackground)
+        )
     }
 }
 

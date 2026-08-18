@@ -133,14 +133,8 @@ struct DailyCheckInSheet: View {
     }
 
     private func saveCheckIn() {
-        let mood = MoodEntry(
-            mood: selectedMood,
-            intensity: Int(intensity),
-            note: note
-        )
-        modelContext.insert(mood)
-        profile?.lastCheckInDate = .now
-
+        // Ask about the reset first; nothing is written until the user confirms,
+        // so "Cancel" on the alert leaves no stray MoodEntry behind.
         if didContact {
             showConfirmReset = true
         } else {
@@ -149,25 +143,33 @@ struct DailyCheckInSheet: View {
     }
 
     private func finishSave() {
-        if gamificationService == nil, let userId = profile?.id {
+        guard let profile else { dismiss(); return }
+
+        let mood = MoodEntry(
+            mood: selectedMood,
+            intensity: Int(intensity),
+            note: note
+        )
+        modelContext.insert(mood)
+        profile.lastCheckInDate = .now
+
+        if gamificationService == nil {
             let service = GameificationService(modelContext: modelContext)
-            service.initializeGamification(for: userId)
+            service.initializeGamification(for: profile.id)
             gamificationService = service
         }
 
-
         gamificationService?.addXP(10, reason: "Daily Check-In")
-        gamificationService?.refreshQuests(for: profile?.id ?? UUID())
+        gamificationService?.progressQuests(ofKind: .checkIn)
+        gamificationService?.refreshQuests(for: profile.id)
 
-        if let profile {
-            WidgetSync.update(
-                streakDays: profile.currentStreakDays,
-                goalDays: profile.noContactGoalDays,
-                mantra: profile.personalMantra
-            )
-            if profile.notificationsEnabled {
-                NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
-            }
+        WidgetSync.update(
+            streakDays: profile.currentStreakDays,
+            goalDays: profile.noContactGoalDays,
+            mantra: profile.personalMantra
+        )
+        if profile.notificationsEnabled {
+            NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
         }
 
         HapticService.notification(.success)

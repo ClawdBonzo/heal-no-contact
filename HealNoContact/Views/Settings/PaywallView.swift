@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import RevenueCat
 
 // MARK: - Plan Model
@@ -30,28 +31,17 @@ enum HealPlanOption: String, CaseIterable, Identifiable {
         }
     }
 
+    /// Shown only while live store prices haven't loaded (USD estimates).
     var fallbackPerWeek: String {
         switch self {
-        case .weekly:   return "$4.99/wk"
-        case .monthly:  return "$2.50/wk"
-        case .yearly:   return "$0.96/wk"
-        case .lifetime: return "one-time"
-        }
-    }
-
-    /// Plans that include a 3-day free trial
-    var hasTrial: Bool {
-        switch self {
-        case .monthly, .yearly: return true
-        case .weekly, .lifetime: return false
+        case .weekly:   return String(localized: "$4.99/wk")
+        case .monthly:  return String(localized: "$2.30/wk")
+        case .yearly:   return String(localized: "$0.96/wk")
+        case .lifetime: return String(localized: "one-time")
         }
     }
 
     var isBestValue: Bool { self == .monthly }
-
-    var savingsLabel: String? {
-        self == .yearly ? String(localized: "Save 67%") : nil
-    }
 
     var packageType: PackageType {
         switch self {
@@ -67,11 +57,16 @@ enum HealPlanOption: String, CaseIterable, Identifiable {
 
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
+    @Query private var profiles: [UserProfile]
     @State private var storeService = RevenueCatService.shared
     @State private var selectedPlan: HealPlanOption = .monthly
     @State private var isPurchasing = false
+    @State private var isRestoring = false
     @State private var showError = false
     @State private var errorMessage = ""
+    @State private var restoreMessage: String?
+    /// productIdentifier → still eligible for the intro offer (free trial). Missing = unknown/ineligible.
+    @State private var trialEligibility: [String: Bool] = [:]
 
     // Staggered reveal
     @State private var showHeader = false
@@ -159,7 +154,8 @@ struct PaywallView: View {
                             isSelected: selectedPlan == plan,
                             livePrice: livePrice(for: plan),
                             livePerWeek: livePerWeek(for: plan),
-                            liveSavings: liveSavings(for: plan)
+                            liveSavings: liveSavings(for: plan),
+                            trialDays: eligibleTrialDays(for: plan)
                         ) {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                 selectedPlan = plan
@@ -207,17 +203,16 @@ struct PaywallView: View {
                     .disabled(isPurchasing)
 
                     HStack(spacing: 10) {
-                        Button("Restore") {
-                            Task {
-                                do {
-                                    try await storeService.restorePurchases()
-                                    if storeService.isPremium { dismiss() }
-                                } catch {
-                                    errorMessage = error.localizedDescription
-                                    showError = true
-                                }
+                        Button {
+                            Task { await restore() }
+                        } label: {
+                            if isRestoring {
+                                ProgressView().controlSize(.mini).tint(Color.theme.textTertiary)
+                            } else {
+                                Text("Restore")
                             }
                         }
+                        .disabled(isRestoring || isPurchasing)
                         .font(.caption2)
                         .foregroundStyle(Color.theme.textTertiary)
 
@@ -232,7 +227,7 @@ struct PaywallView: View {
                             .font(.caption2).foregroundStyle(Color.theme.textTertiary)
                     }
 
-                    Text("Subscriptions auto-renew at the price and period shown above unless cancelled at least 24 hours before the end of the current period. Free trials (monthly and yearly) convert to a paid subscription after 3 days unless cancelled. Payment is charged to your Apple Account; manage or cancel anytime in Settings. Lifetime is a one-time purchase.")
+                    Text(disclosureText)
                         .font(.system(size: 9))
                         .foregroundStyle(Color.theme.textTertiary)
                         .multilineTextAlignment(.center)
@@ -251,25 +246,56 @@ struct PaywallView: View {
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.32)) { showPlans = true }
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(0.46)) { showCTA = true }
             glowPulse = true
+        }
+        .task {
             if storeService.availablePackages.isEmpty {
-                Task { await storeService.fetchOfferings() }
+                await storeService.fetchOfferings()
             }
+            await refreshTrialEligibility()
+        }
+        .onChange(of: storeService.availablePackages.count) { _, _ in
+            Task { await refreshTrialEligibility() }
         }
         .alert("Purchase Error", isPresented: $showError) {
             Button("OK") {}
         } message: {
             Text(errorMessage)
         }
+        .alert("Restore Purchases", isPresented: Binding(
+            get: { restoreMessage != nil },
+            set: { if !$0 { restoreMessage = nil } }
+        )) {
+            Button("OK") { restoreMessage = nil }
+        } message: {
+            Text(restoreMessage ?? "")
+        }
     }
 
     // MARK: - Helpers
 
+    /// True when at least one visible plan is currently offering the user a free trial.
+    private var anyTrialShown: Bool {
+        HealPlanOption.allCases.contains { eligibleTrialDays(for: $0) != nil }
+    }
+
     private var ctaLabel: String {
-        switch selectedPlan {
-        case .monthly, .yearly: return String(localized: "Start 3-Day Free Trial")
-        case .weekly:           return String(localized: "Get Weekly Access")
-        case .lifetime:         return String(localized: "Purchase Lifetime")
+        if let days = eligibleTrialDays(for: selectedPlan) {
+            return String(localized: "Start \(days)-Day Free Trial")
         }
+        switch selectedPlan {
+        case .weekly:   return String(localized: "Get Weekly Access")
+        case .monthly:  return String(localized: "Get Monthly Access")
+        case .yearly:   return String(localized: "Get Yearly Access")
+        case .lifetime: return String(localized: "Purchase Lifetime")
+        }
+    }
+
+    private var disclosureText: String {
+        var text = String(localized: "Subscriptions auto-renew at the price and period shown above unless cancelled at least 24 hours before the end of the current period. Payment is charged to your Apple Account; manage or cancel anytime in Settings. Lifetime is a one-time purchase.")
+        if anyTrialShown {
+            text += " " + String(localized: "Free trials convert to a paid subscription when the trial ends unless cancelled.")
+        }
+        return text
     }
 
     private func package(for plan: HealPlanOption) -> Package? {
@@ -284,22 +310,62 @@ struct PaywallView: View {
         package(for: plan)?.localizedPriceString ?? plan.fallbackPrice
     }
 
+    /// Per-week price in the storefront's own currency (RevenueCat formats with the product's locale).
     private func livePerWeek(for plan: HealPlanOption) -> String {
+        guard let pkg = package(for: plan) else { return plan.fallbackPerWeek }
+        if plan == .lifetime { return String(localized: "one-time") }
+        guard let perWeek = pkg.storeProduct.localizedPricePerWeek else { return plan.fallbackPerWeek }
+        return String(localized: "\(perWeek)/wk")
+    }
+
+    /// Length in days of the free trial the user is *actually* eligible for on this plan, else nil.
+    /// Reads the live introductory offer (not a hardcoded assumption) and RevenueCat's eligibility check,
+    /// so a returning user who already used the trial is never told "Start Free Trial".
+    private func eligibleTrialDays(for plan: HealPlanOption) -> Int? {
         guard let pkg = package(for: plan),
-              let period = pkg.storeProduct.subscriptionPeriod else {
-            return plan.fallbackPerWeek
-        }
-        let price = pkg.storeProduct.price as Decimal
-        let weeks: Decimal
+              let intro = pkg.storeProduct.introductoryDiscount,
+              intro.paymentMode == .freeTrial,
+              trialEligibility[pkg.storeProduct.productIdentifier] == true else { return nil }
+        let period = intro.subscriptionPeriod
         switch period.unit {
-        case .week:  weeks = Decimal(period.value)
-        case .month: weeks = Decimal(period.value) * 4
-        case .year:  weeks = Decimal(period.value) * 52
-        default:     return plan.fallbackPerWeek
+        case .day:   return period.value
+        case .week:  return period.value * 7
+        case .month: return period.value * 30
+        case .year:  return period.value * 365
+        @unknown default: return nil
         }
-        guard weeks > 0 else { return plan.fallbackPerWeek }
-        let perWeek = NSDecimalNumber(decimal: price / weeks).doubleValue
-        return "$\(String(format: "%.2f", perWeek))/wk"
+    }
+
+    private func refreshTrialEligibility() async {
+        let ids = storeService.availablePackages
+            .filter { $0.storeProduct.introductoryDiscount?.paymentMode == .freeTrial }
+            .map(\.storeProduct.productIdentifier)
+        guard !ids.isEmpty else { return }
+        trialEligibility = await storeService.trialEligibility(for: ids)
+    }
+
+    private func restore() async {
+        isRestoring = true
+        defer { isRestoring = false }
+        do {
+            try await storeService.restorePurchases()
+            if storeService.isPremium {
+                activatePremiumReminders()
+                HapticService.milestone()
+                dismiss()
+            } else {
+                restoreMessage = String(localized: "No previous purchases were found for this Apple Account.")
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+        }
+    }
+
+    /// Premium includes daily encouragement reminders — turn them on the moment the entitlement lands.
+    private func activatePremiumReminders() {
+        let enabled = profiles.first?.notificationsEnabled ?? false
+        NotificationService.shared.syncPremiumReminders(notificationsEnabled: enabled)
     }
 
     /// Dynamically computes yearly savings vs monthly when live prices available.
@@ -318,7 +384,7 @@ struct PaywallView: View {
 
     private func purchase() async {
         guard let pkg = package(for: selectedPlan) else {
-            errorMessage = "This package is not available. Please try again later."
+            errorMessage = String(localized: "This plan isn't available right now. Please check your connection and try again.")
             showError = true
             return
         }
@@ -327,6 +393,7 @@ struct PaywallView: View {
         do {
             let success = try await storeService.purchase(pkg)
             if success {
+                activatePremiumReminders()
                 HapticService.milestone()
                 dismiss()
             }
@@ -375,6 +442,8 @@ private struct HealPlanCard: View {
     let livePrice: String
     let livePerWeek: String
     let liveSavings: String?
+    /// Free-trial length the user is eligible for on this plan (nil = no trial to advertise).
+    let trialDays: Int?
     let action: () -> Void
 
     private var borderColor: Color {
@@ -429,12 +498,12 @@ private struct HealPlanCard: View {
                     }
 
                     // Trial or per-week label
-                    if plan.hasTrial {
+                    if let trialDays {
                         HStack(spacing: 4) {
                             Image(systemName: "gift.fill")
                                 .font(.system(size: 9))
                                 .foregroundStyle(Color.theme.healGold)
-                            Text("3-day free trial")
+                            Text("\(trialDays)-day free trial")
                                 .font(.caption)
                                 .foregroundStyle(Color.theme.healGold)
                         }
@@ -453,7 +522,7 @@ private struct HealPlanCard: View {
                         .font(.headline.weight(.bold))
                         .foregroundStyle(isSelected ? Color.theme.healPurple : Color.theme.textPrimary)
 
-                    if plan.hasTrial {
+                    if trialDays != nil {
                         Text(livePerWeek)
                             .font(.caption2)
                             .foregroundStyle(Color.theme.textTertiary)

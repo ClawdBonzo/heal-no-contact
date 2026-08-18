@@ -113,11 +113,13 @@ struct SettingsView: View {
                                 if newValue {
                                     Task {
                                         let granted = await NotificationService.shared.requestPermission()
+                                        // Reflect reality: if iOS denied, don't leave the toggle claiming ON.
+                                        profile.notificationsEnabled = granted
                                         if granted {
                                             NotificationService.shared.scheduleDailyCheckIn(
                                                 at: profile.dailyCheckInTime
                                             )
-                                            NotificationService.shared.scheduleEncouragementNotifications()
+                                            NotificationService.shared.syncPremiumReminders(notificationsEnabled: true)
                                         }
                                     }
                                 } else {
@@ -190,7 +192,7 @@ struct SettingsView: View {
                         color: Color.theme.textSecondary
                     )
 
-                    Link(destination: URL(string: "https://apple.com")!) {
+                    Link(destination: URL(string: "https://apps.apple.com/app/id6761851731?action=write-review")!) {
                         Label("Rate on App Store", systemImage: "star.fill")
                             .foregroundStyle(Color.theme.healGold)
                     }
@@ -204,7 +206,17 @@ struct SettingsView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             .alert("Reset your streak?", isPresented: $showResetAlert) {
                 Button("Reset", role: .destructive) {
-                    profile?.resetStreak()
+                    guard let profile else { return }
+                    profile.resetStreak()
+                    // Keep the widget and the reminder ladder in step with the new streak.
+                    WidgetSync.update(
+                        streakDays: profile.currentStreakDays,
+                        goalDays: profile.noContactGoalDays,
+                        mantra: profile.personalMantra
+                    )
+                    if profile.notificationsEnabled {
+                        NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+                    }
                     HapticService.notification(.warning)
                 }
                 Button("Cancel", role: .cancel) {}
@@ -241,16 +253,25 @@ struct SettingsView: View {
 
     private func deleteAllData() {
         do {
+            // Every model in the schema — a partial wipe leaves an orphaned gamification record
+            // that the Dashboard would bind to after re-onboarding.
             try modelContext.delete(model: UserProfile.self)
             try modelContext.delete(model: JournalEntry.self)
             try modelContext.delete(model: MoodEntry.self)
             try modelContext.delete(model: Milestone.self)
             try modelContext.delete(model: EmergencyLog.self)
             try modelContext.delete(model: LetterEntry.self)
+            try modelContext.delete(model: UserGamification.self)
+            try modelContext.delete(model: Quest.self)
+            try modelContext.delete(model: Badge.self)
+            try modelContext.delete(model: StreakFlame.self)
+            try modelContext.save()
             NotificationService.shared.cancelAll()
+            WidgetSync.clear()
+            appState.selectedTab = .dashboard
             HapticService.notification(.success)
         } catch {
-            print("Failed to delete data: \(error)")
+            Log.app.error("Failed to delete data: \(error.localizedDescription)")
         }
     }
 }

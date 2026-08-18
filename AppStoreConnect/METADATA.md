@@ -61,10 +61,14 @@ Write the letter you'll never send. Log the mood you don't want to explain to an
 Daily quests. XP. Badges for every milestone — from Day 1 to a full year. Streak multipliers that grow with your flame. Because sometimes the only thing that works is turning "don't reach out today" into a game you want to win.
 
 — SEE YOUR OWN PROGRESS
-A healing score. Weekly summaries. Mood patterns over time. The days you almost broke — and didn't. Evidence, in your own data, that time is doing what it said it would.
+Milestones from Day 1 to a full year, your best streak, and every urge you rode out. With Heal Pro: a healing score, weekly summaries, and mood patterns over time — evidence, in your own data, that time is doing what it said it would.
 
 — PRIVATE BY DESIGN
 Everything stored locally on your phone. No account to create, no email to give, no data sold. Your grief is yours.
+
+— FREE vs. HEAL PRO
+Free: streak tracker, daily check-ins, journal, unsent letters, SOS support, quests, badges, and home-screen widgets — the whole core.
+Heal Pro (optional subscription or one-time purchase): the healing score and mood-pattern insights, PDF export of your journal, and daily encouragement reminders.
 
 Built for the people who already know no-contact is the right call and just need something in their pocket on the bad nights.
 
@@ -102,6 +106,19 @@ breakup,no contact,heal,recovery,heartbreak,divorce,ex,journal,streak,healing,th
 ---
 
 ## What's New in This Version (4000 chars max)
+
+**For 1.0.1:**
+```
+Thank you for healing with us. This update fixes the things you told us about:
+
+• SOS breathing now guides you in, hold, out — and you can rate how strong the urge is
+• Prices show in your local currency everywhere
+• Journal entries can no longer be lost by an accidental swipe
+• Daily encouragement reminders now start the moment you go Pro
+• German, Spanish, French, Italian and Portuguese: coping strategies, reminders and the SOS screen are now translated
+• Delete All Data really deletes everything, including the widget
+• Dozens of smaller fixes and a smoother, warning-free build
+```
 
 **For first release (v1.0):**
 ```
@@ -167,12 +184,12 @@ You need to create these four products in App Store Connect BEFORE you can wire 
 
 | Product ID | Reference Name | Type | Price |
 |---|---|---|---|
-| `com.healnocontact.premium.weekly` | Heal Weekly | Auto-Renewable Subscription | $6.99/week |
-| `com.healnocontact.premium.monthly` | Heal Monthly | Auto-Renewable Subscription | $14.99/month |
-| `com.healnocontact.premium.yearly` | Heal Yearly | Auto-Renewable Subscription | $59.99/year |
-| `com.healnocontact.premium.lifetime` | Heal Lifetime | Non-Consumable | $99.99 |
+| `com.healnocontact.premium.weekly` | Weekly Premium | Auto-Renewable Subscription | $4.99/week (3-day free trial) |
+| `com.healnocontact.premium.monthly` | Monthly Premium | Auto-Renewable Subscription | $9.99/month (3-day free trial) |
+| `com.healnocontact.premium.yearly` | Yearly Premium | Auto-Renewable Subscription | $49.99/year (3-day free trial) |
+| `com.healnocontact.premium.lifetime` | Lifetime | Non-Consumable | $79.99 |
 
-All subscriptions go in the same Subscription Group (e.g., "Heal Premium"). Pick your prices — common patterns for this category: weekly $6.99, monthly $14.99, yearly $59.99, lifetime $99.99.
+Live in App Store Connect as of 2026-08-17 (subscription group "HealNoContact Pro", all approved). All three subscriptions carry a 3-day introductory free trial; the app reads trial length and eligibility from StoreKit at runtime, so changing the offer in ASC needs no code change.
 
 Each product needs:
 - **Localized display name** (shown to users): "Weekly Access", "Monthly Access", etc.

@@ -24,7 +24,7 @@ final class NotificationService {
         content.title = String(localized: "Time for your check-in")
         content.body = QuoteService.shared.randomMotivational()
         content.sound = .default
-        content.interruptionLevel = .timeSensitive
+        content.interruptionLevel = .active
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
@@ -53,10 +53,30 @@ final class NotificationService {
         UNUserNotificationCenter.current().add(request)
     }
 
+    /// IDs for the premium encouragement reminders (12:00 / 18:00 / 21:00).
+    private static let encouragementIDs = ["encouragement_0", "encouragement_1", "encouragement_2"]
+
+    /// Keeps the premium encouragement reminders in sync with entitlement + the user's
+    /// notification preference. Safe to call often (idempotent — fixed identifiers).
+    /// Called after purchase/restore and on every foreground so renewals and lapses are honored.
+    func syncPremiumReminders(notificationsEnabled: Bool) {
+        if notificationsEnabled && RevenueCatService.shared.isPremium {
+            scheduleEncouragementNotifications()
+        } else {
+            cancelEncouragementNotifications()
+        }
+    }
+
+    func cancelEncouragementNotifications() {
+        UNUserNotificationCenter.current()
+            .removePendingNotificationRequests(withIdentifiers: Self.encouragementIDs)
+    }
+
     func scheduleEncouragementNotifications() {
         // Premium feature: extra daily encouragement reminders.
         guard RevenueCatService.shared.isPremium else { return }
         let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: Self.encouragementIDs)
 
         let encouragements = [
             (hour: 12, message: String(localized: "You're doing amazing. Every hour counts.")),
@@ -119,12 +139,12 @@ final class NotificationService {
                  title: String(localized: "Your daily check-in is waiting"),
                  body: String(localized: "A quick check-in keeps your momentum going. How are you today?"))
 
-        // Streak at risk — loss-aversion nudge ~1.5 days out.
+        // Streak nudge ~1.5 days out. The no-contact streak only resets when the user
+        // reports contact, so the copy celebrates the streak rather than threatening it.
         if streakDays > 0 {
             schedule("streakAtRisk", after: 36 * hour,
-                     title: String(localized: "Don't lose your \(streakDays)-day streak 🔥"),
-                     body: String(localized: "You've come so far. Open Heal to keep your streak alive."),
-                     level: .timeSensitive)
+                     title: String(localized: "Your streak is still going 🔥"),
+                     body: String(localized: "\(streakDays)+ days of no contact. Check in and add today to it."))
         }
 
         // Gentle win-back ladder for lapsed users.

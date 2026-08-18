@@ -19,10 +19,13 @@ struct HealNoContactApp: App {
             Badge.self,
             StreakFlame.self
         ])
+        // Pinned to the App Group explicitly: with `.automatic` the store's location silently
+        // depends on the entitlements, so any future App Group change would look like data loss.
+        // (`.automatic` already resolved to this same container for every shipped build.)
         let modelConfiguration = ModelConfiguration(
             schema: schema,
             isStoredInMemoryOnly: false,
-            groupContainer: .automatic
+            groupContainer: .identifier(WidgetSync.appGroup)
         )
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -65,6 +68,8 @@ struct RootView: View {
         if profile.notificationsEnabled {
             NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
         }
+        // Premium encouragement reminders follow the entitlement (renewals, restores, lapses).
+        NotificationService.shared.syncPremiumReminders(notificationsEnabled: profile.notificationsEnabled)
     }
 
     var body: some View {
@@ -176,27 +181,30 @@ struct SplashScreenView: View {
                 opacity = 1.0
             }
             if !reduceMotion {
-                startHeartbeat()
                 withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true)) {
                     glowPulse = true
                 }
             }
         }
+        // `.task` is cancelled automatically when the splash leaves the hierarchy,
+        // so the heartbeat loop doesn't keep ticking for the life of the process.
+        .task {
+            guard !reduceMotion else { return }
+            await runHeartbeat()
+        }
     }
 
-    /// Double-pulse heartbeat pattern (~1 Hz).
-    private func startHeartbeat() {
-        Task { @MainActor in
-            while !Task.isCancelled {
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
-                try? await Task.sleep(for: .milliseconds(180))
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = false }
-                try? await Task.sleep(for: .milliseconds(120))
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
-                try? await Task.sleep(for: .milliseconds(180))
-                withAnimation(.easeInOut(duration: 0.25)) { heartbeat = false }
-                try? await Task.sleep(for: .milliseconds(900))
-            }
+    /// Double-pulse heartbeat pattern (~1 Hz). Returns when the task is cancelled.
+    private func runHeartbeat() async {
+        while !Task.isCancelled {
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+            try? await Task.sleep(for: .milliseconds(180))
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = false }
+            try? await Task.sleep(for: .milliseconds(120))
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+            try? await Task.sleep(for: .milliseconds(180))
+            withAnimation(.easeInOut(duration: 0.25)) { heartbeat = false }
+            try? await Task.sleep(for: .milliseconds(900))
         }
     }
 }

@@ -13,17 +13,29 @@ struct JournalEditorView: View {
     @State private var isFavorite = false
     @State private var gamificationService: GameificationService?
     @State private var showSaveFlash = false
+    @State private var showDiscardDialog = false
+    @FocusState private var bodyFocused: Bool
 
     private var isEditing: Bool { existingEntry != nil }
     private var profile: UserProfile? { profiles.first }
 
+    /// True when closing now would throw away something the user typed.
+    private var hasUnsavedChanges: Bool {
+        if let entry = existingEntry {
+            return title != entry.title || body_ != entry.body
+                || selectedMood != entry.mood || isFavorite != entry.isFavorite
+        }
+        return !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            || !body_.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     private let prompts = [
-        "What's on your mind right now?",
-        "What triggered you today and how did you handle it?",
-        "Write about something you're grateful for.",
-        "What would you say to yourself 6 months from now?",
-        "Describe a small win from today.",
-        "What's one thing you learned about yourself recently?",
+        String(localized: "What's on your mind right now?"),
+        String(localized: "What triggered you today and how did you handle it?"),
+        String(localized: "Write about something you're grateful for."),
+        String(localized: "What would you say to yourself 6 months from now?"),
+        String(localized: "Describe a small win from today."),
+        String(localized: "What's one thing you learned about yourself recently?"),
     ]
 
     var body: some View {
@@ -104,10 +116,12 @@ struct JournalEditorView: View {
                             .scrollContentBackground(.hidden)
                             .foregroundStyle(Color.theme.textPrimary)
                             .frame(minHeight: 200)
+                            .focused($bodyFocused)
                     }
                 }
                     .padding(20)
                 }
+                .scrollDismissesKeyboard(.interactively)
                 .background(Color.theme.deepBackground)
 
                 // Golden save flash overlay
@@ -124,10 +138,26 @@ struct JournalEditorView: View {
             } // end ZStack
             .navigationTitle(isEditing ? "Edit Entry" : "New Entry")
             .navigationBarTitleDisplayMode(.inline)
+            // A half-written entry must never vanish on an accidental swipe-down.
+            .interactiveDismissDisabled(hasUnsavedChanges)
+            .confirmationDialog("Discard this entry?", isPresented: $showDiscardDialog, titleVisibility: .visible) {
+                Button("Discard", role: .destructive) { dismiss() }
+                Button("Keep Editing", role: .cancel) {}
+            } message: {
+                Text("Your writing hasn't been saved.")
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                        .foregroundStyle(Color.theme.textSecondary)
+                    Button("Cancel") {
+                        if hasUnsavedChanges { showDiscardDialog = true } else { dismiss() }
+                    }
+                    .foregroundStyle(Color.theme.textSecondary)
+                }
+
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") { bodyFocused = false }
+                        .fontWeight(.semibold)
                 }
 
                 ToolbarItem(placement: .primaryAction) {
@@ -186,7 +216,7 @@ struct JournalEditorView: View {
                 gamificationService = service
             }
             gamificationService?.addXP(15, reason: "Journal Entry")
-            gamificationService?.progressQuest(questId: UUID()) // Progress journal quest
+            gamificationService?.progressQuests(ofKind: .journal)
         }
 
         HapticService.notification(.success)

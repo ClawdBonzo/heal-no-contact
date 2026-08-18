@@ -103,29 +103,31 @@ struct WelcomePageView: View {
             withAnimation(.easeOut(duration: 0.6).delay(0.5)) {
                 showButton = true
             }
-            // Heartbeat — double-pulse pattern (fast-fast-rest) at ~1Hz
             if !reduceMotion {
-                startHeartbeat()
                 withAnimation(.easeInOut(duration: 3.5).repeatForever(autoreverses: true)) {
                     glowPulse = true
                 }
             }
         }
+        // Heartbeat — double-pulse pattern (fast-fast-rest) at ~1Hz. Bound to the view's
+        // lifetime via `.task`, so it stops when the welcome page is gone.
+        .task {
+            guard !reduceMotion else { return }
+            await runHeartbeat()
+        }
     }
 
-    /// Heartbeat pattern: quick contraction, quick release, pause, repeat.
-    private func startHeartbeat() {
-        Task { @MainActor in
-            while !Task.isCancelled {
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
-                try? await Task.sleep(for: .milliseconds(180))
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = false }
-                try? await Task.sleep(for: .milliseconds(120))
-                withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
-                try? await Task.sleep(for: .milliseconds(180))
-                withAnimation(.easeInOut(duration: 0.25)) { heartbeat = false }
-                try? await Task.sleep(for: .milliseconds(900))
-            }
+    /// Heartbeat pattern: quick contraction, quick release, pause, repeat. Returns on cancellation.
+    private func runHeartbeat() async {
+        while !Task.isCancelled {
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+            try? await Task.sleep(for: .milliseconds(180))
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = false }
+            try? await Task.sleep(for: .milliseconds(120))
+            withAnimation(.easeInOut(duration: 0.18)) { heartbeat = true }
+            try? await Task.sleep(for: .milliseconds(180))
+            withAnimation(.easeInOut(duration: 0.25)) { heartbeat = false }
+            try? await Task.sleep(for: .milliseconds(900))
         }
     }
 }

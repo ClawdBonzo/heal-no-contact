@@ -1,88 +1,89 @@
 import SwiftUI
 
 struct UrgeWaveView: View {
-    @State private var elapsedSeconds = 0
-    @State private var timer: Timer?
-    @State private var wavePhase: CGFloat = 0
+    /// When the urge started — the timer is derived from this, so it stays accurate
+    /// through backgrounding and scrolling (a counter-based timer drifted).
+    let startedAt: Date
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    init(startedAt: Date = .now) {
+        self.startedAt = startedAt
+    }
 
     var body: some View {
-        VStack(spacing: 16) {
-            Text("Urge Wave Timer")
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(Color.theme.textSecondary)
+        // Ticks once per second; the wave phase is derived from elapsed time (no Timer, no drift).
+        TimelineView(.periodic(from: startedAt, by: 1)) { context in
+            let elapsed = max(0, context.date.timeIntervalSince(startedAt))
+            let phase = reduceMotion ? 0 : CGFloat(elapsed) * 0.1
 
-            // Wave animation
-            ZStack {
-                // Wave
-                WaveShape(phase: wavePhase, amplitude: 8)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.theme.healPurple.opacity(0.3),
-                                Color.theme.healBlue.opacity(0.1)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
+            VStack(spacing: 16) {
+                Text("Urge Wave Timer")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.theme.textSecondary)
+
+                // Wave animation
+                ZStack {
+                    WaveShape(phase: phase, amplitude: 8)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.theme.healPurple.opacity(0.3),
+                                    Color.theme.healBlue.opacity(0.1)
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
                         )
-                    )
-                    .frame(height: 60)
+                        .frame(height: 60)
 
-                WaveShape(phase: wavePhase + .pi / 2, amplitude: 6)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color.theme.healPink.opacity(0.2),
-                                Color.theme.healPurple.opacity(0.05)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
+                    WaveShape(phase: phase + .pi / 2, amplitude: 6)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.theme.healPink.opacity(0.2),
+                                    Color.theme.healPurple.opacity(0.05)
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
                         )
-                    )
-                    .frame(height: 60)
-            }
-            .frame(height: 60)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .frame(height: 60)
+                }
+                .frame(height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .animation(reduceMotion ? nil : .linear(duration: 1), value: phase)
+                .accessibilityHidden(true)
 
-            // Timer display
-            HStack(spacing: 4) {
-                Image(systemName: "clock.fill")
-                    .foregroundStyle(Color.theme.healPurple)
-                Text(timeString)
-                    .font(.title3.weight(.bold).monospacedDigit())
-                    .foregroundStyle(Color.theme.textPrimary)
-            }
+                // Timer display
+                HStack(spacing: 4) {
+                    Image(systemName: "clock.fill")
+                        .foregroundStyle(Color.theme.healPurple)
+                    Text(timeString(for: elapsed))
+                        .font(.title3.weight(.bold).monospacedDigit())
+                        .foregroundStyle(Color.theme.textPrimary)
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(Text("Time riding this urge"))
+                .accessibilityValue(Text(timeString(for: elapsed)))
 
-            Text("Most urges peak at 10-20 minutes then fade. You're doing great.")
-                .font(.caption)
-                .foregroundStyle(Color.theme.textTertiary)
-                .multilineTextAlignment(.center)
-        }
-        .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.theme.cardBackground)
-        )
-        .onAppear {
-            startTimer()
-        }
-        .onDisappear {
-            timer?.invalidate()
+                Text("Most urges peak at 10-20 minutes then fade. You're doing great.")
+                    .font(.caption)
+                    .foregroundStyle(Color.theme.textTertiary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(20)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.theme.cardBackground)
+            )
         }
     }
 
-    private var timeString: String {
-        let minutes = elapsedSeconds / 60
-        let seconds = elapsedSeconds % 60
+    private func timeString(for elapsed: TimeInterval) -> String {
+        let total = Int(elapsed)
+        let minutes = total / 60
+        let seconds = total % 60
         return String(format: "%02d:%02d", minutes, seconds)
-    }
-
-    private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            elapsedSeconds += 1
-            withAnimation(.linear(duration: 1)) {
-                wavePhase += 0.1
-            }
-        }
     }
 }
 

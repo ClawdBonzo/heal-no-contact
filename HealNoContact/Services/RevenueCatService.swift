@@ -71,7 +71,7 @@ final class RevenueCatService: NSObject {
         do {
             offerings = try await Purchases.shared.offerings()
         } catch {
-            print("[RevenueCat] Failed to fetch offerings: \(error.localizedDescription)")
+            Log.purchases.error("Failed to fetch offerings: \(error.localizedDescription)")
         }
         isLoading = false
     }
@@ -80,7 +80,7 @@ final class RevenueCatService: NSObject {
         do {
             customerInfo = try await Purchases.shared.customerInfo()
         } catch {
-            print("[RevenueCat] Failed to fetch customer info: \(error.localizedDescription)")
+            Log.purchases.error("Failed to fetch customer info: \(error.localizedDescription)")
         }
     }
 
@@ -94,6 +94,15 @@ final class RevenueCatService: NSObject {
 
     func restorePurchases() async throws {
         customerInfo = try await Purchases.shared.restorePurchases()
+    }
+
+    /// Whether this Apple ID is still eligible for each product's introductory offer (free trial).
+    /// A user who already consumed the subscription group's trial gets `false` and must not be
+    /// shown "Start Free Trial" — StoreKit would charge them immediately.
+    func trialEligibility(for productIdentifiers: [String]) async -> [String: Bool] {
+        guard !productIdentifiers.isEmpty else { return [:] }
+        let result = await Purchases.shared.checkTrialOrIntroDiscountEligibility(productIdentifiers: productIdentifiers)
+        return result.mapValues { $0.status == .eligible }
     }
 }
 

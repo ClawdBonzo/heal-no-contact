@@ -335,7 +335,7 @@ private struct JournalingStreakCard: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.theme.textPrimary)
 
-                Text("\(journalingStreak) consecutive \(journalingStreak == 1 ? "day" : "days")")
+                Text(journalingStreak == 1 ? String(localized: "1 consecutive day") : String(localized: "\(journalingStreak) consecutive days"))
                     .font(.caption)
                     .foregroundStyle(Color.theme.textSecondary)
             }
@@ -376,7 +376,7 @@ private struct LettersCard: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Color.theme.textPrimary)
 
-                Text("\(count) \(count == 1 ? "letter" : "letters") written and sealed")
+                Text(count == 1 ? String(localized: "1 letter written and sealed") : String(localized: "\(count) letters written and sealed"))
                     .font(.caption)
                     .foregroundStyle(Color.theme.textSecondary)
             }
@@ -394,7 +394,7 @@ private struct LettersCard: View {
 // MARK: - Quote Card
 
 private struct InsightQuoteCard: View {
-    private let quote = QuoteService.shared.randomQuote()
+    private let quote = QuoteService.shared.dailyQuote()
 
     var body: some View {
         VStack(spacing: 10) {
@@ -407,7 +407,7 @@ private struct InsightQuoteCard: View {
                 .multilineTextAlignment(.center)
                 .lineSpacing(3)
 
-            Text("�� \(quote.author)")
+            Text("— \(quote.author)")
                 .font(.caption)
                 .foregroundStyle(Color.theme.textTertiary)
         }

@@ -7,6 +7,7 @@ struct JournalListView: View {
     @State private var showEditor = false
     @State private var showLetterWriter = false
     @State private var selectedEntry: JournalEntry?
+    @State private var entryPendingDelete: JournalEntry?
     @State private var searchText = ""
     @State private var filterMood: JournalEntry.MoodType?
 
@@ -70,7 +71,7 @@ struct JournalListView: View {
                                         }
 
                                         Button(role: .destructive) {
-                                            modelContext.delete(entry)
+                                            entryPendingDelete = entry
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                         }
@@ -106,8 +107,25 @@ struct JournalListView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showEditor) {
+            .sheet(isPresented: $showEditor, onDismiss: { selectedEntry = nil }) {
                 JournalEditorView(existingEntry: selectedEntry)
+            }
+            .confirmationDialog(
+                "Delete this entry?",
+                isPresented: Binding(get: { entryPendingDelete != nil },
+                                     set: { if !$0 { entryPendingDelete = nil } }),
+                titleVisibility: .visible
+            ) {
+                Button("Delete", role: .destructive) {
+                    if let entry = entryPendingDelete {
+                        if selectedEntry === entry { selectedEntry = nil }
+                        modelContext.delete(entry)
+                    }
+                    entryPendingDelete = nil
+                }
+                Button("Cancel", role: .cancel) { entryPendingDelete = nil }
+            } message: {
+                Text("This can't be undone.")
             }
             .sheet(isPresented: $showLetterWriter) {
                 UnsentLetterView()

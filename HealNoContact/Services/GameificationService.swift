@@ -80,16 +80,35 @@ final class GameificationService {
 
     func progressQuest(questId: UUID) {
         guard let quest = quests.first(where: { $0.id == questId }), !quest.isCompleted else { return }
+        progress(quest)
+        try? modelContext.save()
+    }
 
+    /// Quest "kinds" — the icon is the stable marker shared by the daily and weekly variants
+    /// (titles are localized at seed time and can't be matched reliably).
+    enum QuestKind: String {
+        case checkIn = "heart.fill"
+        case journal = "book.fill"
+        case noContact = "lock.fill"
+        case selfCare = "leaf.fill"
+    }
+
+    /// Advances every active (unexpired, incomplete) quest of the given kind by one step —
+    /// e.g. saving a journal entry progresses both "Journal Feelings" (daily) and "Journal Warrior" (weekly).
+    func progressQuests(ofKind kind: QuestKind) {
+        let matching = quests.filter { $0.icon == kind.rawValue && !$0.isCompleted && !$0.isExpired }
+        guard !matching.isEmpty else { return }
+        for quest in matching { progress(quest) }
+        try? modelContext.save()
+    }
+
+    private func progress(_ quest: Quest) {
         quest.incrementProgress()
-
         if quest.isCompleted {
             addXP(quest.xpReward, reason: "Quest: \(quest.title)")
             HapticService.questComplete()
             checkQuestCompletionBadges()
         }
-
-        try? modelContext.save()
     }
 
     func refreshQuests(for userId: UUID) {
@@ -210,7 +229,7 @@ final class GameificationService {
     }
 
     private func checkQuestCompletionBadges() {
-        guard let gamification = userGamification else { return }
+        guard userGamification != nil else { return }
 
         let dailyQuestCount = quests.filter { $0.type == .daily && $0.isCompleted }.count
         let weeklyQuestCount = quests.filter { $0.type == .weekly && $0.isCompleted }.count
