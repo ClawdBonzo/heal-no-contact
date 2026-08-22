@@ -36,6 +36,9 @@ struct HealNoContactApp: App {
 
     init() {
         revenueCat.configure()
+        // Install the notification delegate before launch finishes so a tapped
+        // notification that cold-starts the app is routed correctly.
+        _ = NotificationService.shared
     }
 
     var body: some Scene {
@@ -56,20 +59,38 @@ struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Query private var profiles: [UserProfile]
     @State private var showSplash = true
+    /// The one gamification engine shared by every screen (see GameificationService).
+    @State private var game: GameificationService?
 
-    /// Pushes live state to the widgets and refreshes the re-engagement reminder ladder.
+    /// Pushes live state to the widgets, refreshes the reminder ladder, and rolls the
+    /// gamification state forward (quests, flame, no-contact credit) for the new day.
     private func syncWidgetsAndReminders() {
-        guard let profile = profiles.first else { return }
-        WidgetSync.update(
-            streakDays: profile.currentStreakDays,
-            goalDays: profile.noContactGoalDays,
-            mantra: profile.personalMantra
-        )
+        guard let profile = profiles.first, profile.hasCompletedOnboarding else { return }
+        game?.sync(profile: profile)
+        WidgetSync.update(profile: profile)
         if profile.notificationsEnabled {
             NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+            NotificationService.shared.scheduleMilestoneReminders(profile: profile)
         }
         // Premium encouragement reminders follow the entitlement (renewals, restores, lapses).
         NotificationService.shared.syncPremiumReminders(notificationsEnabled: profile.notificationsEnabled)
+    }
+
+    /// heal://checkin · heal://sos · heal://journal · heal://home (widgets + notifications)
+    private func handle(url: URL) {
+        guard url.scheme == "heal" else { return }
+        switch url.host {
+        case "sos":
+            appState.selectedTab = .dashboard
+            appState.showEmergencySOS = true
+        case "checkin":
+            appState.selectedTab = .dashboard
+            appState.showDailyCheckIn = true
+        case "journal":
+            appState.selectedTab = .journal
+        default:
+            appState.selectedTab = .dashboard
+        }
     }
 
     var body: some View {
@@ -79,8 +100,9 @@ struct RootView: View {
                     if profiles.isEmpty || !(profiles.first?.hasCompletedOnboarding ?? false) {
                         OnboardingContainerView()
                             .transition(.opacity.combined(with: .scale(scale: 0.95)))
-                    } else {
+                    } else if let game {
                         MainTabBarView()
+                            .environment(game)
                             .transition(.opacity.combined(with: .scale(scale: 1.02)))
                     }
                 }
@@ -104,6 +126,8 @@ struct RootView: View {
             #endif
         }
         .onAppear {
+            if game == nil { game = GameificationService(modelContext: modelContext) }
+            syncWidgetsAndReminders()
             #if DEBUG
             if UserDefaults.standard.bool(forKey: "seedDemo") {
                 let screen = UserDefaults.standard.string(forKey: "demoScreen") ?? "home"
@@ -126,6 +150,15 @@ struct RootView: View {
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { syncWidgetsAndReminders() }
+        }
+        .onChange(of: profiles.first?.hasCompletedOnboarding) { _, done in
+            if done == true { syncWidgetsAndReminders() }
+        }
+        .onOpenURL { handle(url: $0) }
+        .onChange(of: NotificationService.shared.pendingDeepLink) { _, url in
+            guard let url else { return }
+            handle(url: url)
+            NotificationService.shared.pendingDeepLink = nil
         }
     }
 }

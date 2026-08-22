@@ -12,8 +12,9 @@ struct EmergencyView: View {
     @State private var ambientPulse = false
     @State private var urgeStartTime = Date.now
     @State private var showCompleted = false
-    @State private var gamificationService: GameificationService?
+    @Environment(GameificationService.self) private var game
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.requestReview) private var requestReview
 
     private var profile: UserProfile? { profiles.first }
 
@@ -168,6 +169,9 @@ struct EmergencyView: View {
             // Success overlay
             if showCompleted {
                 EmergencyCompletedOverlay {
+                    // A resisted urge is the best moment to ask for a rating (throttled).
+                    ReviewPrompter.maybeRequest(requestReview, moment: .resistedUrge,
+                                                streakDays: profile?.currentStreakDays ?? 0)
                     dismiss()
                 }
                 .transition(.scale.combined(with: .opacity))
@@ -192,14 +196,9 @@ struct EmergencyView: View {
         )
         modelContext.insert(log)
 
-        // Award XP for resisting emergency SOS
-        if gamificationService == nil, let userId = profile?.id {
-            let service = GameificationService(modelContext: modelContext)
-            service.initializeGamification(for: userId)
-            gamificationService = service
-        }
-        gamificationService?.addXP(25, reason: "SOS Resisted")
-        gamificationService?.progressQuests(ofKind: .selfCare)
+        // Award XP for resisting (self-care quests progress on their own)
+        game.addXP(25, reason: String(localized: "Urge resisted"))
+        game.progressQuests(ofKind: .selfCare)
 
         HapticService.milestone()
 

@@ -12,39 +12,25 @@ private func dashboardRecentMoodsDescriptor() -> FetchDescriptor<MoodEntry> {
 
 struct DashboardView: View {
     @Environment(AppState.self) private var appState
+    @Environment(GameificationService.self) private var game
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
     @Query private var profiles: [UserProfile]
 
     @Query(dashboardRecentMoodsDescriptor()) private var recentMoods: [MoodEntry]
     @Query(sort: \Milestone.dayTarget) private var milestones: [Milestone]
-    @Query private var gamifications: [UserGamification]
-    @Query private var streakFlames: [StreakFlame]
-    @Query private var allQuests: [Quest]
-    @Query(sort: \Badge.unlockedAt, order: .reverse) private var allBadges: [Badge]
-    @State private var showCheckIn = false
     @State private var animateRing = false
-    @State private var gamificationService: GameificationService?
-    @State private var showLevelUpModal = false
-    @State private var levelUpData: LevelUpAward? = nil
     @State private var showPhoenixOverlay = false
-    @State private var phoenixMilestoneDay: Int? = nil
+    @State private var phoenixQueue: [Int] = []
+    @State private var showWeekly = false
+    /// Bumped at midnight so the ring and "days to go" re-render without a relaunch.
+    @State private var dayTick = 0
 
     private var profile: UserProfile? { profiles.first }
-    private var gamification: UserGamification? { gamifications.first }
-    private var streakFlame: StreakFlame? { streakFlames.first }
-
-    private var activeDailyQuest: Quest? {
-        guard let userId = profile?.id else { return nil }
-        return allQuests
-            .filter { $0.userId == userId && $0.type == .daily && !$0.isExpired }
-            .sorted { !$0.isCompleted && $1.isCompleted }
-            .first
-    }
-
-    private var unlockedBadges: [Badge] {
-        guard let userId = profile?.id else { return [] }
-        return allBadges.filter { $0.userId == userId }
-    }
+    private var gamification: UserGamification? { game.userGamification }
+    private var streakFlame: StreakFlame? { game.streakFlame }
+    private var unlockedBadges: [Badge] { game.badges }
 
     var body: some View {
         NavigationStack {
@@ -59,11 +45,8 @@ struct DashboardView: View {
                                 try? modelContext.save()
                                 HapticService.notification(.success)
                                 animateRing = true
-                                WidgetSync.update(
-                                    streakDays: profile.currentStreakDays,
-                                    goalDays: profile.noContactGoalDays,
-                                    mantra: profile.personalMantra
-                                )
+                                game.syncFlame(streakDays: profile.currentStreakDays)
+                                WidgetSync.update(profile: profile)
                             }
                         }
 
@@ -87,17 +70,42 @@ struct DashboardView: View {
 
                         // 2. TODAY — check-in + journal
                         TodayActions(
-                            onCheckIn: { showCheckIn = true },
+                            checkedInToday: game.hasCheckedInToday,
+                            onCheckIn: { appState.showDailyCheckIn = true },
                             onJournal: { appState.selectedTab = .journal }
                         )
 
-                        // 3. DAILY QUEST
-                        if let activeQuest = activeDailyQuest {
-                            VStack(alignment: .leading, spacing: 12) {
-                                SectionHeader(title: String(localized: "Today's Quest"))
-                                DailyQuestView(quest: activeQuest) {
-                                    gamificationService?.progressQuest(questId: activeQuest.id)
-                                    HapticService.impact(.light)
+                        // 3. QUESTS — progress automatically from real actions
+                        if !game.dailyQuests.isEmpty {
+                            VStack(alignment: .leading, spacing: 10) {
+                                SectionHeader(
+                                    title: String(localized: "Today's Quests"),
+                                    trailing: String(localized: "\(game.dailyCompletedCount)/\(game.dailyQuests.count) done")
+                                )
+                                ForEach(game.dailyQuests) { quest in
+                                    QuestRow(quest: quest)
+                                }
+                                if !game.weeklyQuests.isEmpty {
+                                    DisclosureGroup(isExpanded: $showWeekly) {
+                                        VStack(spacing: 8) {
+                                            ForEach(game.weeklyQuests) { quest in
+                                                QuestRow(quest: quest)
+                                            }
+                                        }
+                                        .padding(.top, 8)
+                                    } label: {
+                                        HStack {
+                                            Text("This week")
+                                                .font(.subheadline.weight(.semibold))
+                                                .foregroundStyle(Color.theme.textSecondary)
+                                            Spacer()
+                                            Text("\(game.weeklyQuests.filter(\.isCompleted).count)/\(game.weeklyQuests.count)")
+                                                .font(.caption.weight(.semibold).monospacedDigit())
+                                                .foregroundStyle(Color.theme.textTertiary)
+                                        }
+                                    }
+                                    .tint(Color.theme.textSecondary)
+                                    .padding(.horizontal, 4)
                                 }
                             }
                         }
@@ -151,7 +159,10 @@ struct DashboardView: View {
             .navigationTitle("Heal")
             .navigationBarTitleDisplayMode(.large)
             .toolbarColorScheme(.dark, for: .navigationBar)
-            .sheet(isPresented: $showCheckIn) {
+            .sheet(isPresented: Binding(
+                get: { appState.showDailyCheckIn },
+                set: { appState.showDailyCheckIn = $0 }
+            )) {
                 DailyCheckInSheet()
                     .presentationDetents([.medium, .large])
                     .presentationDragIndicator(.visible)
@@ -164,39 +175,39 @@ struct DashboardView: View {
             }
         }
         .onAppear {
-            setupGamification()
+            if let profile { game.sync(profile: profile) }
             checkMilestones()
             withAnimation(.easeInOut(duration: 1.0).delay(0.3)) {
                 animateRing = true
             }
         }
-        .onChange(of: gamificationService?.levelUpAward) { _, newValue in
-            if let award = newValue {
-                levelUpData = award
-                showLevelUpModal = true
+        .onChange(of: scenePhase) { _, phase in
+            // Coming back after a night away: roll the day forward without a relaunch.
+            if phase == .active, let profile {
+                game.sync(profile: profile)
+                checkMilestones()
+                dayTick += 1
             }
         }
-        .sheet(isPresented: $showLevelUpModal) {
-            if let levelUp = levelUpData, let gamification = gamification {
-                ZStack {
-                    Color.black.opacity(0.5).ignoresSafeArea()
-
-                    LevelUpModalView(
-                        oldLevel: levelUp.oldLevel,
-                        newLevel: levelUp.newLevel,
-                        levelName: gamification.levelName
-                    ) {
-                        showLevelUpModal = false
-                        gamificationService?.levelUpAward = nil
+        .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
+            if let profile { game.sync(profile: profile) }
+            checkMilestones()
+            dayTick += 1
+        }
+        .id(dayTick)
+        .fullScreenCover(isPresented: $showPhoenixOverlay) {
+            PhoenixRisingOverlay(day: phoenixQueue.first) {
+                if !phoenixQueue.isEmpty { phoenixQueue.removeFirst() }
+                // Several milestones unlocked at once (days away): celebrate each in turn.
+                if phoenixQueue.isEmpty {
+                    showPhoenixOverlay = false
+                } else {
+                    showPhoenixOverlay = false
+                    Task { @MainActor in
+                        try? await Task.sleep(for: .seconds(0.4))
+                        showPhoenixOverlay = true
                     }
                 }
-                .presentationBackground(.clear)
-            }
-        }
-        .fullScreenCover(isPresented: $showPhoenixOverlay) {
-            PhoenixRisingOverlay(day: phoenixMilestoneDay) {
-                showPhoenixOverlay = false
-                phoenixMilestoneDay = nil
             }
         }
     }
@@ -205,44 +216,42 @@ struct DashboardView: View {
         milestones.first { !$0.isUnlocked && $0.dayTarget > profile.currentStreakDays }
     }
 
-    private func setupGamification() {
-        guard let profile = profile else { return }
-
-        if gamificationService == nil {
-            let service = GameificationService(modelContext: modelContext)
-            service.initializeGamification(for: profile.id)
-            gamificationService = service
-        }
-    }
-
     private func checkMilestones() {
         guard let profile else { return }
+        var newlyUnlocked: [Int] = []
 
         for milestone in milestones where !milestone.isUnlocked {
             if profile.currentStreakDays >= milestone.dayTarget {
                 milestone.isUnlocked = true
-                milestone.unlockedAt = .now
-                HapticService.milestone()
-                NotificationService.shared.scheduleMilestoneReminder(
-                    dayCount: milestone.dayTarget,
-                    title: milestone.title
-                )
-                let keyMilestones = [1, 7, 14, 21, 30, 45, 60, 90, 180, 365]
-                if keyMilestones.contains(milestone.dayTarget) {
-                    let targetDay = milestone.dayTarget
-                    Task { @MainActor in
-                        try? await Task.sleep(for: .seconds(0.6))
-                        phoenixMilestoneDay = targetDay
-                        showPhoenixOverlay = true
-                    }
+                // The day it was actually reached, not the day the app happened to be opened.
+                if let start = profile.currentStreakStartDate {
+                    milestone.unlockedAt = Calendar.current.date(byAdding: .day, value: milestone.dayTarget, to: start) ?? .now
+                } else {
+                    milestone.unlockedAt = .now
                 }
+                newlyUnlocked.append(milestone.dayTarget)
+            }
+        }
+        if !newlyUnlocked.isEmpty {
+            try? modelContext.save()
+            HapticService.milestone()
+            let keyMilestones = [1, 7, 14, 21, 30, 45, 60, 90, 180, 365]
+            phoenixQueue = newlyUnlocked.filter { keyMilestones.contains($0) }.sorted()
+            if !phoenixQueue.isEmpty {
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(0.6))
+                    showPhoenixOverlay = true
+                }
+            }
+            if let biggest = newlyUnlocked.max() {
+                ReviewPrompter.maybeRequest(requestReview, moment: .milestone(day: biggest),
+                                            streakDays: profile.currentStreakDays)
             }
         }
 
         let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
-
         let moodCount = (try? modelContext.fetchCount(FetchDescriptor<MoodEntry>())) ?? recentMoods.count
-        gamificationService?.checkMilestoneBadges(
+        game.checkMilestoneBadges(
             streakDays: profile.currentStreakDays,
             journalEntryCount: journalCount,
             moodCheckInCount: moodCount
@@ -353,15 +362,16 @@ private struct SOSChip: View {
 // MARK: - Today Actions (2 big buttons)
 
 private struct TodayActions: View {
+    let checkedInToday: Bool
     let onCheckIn: () -> Void
     let onJournal: () -> Void
 
     var body: some View {
         HStack(spacing: 12) {
             BigActionButton(
-                icon: "checkmark.circle.fill",
-                title: String(localized: "Check In"),
-                subtitle: String(localized: "Log your mood"),
+                icon: checkedInToday ? "checkmark.seal.fill" : "checkmark.circle.fill",
+                title: checkedInToday ? String(localized: "Checked in") : String(localized: "Check In"),
+                subtitle: checkedInToday ? String(localized: "Tap to edit today") : String(localized: "Log your mood"),
                 tint: Color.theme.healTeal,
                 action: onCheckIn
             )
@@ -427,19 +437,21 @@ private struct JourneyStrip: View {
         HStack(spacing: 10) {
             JourneyCard(
                 tint: Color.theme.healPurple,
-                topText: "Lvl \(gamification.currentLevel)",
+                topText: String(localized: "Level \(gamification.currentLevel)"),
                 bigText: gamification.levelName,
-                bottomText: "\(gamification.xpTowardsNextLevel)/\(gamification.xpForNextLevel) XP",
-                progress: gamification.levelProgress
+                bottomText: gamification.isMaxLevel
+                    ? String(localized: "MAX · \(gamification.totalXP) XP")
+                    : String(localized: "\(gamification.xpTowardsNextLevel)/\(gamification.xpForNextLevel) XP"),
+                progress: gamification.isMaxLevel ? 1 : gamification.levelProgress
             )
 
             if let flame {
                 JourneyCard(
                     tint: Color.theme.healGold,
-                    topText: "Flame",
+                    topText: String(localized: "Flame"),
                     bigText: flame.flameName,
-                    bottomText: String(format: "×%.1f · %dd", flame.flameMultiplier, flame.consecutiveDaysWithoutContact),
-                    progress: nil,
+                    bottomText: String(localized: "×\(flame.flameMultiplier.formatted(.number.precision(.fractionLength(2)))) XP · \(flame.consecutiveDaysWithoutContact) days"),
+                    progress: flame.tierProgress,
                     iconName: "flame.fill"
                 )
             }
@@ -448,9 +460,9 @@ private struct JourneyStrip: View {
                 let remaining = max(nextMilestone.dayTarget - currentDays, 0)
                 JourneyCard(
                     tint: Color.theme.healTeal,
-                    topText: "Next",
+                    topText: String(localized: "Next"),
                     bigText: nextMilestone.title,
-                    bottomText: "\(remaining)d to go",
+                    bottomText: String(localized: "\(remaining) days to go"),
                     progress: Double(currentDays) / Double(max(nextMilestone.dayTarget, 1)),
                     iconName: nextMilestone.iconName
                 )

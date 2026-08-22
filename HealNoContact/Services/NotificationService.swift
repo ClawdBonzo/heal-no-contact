@@ -1,11 +1,33 @@
 import Foundation
+import Observation
 import UserNotifications
 
+@Observable
 @MainActor
-final class NotificationService {
+final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationService()
 
-    private init() {}
+    /// Where a tapped notification wants to go (consumed by RootView via `onOpenURL`-style routing).
+    var pendingDeepLink: URL?
+
+    private override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+    }
+
+    // Show banners even while the app is in the foreground (milestones, check-in nudges).
+    nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                            willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        [.banner, .sound]
+    }
+
+    nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                            didReceive response: UNNotificationResponse) async {
+        let link = response.notification.request.content.userInfo["deepLink"] as? String
+        await MainActor.run {
+            if let link, let url = URL(string: link) { NotificationService.shared.pendingDeepLink = url }
+        }
+    }
 
     func requestPermission() async -> Bool {
         do {
@@ -25,6 +47,7 @@ final class NotificationService {
         content.body = QuoteService.shared.randomMotivational()
         content.sound = .default
         content.interruptionLevel = .active
+        content.userInfo = ["deepLink": "heal://checkin"]
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: time)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
@@ -37,20 +60,32 @@ final class NotificationService {
         center.add(request)
     }
 
-    func scheduleMilestoneReminder(dayCount: Int, title: String) {
-        let content = UNMutableNotificationContent()
-        content.title = String(localized: "Milestone Unlocked! 🏆")
-        content.body = String(localized: "\(title) — \(dayCount) days of no contact!")
-        content.sound = .default
-        content.interruptionLevel = .active
+    /// Pre-schedules the next few milestone celebrations at the moment they'll actually be
+    /// reached (streak start + N days, 9:30 local), so they arrive even if the app is closed.
+    /// Rescheduled on every foreground/reset/recover; identifiers are stable per day target.
+    func scheduleMilestoneReminders(profile: UserProfile) {
+        let center = UNUserNotificationCenter.current()
+        let targets = Milestone.defaultMilestones.map { $0.2 }
+        center.removePendingNotificationRequests(withIdentifiers: targets.map { "milestone_\($0)" })
+        guard let start = profile.currentStreakStartDate else { return }
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(
-            identifier: "milestone_\(dayCount)",
-            content: content,
-            trigger: trigger
-        )
-        UNUserNotificationCenter.current().add(request)
+        let cal = Calendar.current
+        let upcoming = targets.filter { $0 > profile.currentStreakDays }.prefix(3)
+        for day in upcoming {
+            guard let reached = cal.date(byAdding: .day, value: day, to: start) else { continue }
+            var comps = cal.dateComponents([.year, .month, .day], from: reached)
+            comps.hour = 9; comps.minute = 30
+            guard let fireDate = cal.date(from: comps), fireDate > .now else { continue }
+            let title = Milestone.defaultMilestones.first { $0.2 == day }?.0 ?? String(localized: "Milestone reached")
+
+            let content = UNMutableNotificationContent()
+            content.title = String(localized: "Milestone Unlocked! 🏆")
+            content.body = String(localized: "\(title) — \(day) days of no contact!")
+            content.sound = .default
+            content.userInfo = ["deepLink": "heal://home"]
+            let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+            center.add(UNNotificationRequest(identifier: "milestone_\(day)", content: content, trigger: trigger))
+        }
     }
 
     /// IDs for the premium encouragement reminders (12:00 / 18:00 / 21:00).
@@ -130,6 +165,7 @@ final class NotificationService {
             content.body = body
             content.sound = .default
             content.interruptionLevel = level
+            content.userInfo = ["deepLink": "heal://checkin"]
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: max(interval, 60), repeats: false)
             center.add(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
         }

@@ -13,33 +13,27 @@ extension Date {
         Calendar.current.isDateInYesterday(self)
     }
 
+    /// "Today" / "Yesterday" / weekday / "Aug 17" / "Aug 17, 2025" — all locale-aware.
     var relativeFormatted: String {
-        if isToday { return "Today" }
-        if isYesterday { return "Yesterday" }
-
-        let formatter = DateFormatter()
+        if isToday { return String(localized: "Today") }
+        if isYesterday { return String(localized: "Yesterday") }
         let daysDiff = Calendar.current.dateComponents([.day], from: self, to: .now).day ?? 0
-
         if daysDiff < 7 {
-            formatter.dateFormat = "EEEE"
+            return formatted(.dateTime.weekday(.wide))
         } else if daysDiff < 365 {
-            formatter.dateFormat = "MMM d"
+            return formatted(.dateTime.month(.abbreviated).day())
         } else {
-            formatter.dateFormat = "MMM d, yyyy"
+            return formatted(.dateTime.month(.abbreviated).day().year())
         }
-        return formatter.string(from: self)
     }
 
+    /// Respects the user's 12/24-hour setting.
     var shortTime: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: self)
+        formatted(date: .omitted, time: .shortened)
     }
 
     var monthDay: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        return formatter.string(from: self)
+        formatted(.dateTime.month(.abbreviated).day())
     }
 
     func daysUntil(_ date: Date) -> Int {

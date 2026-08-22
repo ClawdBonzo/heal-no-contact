@@ -11,7 +11,7 @@ struct JournalEditorView: View {
     @State private var body_ = ""
     @State private var selectedMood: JournalEntry.MoodType = .neutral
     @State private var isFavorite = false
-    @State private var gamificationService: GameificationService?
+    @Environment(GameificationService.self) private var game
     @State private var showSaveFlash = false
     @State private var showDiscardDialog = false
     @FocusState private var bodyFocused: Bool
@@ -209,14 +209,13 @@ struct JournalEditorView: View {
             )
             modelContext.insert(entry)
 
-            // Award XP for new journal entry
-            if gamificationService == nil, let userId = profile?.id {
-                let service = GameificationService(modelContext: modelContext)
-                service.initializeGamification(for: userId)
-                gamificationService = service
-            }
-            gamificationService?.addXP(15, reason: "Journal Entry")
-            gamificationService?.progressQuests(ofKind: .journal)
+            // Award XP for new journal entry (quests progress on their own)
+            game.addXP(15, reason: String(localized: "Journal entry"))
+            game.progressQuests(ofKind: .journal)
+            let count = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
+            game.checkMilestoneBadges(streakDays: profile?.currentStreakDays ?? 0,
+                                      journalEntryCount: count + 1,
+                                      moodCheckInCount: 0)
         }
 
         HapticService.notification(.success)

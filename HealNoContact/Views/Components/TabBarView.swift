@@ -26,6 +26,7 @@ struct MainTabBarView: View {
             // Custom tab bar
             CustomTabBar(selectedTab: $state.selectedTab)
         }
+        .gamificationOverlay()
         .sheet(isPresented: $state.showPaywall) {
             PaywallView()
         }

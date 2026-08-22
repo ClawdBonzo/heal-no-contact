@@ -25,6 +25,13 @@ struct HealProgressView: View {
                     currentDays: profile?.currentStreakDays ?? 0
                 )
 
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Badges")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(Color.theme.textPrimary)
+                    BadgeCatalogView()
+                }
+
                 if moodEntries.count >= 2 {
                     MoodTrendSection(entries: moodEntries)
                 }

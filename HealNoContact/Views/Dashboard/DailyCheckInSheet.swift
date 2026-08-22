@@ -10,9 +10,15 @@ struct DailyCheckInSheet: View {
     @State private var note = ""
     @State private var didContact = false
     @State private var showConfirmReset = false
-    @State private var gamificationService: GameificationService?
+    @Environment(GameificationService.self) private var game
+    @Environment(\.requestReview) private var requestReview
+    @Query(sort: \MoodEntry.createdAt, order: .reverse) private var moods: [MoodEntry]
 
     private var profile: UserProfile? { profiles.first }
+    /// Today's existing check-in, if any — a second save edits it instead of duplicating it.
+    private var todaysEntry: MoodEntry? {
+        moods.first { Calendar.current.isDateInToday($0.createdAt) }
+    }
 
     var body: some View {
         NavigationStack {
@@ -112,6 +118,13 @@ struct DailyCheckInSheet: View {
                 .padding(24)
             }
             .background(Color.theme.deepBackground)
+            .onAppear {
+                if let existing = todaysEntry {
+                    selectedMood = existing.mood
+                    intensity = Double(existing.intensity)
+                    note = existing.note
+                }
+            }
             .navigationTitle("Daily Check-In")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -145,31 +158,37 @@ struct DailyCheckInSheet: View {
     private func finishSave() {
         guard let profile else { dismiss(); return }
 
-        let mood = MoodEntry(
-            mood: selectedMood,
-            intensity: Int(intensity),
-            note: note
-        )
-        modelContext.insert(mood)
+        // One check-in per day: a second save updates today's entry (no duplicate rows, no double XP).
+        if let existing = todaysEntry {
+            existing.mood = selectedMood
+            existing.intensity = Int(intensity)
+            existing.note = note
+        } else {
+            modelContext.insert(MoodEntry(mood: selectedMood, intensity: Int(intensity), note: note))
+        }
         profile.lastCheckInDate = .now
 
-        if gamificationService == nil {
-            let service = GameificationService(modelContext: modelContext)
-            service.initializeGamification(for: profile.id)
-            gamificationService = service
+        if didContact {
+            game.syncFlame(streakDays: profile.currentStreakDays)
         }
 
-        gamificationService?.addXP(10, reason: "Daily Check-In")
-        gamificationService?.progressQuests(ofKind: .checkIn)
-        gamificationService?.refreshQuests(for: profile.id)
+        if game.recordCheckIn() {
+            game.addXP(10, reason: String(localized: "Daily check-in"))
+            game.progressQuests(ofKind: .checkIn)
+            let moodCount = (try? modelContext.fetchCount(FetchDescriptor<MoodEntry>())) ?? 0
+            let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
+            game.checkMilestoneBadges(streakDays: profile.currentStreakDays,
+                                      journalEntryCount: journalCount,
+                                      moodCheckInCount: moodCount + 1)
+            ReviewPrompter.maybeRequest(requestReview,
+                                        moment: .checkInStreak(days: game.userGamification?.dailyStreakDays ?? 0),
+                                        streakDays: profile.currentStreakDays)
+        }
 
-        WidgetSync.update(
-            streakDays: profile.currentStreakDays,
-            goalDays: profile.noContactGoalDays,
-            mantra: profile.personalMantra
-        )
+        WidgetSync.update(profile: profile)
         if profile.notificationsEnabled {
             NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+            NotificationService.shared.scheduleMilestoneReminders(profile: profile)
         }
 
         HapticService.notification(.success)

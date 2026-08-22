@@ -7,6 +7,16 @@ struct LevelUpAward: Equatable {
     let newLevel: Int
 }
 
+/// A transient "+N XP" event for the global toast. `id` makes repeated equal amounts distinct.
+struct XPGain: Equatable, Identifiable {
+    let id = UUID()
+    let amount: Int
+    let reason: String
+}
+
+/// The single gamification engine for the app. One instance is created by `RootView`,
+/// injected via `.environment`, and shared by every screen — so XP, level-ups, quests,
+/// badges and the flame are always in sync and celebrated wherever they're earned.
 @Observable
 @MainActor
 final class GameificationService {
@@ -14,47 +24,82 @@ final class GameificationService {
     var quests: [Quest] = []
     var badges: [Badge] = []
     var streakFlame: StreakFlame?
-    var recentXPGain: Int? = nil
+
+    // Transient events observed by the global overlay.
+    var recentXPGain: XPGain? = nil
     var levelUpAward: LevelUpAward? = nil
+    var recentBadge: Badge? = nil
 
     private let modelContext: ModelContext
+    private var userId: UUID?
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
     }
 
-    // MARK: - Initialization
+    // MARK: - Derived
+
+    var dailyQuests: [Quest] {
+        quests.filter { $0.type == .daily && !$0.isExpired }
+              .sorted { ($0.isCompleted ? 1 : 0, $0.createdAt) < ($1.isCompleted ? 1 : 0, $1.createdAt) }
+    }
+
+    var weeklyQuests: [Quest] {
+        quests.filter { $0.type == .weekly && !$0.isExpired }
+              .sorted { ($0.isCompleted ? 1 : 0, $0.createdAt) < ($1.isCompleted ? 1 : 0, $1.createdAt) }
+    }
+
+    var dailyCompletedCount: Int { dailyQuests.filter(\.isCompleted).count }
+
+    var isMaxLevel: Bool { (userGamification?.currentLevel ?? 1) >= 10 }
+
+    // MARK: - Lifecycle
+
+    /// Idempotent. Call on launch, on foreground, and whenever the profile changes.
+    /// Creates the records on first run, rolls quests over at day/week boundaries,
+    /// recomputes the flame from the real streak, and credits today's no-contact day.
+    func sync(profile: UserProfile) {
+        if userId != profile.id || userGamification == nil {
+            initializeGamification(for: profile.id)
+        }
+        refreshQuests(for: profile.id)
+        syncFlame(streakDays: profile.currentStreakDays)
+        creditNoContactDay(profile: profile)
+        try? modelContext.save()
+    }
+
+    /// Forget all cached model objects (after "Delete All Data").
+    func reset() {
+        userGamification = nil; quests = []; badges = []; streakFlame = nil; userId = nil
+        recentXPGain = nil; levelUpAward = nil; recentBadge = nil
+    }
 
     func initializeGamification(for userId: UUID) {
-        let existing = try? modelContext.fetch(
-            FetchDescriptor<UserGamification>(predicate: #Predicate { $0.userId == userId })
-        ).first
+        self.userId = userId
 
-        if let existing {
+        if let existing = try? modelContext.fetch(
+            FetchDescriptor<UserGamification>(predicate: #Predicate { $0.userId == userId })
+        ).first {
             userGamification = existing
         } else {
-            let newGamification = UserGamification(userId: userId)
-            modelContext.insert(newGamification)
-            userGamification = newGamification
-            try? modelContext.save()
+            let fresh = UserGamification(userId: userId)
+            modelContext.insert(fresh)
+            userGamification = fresh
         }
 
-        let existingFlame = try? modelContext.fetch(
+        if let existingFlame = try? modelContext.fetch(
             FetchDescriptor<StreakFlame>(predicate: #Predicate { $0.userId == userId })
-        ).first
-
-        if let existingFlame {
+        ).first {
             streakFlame = existingFlame
         } else {
-            let newFlame = StreakFlame(userId: userId)
-            modelContext.insert(newFlame)
-            streakFlame = newFlame
-            try? modelContext.save()
+            let flame = StreakFlame(userId: userId)
+            modelContext.insert(flame)
+            streakFlame = flame
         }
 
         loadQuests(for: userId)
         loadBadges(for: userId)
-        seedDefaultQuestsIfNeeded(for: userId)
+        try? modelContext.save()
     }
 
     // MARK: - XP & Levels
@@ -62,39 +107,43 @@ final class GameificationService {
     func addXP(_ amount: Int, reason: String) {
         guard let gamification = userGamification else { return }
 
+        let multiplier = streakFlame?.flameMultiplier ?? 1.0
+        let awarded = max(1, Int((Double(amount) * multiplier).rounded()))
         let oldLevel = gamification.currentLevel
-        gamification.addXP(Int(Double(amount) * (streakFlame?.flameMultiplier ?? 1.0)))
+        gamification.addXP(awarded)
 
-        recentXPGain = amount
+        recentXPGain = XPGain(amount: awarded, reason: reason)
         HapticService.xpGain()
 
         if gamification.currentLevel > oldLevel {
             levelUpAward = LevelUpAward(oldLevel: oldLevel, newLevel: gamification.currentLevel)
             HapticService.levelUp()
+            checkLevelBadges()
         }
 
         try? modelContext.save()
     }
 
-    // MARK: - Quest Management
+    // MARK: - Flame
 
-    func progressQuest(questId: UUID) {
-        guard let quest = quests.first(where: { $0.id == questId }), !quest.isCompleted else { return }
-        progress(quest)
-        try? modelContext.save()
+    /// The flame is a function of the real no-contact streak: it grows with the streak,
+    /// resets with it, and multiplies XP up to ×1.5 at 90+ days.
+    func syncFlame(streakDays: Int) {
+        streakFlame?.updateFlameLevel(for: max(streakDays, 0))
     }
 
-    /// Quest "kinds" — the icon is the stable marker shared by the daily and weekly variants
-    /// (titles are localized at seed time and can't be matched reliably).
+    // MARK: - Quests
+
     enum QuestKind: String {
         case checkIn = "heart.fill"
         case journal = "book.fill"
         case noContact = "lock.fill"
         case selfCare = "leaf.fill"
+        case crusader = "star.fill"
     }
 
     /// Advances every active (unexpired, incomplete) quest of the given kind by one step —
-    /// e.g. saving a journal entry progresses both "Journal Feelings" (daily) and "Journal Warrior" (weekly).
+    /// e.g. saving a journal entry progresses "Journal Feelings" (daily) and "Journal Warrior" (weekly).
     func progressQuests(ofKind kind: QuestKind) {
         let matching = quests.filter { $0.icon == kind.rawValue && !$0.isCompleted && !$0.isExpired }
         guard !matching.isEmpty else { return }
@@ -104,177 +153,152 @@ final class GameificationService {
 
     private func progress(_ quest: Quest) {
         quest.incrementProgress()
-        if quest.isCompleted {
-            addXP(quest.xpReward, reason: "Quest: \(quest.title)")
-            HapticService.questComplete()
-            checkQuestCompletionBadges()
+        guard quest.isCompleted else { return }
+
+        addXP(quest.xpReward, reason: quest.title)
+        HapticService.questComplete()
+
+        // Completing any daily quest feeds the weekly "Quest Crusader".
+        if quest.type == .daily {
+            for weekly in quests where weekly.icon == QuestKind.crusader.rawValue && weekly.type == .weekly
+                && !weekly.isCompleted && !weekly.isExpired {
+                progress(weekly)
+            }
         }
+        checkQuestCompletionBadges()
     }
 
+    /// Credits one "no-contact day" per calendar day the user shows up without a reset that day.
+    /// Drives the daily "No-Contact Victory" and weekly "No-Contact Champion" quests.
+    private func creditNoContactDay(profile: UserProfile) {
+        guard let g = userGamification, profile.currentStreakDays >= 1 else { return }
+        let cal = Calendar.current
+        if let last = g.lastNoContactCreditDate, cal.isDateInToday(last) { return }
+        if let reset = profile.lastResetDate, cal.isDateInToday(reset) { return }
+        g.lastNoContactCreditDate = .now
+        progressQuests(ofKind: .noContact)
+    }
+
+    /// Daily quests expire at the end of the local day; weekly ones at the start of next week.
+    /// Safe to call often — only creates when nothing active exists.
     func refreshQuests(for userId: UUID) {
         let now = Date.now
-        let calendar = Calendar.current
+        let cal = Calendar.current
 
-        let expiredDaily = quests.filter { $0.type == .daily && $0.expiresAt < now }
-        for quest in expiredDaily {
-            modelContext.delete(quest)
+        for quest in quests where quest.expiresAt <= now { modelContext.delete(quest) }
+        quests.removeAll { $0.expiresAt <= now }
+
+        if !quests.contains(where: { $0.type == .daily }) {
+            let endOfDay = cal.startOfDay(for: cal.date(byAdding: .day, value: 1, to: now) ?? now)
+            createDailyQuests(for: userId, expiresAt: endOfDay)
         }
-
-        let existingDaily = quests.filter { $0.type == .daily && $0.expiresAt > now }
-        if existingDaily.isEmpty {
-            createDailyQuests(for: userId)
+        if !quests.contains(where: { $0.type == .weekly }) {
+            let weekStart = cal.date(from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)) ?? now
+            let nextWeek = cal.date(byAdding: .day, value: 7, to: weekStart) ?? now
+            createWeeklyQuests(for: userId, expiresAt: nextWeek)
         }
-
-        let mondayOfThisWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))!
-        let endOfWeek = calendar.date(byAdding: .day, value: 7, to: mondayOfThisWeek)!
-
-        let expiredWeekly = quests.filter { $0.type == .weekly && $0.expiresAt < now }
-        for quest in expiredWeekly {
-            modelContext.delete(quest)
-        }
-
-        let existingWeekly = quests.filter { $0.type == .weekly && $0.expiresAt > now }
-        if existingWeekly.isEmpty {
-            createWeeklyQuests(for: userId, expiresAt: endOfWeek)
-        }
-
         loadQuests(for: userId)
-        try? modelContext.save()
     }
 
-    private func createDailyQuests(for userId: UUID) {
-        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date.now)!
-
-        let dailyQuests: [(String, String, String, Int)] = [
-            (String(localized: "Daily Check-In"), String(localized: "Log your mood today"), "heart.fill", 10),
-            (String(localized: "Journal Feelings"), String(localized: "Write a journal entry"), "book.fill", 15),
-            (String(localized: "No-Contact Victory"), String(localized: "Go 24 hours without contact"), "lock.fill", 25),
-            (String(localized: "Self-Care Time"), String(localized: "Complete a self-care activity"), "leaf.fill", 20)
+    private func createDailyQuests(for userId: UUID, expiresAt: Date) {
+        let daily: [(String, String, String, Int)] = [
+            (String(localized: "Daily Check-In"), String(localized: "Log your mood today"), QuestKind.checkIn.rawValue, 10),
+            (String(localized: "Journal Feelings"), String(localized: "Write a journal entry"), QuestKind.journal.rawValue, 15),
+            (String(localized: "No-Contact Victory"), String(localized: "Go 24 hours without contact"), QuestKind.noContact.rawValue, 25),
+            (String(localized: "Self-Care Time"), String(localized: "Ride out an urge with SOS"), QuestKind.selfCare.rawValue, 20)
         ]
-
-        for (title, details, icon, xp) in dailyQuests {
-            let quest = Quest(
-                userId: userId,
-                type: .daily,
-                title: title,
-                details: details,
-                icon: icon,
-                targetCount: 1,
-                xpReward: xp,
-                expiresAt: tomorrow
-            )
-            modelContext.insert(quest)
+        for (title, details, icon, xp) in daily {
+            modelContext.insert(Quest(userId: userId, type: .daily, title: title, details: details,
+                                      icon: icon, targetCount: 1, xpReward: xp, expiresAt: expiresAt))
         }
     }
 
     private func createWeeklyQuests(for userId: UUID, expiresAt: Date) {
-        let weeklyQuests: [(String, String, String, Int, Int)] = [
-            (String(localized: "Journal Warrior"), String(localized: "Write 5 journal entries"), "book.fill", 5, 50),
-            (String(localized: "No-Contact Champion"), String(localized: "7 days without contact"), "lock.fill", 7, 100),
-            (String(localized: "Mood Master"), String(localized: "Log mood 7 times"), "heart.fill", 7, 50),
-            (String(localized: "Quest Crusader"), String(localized: "Complete 3 daily quests"), "star.fill", 3, 75)
+        let weekly: [(String, String, String, Int, Int)] = [
+            (String(localized: "Journal Warrior"), String(localized: "Write 5 journal entries"), QuestKind.journal.rawValue, 5, 50),
+            (String(localized: "No-Contact Champion"), String(localized: "7 days without contact"), QuestKind.noContact.rawValue, 7, 100),
+            (String(localized: "Mood Master"), String(localized: "Log mood 7 times"), QuestKind.checkIn.rawValue, 7, 50),
+            (String(localized: "Quest Crusader"), String(localized: "Complete 3 daily quests"), QuestKind.crusader.rawValue, 3, 75)
         ]
-
-        for (title, details, icon, target, xp) in weeklyQuests {
-            let quest = Quest(
-                userId: userId,
-                type: .weekly,
-                title: title,
-                details: details,
-                icon: icon,
-                targetCount: target,
-                xpReward: xp,
-                expiresAt: expiresAt
-            )
-            modelContext.insert(quest)
+        for (title, details, icon, target, xp) in weekly {
+            modelContext.insert(Quest(userId: userId, type: .weekly, title: title, details: details,
+                                      icon: icon, targetCount: target, xpReward: xp, expiresAt: expiresAt))
         }
     }
 
-    private func seedDefaultQuestsIfNeeded(for userId: UUID) {
-        let descriptor = FetchDescriptor<Quest>(predicate: #Predicate { $0.userId == userId })
-        let existingCount = (try? modelContext.fetchCount(descriptor)) ?? 0
+    // MARK: - Check-in streak (separate from the no-contact streak)
 
-        if existingCount == 0 {
-            createDailyQuests(for: userId)
-            let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: Date.now)!
-            createWeeklyQuests(for: userId, expiresAt: endOfWeek)
-            try? modelContext.save()
-            loadQuests(for: userId)
+    /// Returns false if the user already checked in today (no double XP).
+    @discardableResult
+    func recordCheckIn() -> Bool {
+        guard let g = userGamification else { return false }
+        let cal = Calendar.current
+        if let last = g.dailyStreakLastDate, cal.isDateInToday(last) { return false }
+        if let last = g.dailyStreakLastDate, cal.isDateInYesterday(last) {
+            g.dailyStreakDays += 1
+        } else {
+            g.dailyStreakDays = 1
         }
+        g.dailyStreakLastDate = .now
+        return true
+    }
+
+    var hasCheckedInToday: Bool {
+        guard let last = userGamification?.dailyStreakLastDate else { return false }
+        return Calendar.current.isDateInToday(last)
     }
 
     // MARK: - Badge System
 
-    func unlockBadge(badgeId: String, title: String, details: String, icon: String, rarity: Badge.Rarity, isPremium: Bool = false) {
-        guard let userId = userGamification?.userId else { return }
+    /// All badges the app can award, in display order. Used for the locked-badge grid.
+    struct BadgeSpec { let id: String; let title: String; let details: String; let icon: String; let rarity: Badge.Rarity }
+    static var catalog: [BadgeSpec] {[
+        BadgeSpec(id: "first_quest",    title: String(localized: "Quest Starter"),   details: String(localized: "Complete your first daily quest"), icon: "star.fill",        rarity: .common),
+        BadgeSpec(id: "journal_keeper", title: String(localized: "Journal Keeper"),  details: String(localized: "10 journal entries"),             icon: "book.fill",        rarity: .common),
+        BadgeSpec(id: "week_strong",    title: String(localized: "One Week Strong"), details: String(localized: "7 days of no-contact"),           icon: "flame.fill",       rarity: .rare),
+        BadgeSpec(id: "mood_tracker",   title: String(localized: "Mood Tracker"),    details: String(localized: "20 mood check-ins"),              icon: "heart.fill",       rarity: .rare),
+        BadgeSpec(id: "weekly_champion",title: String(localized: "Weekly Champion"), details: String(localized: "Complete a weekly quest"),        icon: "crown.fill",       rarity: .rare),
+        BadgeSpec(id: "month_warrior",  title: String(localized: "30-Day Warrior"),  details: String(localized: "One month of healing"),           icon: "shield.fill",      rarity: .epic),
+        BadgeSpec(id: "rising_phoenix", title: String(localized: "Rising Phoenix"),  details: String(localized: "Reached level 5"),                icon: "flame.fill",       rarity: .epic),
+        BadgeSpec(id: "century_club",   title: String(localized: "Century Club"),    details: String(localized: "100 days free"),                  icon: "100.circle.fill",  rarity: .epic),
+        BadgeSpec(id: "fully_healed",   title: String(localized: "Fully Healed"),    details: String(localized: "Reached ultimate level"),         icon: "heart.fill",       rarity: .legendary),
+    ]}
 
-        let existingBadge = badges.first { $0.badgeId == badgeId }
-        if existingBadge != nil { return }
+    func hasBadge(_ id: String) -> Bool { badges.contains { $0.badgeId == id } }
 
-        let badge = Badge(
-            userId: userId,
-            badgeId: badgeId,
-            title: title,
-            details: details,
-            icon: icon,
-            rarity: rarity,
-            isPremiumCosmetic: isPremium
-        )
-
+    private func unlock(_ id: String) {
+        guard let userId, !hasBadge(id), let spec = Self.catalog.first(where: { $0.id == id }) else { return }
+        let badge = Badge(userId: userId, badgeId: spec.id, title: spec.title, details: spec.details,
+                          icon: spec.icon, rarity: spec.rarity)
         modelContext.insert(badge)
-        badges.append(badge)
-
-        HapticService.badgeUnlock(rarity.rawValue)
+        badges.insert(badge, at: 0)
+        userGamification?.totalBadgesEarned = badges.count
+        recentBadge = badge
+        HapticService.badgeUnlock(spec.rarity.rawValue)
         try? modelContext.save()
     }
 
     private func checkQuestCompletionBadges() {
-        guard userGamification != nil else { return }
-
-        let dailyQuestCount = quests.filter { $0.type == .daily && $0.isCompleted }.count
-        let weeklyQuestCount = quests.filter { $0.type == .weekly && $0.isCompleted }.count
-
-        if dailyQuestCount == 1 && !badges.contains(where: { $0.badgeId == "first_quest" }) {
-            unlockBadge(badgeId: "first_quest", title: String(localized: "Quest Starter"), details: String(localized: "Complete your first daily quest"), icon: "star.fill", rarity: .common)
-        }
-
-        if weeklyQuestCount == 1 && !badges.contains(where: { $0.badgeId == "weekly_champion" }) {
-            unlockBadge(badgeId: "weekly_champion", title: String(localized: "Weekly Champion"), details: String(localized: "Complete a weekly quest"), icon: "crown.fill", rarity: .rare)
+        if quests.contains(where: { $0.type == .daily && $0.isCompleted }) { unlock("first_quest") }
+        if quests.contains(where: { $0.type == .weekly && $0.isCompleted }) {
+            userGamification?.weeklyQuestsCompleted = quests.filter { $0.type == .weekly && $0.isCompleted }.count
+            unlock("weekly_champion")
         }
     }
 
-    // MARK: - Milestone Badges
+    private func checkLevelBadges() {
+        guard let g = userGamification else { return }
+        if g.currentLevel >= 5  { unlock("rising_phoenix") }
+        if g.currentLevel >= 10 { unlock("fully_healed") }
+    }
 
     func checkMilestoneBadges(streakDays: Int, journalEntryCount: Int, moodCheckInCount: Int) {
-        guard let gamification = userGamification else { return }
-
-        if streakDays >= 7 && !badges.contains(where: { $0.badgeId == "week_strong" }) {
-            unlockBadge(badgeId: "week_strong", title: String(localized: "One Week Strong"), details: String(localized: "7 days of no-contact"), icon: "flame.fill", rarity: .rare)
-        }
-
-        if streakDays >= 30 && !badges.contains(where: { $0.badgeId == "month_warrior" }) {
-            unlockBadge(badgeId: "month_warrior", title: String(localized: "30-Day Warrior"), details: String(localized: "One month of healing"), icon: "shield.fill", rarity: .epic)
-        }
-
-        if streakDays >= 100 && !badges.contains(where: { $0.badgeId == "century_club" }) {
-            unlockBadge(badgeId: "century_club", title: String(localized: "Century Club"), details: String(localized: "100 days free"), icon: "100.circle.fill", rarity: .epic)
-        }
-
-        if journalEntryCount >= 10 && !badges.contains(where: { $0.badgeId == "journal_keeper" }) {
-            unlockBadge(badgeId: "journal_keeper", title: String(localized: "Journal Keeper"), details: String(localized: "10 journal entries"), icon: "book.fill", rarity: .common)
-        }
-
-        if moodCheckInCount >= 20 && !badges.contains(where: { $0.badgeId == "mood_tracker" }) {
-            unlockBadge(badgeId: "mood_tracker", title: String(localized: "Mood Tracker"), details: String(localized: "20 mood check-ins"), icon: "heart.fill", rarity: .rare)
-        }
-
-        if gamification.currentLevel >= 5 && !badges.contains(where: { $0.badgeId == "rising_phoenix" }) {
-            unlockBadge(badgeId: "rising_phoenix", title: String(localized: "Rising Phoenix"), details: String(localized: "Reached level 5"), icon: "flame.fill", rarity: .epic)
-        }
-
-        if gamification.currentLevel >= 10 && !badges.contains(where: { $0.badgeId == "fully_healed" }) {
-            unlockBadge(badgeId: "fully_healed", title: String(localized: "Fully Healed"), details: String(localized: "Reached ultimate level"), icon: "heart.fill", rarity: .legendary)
-        }
+        if streakDays >= 7   { unlock("week_strong") }
+        if streakDays >= 30  { unlock("month_warrior") }
+        if streakDays >= 100 { unlock("century_club") }
+        if journalEntryCount >= 10 { unlock("journal_keeper") }
+        if moodCheckInCount >= 20  { unlock("mood_tracker") }
+        checkLevelBadges()
     }
 
     // MARK: - Private Helpers

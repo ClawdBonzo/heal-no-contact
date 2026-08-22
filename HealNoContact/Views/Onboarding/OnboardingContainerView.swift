@@ -112,11 +112,7 @@ struct OnboardingContainerView: View {
         try? modelContext.save()
 
         // Widgets show the real goal immediately instead of 0/30 until the next foreground.
-        WidgetSync.update(
-            streakDays: profile.currentStreakDays,
-            goalDays: profile.noContactGoalDays,
-            mantra: profile.personalMantra
-        )
+        WidgetSync.update(profile: profile)
 
         // Seed default milestones
         for milestone in Milestone.defaultMilestones {

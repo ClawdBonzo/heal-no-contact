@@ -107,6 +107,21 @@ breakup,no contact,heal,recovery,heartbreak,divorce,ex,journal,streak,healing,th
 
 ## What's New in This Version (4000 chars max)
 
+> Note: the live App Store description (7 locales + nl-NL/ar-SA/th/id/en-GB/en-AU/en-CA added in 1.1) is maintained in App Store Connect; the draft below is historical.
+
+**For 1.1:**
+```
+Heal 1.1 — the update that makes every promise real.
+
+• Quests now complete themselves as you check in, journal and ride out urges — no more tapping to claim
+• Your flame finally lights: it grows with your streak and multiplies your XP
+• Level-ups and badges celebrate wherever you earn them
+• The home-screen widget counts up on its own, plus new lock-screen widgets
+• Check in straight from the widget
+• Rate Heal right from the app
+• New languages: Dutch, Arabic, Thai and Indonesian
+```
+
 **For 1.0.1:**
 ```
 Thank you for healing with us. This update fixes the things you told us about:

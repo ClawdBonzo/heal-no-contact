@@ -5,6 +5,7 @@ import SwiftUI
 struct HealNoContactWidgetBundle: WidgetBundle {
     var body: some Widget {
         StreakWidget()
+        SOSWidget()
         MantraWidget()
     }
 }

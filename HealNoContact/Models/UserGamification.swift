@@ -13,6 +13,8 @@ import Foundation
     var totalBadgesEarned: Int
     var createdAt: Date
     var updatedAt: Date
+    /// Last calendar day credited toward the "No-Contact Victory" quests (added in 1.1).
+    var lastNoContactCreditDate: Date? = nil
 
     init(userId: UUID) {
         self.id = UUID()
@@ -77,5 +79,9 @@ import Foundation
             xpTowardsNextLevel -= xpForNextLevel
             currentLevel += 1
         }
+        // At the cap the bar stays full instead of counting past its own threshold.
+        if currentLevel >= 10 { xpTowardsNextLevel = min(xpTowardsNextLevel, xpForNextLevel) }
     }
+
+    var isMaxLevel: Bool { currentLevel >= 10 }
 }

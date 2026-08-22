@@ -4,6 +4,7 @@ import UIKit
 
 struct SettingsView: View {
     @Environment(AppState.self) private var appState
+    @Environment(GameificationService.self) private var game
     @Environment(\.modelContext) private var modelContext
     @Query private var profiles: [UserProfile]
     @Query(sort: \JournalEntry.createdAt, order: .reverse) private var journals: [JournalEntry]
@@ -208,14 +209,12 @@ struct SettingsView: View {
                 Button("Reset", role: .destructive) {
                     guard let profile else { return }
                     profile.resetStreak()
-                    // Keep the widget and the reminder ladder in step with the new streak.
-                    WidgetSync.update(
-                        streakDays: profile.currentStreakDays,
-                        goalDays: profile.noContactGoalDays,
-                        mantra: profile.personalMantra
-                    )
+                    // Keep the flame, widget and reminder ladder in step with the new streak.
+                    game.syncFlame(streakDays: profile.currentStreakDays)
+                    WidgetSync.update(profile: profile)
                     if profile.notificationsEnabled {
                         NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
+                        NotificationService.shared.scheduleMilestoneReminders(profile: profile)
                     }
                     HapticService.notification(.warning)
                 }
@@ -266,6 +265,7 @@ struct SettingsView: View {
             try modelContext.delete(model: Badge.self)
             try modelContext.delete(model: StreakFlame.self)
             try modelContext.save()
+            game.reset()
             NotificationService.shared.cancelAll()
             WidgetSync.clear()
             appState.selectedTab = .dashboard

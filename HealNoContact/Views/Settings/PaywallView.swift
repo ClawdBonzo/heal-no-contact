@@ -41,7 +41,7 @@ enum HealPlanOption: String, CaseIterable, Identifiable {
         }
     }
 
-    var isBestValue: Bool { self == .monthly }
+    var isBestValue: Bool { self == .yearly }
 
     var packageType: PackageType {
         switch self {
@@ -59,7 +59,7 @@ struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
     @Query private var profiles: [UserProfile]
     @State private var storeService = RevenueCatService.shared
-    @State private var selectedPlan: HealPlanOption = .monthly
+    @State private var selectedPlan: HealPlanOption = .yearly
     @State private var isPurchasing = false
     @State private var isRestoring = false
     @State private var showError = false
@@ -202,6 +202,13 @@ struct PaywallView: View {
                     }
                     .disabled(isPurchasing)
 
+                    if let afterTrial = afterTrialLine {
+                        Text(afterTrial)
+                            .font(.caption)
+                            .foregroundStyle(Color.theme.textSecondary)
+                            .multilineTextAlignment(.center)
+                    }
+
                     HStack(spacing: 10) {
                         Button {
                             Task { await restore() }
@@ -287,6 +294,18 @@ struct PaywallView: View {
         case .monthly:  return String(localized: "Get Monthly Access")
         case .yearly:   return String(localized: "Get Yearly Access")
         case .lifetime: return String(localized: "Purchase Lifetime")
+        }
+    }
+
+    /// "Then $49.99/year" — the price the trial converts to, for the selected plan.
+    private var afterTrialLine: String? {
+        guard eligibleTrialDays(for: selectedPlan) != nil, let pkg = package(for: selectedPlan) else { return nil }
+        let price = pkg.localizedPriceString
+        switch selectedPlan {
+        case .weekly:  return String(localized: "Then \(price)/week. Cancel anytime.")
+        case .monthly: return String(localized: "Then \(price)/month. Cancel anytime.")
+        case .yearly:  return String(localized: "Then \(price)/year. Cancel anytime.")
+        case .lifetime: return nil
         }
     }
 
