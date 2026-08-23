@@ -109,6 +109,15 @@ breakup,no contact,heal,recovery,heartbreak,divorce,ex,journal,streak,healing,th
 
 > Note: the live App Store description (7 locales + nl-NL/ar-SA/th/id/en-GB/en-AU/en-CA added in 1.1) is maintained in App Store Connect; the draft below is historical.
 
+**For 1.2:**
+```
+Small update, big polish.
+
+• Every language now gets its own App Store screenshots — Dutch, French, Arabic, Thai and Indonesian included
+• The welcome screen, the "why no contact" reasons and your Settings labels are now fully translated everywhere
+• Rate Heal right from Settings, or write a full review — whichever you prefer
+```
+
 **For 1.1:**
 ```
 Heal 1.1 — the update that makes every promise real.
