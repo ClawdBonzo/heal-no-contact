@@ -56,23 +56,23 @@ struct WelcomePageView: View {
             VStack(spacing: 14) {
                 FeatureRow(
                     icon: "shield.checkered",
-                    title: "Stay Strong",
-                    subtitle: "Track your no-contact streak with support"
+                    title: String(localized: "Stay Strong"),
+                    subtitle: String(localized: "Track your no-contact streak with support")
                 )
                 FeatureRow(
                     icon: "book.fill",
-                    title: "Process & Reflect",
-                    subtitle: "Journal your healing journey privately"
+                    title: String(localized: "Process & Reflect"),
+                    subtitle: String(localized: "Journal your healing journey privately")
                 )
                 FeatureRow(
                     icon: "chart.line.uptrend.xyaxis",
-                    title: "See Your Growth",
-                    subtitle: "Watch your progress and unlock milestones"
+                    title: String(localized: "See Your Growth"),
+                    subtitle: String(localized: "Watch your progress and unlock milestones")
                 )
                 FeatureRow(
                     icon: "sos",
-                    title: "Emergency Support",
-                    subtitle: "Instant help when the urge hits"
+                    title: String(localized: "Emergency Support"),
+                    subtitle: String(localized: "Instant help when the urge hits")
                 )
             }
             .padding(.horizontal, 24)

@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import UIKit
+import StoreKit
 
 struct SettingsView: View {
     @Environment(AppState.self) private var appState
@@ -12,6 +13,7 @@ struct SettingsView: View {
     @State private var showDeleteAlert = false
     @State private var pdfURL: URL?
     @State private var showPDFShare = false
+    @Environment(\.requestReview) private var requestReview
 
     private var profile: UserProfile? { profiles.first }
 
@@ -49,35 +51,35 @@ struct SettingsView: View {
                     if let profile {
                         SettingsRow(
                             icon: "calendar",
-                            label: "No-contact start",
+                            label: String(localized: "No-contact start"),
                             value: profile.noContactStartDate.monthDay,
                             color: Color.theme.healPurple
                         )
 
                         SettingsRow(
                             icon: "target",
-                            label: "Goal",
-                            value: "\(profile.noContactGoalDays) days",
+                            label: String(localized: "Goal"),
+                            value: String(localized: "\(profile.noContactGoalDays) days"),
                             color: Color.theme.healTeal
                         )
 
                         SettingsRow(
                             icon: "flame.fill",
-                            label: "Current streak",
-                            value: "\(profile.currentStreakDays) days",
+                            label: String(localized: "Current streak"),
+                            value: String(localized: "\(profile.currentStreakDays) days"),
                             color: Color.theme.healPink
                         )
 
                         SettingsRow(
                             icon: "trophy.fill",
-                            label: "Best streak",
-                            value: "\(max(profile.streakBestDays, profile.currentStreakDays)) days",
+                            label: String(localized: "Best streak"),
+                            value: String(localized: "\(max(profile.streakBestDays, profile.currentStreakDays)) days"),
                             color: Color.theme.healGold
                         )
 
                         SettingsRow(
                             icon: "arrow.counterclockwise",
-                            label: "Total resets",
+                            label: String(localized: "Total resets"),
                             value: "\(profile.totalResets)",
                             color: Color.theme.textSecondary
                         )
@@ -181,20 +183,28 @@ struct SettingsView: View {
                 Section {
                     SettingsRow(
                         icon: "lock.shield.fill",
-                        label: "Privacy",
-                        value: "100% on-device",
+                        label: String(localized: "Privacy"),
+                        value: String(localized: "100% on-device"),
                         color: Color.theme.healTeal
                     )
 
                     SettingsRow(
                         icon: "info.circle.fill",
-                        label: "Version",
+                        label: String(localized: "Version"),
                         value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0",
                         color: Color.theme.textSecondary
                     )
 
-                    Link(destination: URL(string: "https://apps.apple.com/app/id6761851731?action=write-review")!) {
-                        Label("Rate on App Store", systemImage: "star.fill")
+                    Button {
+                        requestReview()
+                        HapticService.impact(.light)
+                    } label: {
+                        Label("Rate Heal", systemImage: "star.fill")
+                            .foregroundStyle(Color.theme.healGold)
+                    }
+
+                    Link(destination: ReviewPrompter.writeReviewURL) {
+                        Label("Write a review", systemImage: "square.and.pencil")
                             .foregroundStyle(Color.theme.healGold)
                     }
                 }

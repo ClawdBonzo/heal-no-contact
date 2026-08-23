@@ -6,12 +6,12 @@ struct ReasonPageView: View {
     @State private var showContent = false
 
     private let reasons = [
-        ("heart.slash.fill", "They hurt me and I need space to heal"),
-        ("arrow.triangle.2.circlepath", "I keep going back and need to break the cycle"),
-        ("person.fill.checkmark", "I need to rediscover who I am"),
-        ("brain.fill", "I want clarity and emotional distance"),
-        ("sparkles", "I'm choosing growth over comfort"),
-        ("pencil.line", "Other reason...")
+        ("heart.slash.fill", String(localized: "They hurt me and I need space to heal")),
+        ("arrow.triangle.2.circlepath", String(localized: "I keep going back and need to break the cycle")),
+        ("person.fill.checkmark", String(localized: "I need to rediscover who I am")),
+        ("brain.fill", String(localized: "I want clarity and emotional distance")),
+        ("sparkles", String(localized: "I'm choosing growth over comfort")),
+        ("pencil.line", String(localized: "Other reason..."))
     ]
 
     var body: some View {
