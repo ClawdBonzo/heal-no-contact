@@ -894,7 +894,7 @@
    "yearly": "APPROVED",
    "lifetime": "APPROVED"
   },
-  "product_localizations": "14/14 APPROVED on all four products",
+  "product_localizations": "15/15 (tr added + submitted 2026-08-31); subscription group name was 7/15, now 15/15",
   "winback": {
    "product": "yearly",
    "start": "2026-08-25",
@@ -1392,7 +1392,8 @@
    "Report lookup uses PREFIX match (Apple renamed 'App Downloads' -> 'App Downloads Standard'/'Detailed').",
    "FIXED: funnel matched Event=='Page View' but Apple emits 'Page view' (lowercase v) -> tap-through read 0%. Now correct.",
    "Deduplicated ONE_TIME_SNAPSHOT vs ONGOING report rows (they overlap and would double-count).",
-   "Sales proceeds are $0 because the app is free; subscription revenue only appears in SUBSCRIPTION reports."
+   "Sales proceeds are $0 because the app is free; subscription revenue only appears in SUBSCRIPTION reports.",
+   "Turkish product localizations were missing on all 4 IAPs and the subscription group name existed in only 7 of 15 locales — both added and submitted 2026-08-31 (standing rule: new storefront => IAP localizations)."
   ],
   "known_gaps": [
    "Search terms not exposed: Discovery Detailed 'Source Info'/'Campaign' are empty at this volume.",
