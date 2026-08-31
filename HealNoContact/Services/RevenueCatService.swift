@@ -36,6 +36,17 @@ final class RevenueCatService: NSObject {
         customerInfo?.entitlements[Self.premiumEntitlement]?.isActive == true
     }
 
+    /// True while the user is inside a free trial (entitlement active, period type intro/trial).
+    var isInTrial: Bool {
+        guard let e = customerInfo?.entitlements[Self.premiumEntitlement], e.isActive else { return false }
+        return e.periodType == .trial || e.periodType == .intro
+    }
+
+    /// When the current trial/subscription lapses, if known.
+    var currentExpiration: Date? {
+        customerInfo?.entitlements[Self.premiumEntitlement]?.expirationDate
+    }
+
     var currentOffering: Offering? {
         offerings?.current
     }

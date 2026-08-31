@@ -52,7 +52,7 @@ struct OnboardingContainerView: View {
                 #if DEBUG
                 if let p = DemoConfig.shared.onboardingPage {
                     currentPage = p
-                    if p == 3 { personalMantra = "I choose my peace over their chaos." }
+                    if p == 3 { personalMantra = String(localized: "I choose my peace over their chaos.") }
                 }
                 #endif
             }

@@ -1,0 +1,522 @@
+{
+ "this_week": {
+  "total": {
+   "impressions": 549,
+   "page_views": 33,
+   "get_taps": 9,
+   "first_time": 9
+  },
+  "by_source": {
+   "App referrer": {
+    "impressions": 0,
+    "page_views": 3,
+    "get_taps": 0,
+    "first_time": 3
+   },
+   "App Store search": {
+    "impressions": 528,
+    "page_views": 14,
+    "get_taps": 3,
+    "first_time": 6
+   },
+   "App Store browse": {
+    "impressions": 21,
+    "page_views": 15,
+    "get_taps": 6,
+    "first_time": 0
+   },
+   "Web referrer": {
+    "impressions": 0,
+    "page_views": 1,
+    "get_taps": 0,
+    "first_time": 0
+   }
+  },
+  "by_territory": {
+   "TJ": {
+    "impressions": 8,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "PH": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "IT": {
+    "impressions": 13,
+    "page_views": 3,
+    "get_taps": 2,
+    "first_time": 2
+   },
+   "UA": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "KH": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "GB": {
+    "impressions": 32,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "AE": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "TN": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "IQ": {
+    "impressions": 7,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ES": {
+    "impressions": 29,
+    "page_views": 6,
+    "get_taps": 2,
+    "first_time": 2
+   },
+   "ID": {
+    "impressions": 5,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "LY": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "HK": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "MX": {
+    "impressions": 5,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BE": {
+    "impressions": 7,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "CD": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "RU": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "DE": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "GE": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "SA": {
+    "impressions": 29,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BJ": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "CA": {
+    "impressions": 37,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ZA": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "CO": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "MY": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "SG": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "AT": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BR": {
+    "impressions": 22,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "LK": {
+    "impressions": 3,
+    "page_views": 1,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "US": {
+    "impressions": 275,
+    "page_views": 15,
+    "get_taps": 3,
+    "first_time": 2
+   },
+   "KW": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "OM": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "AR": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "UZ": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "VN": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "NA": {
+    "impressions": 2,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "NZ": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "TH": {
+    "impressions": 22,
+    "page_views": 3,
+    "get_taps": 1,
+    "first_time": 2
+   },
+   "FR": {
+    "impressions": 6,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "TR": {
+    "impressions": 9,
+    "page_views": 1,
+    "get_taps": 1,
+    "first_time": 1
+   },
+   "PE": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   }
+  }
+ },
+ "prior_week": {
+  "total": {
+   "impressions": 682,
+   "page_views": 47,
+   "get_taps": 22,
+   "first_time": 10
+  },
+  "by_source": {
+   "App referrer": {
+    "impressions": 0,
+    "page_views": 8,
+    "get_taps": 0,
+    "first_time": 3
+   },
+   "App Store search": {
+    "impressions": 632,
+    "page_views": 28,
+    "get_taps": 10,
+    "first_time": 6
+   },
+   "App Store browse": {
+    "impressions": 50,
+    "page_views": 9,
+    "get_taps": 12,
+    "first_time": 1
+   },
+   "Web referrer": {
+    "impressions": 0,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   }
+  },
+  "by_territory": {
+   "NO": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "IT": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "UA": {
+    "impressions": 4,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "SE": {
+    "impressions": 1,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "GB": {
+    "impressions": 68,
+    "page_views": 6,
+    "get_taps": 4,
+    "first_time": 2
+   },
+   "AE": {
+    "impressions": 4,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "IQ": {
+    "impressions": 4,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ES": {
+    "impressions": 84,
+    "page_views": 14,
+    "get_taps": 10,
+    "first_time": 4
+   },
+   "EC": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ID": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "CH": {
+    "impressions": 2,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "MX": {
+    "impressions": 4,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BE": {
+    "impressions": 8,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "RU": {
+    "impressions": 4,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "DE": {
+    "impressions": 24,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "SA": {
+    "impressions": 6,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BJ": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "CA": {
+    "impressions": 18,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ZA": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "BR": {
+    "impressions": 30,
+    "page_views": 2,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "US": {
+    "impressions": 356,
+    "page_views": 21,
+    "get_taps": 8,
+    "first_time": 4
+   },
+   "JP": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "KW": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "RO": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "AR": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "ML": {
+    "impressions": 3,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "DK": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "VN": {
+    "impressions": 13,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "FR": {
+    "impressions": 15,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "KR": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "AU": {
+    "impressions": 6,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   },
+   "PE": {
+    "impressions": 2,
+    "page_views": 0,
+    "get_taps": 0,
+    "first_time": 0
+   }
+  }
+ },
+ "windows": {
+  "this": [
+   "2026-08-24",
+   "2026-08-30"
+  ],
+  "prior": [
+   "2026-08-17",
+   "2026-08-23"
+  ]
+ }
+}

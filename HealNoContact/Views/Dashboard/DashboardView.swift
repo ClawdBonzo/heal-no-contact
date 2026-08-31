@@ -197,7 +197,18 @@ struct DashboardView: View {
         .id(dayTick)
         .fullScreenCover(isPresented: $showPhoenixOverlay) {
             PhoenixRisingOverlay(day: phoenixQueue.first) {
+                let celebrated = phoenixQueue.first
                 if !phoenixQueue.isEmpty { phoenixQueue.removeFirst() }
+                // Ask for the upgrade at the moment they just earned something, not at launch.
+                if let celebrated, let profile,
+                   PaywallMoments.shouldOfferAfterMilestone(day: celebrated,
+                                                            streakDays: profile.currentStreakDays,
+                                                            isPremium: appState.isPremium) {
+                    Task { @MainActor in
+                        try? await Task.sleep(for: .seconds(0.8))
+                        appState.showPaywall = true
+                    }
+                }
                 // Several milestones unlocked at once (days away): celebrate each in turn.
                 if phoenixQueue.isEmpty {
                     showPhoenixOverlay = false

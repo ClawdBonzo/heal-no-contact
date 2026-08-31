@@ -9,7 +9,14 @@ enum ReviewPrompter {
     private static let lastPromptKey = "review.lastPromptDate"
     private static let minDaysBetweenPrompts = 14
 
-    enum Moment { case resistedUrge, milestone(day: Int), checkInStreak(days: Int) }
+    enum Moment {
+        case resistedUrge
+        case milestone(day: Int)
+        case checkInStreak(days: Int)
+        case badgeUnlocked(rarity: String)
+        case journalEntries(count: Int)
+        case levelUp(level: Int)
+    }
 
     @MainActor
     static func maybeRequest(_ request: RequestReviewAction, moment: Moment, streakDays: Int) {
@@ -17,8 +24,11 @@ enum ReviewPrompter {
         let worthy: Bool
         switch moment {
         case .resistedUrge:            worthy = streakDays >= 3
-        case .milestone(let day):      worthy = [7, 14, 21, 30, 60, 90, 180, 365].contains(day)
-        case .checkInStreak(let days): worthy = days >= 5
+        case .milestone(let day):      worthy = [3, 7, 14, 21, 30, 60, 90, 180, 365].contains(day)
+        case .checkInStreak(let days): worthy = days >= 3
+        case .badgeUnlocked(let r):    worthy = ["rare", "epic", "legendary"].contains(r)
+        case .journalEntries(let n):   worthy = [5, 10, 25, 50].contains(n)
+        case .levelUp(let level):      worthy = level >= 3
         }
         guard worthy else { return }
         if let last = UserDefaults.standard.object(forKey: lastPromptKey) as? Date,

@@ -88,6 +88,29 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
         }
     }
 
+    /// Reminds the user the day before a free trial converts, framed around what they've
+    /// built rather than the charge. Added because both US trials (Aug 2026) cancelled on
+    /// day 3 — the trial ends before Heal's first milestone (day 7) can prove its value.
+    /// Idempotent: fixed identifier, rescheduled on every foreground.
+    func scheduleTrialEndingReminder(expiration: Date?, streakDays: Int) {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: ["trialEnding"])
+        guard let expiration else { return }
+        let fire = expiration.addingTimeInterval(-24 * 3600)
+        guard fire > .now else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Your free trial ends tomorrow")
+        content.body = streakDays > 0
+            ? String(localized: "\(streakDays) days of no contact so far. Keep your insights, reminders and export — or cancel anytime in Settings.")
+            : String(localized: "Keep your insights, reminders and journal export — or cancel anytime in Settings.")
+        content.sound = .default
+        content.userInfo = ["deepLink": "heal://home"]
+        let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fire)
+        center.add(UNNotificationRequest(identifier: "trialEnding", content: content,
+                                         trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
+    }
+
     /// IDs for the premium encouragement reminders (12:00 / 18:00 / 21:00).
     private static let encouragementIDs = ["encouragement_0", "encouragement_1", "encouragement_2"]
 

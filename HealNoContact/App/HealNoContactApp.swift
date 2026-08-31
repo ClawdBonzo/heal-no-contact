@@ -74,6 +74,11 @@ struct RootView: View {
         }
         // Premium encouragement reminders follow the entitlement (renewals, restores, lapses).
         NotificationService.shared.syncPremiumReminders(notificationsEnabled: profile.notificationsEnabled)
+        if profile.notificationsEnabled, RevenueCatService.shared.isInTrial {
+            NotificationService.shared.scheduleTrialEndingReminder(
+                expiration: RevenueCatService.shared.currentExpiration,
+                streakDays: profile.currentStreakDays)
+        }
     }
 
     /// heal://checkin · heal://sos · heal://journal · heal://home (widgets + notifications)

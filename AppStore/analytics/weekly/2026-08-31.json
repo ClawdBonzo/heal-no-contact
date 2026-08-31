@@ -1,0 +1,1404 @@
+{
+ "generated": "2026-08-31",
+ "coverage_through": "2026-08-30",
+ "window_this_week": [
+  "2026-08-24",
+  "2026-08-30"
+ ],
+ "notes": "Downloads/revenue from ASC Sales reports (authoritative). Funnel from ASC Analytics (Apple-bucketed; do not mix with Sales counts).",
+ "acquisition": {
+  "downloads_lifetime": {
+   "first_time": 54,
+   "redownload": 1,
+   "update": 44
+  },
+  "downloads_this_week": {
+   "update": 17,
+   "first_time": 9
+  },
+  "downloads_prior_week": {
+   "first_time": 10,
+   "update": 27
+  },
+  "country_this_week": {
+   "US": 2,
+   "TR": 1,
+   "IT": 2,
+   "ES": 2,
+   "TH": 2
+  },
+  "country_lifetime": {
+   "US": 11,
+   "ES": 14,
+   "IQ": 1,
+   "UZ": 1,
+   "GH": 1,
+   "VN": 1,
+   "IT": 7,
+   "CG": 1,
+   "BE": 1,
+   "FR": 2,
+   "AT": 1,
+   "BJ": 1,
+   "BR": 3,
+   "GB": 3,
+   "PE": 1,
+   "DE": 2,
+   "TR": 1,
+   "TH": 2
+  },
+  "funnel": {
+   "this_week": {
+    "total": {
+     "impressions": 549,
+     "page_views": 33,
+     "get_taps": 9,
+     "first_time": 9
+    },
+    "by_source": {
+     "App referrer": {
+      "impressions": 0,
+      "page_views": 3,
+      "get_taps": 0,
+      "first_time": 3
+     },
+     "App Store search": {
+      "impressions": 528,
+      "page_views": 14,
+      "get_taps": 3,
+      "first_time": 6
+     },
+     "App Store browse": {
+      "impressions": 21,
+      "page_views": 15,
+      "get_taps": 6,
+      "first_time": 0
+     },
+     "Web referrer": {
+      "impressions": 0,
+      "page_views": 1,
+      "get_taps": 0,
+      "first_time": 0
+     }
+    },
+    "by_territory": {
+     "TJ": {
+      "impressions": 8,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "PH": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "IT": {
+      "impressions": 13,
+      "page_views": 3,
+      "get_taps": 2,
+      "first_time": 2
+     },
+     "UA": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "KH": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "GB": {
+      "impressions": 32,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "AE": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "TN": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "IQ": {
+      "impressions": 7,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ES": {
+      "impressions": 29,
+      "page_views": 6,
+      "get_taps": 2,
+      "first_time": 2
+     },
+     "ID": {
+      "impressions": 5,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "LY": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "HK": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "MX": {
+      "impressions": 5,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BE": {
+      "impressions": 7,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "CD": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "RU": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "DE": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "GE": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "SA": {
+      "impressions": 29,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BJ": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "CA": {
+      "impressions": 37,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ZA": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "CO": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "MY": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "SG": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "AT": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BR": {
+      "impressions": 22,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "LK": {
+      "impressions": 3,
+      "page_views": 1,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "US": {
+      "impressions": 275,
+      "page_views": 15,
+      "get_taps": 3,
+      "first_time": 2
+     },
+     "KW": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "OM": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "AR": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "UZ": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "VN": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "NA": {
+      "impressions": 2,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "NZ": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "TH": {
+      "impressions": 22,
+      "page_views": 3,
+      "get_taps": 1,
+      "first_time": 2
+     },
+     "FR": {
+      "impressions": 6,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "TR": {
+      "impressions": 9,
+      "page_views": 1,
+      "get_taps": 1,
+      "first_time": 1
+     },
+     "PE": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     }
+    }
+   },
+   "prior_week": {
+    "total": {
+     "impressions": 682,
+     "page_views": 47,
+     "get_taps": 22,
+     "first_time": 10
+    },
+    "by_source": {
+     "App referrer": {
+      "impressions": 0,
+      "page_views": 8,
+      "get_taps": 0,
+      "first_time": 3
+     },
+     "App Store search": {
+      "impressions": 632,
+      "page_views": 28,
+      "get_taps": 10,
+      "first_time": 6
+     },
+     "App Store browse": {
+      "impressions": 50,
+      "page_views": 9,
+      "get_taps": 12,
+      "first_time": 1
+     },
+     "Web referrer": {
+      "impressions": 0,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     }
+    },
+    "by_territory": {
+     "NO": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "IT": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "UA": {
+      "impressions": 4,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "SE": {
+      "impressions": 1,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "GB": {
+      "impressions": 68,
+      "page_views": 6,
+      "get_taps": 4,
+      "first_time": 2
+     },
+     "AE": {
+      "impressions": 4,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "IQ": {
+      "impressions": 4,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ES": {
+      "impressions": 84,
+      "page_views": 14,
+      "get_taps": 10,
+      "first_time": 4
+     },
+     "EC": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ID": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "CH": {
+      "impressions": 2,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "MX": {
+      "impressions": 4,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BE": {
+      "impressions": 8,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "RU": {
+      "impressions": 4,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "DE": {
+      "impressions": 24,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "SA": {
+      "impressions": 6,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BJ": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "CA": {
+      "impressions": 18,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ZA": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "BR": {
+      "impressions": 30,
+      "page_views": 2,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "US": {
+      "impressions": 356,
+      "page_views": 21,
+      "get_taps": 8,
+      "first_time": 4
+     },
+     "JP": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "KW": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "RO": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "AR": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "ML": {
+      "impressions": 3,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "DK": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "VN": {
+      "impressions": 13,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "FR": {
+      "impressions": 15,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "KR": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "AU": {
+      "impressions": 6,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     },
+     "PE": {
+      "impressions": 2,
+      "page_views": 0,
+      "get_taps": 0,
+      "first_time": 0
+     }
+    }
+   },
+   "windows": {
+    "this": [
+     "2026-08-24",
+     "2026-08-30"
+    ],
+    "prior": [
+     "2026-08-17",
+     "2026-08-23"
+    ]
+   }
+  }
+ },
+ "monetization": {
+  "active_subscriptions": 2,
+  "mrr_usd": 27,
+  "active_detail": [
+   {
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Monthly Premium",
+    "Subscription Apple ID": "6761851628",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Month",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Customer Price": "9.99",
+    "Customer Currency": "GBP",
+    "Developer Proceeds": "7.06",
+    "Proceeds Currency": "GBP",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Client": "",
+    "Device": "iPhone",
+    "State": " ",
+    "Country": "GB",
+    "Active Standard Price Subscriptions": "2",
+    "Active Free Trial Introductory Offer Subscriptions": "0",
+    "Active Pay Up Front Introductory Offer Subscriptions": "0",
+    "Active Pay As You Go Introductory Offer Subscriptions": "0",
+    "Free Trial Promotional Offer Subscriptions": "0",
+    "Pay Up Front Promotional Offer Subscriptions": "0",
+    "Pay As You Go Promotional Offer Subscriptions": "0",
+    "Free Trial Offer Code Subscriptions": "0",
+    "Pay Up Front Offer Code Subscriptions": "0",
+    "Pay As You Go Offer Code Subscriptions": "0",
+    "Free Trial Win-back Offers": "0",
+    "Pay Up Front Win-back Offers": "0",
+    "Pay As You Go Win-back Offers": "0",
+    "Billing Retry": "0",
+    "Grace Period": "0",
+    "Subscribers": "",
+    "Contingent App Name": " "
+   }
+  ],
+  "events_14d": [
+   {
+    "Event Date": "2026-08-18",
+    "Event": "Cancel",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Monthly Premium",
+    "Subscription Apple ID": "6761851628",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Month",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-15",
+    "Client": "",
+    "Device": "iPhone",
+    "State": " ",
+    "Country": "DE",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": "0",
+    "Cancellation Reason": "Canceled",
+    "Days Canceled": " ",
+    "Quantity": "1",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-18",
+    "Event": "Start Introductory Offer",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Monthly Premium",
+    "Subscription Apple ID": "6761851628",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Month",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-18",
+    "Client": "",
+    "Device": "iPhone",
+    "State": " ",
+    "Country": "GB",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": " ",
+    "Cancellation Reason": " ",
+    "Days Canceled": " ",
+    "Quantity": "2",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-21",
+    "Event": "Paid Subscription from Introductory Offer",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Monthly Premium",
+    "Subscription Apple ID": "6761851628",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Month",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "1",
+    "Original Start Date": "2026-08-18",
+    "Client": "",
+    "Device": "iPhone",
+    "State": " ",
+    "Country": "GB",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": " ",
+    "Cancellation Reason": " ",
+    "Days Canceled": " ",
+    "Quantity": "2",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-22",
+    "Event": "Start Introductory Offer",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Weekly Premium",
+    "Subscription Apple ID": "6761851880",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "7 Days",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-22",
+    "Client": "",
+    "Device": "iPhone",
+    "State": "NJ",
+    "Country": "US",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": " ",
+    "Cancellation Reason": " ",
+    "Days Canceled": " ",
+    "Quantity": "1",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-24",
+    "Event": "Start Introductory Offer",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Yearly Premium",
+    "Subscription Apple ID": "6761851605",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Year",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-24",
+    "Client": "",
+    "Device": "iPhone",
+    "State": "GA",
+    "Country": "US",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": " ",
+    "Cancellation Reason": " ",
+    "Days Canceled": " ",
+    "Quantity": "1",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-25",
+    "Event": "Cancel",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Weekly Premium",
+    "Subscription Apple ID": "6761851880",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "7 Days",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-22",
+    "Client": "",
+    "Device": "iPhone",
+    "State": "NJ",
+    "Country": "US",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": "0",
+    "Cancellation Reason": "Canceled",
+    "Days Canceled": " ",
+    "Quantity": "1",
+    "Paid Service Days Recovered": " "
+   },
+   {
+    "Event Date": "2026-08-27",
+    "Event": "Cancel",
+    "App Name": "Heal: No Contact Recovery",
+    "App Apple ID": "6761851731",
+    "Subscription Name": "Yearly Premium",
+    "Subscription Apple ID": "6761851605",
+    "Subscription Group ID": "22022095",
+    "Standard Subscription Duration": "1 Year",
+    "Subscription Offer Name": " ",
+    "Promotional Offer ID": " ",
+    "Subscription Offer Type": "Free Trial",
+    "Subscription Offer Duration": "3 Days",
+    "Marketing Opt-In": "",
+    "Marketing Opt-In Duration": " ",
+    "Preserved Pricing": "",
+    "Proceeds Reason": "",
+    "Consecutive Paid Periods": "0",
+    "Original Start Date": "2026-08-24",
+    "Client": "",
+    "Device": "iPhone",
+    "State": "GA",
+    "Country": "US",
+    "Previous Subscription Name": "",
+    "Previous Subscription Apple ID": " ",
+    "Days Before Canceling": "0",
+    "Cancellation Reason": "Canceled",
+    "Days Canceled": " ",
+    "Quantity": "1",
+    "Paid Service Days Recovered": " "
+   }
+  ]
+ },
+ "engagement": {
+  "sessions_snapshot": {
+   "sessions": 99,
+   "unique_devices": 16,
+   "avg_sessions_per_device": 6.2,
+   "avg_session_seconds": 312,
+   "months": [
+    "2026-07",
+    "2026-08"
+   ],
+   "by_territory": {
+    "ES": 90,
+    "GB": 4,
+    "IT": 3,
+    "BJ": 1,
+    "BR": 1
+   }
+  },
+  "install_delete_weekly": {
+   "2026-07-01": {
+    "install": 6,
+    "delete": 3
+   },
+   "2026-08-01": {
+    "install": 7,
+    "delete": 2
+   },
+   "2026-08-17": {
+    "install": 16,
+    "delete": 4
+   }
+  }
+ },
+ "quality": {
+  "ratings_total": 1,
+  "ratings_by_store": {
+   "us": {
+    "count": 1,
+    "avg": 5.0
+   }
+  },
+  "written_reviews": [
+   {
+    "date": "2026-08-26",
+    "territory": "USA",
+    "rating": 5,
+    "title": "It helps",
+    "body": "This app has kept me on track — the journal, the day counts, etc."
+   }
+  ]
+ },
+ "store": {
+  "live_version": "1.2",
+  "live_build": 10,
+  "days_since_release": 8,
+  "open_review_submissions": 0,
+  "products": {
+   "monthly": "APPROVED",
+   "weekly": "APPROVED",
+   "yearly": "APPROVED",
+   "lifetime": "APPROVED"
+  },
+  "product_localizations": "14/14 APPROVED on all four products",
+  "winback": {
+   "product": "yearly",
+   "start": "2026-08-25",
+   "territories": 48
+  }
+ },
+ "competitive": {
+  "us|no contact": {
+   "rank": 65,
+   "n": 173,
+   "top": [
+    [
+     "No Contact: Breakup Recovery",
+     2028,
+     "2026-08-16"
+    ],
+    [
+     "No Contact Tracker & Move On",
+     2432,
+     "2026-07-21"
+    ],
+    [
+     "Zero Contact: Heal Faster",
+     256,
+     "2026-07-28"
+    ],
+    [
+     "No Contact - Let Them Go",
+     168,
+     "2026-08-30"
+    ]
+   ]
+  },
+  "us|breakup recovery": {
+   "rank": 51,
+   "n": 187,
+   "top": [
+    [
+     "No Contact: Breakup Recovery",
+     2028,
+     "2026-08-16"
+    ],
+    [
+     "Heartward: Breakup Recovery",
+     1,
+     "2026-04-13"
+    ],
+    [
+     "Forget – Breakup Recovery",
+     26,
+     "2025-09-06"
+    ],
+    [
+     "No Contact Tracker & Move On",
+     2432,
+     "2026-07-21"
+    ]
+   ]
+  },
+  "us|breakup": {
+   "rank": null,
+   "n": 179,
+   "top": [
+    [
+     "CLOSURE - Breakup support",
+     48,
+     "2025-08-25"
+    ],
+    [
+     "Breakup Buddy: Heal Heartbreak",
+     121,
+     "2026-07-11"
+    ],
+    [
+     "No Contact Tracker & Move On",
+     2432,
+     "2026-07-21"
+    ],
+    [
+     "Get Over Him - Breakup Healing",
+     267,
+     "2026-08-22"
+    ]
+   ]
+  },
+  "us|heartbreak": {
+   "rank": null,
+   "n": 165,
+   "top": [
+    [
+     "No Contact Tracker & Move On",
+     2432,
+     "2026-07-21"
+    ],
+    [
+     "Breakup Buddy: Heal Heartbreak",
+     121,
+     "2026-07-11"
+    ],
+    [
+     "Unlove - Heartbreak Recovery",
+     1,
+     "2025-10-20"
+    ],
+    [
+     "I am - Daily Affirmations",
+     729651,
+     "2026-08-27"
+    ]
+   ]
+  },
+  "us|get over ex": {
+   "rank": 116,
+   "n": 177,
+   "top": [
+    [
+     "Zero Contact: Heal Faster",
+     256,
+     "2026-07-28"
+    ],
+    [
+     "Get Over Him - Breakup Healing",
+     267,
+     "2026-08-22"
+    ],
+    [
+     "No Contact Tracker & Move On",
+     2432,
+     "2026-07-21"
+    ],
+    [
+     "Breakup Buddy: Heal Heartbreak",
+     121,
+     "2026-07-11"
+    ]
+   ]
+  },
+  "gb|no contact": {
+   "rank": 144,
+   "n": 182,
+   "top": [
+    [
+     "No Contact: Breakup Recovery",
+     317,
+     "2026-08-16"
+    ],
+    [
+     "Zero Contact: Heal Faster",
+     74,
+     "2026-07-28"
+    ],
+    [
+     "No Contact - Let Them Go",
+     44,
+     "2026-08-30"
+    ],
+    [
+     "DayCount",
+     2827,
+     "2026-05-09"
+    ]
+   ]
+  },
+  "gb|breakup": {
+   "rank": null,
+   "n": 179,
+   "top": [
+    [
+     "No Contact Tracker & Move On",
+     188,
+     "2026-07-21"
+    ],
+    [
+     "CLOSURE - Breakup support",
+     3,
+     "2025-08-25"
+    ],
+    [
+     "Rocky: Break-Up Healing",
+     0,
+     "2026-08-20"
+    ],
+    [
+     "Breakup Buddy: Heal Heartbreak",
+     20,
+     "2026-07-11"
+    ]
+   ]
+  },
+  "es|contacto cero": {
+   "rank": 4,
+   "n": 20,
+   "top": [
+    [
+     "Contacto 0: Supera Ruptura",
+     2,
+     "2026-03-11"
+    ],
+    [
+     "No Contact Rastreador de ex",
+     20,
+     "2026-07-21"
+    ],
+    [
+     "Contacto 0: Tracker",
+     0,
+     "2026-01-16"
+    ],
+    [
+     "Heal: Contacto Cero y Ruptura",
+     0,
+     "2026-08-24"
+    ]
+   ]
+  },
+  "es|ruptura": {
+   "rank": 8,
+   "n": 123,
+   "top": [
+    [
+     "Ruptura",
+     2,
+     "2026-08-12"
+    ],
+    [
+     "Contacto 0: Supera Ruptura",
+     2,
+     "2026-03-11"
+    ],
+    [
+     "No Contact Tracker AI",
+     2,
+     "2026-06-07"
+    ],
+    [
+     "Forget – Supera la ruptura",
+     0,
+     "2025-09-06"
+    ]
+   ]
+  },
+  "it|no contact": {
+   "rank": 73,
+   "n": 185,
+   "top": [
+    [
+     "No Contact: Breakup Recovery",
+     70,
+     "2026-08-16"
+    ],
+    [
+     "Zero Contact: Heal Faster",
+     17,
+     "2026-07-28"
+    ],
+    [
+     "No Contact - Let Them Go",
+     0,
+     "2026-08-30"
+    ],
+    [
+     "No Contact: AI rottura",
+     12,
+     "2026-06-07"
+    ]
+   ]
+  },
+  "it|cuore spezzato": {
+   "rank": 5,
+   "n": 16,
+   "top": [
+    [
+     "Citazioni di cuore spezzato",
+     0,
+     "2023-08-22"
+    ],
+    [
+     "No Contact: Rottura",
+     0,
+     "2026-08-12"
+    ],
+    [
+     "Contatto Zero - Rerise",
+     0,
+     "2026-08-01"
+    ],
+    [
+     "Chaz: Tracker No Contact IA",
+     0,
+     "2026-07-30"
+    ]
+   ]
+  },
+  "th|เลิกกัน": {
+   "rank": 1,
+   "n": 6,
+   "top": [
+    [
+     "Heal: No Contact Recovery",
+     0,
+     "2026-08-24"
+    ],
+    [
+     "No Contact Tracker - Rerise",
+     0,
+     "2026-08-01"
+    ],
+    [
+     "No Contact Days",
+     0,
+     "2026-06-30"
+    ],
+    [
+     "Highlights - Countdown & Dates",
+     0,
+     "2026-06-09"
+    ]
+   ]
+  },
+  "th|อกหัก": {
+   "rank": 7,
+   "n": 23,
+   "top": [
+    [
+     "No Contact - Breakup Recovery",
+     0,
+     "2026-05-21"
+    ],
+    [
+     "Zero Contact - No Contact AI",
+     265,
+     "2026-06-07"
+    ],
+    [
+     "Spill the Tea – Bestieberry",
+     0,
+     "2026-07-07"
+    ],
+    [
+     "คําคมคนอกหัก",
+     0,
+     "2024-03-08"
+    ]
+   ]
+  },
+  "nl|no contact": {
+   "rank": 114,
+   "n": 185,
+   "top": [
+    [
+     "No Contact: Breakup Recovery",
+     144,
+     "2026-08-16"
+    ],
+    [
+     "Zero Contact: Heal Faster",
+     10,
+     "2026-07-28"
+    ],
+    [
+     "No Contact - Let Them Go",
+     0,
+     "2026-08-30"
+    ],
+    [
+     "No Contact Tracker & Move On",
+     31,
+     "2026-07-21"
+    ]
+   ]
+  },
+  "nl|liefdesverdriet": {
+   "rank": 21,
+   "n": 21,
+   "top": [
+    [
+     "Liefdesverdriet Overwinnen",
+     0,
+     "2026-05-04"
+    ],
+    [
+     "Geen Contact: Ex Vergeten",
+     0,
+     "2026-08-01"
+    ],
+    [
+     "No Contact Tracker AI",
+     12,
+     "2026-06-07"
+    ],
+    [
+     "sotie: mentale steun",
+     0,
+     "2026-08-20"
+    ]
+   ]
+  },
+  "tr|ayrılık": {
+   "rank": null,
+   "n": 46,
+   "top": [
+    [
+     "Light: No Contact",
+     146,
+     "2026-08-23"
+    ],
+    [
+     "MyEx: Break Up Coach",
+     194,
+     "2026-07-13"
+    ],
+    [
+     "NoContact: Breakup Tracker",
+     1114,
+     "2026-06-03"
+    ],
+    [
+     "Forget – Breakup Recovery",
+     0,
+     "2025-09-06"
+    ]
+   ]
+  },
+  "tr|no contact": {
+   "rank": null,
+   "n": 187,
+   "top": [
+    [
+     "Light: No Contact",
+     146,
+     "2026-08-23"
+    ],
+    [
+     "No Contact: Stay Strong",
+     1,
+     "2026-08-31"
+    ],
+    [
+     "NoContact: Breakup Tracker",
+     1114,
+     "2026-06-03"
+    ],
+    [
+     "No Contact: Breakup Recovery",
+     17,
+     "2026-08-16"
+    ]
+   ]
+  }
+ },
+ "revenuecat": {
+  "customers": 70,
+  "new_this_week": 11,
+  "active_this_week": 17,
+  "active_subs": 2,
+  "mrr": 27,
+  "returned_after_day0": "19/70",
+  "retained_7d": "9/70"
+ },
+ "integrity": {
+  "sales_days_pulled": {
+   "ok": 83
+  },
+  "analytics_report_status": {
+   "discovery": [
+    "ONE_TIME_SNAPSHOT:ok:1860rows",
+    "ONGOING:ok:1168rows"
+   ],
+   "discovery_detail": [
+    "ONE_TIME_SNAPSHOT:ok:79rows",
+    "ONGOING:ok:84rows"
+   ],
+   "downloads": [
+    "ONE_TIME_SNAPSHOT:ok:59rows",
+    "ONGOING:ok:82rows"
+   ],
+   "downloads_detail": [
+    "ONGOING:ok:2rows"
+   ],
+   "sessions": [
+    "ONE_TIME_SNAPSHOT:ok:16rows"
+   ],
+   "instdel": [
+    "ONE_TIME_SNAPSHOT:ok:27rows",
+    "ONGOING:ok:11rows"
+   ],
+   "webpreview": [
+    "ONE_TIME_SNAPSHOT:ok:30rows",
+    "ONGOING:ok:14rows"
+   ]
+  },
+  "fixes_applied": [
+   "Rebuilt tooling in-repo: /tmp/HNC_analytics was wiped, so all scripts were lost. Now at AppStore/analytics/.",
+   "All date windows derived from today() at runtime; nothing hardcoded.",
+   "Report lookup uses PREFIX match (Apple renamed 'App Downloads' -> 'App Downloads Standard'/'Detailed').",
+   "FIXED: funnel matched Event=='Page View' but Apple emits 'Page view' (lowercase v) -> tap-through read 0%. Now correct.",
+   "Deduplicated ONE_TIME_SNAPSHOT vs ONGOING report rows (they overlap and would double-count).",
+   "Sales proceeds are $0 because the app is free; subscription revenue only appears in SUBSCRIPTION reports."
+  ],
+  "known_gaps": [
+   "Search terms not exposed: Discovery Detailed 'Source Info'/'Campaign' are empty at this volume.",
+   "App Sessions report is MONTHLY and only from the one-time snapshot (Jul + Aug); no weekly session trend yet.",
+   "No Retention report instances exist yet (day 1/7/28 unavailable).",
+   "No PERFORMANCE (crash/hang/launch) instances yet -> crash rate unavailable this week."
+  ]
+ }
+}

@@ -62,6 +62,12 @@
             "state": "translated",
             "value": "hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün"
+          }
         }
       }
     },
@@ -125,6 +131,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No contact"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz"
           }
         }
       }
@@ -190,6 +202,12 @@
             "state": "translated",
             "value": "Streak no contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz Serisi"
+          }
         }
       }
     },
@@ -253,6 +271,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld% dari target %lld hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld günlük hedefin %%%lld’i"
           }
         }
       }
@@ -318,6 +342,12 @@
             "state": "translated",
             "value": "Sudah check-in hari ini"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün kontrol edildi"
+          }
         }
       }
     },
@@ -381,6 +411,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Check-in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrol et"
           }
         }
       }
@@ -446,6 +482,12 @@
             "state": "translated",
             "value": "%lld hari no contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün iletişimsiz"
+          }
         }
       }
     },
@@ -509,6 +551,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "🔥 %lld hari no contact"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔥 %lld gün iletişimsiz"
           }
         }
       }
@@ -574,6 +622,12 @@
             "state": "translated",
             "value": "%lld hari tanpa kontak"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gündür iletişim yok"
+          }
         }
       }
     },
@@ -637,6 +691,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku butuh bantuan sekarang"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi yardıma ihtiyacım var"
           }
         }
       }
@@ -702,6 +762,12 @@
             "state": "translated",
             "value": "❤️ Aku butuh bantuan sekarang"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "❤️ Şimdi yardıma ihtiyacım var"
+          }
         }
       }
     },
@@ -765,6 +831,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buka bantuan darurat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acil desteği aç"
           }
         }
       }
@@ -830,6 +902,12 @@
             "state": "translated",
             "value": "Streak no contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz Serisi"
+          }
         }
       }
     },
@@ -894,6 +972,12 @@
             "state": "translated",
             "value": "Streak-mu bertambah sendiri — dan sekali ketuk untuk check-in."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin kendiliğinden ilerler — kontrol için tek dokunuş."
+          }
         }
       }
     },
@@ -954,6 +1038,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SOS"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "SOS"
@@ -1022,6 +1112,12 @@
             "state": "translated",
             "value": "Sekali ketuk ke latihan napas, strategi, dan mantramu saat dorongan datang."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü geldiğinde nefes, baş etme yöntemleri ve mantran tek dokunuşta."
+          }
         }
       }
     },
@@ -1085,6 +1181,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mantra harian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Mantra"
           }
         }
       }
@@ -1150,6 +1252,12 @@
             "state": "translated",
             "value": "Mantra penyembuhanmu di layar utama atau layar kunci."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişisel iyileşme mantran ana ekranında veya kilit ekranında."
+          }
         }
       }
     },
@@ -1213,6 +1321,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku memilih diriku hari ini dan setiap hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün ve her gün kendimi seçiyorum"
           }
         }
       }

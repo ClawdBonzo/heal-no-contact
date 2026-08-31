@@ -12,6 +12,7 @@ struct JournalEditorView: View {
     @State private var selectedMood: JournalEntry.MoodType = .neutral
     @State private var isFavorite = false
     @Environment(GameificationService.self) private var game
+    @Environment(\.requestReview) private var requestReview
     @State private var showSaveFlash = false
     @State private var showDiscardDialog = false
     @FocusState private var bodyFocused: Bool
@@ -216,6 +217,8 @@ struct JournalEditorView: View {
             game.checkMilestoneBadges(streakDays: profile?.currentStreakDays ?? 0,
                                       journalEntryCount: count + 1,
                                       moodCheckInCount: 0)
+            ReviewPrompter.maybeRequest(requestReview, moment: .journalEntries(count: count + 1),
+                                        streakDays: profile?.currentStreakDays ?? 0)
         }
 
         HapticService.notification(.success)

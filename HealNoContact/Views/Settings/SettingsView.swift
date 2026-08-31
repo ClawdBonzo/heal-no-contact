@@ -276,6 +276,7 @@ struct SettingsView: View {
             try modelContext.delete(model: StreakFlame.self)
             try modelContext.save()
             game.reset()
+            PaywallMoments.reset()
             NotificationService.shared.cancelAll()
             WidgetSync.clear()
             appState.selectedTab = .dashboard

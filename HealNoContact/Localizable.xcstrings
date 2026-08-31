@@ -62,6 +62,12 @@
             "state": "translated",
             "value": "— %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "— %@"
+          }
         }
       }
     },
@@ -122,6 +128,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "·"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "·"
@@ -190,6 +202,12 @@
             "state": "translated",
             "value": "“%@”"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@”"
+          }
         }
       }
     },
@@ -250,6 +268,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "@HealNoContact"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "@HealNoContact"
@@ -318,6 +342,12 @@
             "state": "translated",
             "value": "/ %lld XP"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld XP"
+          }
         }
       }
     },
@@ -378,6 +408,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ 100"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "/ 100"
@@ -452,6 +488,12 @@
             "state": "translated",
             "value": "%@ — %lld hari no contact!"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ — %lld gün iletişimsiz!"
+          }
         }
       }
     },
@@ -512,6 +554,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld"
@@ -586,6 +634,12 @@
             "state": "translated",
             "value": "%lld / %lld"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld"
+          }
         }
       }
     },
@@ -656,6 +710,12 @@
             "state": "translated",
             "value": "%lld %@ ditulis dan disegel"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %@ yazıldı ve mühürlendi"
+          }
         }
       }
     },
@@ -719,6 +779,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld check-in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld günlük kontrol"
           }
         }
       }
@@ -790,6 +856,12 @@
             "state": "translated",
             "value": "%lld %@ berturut-turut"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ardışık %@"
+          }
         }
       }
     },
@@ -853,6 +925,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld hari bertahan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gündür güçlüsün"
           }
         }
       }
@@ -924,6 +1002,12 @@
             "state": "translated",
             "value": "%lld/%lld"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld"
+          }
         }
       }
     },
@@ -984,6 +1068,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/10"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld/10"
@@ -1051,6 +1141,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld%% selesai"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%%lld tamamlandı"
           }
         }
       }
@@ -1122,6 +1218,12 @@
             "state": "translated",
             "value": "%lldm • %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dk • %@"
+          }
         }
       }
     },
@@ -1182,6 +1284,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "+%lld"
@@ -1250,6 +1358,12 @@
             "state": "translated",
             "value": "Pengganda XP ×%@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "×%@ XP çarpanı"
+          }
         }
       }
     },
@@ -1310,6 +1424,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔥"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "🔥"
@@ -1378,6 +1498,12 @@
             "state": "translated",
             "value": "Uji coba gratis 3 hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 günlük ücretsiz deneme"
+          }
         }
       }
     },
@@ -1441,6 +1567,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "7 hari memilih dirimu sendiri"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 gündür kendini seçiyorsun"
           }
         }
       }
@@ -1506,6 +1638,12 @@
             "state": "translated",
             "value": "7 hari no contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 gün iletişimsiz"
+          }
         }
       }
     },
@@ -1569,6 +1707,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "7 hari tanpa kontak"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 gün iletişim kurmadan"
           }
         }
       }
@@ -1634,6 +1778,12 @@
             "state": "translated",
             "value": "10 catatan jurnal"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 günlük kaydı"
+          }
         }
       }
     },
@@ -1697,6 +1847,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "20 check-in suasana hati"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "20 ruh hali kontrolü"
           }
         }
       }
@@ -1762,6 +1918,12 @@
             "state": "translated",
             "value": "Tanda 21 Hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "21 Gün Eşiği"
+          }
         }
       }
     },
@@ -1825,6 +1987,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pejuang 30 Hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 Günlük Savaşçı"
           }
         }
       }
@@ -1890,6 +2058,12 @@
             "state": "translated",
             "value": "45 Hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 Gün"
+          }
         }
       }
     },
@@ -1953,6 +2127,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "60 hari ketangguhan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "60 gündür direnç gösteriyorsun"
           }
         }
       }
@@ -2018,6 +2198,12 @@
             "state": "translated",
             "value": "Kemenangan 90 Hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "90 Günlük Zafer"
+          }
         }
       }
     },
@@ -2081,6 +2267,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "100 hari bebas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "100 gündür özgürsün"
           }
         }
       }
@@ -2146,6 +2338,12 @@
             "state": "translated",
             "value": "180 hari transformasi"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "180 gündür dönüşüyorsun"
+          }
         }
       }
     },
@@ -2209,6 +2407,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "365 hari — kamu telah diperbarui"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "365 gün — yenilendin"
           }
         }
       }
@@ -2274,6 +2478,12 @@
             "state": "translated",
             "value": "Satu bulan penuh pertumbuhan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam bir ay boyunca büyüdün"
+          }
         }
       }
     },
@@ -2338,6 +2548,12 @@
             "state": "translated",
             "value": "Tentang"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hakkında"
+          }
         }
       }
     },
@@ -2401,6 +2617,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pencapaian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başarımlar"
           }
         }
       }
@@ -2472,6 +2694,12 @@
             "state": "translated",
             "value": "Naik dari level %lld ke level %lld"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld. seviyeden %lld. seviyeye yükseldin"
+          }
         }
       }
     },
@@ -2535,6 +2763,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wawasan lanjutan & deteksi pola suasana hati"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişmiş içgörüler ve ruh hali örüntü tespiti"
           }
         }
       }
@@ -2600,6 +2834,12 @@
             "state": "translated",
             "value": "Siang hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öğleden sonraları"
+          }
         }
       }
     },
@@ -2663,6 +2903,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Strategi Lain"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka Bir Yöntem"
           }
         }
       }
@@ -2728,6 +2974,12 @@
             "state": "translated",
             "value": "Cemas"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Endişeli"
+          }
         }
       }
     },
@@ -2791,6 +3043,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rata-rata / 7"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ort. / 7"
           }
         }
       }
@@ -2856,6 +3114,12 @@
             "state": "translated",
             "value": "Kembali ke Dasbor"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panoya Dön"
+          }
         }
       }
     },
@@ -2919,6 +3183,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lencana"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetler"
           }
         }
       }
@@ -2984,6 +3254,12 @@
             "state": "translated",
             "value": "Mulai Pemulihanmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşmene Başla"
+          }
         }
       }
     },
@@ -3047,6 +3323,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Streak Terbaik"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En İyi Seri"
           }
         }
       }
@@ -3112,6 +3394,12 @@
             "state": "translated",
             "value": "PALING HEMAT"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "EN AVANTAJLI"
+          }
         }
       }
     },
@@ -3175,6 +3463,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tanggal putus"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayrılık tarihi"
           }
         }
       }
@@ -3240,6 +3534,12 @@
             "state": "translated",
             "value": "Tarik Napas"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Al"
+          }
         }
       }
     },
@@ -3303,6 +3603,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buang Napas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Ver"
           }
         }
       }
@@ -3368,6 +3674,12 @@
             "state": "translated",
             "value": "Hati yang Patah"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kırık Kalp"
+          }
         }
       }
     },
@@ -3431,6 +3743,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Momentum mulai terbangun. Terus maju!"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İvme kazanıyorsun. Devam et!"
           }
         }
       }
@@ -3496,6 +3814,12 @@
             "state": "translated",
             "value": "Membangun kebiasaan baru butuh waktu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni alışkanlıklar kurmak zaman alır"
+          }
         }
       }
     },
@@ -3559,6 +3883,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Batal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
           }
         }
       }
@@ -3624,6 +3954,12 @@
             "state": "translated",
             "value": "Klub Seratus Hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzler Kulübü"
+          }
         }
       }
     },
@@ -3687,6 +4023,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Check-In"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrol Yap"
           }
         }
       }
@@ -3752,6 +4094,12 @@
             "state": "translated",
             "value": "Tutup"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapat"
+          }
         }
       }
     },
@@ -3815,6 +4163,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selesaikan 3 misi harian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 günlük görevi tamamla"
           }
         }
       }
@@ -3880,6 +4234,12 @@
             "state": "translated",
             "value": "Selesaikan satu aktivitas perawatan diri"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir öz bakım etkinliği tamamla"
+          }
         }
       }
     },
@@ -3943,6 +4303,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selesaikan satu misi mingguan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir haftalık görevi tamamla"
           }
         }
       }
@@ -4008,6 +4374,12 @@
             "state": "translated",
             "value": "Selesaikan misi, kumpulkan XP, dan buka lencana seiring kamu pulih."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşirken görevleri tamamla, XP kazan ve rozetlerin kilidini aç."
+          }
         }
       }
     },
@@ -4071,6 +4443,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selesaikan misi harian pertamamu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk günlük görevini tamamla"
           }
         }
       }
@@ -4136,6 +4514,12 @@
             "state": "translated",
             "value": "Selesai!"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamamlandı!"
+          }
         }
       }
     },
@@ -4199,6 +4583,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lanjutkan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam Et"
           }
         }
       }
@@ -4264,6 +4654,12 @@
             "state": "translated",
             "value": "Lanjutkan — Terus Maju"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam Et — Vazgeçme"
+          }
         }
       }
     },
@@ -4327,6 +4723,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lanjutkan perjalananmu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yolculuğuna devam et"
           }
         }
       }
@@ -4392,6 +4794,12 @@
             "state": "translated",
             "value": "Lanjutkan Perjalananmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yolculuğuna Devam Et"
+          }
         }
       }
     },
@@ -4455,6 +4863,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Streak Saat Ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut Seri"
           }
         }
       }
@@ -4520,6 +4934,12 @@
             "state": "translated",
             "value": "Check-In Harian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Kontrol"
+          }
         }
       }
     },
@@ -4583,6 +5003,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pengingat semangat harian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük cesaretlendirme hatırlatmaları"
           }
         }
       }
@@ -4648,6 +5074,12 @@
             "state": "translated",
             "value": "Misi Harian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Görevler"
+          }
         }
       }
     },
@@ -4711,6 +5143,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pengingat Harian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Hatırlatmalar"
           }
         }
       }
@@ -4776,6 +5214,12 @@
             "state": "translated",
             "value": "hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün"
+          }
         }
       }
     },
@@ -4839,6 +5283,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hari ke-%lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld. Gün"
           }
         }
       }
@@ -4904,6 +5354,12 @@
             "state": "translated",
             "value": "hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gün"
+          }
         }
       }
     },
@@ -4967,6 +5423,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hari Sejak Putus"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayrılıktan Beri"
           }
         }
       }
@@ -5032,6 +5494,12 @@
             "state": "translated",
             "value": "Untuk %@,"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sevgili %@,"
+          }
         }
       }
     },
@@ -5095,6 +5563,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hapus"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
           }
         }
       }
@@ -5160,6 +5634,12 @@
             "state": "translated",
             "value": "Hapus Semua Data"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm Verileri Sil"
+          }
         }
       }
     },
@@ -5223,6 +5703,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hapus semua data?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm veriler silinsin mi?"
           }
         }
       }
@@ -5288,6 +5774,12 @@
             "state": "translated",
             "value": "Hapus Semuanya"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her Şeyi Sil"
+          }
         }
       }
     },
@@ -5351,6 +5843,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hancur"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıkılmış"
           }
         }
       }
@@ -5416,6 +5914,12 @@
             "state": "translated",
             "value": "Apakah kamu menghubungi mantanmu hari ini?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün eski sevgilinle iletişim kurdun mu?"
+          }
         }
       }
     },
@@ -5479,6 +5983,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "mis., Aku memilih diriku hari ini dan setiap hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ör. Bugün ve her gün kendimi seçiyorum"
           }
         }
       }
@@ -5544,6 +6054,12 @@
             "state": "translated",
             "value": "Raih lencana sepanjang perjalanan pemulihanmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme yolculuğunda rozetler kazan"
+          }
         }
       }
     },
@@ -5607,6 +6123,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit Catatan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydı Düzenle"
           }
         }
       }
@@ -5672,6 +6194,12 @@
             "state": "translated",
             "value": "Bara"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kor"
+          }
         }
       }
     },
@@ -5735,6 +6263,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sesi Darurat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acil Durum Oturumları"
           }
         }
       }
@@ -5800,6 +6334,12 @@
             "state": "translated",
             "value": "Masukkan jumlah hari (1–365)"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün sayısı gir (1–365)"
+          }
         }
       }
     },
@@ -5863,6 +6403,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Phoenix Abadi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ölümsüz Anka"
           }
         }
       }
@@ -5928,6 +6474,12 @@
             "state": "translated",
             "value": "Cek malam: Kamu tetap kuat hari ini."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam kontrolü: Bugün güçlü kaldın."
+          }
         }
       }
     },
@@ -5991,6 +6543,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sore hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşamları"
           }
         }
       }
@@ -6056,6 +6614,12 @@
             "state": "translated",
             "value": "Setiap tingkat berikutnya dalam hidupmu akan menuntut versi dirimu yang berbeda."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hayatının her yeni seviyesi senden farklı bir versiyonunu isteyecek."
+          }
         }
       }
     },
@@ -6119,6 +6683,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ekspor Jurnal sebagai PDF"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlüğü PDF Olarak Dışa Aktar"
           }
         }
       }
@@ -6184,6 +6754,12 @@
             "state": "translated",
             "value": "Ekspor jurnal & progresmu sebagai PDF"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlüğünü ve ilerlemeni PDF olarak dışa aktar"
+          }
         }
       }
     },
@@ -6247,6 +6823,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favoritkan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorilere ekle"
           }
         }
       }
@@ -6312,6 +6894,12 @@
             "state": "translated",
             "value": "Cahaya Pertama"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk Işık"
+          }
         }
       }
     },
@@ -6375,6 +6963,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Langkah Pertama"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk Adım"
           }
         }
       }
@@ -6440,6 +7034,12 @@
             "state": "translated",
             "value": "Nyala Api"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alev"
+          }
         }
       }
     },
@@ -6503,6 +7103,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jiwa Bebas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özgür Ruh"
           }
         }
       }
@@ -6568,6 +7174,12 @@
             "state": "translated",
             "value": "Pulih Sepenuhnya"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamamen İyileşmiş"
+          }
         }
       }
     },
@@ -6631,6 +7243,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dapatkan Akses Mingguan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık Erişim Al"
           }
         }
       }
@@ -6696,6 +7314,12 @@
             "state": "translated",
             "value": "Lewati 24 jam tanpa kontak"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24 saat iletişim kurmadan geçir"
+          }
         }
       }
     },
@@ -6759,6 +7383,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bersyukur"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minnettar"
           }
         }
       }
@@ -6824,6 +7454,12 @@
             "state": "translated",
             "value": "Makin Kuat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güçleniyorsun"
+          }
         }
       }
     },
@@ -6887,6 +7523,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pertumbuhan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişim"
           }
         }
       }
@@ -6952,6 +7594,12 @@
             "state": "translated",
             "value": "Bertumbuh itu menyakitkan. Berubah itu menyakitkan. Tapi tidak ada yang lebih menyakitkan daripada terus terjebak di tempat."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyümek acı verir. Değişmek acı verir. Ama hiçbir şey olduğun yerde kalmak kadar acı vermez."
+          }
         }
       }
     },
@@ -7016,6 +7664,12 @@
             "state": "translated",
             "value": "Pahlawan Setengah Tahun"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarım Yıl Kahramanı"
+          }
         }
       }
     },
@@ -7076,6 +7730,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heal"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Heal"
@@ -7144,6 +7804,12 @@
             "state": "translated",
             "value": "HEAL NO CONTACT"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HEAL NO CONTACT"
+          }
         }
       }
     },
@@ -7204,6 +7870,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heal Premium"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Heal Premium"
@@ -7272,6 +7944,12 @@
             "state": "translated",
             "value": "HARI PEMULIHAN"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İYİLEŞME GÜNÜ"
+          }
         }
       }
     },
@@ -7335,6 +8013,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hati yang Memulih"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşen Kalp"
           }
         }
       }
@@ -7400,6 +8084,12 @@
             "state": "translated",
             "value": "Pemulihan tidak berjalan lurus."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme doğrusal değildir."
+          }
         }
       }
     },
@@ -7463,6 +8153,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Skor Pemulihan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme Puanı"
           }
         }
       }
@@ -7528,6 +8224,12 @@
             "state": "translated",
             "value": "Beranda"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana Sayfa"
+          }
         }
       }
     },
@@ -7591,6 +8293,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jujur itu butuh keberanian. Streak-mu akan direset, tapi pertumbuhanmu tidak."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürüstlük cesaret ister. Serin sıfırlanacak ama gelişimin sıfırlanmayacak."
           }
         }
       }
@@ -7656,6 +8364,12 @@
             "state": "translated",
             "value": "Penuh harap"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umutlu"
+          }
         }
       }
     },
@@ -7719,6 +8433,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bagaimana perasaanmu?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendini nasıl hissediyorsun?"
           }
         }
       }
@@ -7784,6 +8504,12 @@
             "state": "translated",
             "value": "Bagaimana harimu?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günün nasıl gidiyor?"
+          }
         }
       }
     },
@@ -7847,6 +8573,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku berkomitmen untuk no contact karena aku layak mendapatkan kedamaian, pertumbuhan, dan masa depan yang dibangun di atas harga diri. Saat dorongan itu datang, aku akan membuka aplikasi ini alih-alih menghubunginya."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimi kesmeye söz veriyorum çünkü huzuru, gelişimi ve öz saygı üzerine kurulu bir geleceği hak ediyorum. Dürtü geldiğinde ona ulaşmak yerine bu uygulamayı açacağım."
           }
         }
       }
@@ -7912,6 +8644,12 @@
             "state": "translated",
             "value": "Aku butuh bantuan sekarang"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi yardıma ihtiyacım var"
+          }
         }
       }
     },
@@ -7975,6 +8713,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku Berhasil Menahan — Aku Baik-Baik Saja"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direndim — İyiyim"
           }
         }
       }
@@ -8040,6 +8784,12 @@
             "state": "translated",
             "value": "Aku siap berkomitmen"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Söz vermeye hazırım"
+          }
         }
       }
     },
@@ -8103,6 +8853,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pemulihan yang luar biasa. Kamu menginspirasi."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnanılmaz bir iyileşme. İlham veriyorsun."
           }
         }
       }
@@ -8168,6 +8924,12 @@
             "state": "translated",
             "value": "Inferno"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cehennem Ateşi"
+          }
         }
       }
     },
@@ -8231,6 +8993,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tarik napas untuk masa depan. Hembuskan masa lalu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geleceği içine çek. Geçmişi dışarı ver."
           }
         }
       }
@@ -8296,6 +9064,12 @@
             "state": "translated",
             "value": "Kekuatan Batin"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İç Güç"
+          }
         }
       }
     },
@@ -8359,6 +9133,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Intensitas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şiddet"
           }
         }
       }
@@ -8424,6 +9204,12 @@
             "state": "translated",
             "value": "Jurnal"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük"
+          }
         }
       }
     },
@@ -8487,6 +9273,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tulis Perasaan di Jurnal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duygularını Yaz"
           }
         }
       }
@@ -8552,6 +9344,12 @@
             "state": "translated",
             "value": "Penjaga Jurnal"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Tutan"
+          }
         }
       }
     },
@@ -8615,6 +9413,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pejuang Jurnal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Savaşçısı"
           }
         }
       }
@@ -8680,6 +9484,12 @@
             "state": "translated",
             "value": "Streak Jurnal"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Yazma Serisi"
+          }
         }
       }
     },
@@ -8743,6 +9553,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Baru memulai. Setiap perjalanan dimulai dari sini."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha yeni başlıyorsun. Her yolculuk burada başlar."
           }
         }
       }
@@ -8808,6 +9624,12 @@
             "state": "translated",
             "value": "Terus Maju"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam Et"
+          }
         }
       }
     },
@@ -8871,6 +9693,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Larut malam"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece geç saatler"
           }
         }
       }
@@ -8936,6 +9764,12 @@
             "state": "translated",
             "value": "Suasana hati terakhir: %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son ruh hali: %@"
+          }
         }
       }
     },
@@ -8999,6 +9833,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Legenda"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Efsane"
           }
         }
       }
@@ -9064,6 +9904,12 @@
             "state": "translated",
             "value": "Yuk, kita atur dulu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hadi her şeyi ayarlayalım"
+          }
         }
       }
     },
@@ -9127,6 +9973,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Surat Tersegel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mektup Mühürlendi"
           }
         }
       }
@@ -9192,6 +10044,12 @@
             "state": "translated",
             "value": "Melepaskan bukan berarti menyerah, melainkan melangkah maju."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bırakmak pes etmek değildir; yoluna devam etmektir."
+          }
         }
       }
     },
@@ -9255,6 +10113,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Level %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviye %lld"
           }
         }
       }
@@ -9326,6 +10190,12 @@
             "state": "translated",
             "value": "Level %lld: %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviye %lld: %@"
+          }
         }
       }
     },
@@ -9389,6 +10259,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Naik Level!"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviye Atladın!"
           }
         }
       }
@@ -9454,6 +10330,12 @@
             "state": "translated",
             "value": "NAIK LEVEL!"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SEVİYE ATLADIN!"
+          }
         }
       }
     },
@@ -9517,6 +10399,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Naik Level! Pemulihanmu makin kuat."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seviye atladın! İyileşmen güçleniyor."
           }
         }
       }
@@ -9582,6 +10470,12 @@
             "state": "translated",
             "value": "Seumur Hidup"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ömür Boyu"
+          }
         }
       }
     },
@@ -9645,6 +10539,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Catat suasana hati 7 kali"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh halini 7 kez kaydet"
           }
         }
       }
@@ -9710,6 +10610,12 @@
             "state": "translated",
             "value": "Catat suasana hatimu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh halini kaydet"
+          }
         }
       }
     },
@@ -9773,6 +10679,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Catat suasana hatimu hari ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün ruh halini kaydet"
           }
         }
       }
@@ -9838,6 +10750,12 @@
             "state": "translated",
             "value": "Buat komitmenmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sözünü ver"
+          }
         }
       }
     },
@@ -9901,6 +10819,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kelola"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönet"
           }
         }
       }
@@ -9966,6 +10890,12 @@
             "state": "translated",
             "value": "Tonggak Tercapai! 🏆"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilometre Taşı Açıldı! 🏆"
+          }
         }
       }
     },
@@ -10029,6 +10959,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tonggak: Hari ke-%lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilometre taşı: %lld. gün"
           }
         }
       }
@@ -10094,6 +11030,12 @@
             "state": "translated",
             "value": "Tonggak Pencapaian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilometre Taşları"
+          }
         }
       }
     },
@@ -10157,6 +11099,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Merindukan seseorang adalah bagian dari pemulihan. Bukan berarti kamu harus kembali."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birini özlemek iyileşmenin bir parçasıdır. Geri dönmen gerektiği anlamına gelmez."
           }
         }
       }
@@ -10222,6 +11170,12 @@
             "state": "translated",
             "value": "Bulanan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık"
+          }
         }
       }
     },
@@ -10285,6 +11239,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suasana Hati"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh Hali"
           }
         }
       }
@@ -10350,6 +11310,12 @@
             "state": "translated",
             "value": "Master Suasana Hati"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh Hali Ustası"
+          }
         }
       }
     },
@@ -10413,6 +11379,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pelacak Suasana Hati"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh Hali Takibi"
           }
         }
       }
@@ -10478,6 +11450,12 @@
             "state": "translated",
             "value": "Tren Suasana Hati"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruh Hali Eğilimi"
+          }
         }
       }
     },
@@ -10541,6 +11519,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pagi hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabahları"
           }
         }
       }
@@ -10606,6 +11590,12 @@
             "state": "translated",
             "value": "Kebanyakan dorongan memuncak di 10-20 menit lalu mereda. Kamu hebat."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çoğu dürtü 10-20 dakikada zirveye çıkar, sonra söner. Harika gidiyorsun."
+          }
         }
       }
     },
@@ -10669,6 +11659,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Biasa saja"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nötr"
           }
         }
       }
@@ -10734,6 +11730,12 @@
             "state": "translated",
             "value": "Catatan Baru"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni Kayıt"
+          }
         }
       }
     },
@@ -10797,6 +11799,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jalur saraf baru sedang terbentuk"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni sinir yolları oluşuyor"
           }
         }
       }
@@ -10862,6 +11870,12 @@
             "state": "translated",
             "value": "Gelar baru: %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni unvan: %@"
+          }
         }
       }
     },
@@ -10925,6 +11939,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Malam hari bisa terasa berat. Kamu pasti bisa."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geceler zor olabilir. Sen bunu başarırsın."
           }
         }
       }
@@ -10990,6 +12010,12 @@
             "state": "translated",
             "value": "Tidak ada misi aktif"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktif görev yok"
+          }
         }
       }
     },
@@ -11053,6 +12079,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No contact bukan tentang mereka. Ini tentang kamu memilih dirimu sendiri."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimi kesmek onlarla ilgili değil. Kendini seçmenle ilgili."
           }
         }
       }
@@ -11118,6 +12150,12 @@
             "state": "translated",
             "value": "No contact. Tanpa penyesalan. Hanya pemulihan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişim yok. Pişmanlık yok. Sadece iyileşme."
+          }
         }
       }
     },
@@ -11181,6 +12219,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belum ada pola"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz bir örüntü yok"
           }
         }
       }
@@ -11246,6 +12290,12 @@
             "state": "translated",
             "value": "Juara No Contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz Şampiyonu"
+          }
         }
       }
     },
@@ -11309,6 +12359,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pemulihan No Contact"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz İyileşme"
           }
         }
       }
@@ -11374,6 +12430,12 @@
             "state": "translated",
             "value": "Kemenangan No Contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz Zafer"
+          }
         }
       }
     },
@@ -11437,6 +12499,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tidak menghubunginya adalah bentuk cinta pada diri sendiri."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ona ulaşmamak bir öz sevgi biçimidir."
           }
         }
       }
@@ -11502,6 +12570,12 @@
             "state": "translated",
             "value": "Notifikasi"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler"
+          }
         }
       }
     },
@@ -11565,6 +12639,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "dari target %lld hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld günlük hedeften"
           }
         }
       }
@@ -11630,6 +12710,12 @@
             "state": "translated",
             "value": "OK"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
+          }
         }
       }
     },
@@ -11693,6 +12779,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suatu hari kamu akan menceritakan kisah tentang bagaimana kamu melewati semua ini, dan kisah itu akan menjadi panduan bertahan hidup bagi orang lain."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir gün neler yaşadığını ve bunun üstesinden nasıl geldiğini anlatacaksın ve bu, bir başkasının hayatta kalma rehberi olacak."
           }
         }
       }
@@ -11758,6 +12850,12 @@
             "state": "translated",
             "value": "Satu Bulan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir Ay"
+          }
         }
       }
     },
@@ -11821,6 +12919,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Satu bulan pemulihan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir ay boyunca iyileştin"
           }
         }
       }
@@ -11886,6 +12990,12 @@
             "state": "translated",
             "value": "Satu Minggu Bertahan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir Hafta Güçlü"
+          }
         }
       }
     },
@@ -11949,6 +13059,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Satu Tahun Bebas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir Yıl Özgür"
           }
         }
       }
@@ -12014,6 +13130,12 @@
             "state": "translated",
             "value": "Opsional"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsteğe bağlı"
+          }
         }
       }
     },
@@ -12077,6 +13199,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rasa sakit tak terhindarkan. Penderitaan adalah pilihan."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acı kaçınılmazdır. Acı çekmek tercihtir."
           }
         }
       }
@@ -12142,6 +13270,12 @@
             "state": "translated",
             "value": "Pola"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Örüntüler"
+          }
         }
       }
     },
@@ -12205,6 +13339,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Phoenix"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anka"
           }
         }
       }
@@ -12270,6 +13410,12 @@
             "state": "translated",
             "value": "Phoenix Bangkit"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Küllerinden Doğan Anka"
+          }
         }
       }
     },
@@ -12333,6 +13479,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Privasi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik"
           }
         }
       }
@@ -12398,6 +13550,12 @@
             "state": "translated",
             "value": "Progres"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlerleme"
+          }
         }
       }
     },
@@ -12461,6 +13619,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Progres ke level berikutnya"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki seviyeye ilerleme"
           }
         }
       }
@@ -12526,6 +13690,12 @@
             "state": "translated",
             "value": "Kesalahan Pembelian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satın Alma Hatası"
+          }
         }
       }
     },
@@ -12589,6 +13759,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Beli Seumur Hidup"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ömür Boyu Satın Al"
           }
         }
       }
@@ -12654,6 +13830,12 @@
             "state": "translated",
             "value": "Ksatria Misi"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görev Kahramanı"
+          }
         }
       }
     },
@@ -12717,6 +13899,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pemula Misi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Göreve Başlayan"
           }
         }
       }
@@ -12782,6 +13970,12 @@
             "state": "translated",
             "value": "Catatan singkat (opsional)"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa not (isteğe bağlı)"
+          }
         }
       }
     },
@@ -12845,6 +14039,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Beri Nilai di App Store"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store'da Puan Ver"
           }
         }
       }
@@ -12910,6 +14110,12 @@
             "state": "translated",
             "value": "Mencapai level 5"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5. seviyeye ulaştın"
+          }
         }
       }
     },
@@ -12973,6 +14179,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mencapai level tertinggi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En üst seviyeye ulaştın"
           }
         }
       }
@@ -13038,6 +14250,12 @@
             "state": "translated",
             "value": "Reset"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıfırla"
+          }
         }
       }
     },
@@ -13101,6 +14319,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reset Streak"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seriyi Sıfırla"
           }
         }
       }
@@ -13166,6 +14390,12 @@
             "state": "translated",
             "value": "Reset streak-mu?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin sıfırlansın mı?"
+          }
         }
       }
     },
@@ -13229,6 +14459,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Berhasil ditahan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direndim"
           }
         }
       }
@@ -13294,6 +14530,12 @@
             "state": "translated",
             "value": "Pulihkan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri Yükle"
+          }
         }
       }
     },
@@ -13357,6 +14599,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Phoenix yang Bangkit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yükselen Anka"
           }
         }
       }
@@ -13422,6 +14670,12 @@
             "state": "translated",
             "value": "Titik terendah menjadi fondasi kokoh tempat aku membangun kembali hidupku."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibe vurmak, hayatımı üzerine yeniden inşa ettiğim sağlam temel oldu."
+          }
         }
       }
     },
@@ -13485,6 +14739,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sedih"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzgün"
           }
         }
       }
@@ -13550,6 +14810,12 @@
             "state": "translated",
             "value": "Simpan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
+          }
         }
       }
     },
@@ -13613,6 +14879,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Simpan & Segel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet ve Mühürle"
           }
         }
       }
@@ -13678,6 +14950,12 @@
             "state": "translated",
             "value": "Hemat %lld%%"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%%lld tasarruf"
+          }
         }
       }
     },
@@ -13741,6 +15019,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hemat 58%"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%58 tasarruf"
           }
         }
       }
@@ -13806,6 +15090,12 @@
             "state": "translated",
             "value": "Hemat 67%"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%67 tasarruf"
+          }
         }
       }
     },
@@ -13869,6 +15159,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Simpan Check-In"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolü Kaydet"
           }
         }
       }
@@ -13934,6 +15230,12 @@
             "state": "translated",
             "value": "Katakan apa yang perlu kamu katakan..."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Söylemen gerekeni söyle..."
+          }
         }
       }
     },
@@ -13997,6 +15299,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cari catatan..."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kayıtlarda ara..."
           }
         }
       }
@@ -14062,6 +15370,12 @@
             "state": "translated",
             "value": "Bagian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bölüm"
+          }
         }
       }
     },
@@ -14125,6 +15439,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Waktu Merawat Diri"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öz Bakım Zamanı"
           }
         }
       }
@@ -14190,6 +15510,12 @@
             "state": "translated",
             "value": "Pengaturan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar"
+          }
         }
       }
     },
@@ -14253,6 +15579,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bagikan Hari ke-%lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld. Günü Paylaş"
           }
         }
       }
@@ -14318,6 +15650,12 @@
             "state": "translated",
             "value": "Diam adalah jawaban terbaik untuk orang yang bebal."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessizlik, ahmağa verilecek en iyi cevaptır."
+          }
         }
       }
     },
@@ -14382,6 +15720,12 @@
             "state": "translated",
             "value": "Tergelincir"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydım"
+          }
         }
       }
     },
@@ -14445,6 +15789,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Terkadang bagian tersulit bukanlah melepaskan, melainkan belajar memulai lagi."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazen en zor kısım bırakmak değil, yeniden başlamayı öğrenmektir."
           }
         }
       }
@@ -14511,6 +15861,12 @@
             "state": "translated",
             "value": "Stabil"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabit"
+          }
         }
       }
     },
@@ -14574,6 +15930,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bintang tak bisa bersinar tanpa kegelapan."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıldızlar karanlık olmadan parlayamaz."
           }
         }
       }
@@ -14639,6 +16001,12 @@
             "state": "translated",
             "value": "Mulai Uji Coba Gratis 3 Hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 Günlük Ücretsiz Denemeyi Başlat"
+          }
         }
       }
     },
@@ -14702,6 +16070,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mulai Latihan Pernapasan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Egzersizini Başlat"
           }
         }
       }
@@ -14767,6 +16141,12 @@
             "state": "translated",
             "value": "Mulai Perjalananku"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yolculuğuma Başla"
+          }
         }
       }
     },
@@ -14830,6 +16210,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mulai menulis..."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazmaya başla..."
           }
         }
       }
@@ -14895,6 +16281,12 @@
             "state": "translated",
             "value": "Statistik"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstatistikler"
+          }
         }
       }
     },
@@ -14958,6 +16350,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hentikan Latihan Pernapasan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Egzersizini Durdur"
           }
         }
       }
@@ -15023,6 +16421,12 @@
             "state": "translated",
             "value": "Hanya disimpan di perangkatmu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yalnızca cihazında saklanır."
+          }
         }
       }
     },
@@ -15086,6 +16490,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kuat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güçlü"
           }
         }
       }
@@ -15151,6 +16561,12 @@
             "state": "translated",
             "value": "Kuat dan mantap. Kamu berkembang pesat."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güçlü ve istikrarlı. Serpiliyorsun."
+          }
         }
       }
     },
@@ -15214,6 +16630,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dukung pengembang independen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağımsız bir geliştiriciyi destekle"
           }
         }
       }
@@ -15279,6 +16701,12 @@
             "state": "translated",
             "value": "Ketuk untuk mendapatkan ide tulisan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazma ilhamı için dokun"
+          }
         }
       }
     },
@@ -15342,6 +16770,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ketentuan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koşullar"
           }
         }
       }
@@ -15407,6 +16841,12 @@
             "state": "translated",
             "value": "Bagian tersulit sudah kamu lewati"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En zor kısmı geride bıraktın"
+          }
         }
       }
     },
@@ -15470,6 +16910,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Satu-satunya jalan keluar adalah melewatinya."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tek çıkış yolu, içinden geçmektir."
           }
         }
       }
@@ -15535,6 +16981,12 @@
             "state": "translated",
             "value": "Menjadi dirimu yang baru akan membuatmu kehilangan orang, hubungan, tempat, dan hal-hal materi. Tetaplah memilih dirimu sendiri."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olmakta olduğun kişi sana bazı insanlara, ilişkilere, mekânlara ve maddi şeylere mal olacak. Yine de kendini seç."
+          }
         }
       }
     },
@@ -15598,6 +17050,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Orang terkuat bukanlah mereka yang memamerkan kekuatan di depan kita, melainkan mereka yang memenangkan pertempuran yang tak pernah kita ketahui."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En güçlü insanlar, gücünü bize gösterenler değil; bizim hiç bilmediğimiz savaşları kazananlardır."
           }
         }
       }
@@ -15663,6 +17121,12 @@
             "state": "translated",
             "value": "Dorongan untuk menghubunginya hanya sementara.\nYuk, kita lewati gelombang ini bersama."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ona ulaşma dürtüsü geçici.\nBu dalgayı birlikte atlatalım."
+          }
         }
       }
     },
@@ -15726,6 +17190,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Luka adalah tempat Cahaya masuk ke dalam dirimu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yara, Işığın sana girdiği yerdir."
           }
         }
       }
@@ -15791,6 +17261,12 @@
             "state": "translated",
             "value": "Ini membantu kami mempersonalisasi perjalananmu.\nJawabanmu tetap privat di perangkat ini."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu, yolculuğunu kişiselleştirmemize yardımcı olur.\nCevabın bu cihazda gizli kalır."
+          }
         }
       }
     },
@@ -15854,6 +17330,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Minggu Ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Hafta"
           }
         }
       }
@@ -15919,6 +17401,12 @@
             "state": "translated",
             "value": "Ini akan muncul di dasbor sebagai pengingat harianmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu, panonda günlük bir hatırlatma olarak görünecek"
+          }
         }
       }
     },
@@ -15982,6 +17470,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ini akan menghapus secara permanen semua catatan jurnal, data suasana hati, tonggak pencapaian, dan profilmu. Tindakan ini tidak dapat dibatalkan."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu işlem tüm günlük kayıtlarını, ruh hali verilerini, kilometre taşlarını ve profilini kalıcı olarak silecek. Bu geri alınamaz."
           }
         }
       }
@@ -16047,6 +17541,12 @@
             "state": "translated",
             "value": "Waktunya check-in"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük kontrol zamanı"
+          }
         }
       }
     },
@@ -16110,6 +17610,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Judul (opsional)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlık (isteğe bağlı)"
           }
         }
       }
@@ -16175,6 +17681,12 @@
             "state": "translated",
             "value": "Misi Hari Ini"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün Görevi"
+          }
         }
       }
     },
@@ -16239,6 +17751,12 @@
             "state": "translated",
             "value": "Alat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araçlar"
+          }
         }
       }
     },
@@ -16302,6 +17820,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "total"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "toplam"
           }
         }
       }
@@ -16368,6 +17892,12 @@
             "state": "translated",
             "value": "Cenderung menurun"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşüşte"
+          }
         }
       }
     },
@@ -16433,6 +17963,12 @@
             "state": "translated",
             "value": "Cenderung meningkat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yükselişte"
+          }
         }
       }
     },
@@ -16496,6 +18032,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Coba Ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunu Dene"
           }
         }
       }
@@ -16561,6 +18103,12 @@
             "state": "translated",
             "value": "Dua Bulan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki Ay"
+          }
         }
       }
     },
@@ -16624,6 +18172,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dua Minggu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki Hafta"
           }
         }
       }
@@ -16689,6 +18243,12 @@
             "state": "translated",
             "value": "Hapus dari Favorit"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorilerden çıkar"
+          }
         }
       }
     },
@@ -16752,6 +18312,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buka Wawasan Lanjutan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişmiş İçgörülerin Kilidini Aç"
           }
         }
       }
@@ -16817,6 +18383,12 @@
             "state": "translated",
             "value": "Buka semua fitur & dukung pengembangan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm özelliklerin kilidini aç ve geliştirmeyi destekle"
+          }
         }
       }
     },
@@ -16880,6 +18452,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buka semuanya. Dukung pemulihanmu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her şeyin kilidini aç. İyileşmeni destekle."
           }
         }
       }
@@ -16945,6 +18523,12 @@
             "state": "translated",
             "value": "Terbuka %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ kilidi açıldı"
+          }
         }
       }
     },
@@ -17008,6 +18592,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Surat yang Tak Terkirim"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönderilmeyen Mektup"
           }
         }
       }
@@ -17073,6 +18663,12 @@
             "state": "translated",
             "value": "Surat-Surat yang Tak Terkirim"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönderilmeyen Mektuplar"
+          }
         }
       }
     },
@@ -17136,6 +18732,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tak Terbendung"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdurulamaz"
           }
         }
       }
@@ -17201,6 +18803,12 @@
             "state": "translated",
             "value": "Tingkatkan ke Premium"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Premium'a Geç"
+          }
         }
       }
     },
@@ -17264,6 +18872,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Timer Gelombang Dorongan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü Dalgası Sayacı"
           }
         }
       }
@@ -17329,6 +18943,12 @@
             "state": "translated",
             "value": "Dorongan yang Ditahan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direnilen Dürtüler"
+          }
         }
       }
     },
@@ -17392,6 +19012,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mingguan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık"
           }
         }
       }
@@ -17457,6 +19083,12 @@
             "state": "translated",
             "value": "Juara Mingguan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftanın Şampiyonu"
+          }
         }
       }
     },
@@ -17520,6 +19152,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Misi Mingguan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık Görevler"
           }
         }
       }
@@ -17585,6 +19223,12 @@
             "state": "translated",
             "value": "Yang terasa seperti akhir sering kali adalah sebuah awal."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son gibi hissettiren şey çoğu zaman başlangıçtır."
+          }
         }
       }
     },
@@ -17648,6 +19292,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Utuh Kembali"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeniden Bütün"
           }
         }
       }
@@ -17713,6 +19363,12 @@
             "state": "translated",
             "value": "Kenapa kamu memilih\nno contact?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neden iletişimi\nkesiyorsun?"
+          }
         }
       }
     },
@@ -17776,6 +19432,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tulis 5 catatan jurnal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 günlük kaydı yaz"
           }
         }
       }
@@ -17841,6 +19503,12 @@
             "state": "translated",
             "value": "Tulis satu catatan jurnal"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir günlük kaydı yaz"
+          }
         }
       }
     },
@@ -17904,6 +19572,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tulis sebuah mantra untuk mengingatkan dirimu\nkenapa kamu melakukan ini."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunu neden yaptığını kendine hatırlatacak\nbir mantra yaz."
           }
         }
       }
@@ -17969,6 +19643,12 @@
             "state": "translated",
             "value": "Tulis Catatan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir Kayıt Yaz"
+          }
         }
       }
     },
@@ -18032,6 +19712,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tulis Surat yang Tak Terkirim"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönderilmeyen Mektup Yaz"
           }
         }
       }
@@ -18097,6 +19783,12 @@
             "state": "translated",
             "value": "Tulis semua yang ingin kamu katakan.\nSurat ini tidak akan pernah dikirim — ini untukmu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Söylemek istediğin her şeyi yaz.\nBu mektup asla gönderilmeyecek — o senin için."
+          }
         }
       }
     },
@@ -18160,6 +19852,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tuliskan semuanya"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazıp dök"
           }
         }
       }
@@ -18225,6 +19923,12 @@
             "state": "translated",
             "value": "Menulis membantu mengolah emosi dan melacak pemulihanmu. Mulailah dari apa pun yang ada di pikiranmu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazmak duyguları işlemene ve iyileşmeni takip etmene yardımcı olur. Aklında ne varsa onunla başla."
+          }
         }
       }
     },
@@ -18285,6 +19989,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XP"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "XP"
@@ -18353,6 +20063,12 @@
             "state": "translated",
             "value": "Tahunan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıllık"
+          }
         }
       }
     },
@@ -18416,6 +20132,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ya, reset"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet, sıfırla"
           }
         }
       }
@@ -18481,6 +20203,12 @@
             "state": "translated",
             "value": "Kamu boleh menjadi mahakarya sekaligus karya yang masih dalam proses."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hem bir başyapıt hem de hâlâ tamamlanmakta olan bir eser olabilirsin."
+          }
         }
       }
     },
@@ -18544,6 +20272,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu tak bisa memulai bab berikutnya jika terus membaca ulang bab yang lalu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son bölümü tekrar tekrar okursan yeni bölüme başlayamazsın."
           }
         }
       }
@@ -18609,6 +20343,12 @@
             "state": "translated",
             "value": "Kamu berhasil!"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başardın!"
+          }
         }
       }
     },
@@ -18672,6 +20412,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu tidak butuh penutup dari mereka. Kamu butuh kedamaian dari dalam dirimu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onlardan bir kapanışa ihtiyacın yok. İçindeki huzura ihtiyacın var."
           }
         }
       }
@@ -18737,6 +20483,12 @@
             "state": "translated",
             "value": "Kamu berhasil menahan dorongan itu.\nItu butuh kekuatan yang nyata."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtüye direndin.\nBu gerçek bir güç ister."
+          }
         }
       }
     },
@@ -18800,6 +20552,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu memulai perjalanan pemulihanmu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme yolculuğuna başladın"
           }
         }
       }
@@ -18865,6 +20623,12 @@
             "state": "translated",
             "value": "Kamu selamat dari hal yang kamu kira akan menghancurkanmu. Sekarang tegakkan mahkotamu dan melangkah maju seperti pejuang sejati."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seni öldüreceğini sandığın şeyden sağ çıktın. Şimdi tacını düzelt ve olduğun savaşçı gibi yoluna devam et."
+          }
         }
       }
     },
@@ -18928,6 +20692,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu luar biasa. Setiap jam sangat berarti."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Harika gidiyorsun. Her saat değerli."
           }
         }
       }
@@ -18993,6 +20763,12 @@
             "state": "translated",
             "value": "Kamu membuat kemajuan yang nyata."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerçekten ilerleme kaydediyorsun."
+          }
         }
       }
     },
@@ -19056,6 +20832,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Streak-mu sudah **%lld hari**. Jangan putus sekarang."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "**%lld günlük** bir seridesin. Şimdi bozma."
           }
         }
       }
@@ -19121,6 +20903,12 @@
             "state": "translated",
             "value": "Kamu sedang menulis ulang kisahmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hikâyeni yeniden yazıyorsun"
+          }
         }
       }
     },
@@ -19184,6 +20972,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu Pasti Bisa"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sen Bunu Başarırsın"
           }
         }
       }
@@ -19249,6 +21043,12 @@
             "state": "translated",
             "value": "Streak-mu saat ini akan direset ke 0. Streak terbaik dan riwayatmu akan tetap tersimpan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut serin 0'a sıfırlanacak. En iyi serin ve geçmişin korunacak."
+          }
         }
       }
     },
@@ -19312,6 +21112,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Perjalanan pertumbuhanmu dimulai di sini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişim yolculuğun burada başlıyor"
           }
         }
       }
@@ -19377,6 +21183,12 @@
             "state": "translated",
             "value": "Pemulihanmu makin kuat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşmen güçleniyor"
+          }
         }
       }
     },
@@ -19440,6 +21252,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Skor pemulihan, deteksi pola suasana hati, dan ringkasan mingguan adalah bagian dari Heal Premium."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme puanın, ruh hali örüntü tespiti ve haftalık özetler Heal Premium'un bir parçasıdır."
           }
         }
       }
@@ -19505,6 +21323,12 @@
             "state": "translated",
             "value": "Hatimu tahu jalannya. Berlarilah ke arah itu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalbin yolu biliyor. O yöne doğru koş."
+          }
         }
       }
     },
@@ -19568,6 +21392,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jurnalmu masih kosong"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlüğün boş"
           }
         }
       }
@@ -19633,6 +21463,12 @@
             "state": "translated",
             "value": "Perjalananmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yolculuğun"
+          }
         }
       }
     },
@@ -19696,6 +21532,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suratmu disimpan secara privat di perangkat ini dan tidak pernah dikirim ke mana pun."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mektubun bu cihazda gizli olarak saklanır ve hiçbir yere gönderilmez."
           }
         }
       }
@@ -19761,6 +21603,12 @@
             "state": "translated",
             "value": "Mantramu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantran"
+          }
         }
       }
     },
@@ -19824,6 +21672,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Teman setiamu dalam no contact"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz yol arkadaşın"
           }
         }
       }
@@ -19889,6 +21743,12 @@
             "state": "translated",
             "value": "Mantra pribadimu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişisel mantran"
+          }
         }
       }
     },
@@ -19952,6 +21812,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Janjimu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sözün"
           }
         }
       }
@@ -20017,6 +21883,12 @@
             "state": "translated",
             "value": "Nilaimu tidak berkurang hanya karena seseorang tak mampu melihat betapa berharganya dirimu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birinin senin değerini görememesi, değerini düşürmez."
+          }
         }
       }
     },
@@ -20080,6 +21952,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kata-katamu aman."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sözlerin güvende."
           }
         }
       }
@@ -20145,6 +22023,12 @@
             "state": "translated",
             "value": "Aku memilih kedamaianku di atas kekacauan mereka."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onların kaosu yerine kendi huzurumu seçiyorum."
+          }
         }
       }
     },
@@ -20208,6 +22092,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Check-in harianmu sudah menunggu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük kontrolün seni bekliyor"
           }
         }
       }
@@ -20273,6 +22163,12 @@
             "state": "translated",
             "value": "Check-in singkat menjaga momentummu tetap berjalan. Bagaimana kabarmu hari ini?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa bir kontrol ivmeni korur. Bugün nasılsın?"
+          }
         }
       }
     },
@@ -20336,6 +22232,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Streak-mu masih berlanjut 🔥"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serin hâlâ devam ediyor 🔥"
           }
         }
       }
@@ -20401,6 +22303,12 @@
             "state": "translated",
             "value": "%lld+ hari no contact. Check-in dan tambahkan hari ini ke dalamnya."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld+ gün iletişimsiz. Kontrolünü yap ve bugünü de ekle."
+          }
         }
       }
     },
@@ -20464,6 +22372,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kami masih di sini untukmu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hâlâ senin yanındayız"
           }
         }
       }
@@ -20529,6 +22443,12 @@
             "state": "translated",
             "value": "Pemulihan tidak berjalan lurus. Kembalilah saat kamu siap — hari ini adalah hari yang baik."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme doğrusal değildir. Hazır olduğunda geri dön — bugün iyi bir gün."
+          }
         }
       }
     },
@@ -20592,6 +22512,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kedamaianmu layak dijaga"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Huzurun korunmaya değer"
           }
         }
       }
@@ -20657,6 +22583,12 @@
             "state": "translated",
             "value": "Sudah beberapa hari berlalu. Satu langkah kecil ke depan tetaplah kemajuan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birkaç gün oldu. İleriye atılan küçük bir adım da ilerlemedir."
+          }
         }
       }
     },
@@ -20720,6 +22652,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Satu minggu adalah awal yang baru"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir hafta yeni bir başlangıçtır"
           }
         }
       }
@@ -20785,6 +22723,12 @@
             "state": "translated",
             "value": "Buka lagi Heal dan lanjutkan perjalananmu — dirimu di masa depan akan berterima kasih."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heal'i tekrar aç ve yolculuğuna kaldığın yerden devam et — gelecekteki sen sana teşekkür edecek."
+          }
         }
       }
     },
@@ -20848,6 +22792,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pulihkan streak-mu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serini geri yükle"
           }
         }
       }
@@ -20913,6 +22863,12 @@
             "state": "translated",
             "value": "Tergelincir bukanlah akhir. Kamu bisa membatalkan reset dalam %lld jam ke depan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir kayma son değildir. Sıfırlamayı %lld saat içinde geri alabilirsin."
+          }
         }
       }
     },
@@ -20976,6 +22932,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pulihkan streak-ku"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serimi geri yükle"
           }
         }
       }
@@ -21041,6 +23003,12 @@
             "state": "translated",
             "value": "sekali bayar"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tek seferlik"
+          }
         }
       }
     },
@@ -21104,6 +23072,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@/mgg"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@/hafta"
           }
         }
       }
@@ -21169,6 +23143,12 @@
             "state": "translated",
             "value": "Uji coba gratis %lld hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld günlük ücretsiz deneme"
+          }
         }
       }
     },
@@ -21232,6 +23212,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mulai Uji Coba Gratis %lld Hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Günlük Ücretsiz Denemeyi Başlat"
           }
         }
       }
@@ -21297,6 +23283,12 @@
             "state": "translated",
             "value": "Dapatkan Akses Bulanan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aylık Erişim Al"
+          }
         }
       }
     },
@@ -21360,6 +23352,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dapatkan Akses Tahunan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıllık Erişim Al"
           }
         }
       }
@@ -21425,6 +23423,12 @@
             "state": "translated",
             "value": "Uji coba gratis akan berubah menjadi langganan berbayar saat masa uji coba berakhir, kecuali dibatalkan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ücretsiz denemeler, iptal edilmediği sürece deneme süresi bittiğinde ücretli aboneliğe dönüşür."
+          }
         }
       }
     },
@@ -21488,6 +23492,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Langganan diperpanjang otomatis dengan harga dan periode yang tertera di atas, kecuali dibatalkan setidaknya 24 jam sebelum periode berjalan berakhir. Pembayaran ditagihkan ke Akun Apple kamu; kelola atau batalkan kapan saja di Pengaturan. Seumur Hidup adalah pembelian sekali bayar."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abonelikler, mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece yukarıda gösterilen fiyat ve süreyle otomatik olarak yenilenir. Ödeme Apple Hesabına tahsil edilir; dilediğin zaman Ayarlar'dan yönetebilir veya iptal edebilirsin. Ömür boyu erişim tek seferlik bir satın alımdır."
           }
         }
       }
@@ -21553,6 +23563,12 @@
             "state": "translated",
             "value": "Tidak ditemukan pembelian sebelumnya untuk Akun Apple ini."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Apple Hesabı için önceki bir satın alma bulunamadı."
+          }
         }
       }
     },
@@ -21616,6 +23632,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pulihkan Pembelian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satın Alımları Geri Yükle"
           }
         }
       }
@@ -21681,6 +23703,12 @@
             "state": "translated",
             "value": "Paket ini tidak tersedia saat ini. Periksa koneksimu dan coba lagi."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu plan şu anda kullanılamıyor. Lütfen bağlantını kontrol edip tekrar dene."
+          }
         }
       }
     },
@@ -21744,6 +23772,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "1 hari berturut-turut"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 ardışık gün"
           }
         }
       }
@@ -21809,6 +23843,12 @@
             "state": "translated",
             "value": "%lld hari berturut-turut"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ardışık gün"
+          }
         }
       }
     },
@@ -21872,6 +23912,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "1 surat ditulis dan disegel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 mektup yazıldı ve mühürlendi"
           }
         }
       }
@@ -21937,6 +23983,12 @@
             "state": "translated",
             "value": "%lld surat ditulis dan disegel"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mektup yazıldı ve mühürlendi"
+          }
         }
       }
     },
@@ -22000,6 +24052,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Setiap streak dimulai dari hari ke-0. Lewati momen ini dan hari ke-1 jadi milikmu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her seri 0. günde başlar. Bu anı atlat, 1. gün senin olsun."
           }
         }
       }
@@ -22065,6 +24123,12 @@
             "state": "translated",
             "value": "Seberapa kuat dorongan itu sekarang?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü şu anda ne kadar güçlü?"
+          }
         }
       }
     },
@@ -22128,6 +24192,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Intensitas dorongan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü şiddeti"
           }
         }
       }
@@ -22193,6 +24263,12 @@
             "state": "translated",
             "value": "Latihan pernapasan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes egzersizi"
+          }
         }
       }
     },
@@ -22256,6 +24332,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Waktu melewati dorongan ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu dürtüyle geçen süre"
           }
         }
       }
@@ -22321,6 +24403,12 @@
             "state": "translated",
             "value": "Siap kapan pun kamu siap"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sen hazır olduğunda"
+          }
         }
       }
     },
@@ -22384,6 +24472,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tahan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tut"
           }
         }
       }
@@ -22449,6 +24543,12 @@
             "state": "translated",
             "value": "Jeda Latihan Pernapasan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Egzersizini Duraklat"
+          }
         }
       }
     },
@@ -22512,6 +24612,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lanjutkan Latihan Pernapasan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefes Egzersizine Devam Et"
           }
         }
       }
@@ -22577,6 +24683,12 @@
             "state": "translated",
             "value": "Masih terkendali"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baş edilebilir"
+          }
         }
       }
     },
@@ -22640,6 +24752,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sangat kuat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok güçlü"
           }
         }
       }
@@ -22705,6 +24823,12 @@
             "state": "translated",
             "value": "Tak tertahankan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayanılmaz"
+          }
         }
       }
     },
@@ -22768,6 +24892,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buang"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vazgeç"
           }
         }
       }
@@ -22833,6 +24963,12 @@
             "state": "translated",
             "value": "Buang catatan ini?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kayıttan vazgeçilsin mi?"
+          }
         }
       }
     },
@@ -22896,6 +25032,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lanjutkan Mengedit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenlemeye Devam Et"
           }
         }
       }
@@ -22961,6 +25103,12 @@
             "state": "translated",
             "value": "Tulisanmu belum disimpan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazdıkların kaydedilmedi."
+          }
         }
       }
     },
@@ -23024,6 +25172,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selesai"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitti"
           }
         }
       }
@@ -23089,6 +25243,12 @@
             "state": "translated",
             "value": "Buang surat ini?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu mektuptan vazgeçilsin mi?"
+          }
         }
       }
     },
@@ -23152,6 +25312,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lanjutkan Menulis"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazmaya Devam Et"
           }
         }
       }
@@ -23217,6 +25383,12 @@
             "state": "translated",
             "value": "Suratmu belum disimpan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mektubun kaydedilmedi."
+          }
         }
       }
     },
@@ -23280,6 +25452,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hapus catatan ini?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kayıt silinsin mi?"
           }
         }
       }
@@ -23345,6 +25523,12 @@
             "state": "translated",
             "value": "Tindakan ini tidak dapat dibatalkan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu geri alınamaz."
+          }
         }
       }
     },
@@ -23408,6 +25592,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Surat yang Tak Terkirim untuk %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ için Gönderilmeyen Mektup"
           }
         }
       }
@@ -23473,6 +25663,12 @@
             "state": "translated",
             "value": "Apa yang ada di pikiranmu sekarang?"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu anda aklından ne geçiyor?"
+          }
         }
       }
     },
@@ -23536,6 +25732,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apa yang memicumu hari ini dan bagaimana kamu menghadapinya?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün seni ne tetikledi ve bununla nasıl başa çıktın?"
           }
         }
       }
@@ -23601,6 +25803,12 @@
             "state": "translated",
             "value": "Tulis tentang sesuatu yang kamu syukuri."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minnettar olduğun bir şeyi yaz."
+          }
         }
       }
     },
@@ -23664,6 +25872,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apa yang ingin kamu katakan pada dirimu 6 bulan dari sekarang?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 ay sonraki kendine ne söylerdin?"
           }
         }
       }
@@ -23729,6 +25943,12 @@
             "state": "translated",
             "value": "Ceritakan satu kemenangan kecil dari hari ini."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünkü küçük bir zaferini anlat."
+          }
         }
       }
     },
@@ -23792,6 +26012,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apa satu hal yang baru kamu pelajari tentang dirimu akhir-akhir ini?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son zamanlarda kendinle ilgili öğrendiğin bir şey ne?"
           }
         }
       }
@@ -23857,6 +26083,12 @@
             "state": "translated",
             "value": "Aku memilih diriku hari ini dan setiap hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün ve her gün kendimi seçiyorum"
+          }
         }
       }
     },
@@ -23920,6 +26152,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu lebih kuat dari yang kamu kira. Terus maju."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sandığından daha güçlüsün. Devam et."
           }
         }
       }
@@ -23985,6 +26223,12 @@
             "state": "translated",
             "value": "Setiap momen bertahan adalah sebuah kemenangan."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direndiğin her an bir zaferdir."
+          }
         }
       }
     },
@@ -24048,6 +26292,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dirimu di masa depan akan berterima kasih karena kamu tetap kuat hari ini."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelecekteki sen, bugün güçlü kaldığın için sana teşekkür edecek."
           }
         }
       }
@@ -24113,6 +26363,12 @@
             "state": "translated",
             "value": "Pemulihan terjadi satu momen berani demi satu momen."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme, cesur anların birikmesiyle olur."
+          }
         }
       }
     },
@@ -24176,6 +26432,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu memilih dirimu sendiri hari ini. Itu butuh keberanian."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün kendini seçtin. Bu cesaret ister."
           }
         }
       }
@@ -24241,6 +26503,12 @@
             "state": "translated",
             "value": "Dorongan itu sementara. Pertumbuhanmu permanen."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü geçici. Gelişimin kalıcı."
+          }
         }
       }
     },
@@ -24304,6 +26572,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kamu bukan sekadar bertahan — kamu sedang bertumbuh menjadi dirimu yang baru."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sadece hayatta kalmıyorsun — dönüşüyorsun."
           }
         }
       }
@@ -24369,6 +26643,12 @@
             "state": "translated",
             "value": "Setiap hari no contact adalah hadiah untuk dirimu sendiri."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz geçen her gün kendine bir armağandır."
+          }
         }
       }
     },
@@ -24432,6 +26712,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ketenangan pikiranmu lebih berharga daripada balasan apa pun."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İç huzurun herhangi bir cevaptan daha değerli."
           }
         }
       }
@@ -24497,6 +26783,12 @@
             "state": "translated",
             "value": "Percayai prosesnya. Percayai dirimu."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sürece güven. Kendine güven."
+          }
         }
       }
     },
@@ -24560,6 +26852,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tarik napas dalam 5 kali — tarik 4 detik, tahan 4 detik, buang 6 detik"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 derin nefes al — 4 saniye içine çek, 4 saniye tut, 6 saniye ver"
           }
         }
       }
@@ -24625,6 +26923,12 @@
             "state": "translated",
             "value": "Tuliskan apa yang ingin kamu katakan dalam surat yang tak terkirim"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Söylemek istediklerini gönderilmeyen bir mektuba yaz"
+          }
         }
       }
     },
@@ -24688,6 +26992,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Jalan kaki 10 menit di luar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışarıda 10 dakikalık bir yürüyüşe çık"
           }
         }
       }
@@ -24753,6 +27063,12 @@
             "state": "translated",
             "value": "Telepon atau kirim pesan ke teman yang mendukungmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seni destekleyen bir arkadaşını ara ya da ona yaz"
+          }
         }
       }
     },
@@ -24816,6 +27132,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lakukan 20 push-up atau gerakan fisik apa pun"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "20 şınav çek ya da herhangi bir fiziksel hareket yap"
           }
         }
       }
@@ -24881,6 +27203,12 @@
             "state": "translated",
             "value": "Putar lagu penyemangat favoritmu dan bergeraklah"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En sevdiğin moral veren şarkıyı aç ve hareket et"
+          }
         }
       }
     },
@@ -24944,6 +27272,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Basuh wajahmu dengan air dingin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzüne soğuk su çarp"
           }
         }
       }
@@ -25009,6 +27343,12 @@
             "state": "translated",
             "value": "Tulis 3 hal yang kamu syukuri saat ini"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu anda minnettar olduğun 3 şeyi yaz"
+          }
         }
       }
     },
@@ -25072,6 +27412,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buka jurnalmu dan tumpahkan semuanya"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlüğünü aç ve içindekileri dök"
           }
         }
       }
@@ -25137,6 +27483,12 @@
             "state": "translated",
             "value": "Ingat kenapa kamu memulai no contact"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimi neden kestiğini hatırla"
+          }
         }
       }
     },
@@ -25200,6 +27552,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lihat streak-mu — jangan biarkan ia direset"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serine bak — sıfırlanmasına izin verme"
           }
         }
       }
@@ -25265,6 +27623,12 @@
             "state": "translated",
             "value": "Pasang timer 10 menit — dorongan itu akan berlalu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 dakikalık bir sayaç kur — dürtü geçecek"
+          }
         }
       }
     },
@@ -25328,6 +27692,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Genggam sebongkah es batu — sensasinya mengalihkan otakmu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir buz küpü sık — bu his beynini başka yöne çevirir"
           }
         }
       }
@@ -25393,6 +27763,12 @@
             "state": "translated",
             "value": "Baca mantra pribadimu dengan lantang 3 kali"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişisel mantranı 3 kez yüksek sesle oku"
+          }
         }
       }
     },
@@ -25456,6 +27832,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tonton video lucu — tawa mengubah suasana hatimu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komik bir video izle — gülmek ruh halini değiştirir"
           }
         }
       }
@@ -25530,6 +27912,12 @@
             "state": "translated",
             "value": "%lld hari lagi"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün kaldı"
+          }
         }
       }
     },
@@ -25593,6 +27981,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld dari %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld"
           }
         }
       }
@@ -25658,6 +28052,12 @@
             "state": "translated",
             "value": "%lld dari %lld · %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld · %@"
+          }
         }
       }
     },
@@ -25718,6 +28118,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld XP"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld/%lld XP"
@@ -25786,6 +28192,12 @@
             "state": "translated",
             "value": "%lld/%lld selesai"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld/%lld tamamlandı"
+          }
         }
       }
     },
@@ -25846,6 +28258,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld XP"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "+%lld XP"
@@ -25914,6 +28332,12 @@
             "state": "translated",
             "value": "Lencana terbuka: %@"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozet açıldı: %@"
+          }
         }
       }
     },
@@ -25977,6 +28401,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sudah check-in"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrol yapıldı"
           }
         }
       }
@@ -26042,6 +28472,12 @@
             "state": "translated",
             "value": "Check-in harian"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük kontrol"
+          }
         }
       }
     },
@@ -26105,6 +28541,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Entri jurnal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük kaydı"
           }
         }
       }
@@ -26170,6 +28612,12 @@
             "state": "translated",
             "value": "Terkunci"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilitli"
+          }
         }
       }
     },
@@ -26234,6 +28682,12 @@
             "state": "translated",
             "value": "Terbuka"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açıldı"
+          }
         }
       }
     },
@@ -26294,6 +28748,12 @@
           }
         },
         "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MAKS · %lld XP"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "MAKS · %lld XP"
@@ -26362,6 +28822,12 @@
             "state": "translated",
             "value": "Tonggak tercapai"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilometre taşına ulaşıldı"
+          }
         }
       }
     },
@@ -26425,6 +28891,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Berikutnya"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İleri"
           }
         }
       }
@@ -26490,6 +28962,12 @@
             "state": "translated",
             "value": "Lewati dorongan dengan SOS"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SOS ile bir dürtüyü atlat"
+          }
         }
       }
     },
@@ -26553,6 +29031,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ketuk untuk mengedit hari ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünü düzenlemek için dokun"
           }
         }
       }
@@ -26618,6 +29102,12 @@
             "state": "translated",
             "value": "Setelah itu %@/bulan. Batalkan kapan saja."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonrasında %@/ay. İstediğin zaman iptal et."
+          }
         }
       }
     },
@@ -26681,6 +29171,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Setelah itu %@/minggu. Batalkan kapan saja."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonrasında %@/hafta. İstediğin zaman iptal et."
           }
         }
       }
@@ -26746,6 +29242,12 @@
             "state": "translated",
             "value": "Setelah itu %@/tahun. Batalkan kapan saja."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonrasında %@/yıl. İstediğin zaman iptal et."
+          }
         }
       }
     },
@@ -26809,6 +29311,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Minggu ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hafta"
           }
         }
       }
@@ -26874,6 +29382,12 @@
             "state": "translated",
             "value": "Misi Hari Ini"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün Görevleri"
+          }
         }
       }
     },
@@ -26937,6 +29451,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dorongan ditahan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtüye direnildi"
           }
         }
       }
@@ -27002,6 +29522,12 @@
             "state": "translated",
             "value": "×%@ XP · %lld hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "×%@ XP · %lld gün"
+          }
         }
       }
     },
@@ -27065,6 +29591,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hari ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün"
           }
         }
       }
@@ -27130,6 +29662,12 @@
             "state": "translated",
             "value": "Kemarin"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dün"
+          }
         }
       }
     },
@@ -27193,6 +29731,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tidak diketahui"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilinmiyor"
           }
         }
       }
@@ -27258,6 +29802,12 @@
             "state": "translated",
             "value": "100% di perangkat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%100 cihazda"
+          }
         }
       }
     },
@@ -27321,6 +29871,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Streak terbaik"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En iyi seri"
           }
         }
       }
@@ -27386,6 +29942,12 @@
             "state": "translated",
             "value": "Streak saat ini"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevcut seri"
+          }
         }
       }
     },
@@ -27449,6 +30011,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bantuan Darurat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acil Destek"
           }
         }
       }
@@ -27514,6 +30082,12 @@
             "state": "translated",
             "value": "Target"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedef"
+          }
         }
       }
     },
@@ -27577,6 +30151,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku terus kembali dan harus memutus lingkaran ini"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sürekli geri dönüyorum ve bu döngüyü kırmam gerek"
           }
         }
       }
@@ -27642,6 +30222,12 @@
             "state": "translated",
             "value": "Aku perlu menemukan kembali diriku"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kim olduğumu yeniden keşfetmem gerek"
+          }
         }
       }
     },
@@ -27705,6 +30291,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aku ingin kejelasan dan jarak emosional"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Netlik ve duygusal mesafe istiyorum"
           }
         }
       }
@@ -27770,6 +30362,12 @@
             "state": "translated",
             "value": "Aku memilih pertumbuhan daripada kenyamanan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konfor yerine gelişimi seçiyorum"
+          }
         }
       }
     },
@@ -27833,6 +30431,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bantuan instan saat dorongan datang"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dürtü geldiğinde anında yardım"
           }
         }
       }
@@ -27898,6 +30502,12 @@
             "state": "translated",
             "value": "Tulis perjalanan pemulihanmu secara privat"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyileşme yolculuğunu gizlice günlüğüne yaz"
+          }
         }
       }
     },
@@ -27961,6 +30571,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mulai no contact"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişim kesme başlangıcı"
           }
         }
       }
@@ -28026,6 +30642,12 @@
             "state": "translated",
             "value": "Alasan lain..."
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka bir sebep..."
+          }
         }
       }
     },
@@ -28089,6 +30711,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Curahkan & Renungkan"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İçini Dök ve Düşün"
           }
         }
       }
@@ -28154,6 +30782,12 @@
             "state": "translated",
             "value": "Lihat Pertumbuhanmu"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişimini Gör"
+          }
         }
       }
     },
@@ -28217,6 +30851,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tetap Kuat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güçlü Kal"
           }
         }
       }
@@ -28282,6 +30922,12 @@
             "state": "translated",
             "value": "Dia menyakitiku dan aku butuh ruang untuk pulih"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beni incittiler ve iyileşmek için alana ihtiyacım var"
+          }
         }
       }
     },
@@ -28345,6 +30991,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Total reset"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam sıfırlama"
           }
         }
       }
@@ -28410,6 +31062,12 @@
             "state": "translated",
             "value": "Pantau streak no contact-mu dengan dukungan"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İletişimsiz serini destekle birlikte takip et"
+          }
         }
       }
     },
@@ -28473,6 +31131,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Versi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sürüm"
           }
         }
       }
@@ -28538,6 +31202,12 @@
             "state": "translated",
             "value": "%lld hari"
           }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün"
+          }
         }
       }
     },
@@ -28601,6 +31271,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pantau progresmu dan buka tonggak pencapaian"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlerlemeni izle ve kilometre taşlarının kilidini aç"
           }
         }
       }

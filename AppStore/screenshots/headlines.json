@@ -1,0 +1,23 @@
+{
+  "en": {
+    "01-streak":     ["Every day you don't", "text them counts"],
+    "02-commitment": ["Make the promise.", "We help you keep it"],
+    "03-progress":   ["Watch the days", "add up"],
+    "04-insights":   ["See yourself", "healing"],
+    "05-letter":     ["Say everything.", "Send nothing."],
+    "06-welcome":    ["Your companion", "through no contact"],
+    "07-privacy":    ["100% private.", "Never leaves your phone"],
+    "08-premium":    ["Unlock the full", "journey"]
+  },
+  "tr": {
+    "01-streak":     ["Mesaj atmadığın", "her gün sayılır"],
+    "02-commitment": ["Sözünü ver.", "Tutmana yardım edelim"],
+    "03-progress":   ["Günlerin birikişini", "izle"],
+    "04-insights":   ["İyileştiğini", "kendi verinle gör"],
+    "05-letter":     ["Her şeyi yaz.", "Hiçbirini gönderme."],
+    "06-premium":    ["Tüm yolculuğun", "kilidini aç"],
+    "06-welcome":    ["İletişimsiz sürecinde", "yol arkadaşın"],
+    "07-privacy":    ["%100 gizli.", "Telefonundan çıkmaz"],
+    "08-premium":    ["Tüm yolculuğun", "kilidini aç"]
+  }
+}
