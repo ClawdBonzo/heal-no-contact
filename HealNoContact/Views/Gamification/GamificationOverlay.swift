@@ -1,12 +1,18 @@
 import SwiftUI
+import SwiftData
+import StoreKit
 
 /// App-wide celebration layer: a "+N XP" toast, a badge-unlock toast, and the level-up
 /// modal — shown wherever the XP was earned (check-in sheet, journal, SOS, dashboard).
 struct GamificationOverlay: ViewModifier {
     @Environment(GameificationService.self) private var game
+    @Environment(\.requestReview) private var requestReview
+    @Query private var profiles: [UserProfile]
     @State private var toast: Toast?
     @State private var toastTask: Task<Void, Never>?
     @State private var levelUp: LevelUpAward?
+
+    private var streakDays: Int { profiles.first?.currentStreakDays ?? 0 }
 
     private struct Toast: Equatable {
         let icon: String
@@ -39,6 +45,13 @@ struct GamificationOverlay: ViewModifier {
                            title: String(localized: "Badge unlocked: \(badge.title)"),
                            subtitle: badge.details,
                            tint: Color.theme.healTeal), seconds: 3.5)
+                // Ask for a rating here rather than at the earning site: this overlay is
+                // mounted on the tab bar, which never goes away, so the prompt has a stable
+                // scene to present in. Deferred until the toast has been read.
+                ReviewPrompter.requestAfterDismissal(requestReview,
+                                                     moment: .badgeUnlocked(rarity: badge.rarity.rawValue),
+                                                     streakDays: streakDays,
+                                                     delay: .seconds(4))
                 game.recentBadge = nil
             }
             .onChange(of: game.levelUpAward) { _, award in
@@ -50,8 +63,12 @@ struct GamificationOverlay: ViewModifier {
                     newLevel: award.newLevel,
                     levelName: game.userGamification?.levelName ?? ""
                 ) {
+                    let reached = award.newLevel
                     levelUp = nil
                     game.levelUpAward = nil
+                    ReviewPrompter.requestAfterDismissal(requestReview,
+                                                         moment: .levelUp(level: reached),
+                                                         streakDays: streakDays)
                 }
                 .presentationBackground(.clear)
             }

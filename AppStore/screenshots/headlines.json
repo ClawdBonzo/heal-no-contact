@@ -1,23 +1,142 @@
 {
-  "en": {
-    "01-streak":     ["Every day you don't", "text them counts"],
-    "02-commitment": ["Make the promise.", "We help you keep it"],
-    "03-progress":   ["Watch the days", "add up"],
-    "04-insights":   ["See yourself", "healing"],
-    "05-letter":     ["Say everything.", "Send nothing."],
-    "06-welcome":    ["Your companion", "through no contact"],
-    "07-privacy":    ["100% private.", "Never leaves your phone"],
-    "08-premium":    ["Unlock the full", "journey"]
-  },
-  "tr": {
-    "01-streak":     ["Mesaj atmadığın", "her gün sayılır"],
-    "02-commitment": ["Sözünü ver.", "Tutmana yardım edelim"],
-    "03-progress":   ["Günlerin birikişini", "izle"],
-    "04-insights":   ["İyileştiğini", "kendi verinle gör"],
-    "05-letter":     ["Her şeyi yaz.", "Hiçbirini gönderme."],
-    "06-premium":    ["Tüm yolculuğun", "kilidini aç"],
-    "06-welcome":    ["İletişimsiz sürecinde", "yol arkadaşın"],
-    "07-privacy":    ["%100 gizli.", "Telefonundan çıkmaz"],
-    "08-premium":    ["Tüm yolculuğun", "kilidini aç"]
-  }
+ "en": {
+  "01-streak": [
+   "Every day you don't",
+   "text them counts"
+  ],
+  "02-commitment": [
+   "Make the promise.",
+   "We help you keep it"
+  ],
+  "03-progress": [
+   "Watch the days",
+   "add up"
+  ],
+  "04-insights": [
+   "See yourself",
+   "healing"
+  ],
+  "05-letter": [
+   "Say everything.",
+   "Send nothing."
+  ],
+  "06-welcome": [
+   "Your companion",
+   "through no contact"
+  ],
+  "07-privacy": [
+   "100% private.",
+   "Never leaves your phone"
+  ],
+  "08-premium": [
+   "Unlock the full",
+   "journey"
+  ]
+ },
+ "tr": {
+  "01-streak": [
+   "Mesaj atmadığın",
+   "her gün sayılır"
+  ],
+  "02-commitment": [
+   "Sözünü ver.",
+   "Tutmana yardım edelim"
+  ],
+  "03-progress": [
+   "Günlerin birikişini",
+   "izle"
+  ],
+  "04-insights": [
+   "İyileştiğini",
+   "kendi verinle gör"
+  ],
+  "05-letter": [
+   "Her şeyi yaz.",
+   "Hiçbirini gönderme."
+  ],
+  "06-premium": [
+   "Tüm yolculuğun",
+   "kilidini aç"
+  ],
+  "06-welcome": [
+   "İletişimsiz sürecinde",
+   "yol arkadaşın"
+  ],
+  "07-privacy": [
+   "%100 gizli.",
+   "Telefonundan çıkmaz"
+  ],
+  "08-premium": [
+   "Tüm yolculuğun",
+   "kilidini aç"
+  ]
+ },
+ "ar": {
+  "01-streak": [
+   "كل يوم بلا تواصل",
+   "هو يوم تكسبه"
+  ],
+  "02-commitment": [
+   "اقطع الوعد.",
+   "ونساعدك على الوفاء به"
+  ],
+  "03-progress": [
+   "شاهد الأيام",
+   "تتراكم"
+  ],
+  "04-insights": [
+   "شاهد نفسك",
+   "تتعافى"
+  ],
+  "05-letter": [
+   "قل كل شيء.",
+   "لا ترسل شيئًا."
+  ],
+  "06-welcome": [
+   "رفيقك خلال",
+   "فترة الانقطاع"
+  ],
+  "07-privacy": [
+   "خاص 100%.",
+   "لا يغادر هاتفك"
+  ],
+  "08-premium": [
+   "افتح الرحلة",
+   "كاملة"
+  ]
+ },
+ "pt-BR": {
+  "01-streak": [
+   "Cada dia sem",
+   "contato conta"
+  ],
+  "02-commitment": [
+   "Faça a promessa.",
+   "Nós ajudamos a cumprir"
+  ],
+  "03-progress": [
+   "Veja os dias",
+   "somarem"
+  ],
+  "04-insights": [
+   "Veja você",
+   "se curando"
+  ],
+  "05-letter": [
+   "Diga tudo.",
+   "Não envie nada."
+  ],
+  "06-welcome": [
+   "Seu apoio no",
+   "contato zero"
+  ],
+  "07-privacy": [
+   "100% privado.",
+   "Nunca sai do seu celular"
+  ],
+  "08-premium": [
+   "Desbloqueie a",
+   "jornada completa"
+  ]
+ }
 }

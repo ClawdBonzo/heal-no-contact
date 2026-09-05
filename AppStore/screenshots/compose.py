@@ -9,9 +9,17 @@ locales match the existing sets exactly.
 Lives in the repo on purpose: the previous compositor lived in /tmp and was wiped,
 which is why the Aug 31 checkup had to rebuild it from scratch.
 
+Script support (added 2026-09-05): PIL has no HarfBuzz here, so Arabic came out as
+disconnected left-to-right glyphs — which is how the shipped ar-SA set ended up with a
+stray em dash floating on the wrong side of the headline. Arabic is now shaped with
+arabic_reshaper + python-bidi and drawn with SF Arabic Rounded, which matches the
+rounded face used for Latin. Thai combining marks are still not safe through PIL; the
+th set was built with the old CoreText pipeline and should be left alone.
+
 Usage:  python3 compose.py <raw.png> <out.png> "Line one" ["Line two"]
+        python3 compose.py --locale ar raw_ar/01-streak.png out.png "..." "..."
 """
-import sys
+import sys, unicodedata
 from PIL import Image, ImageDraw, ImageFont
 
 W, H          = 1320, 2868
@@ -29,9 +37,30 @@ FONT_CANDIDATES = [
     "/System/Library/Fonts/SFNS.ttf",
     "/System/Library/Fonts/HelveticaNeue.ttc",
 ]
+ARABIC_FONT_CANDIDATES = [
+    "/System/Library/Fonts/SFArabicRounded.ttf",
+    "/System/Library/Fonts/SFArabic.ttf",
+    "/System/Library/Fonts/GeezaPro.ttc",
+]
 
-def load_font(size):
-    for p in FONT_CANDIDATES:
+def is_arabic(text):
+    return any("ARABIC" in unicodedata.name(ch, "") for ch in text)
+
+def shape(text):
+    """Arabic needs contextual shaping + bidi reordering before PIL can draw it.
+    Without this every letter renders in its isolated form, left to right."""
+    if not is_arabic(text):
+        return text
+    try:
+        import arabic_reshaper
+        from bidi.algorithm import get_display
+        return get_display(arabic_reshaper.reshape(text))
+    except ImportError:
+        raise SystemExit("ABORT: Arabic headline needs `pip3 install arabic-reshaper "
+                         "python-bidi`. Refusing to emit mis-shaped Arabic artwork.")
+
+def load_font(size, arabic=False):
+    for p in (ARABIC_FONT_CANDIDATES if arabic else FONT_CANDIDATES):
         try:
             f = ImageFont.truetype(p, size)
             try: f.set_variation_by_name("Bold")     # variable SF fonts
@@ -56,15 +85,15 @@ def rounded(img, radius):
     out.putalpha(mask)
     return out
 
-def fit_line(draw, text, font_size, max_w):
+def fit_line(draw, text, font_size, max_w, arabic=False):
     """Shrink until the line fits the safe width."""
     size = font_size
     while size > 40:
-        f = load_font(size)
+        f = load_font(size, arabic)
         if draw.textlength(text, font=f) <= max_w:
             return f
         size -= 4
-    return load_font(size)
+    return load_font(size, arabic)
 
 def compose(raw_path, out_path, lines):
     canvas = gradient()
@@ -80,9 +109,11 @@ def compose(raw_path, out_path, lines):
     d = ImageDraw.Draw(canvas)
     safe_w = W - 2 * 120
     for i, line in enumerate(lines[:2]):
-        f = fit_line(d, line, FONT_SIZE, safe_w)
-        w = d.textlength(line, font=f)
-        d.text(((W - w) / 2, LINE1_TOP + i * LINE_STEP), line, font=f, fill=(255, 255, 255))
+        ar = is_arabic(line)
+        drawn = shape(line)
+        f = fit_line(d, drawn, FONT_SIZE, safe_w, ar)
+        w = d.textlength(drawn, font=f)
+        d.text(((W - w) / 2, LINE1_TOP + i * LINE_STEP), drawn, font=f, fill=(255, 255, 255))
     canvas.save(out_path)
     return out_path
 

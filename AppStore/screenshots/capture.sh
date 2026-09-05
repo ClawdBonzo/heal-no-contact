@@ -15,6 +15,15 @@ for pair in $screens; do
   xcrun simctl launch "$UDID" "$BUNDLE" -seedDemo YES -demoScreen "$scr" \
       -AppleLanguages "($LOC)" -AppleLocale "$LOC" >/dev/null
   sleep 7
+  # Verify Heal is actually the frontmost app. On a shared simulator another
+  # project's app can sit in front and simctl will happily screenshot THAT —
+  # which is how a set of Arabic screenshots once ended up showing someone
+  # else's app under a correct Arabic headline.
+  front=$(xcrun simctl spawn "$UDID" launchctl list 2>/dev/null | grep -c "UIKitApplication:$BUNDLE" || true)
+  if [ "$front" -eq 0 ]; then
+    echo "  !! ABORT: $BUNDLE is not running on $UDID — refusing to capture $name" >&2
+    exit 1
+  fi
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
   echo "  captured $LOC/$name"
 done

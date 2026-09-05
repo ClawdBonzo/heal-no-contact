@@ -217,8 +217,10 @@ struct JournalEditorView: View {
             game.checkMilestoneBadges(streakDays: profile?.currentStreakDays ?? 0,
                                       journalEntryCount: count + 1,
                                       moodCheckInCount: 0)
-            ReviewPrompter.maybeRequest(requestReview, moment: .journalEntries(count: count + 1),
-                                        streakDays: profile?.currentStreakDays ?? 0)
+            // Deferred: this editor dismisses itself 0.35s from here, and requestReview
+            // is a no-op while the presenting scene is on its way out.
+            ReviewPrompter.requestAfterDismissal(requestReview, moment: .journalEntries(count: count + 1),
+                                                 streakDays: profile?.currentStreakDays ?? 0)
         }
 
         HapticService.notification(.success)

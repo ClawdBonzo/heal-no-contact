@@ -207,6 +207,18 @@ struct SettingsView: View {
                         Label("Write a review", systemImage: "square.and.pencil")
                             .foregroundStyle(Color.theme.healGold)
                     }
+
+                    #if DEBUG
+                    // Local-only tally so "the review prompts never fire" is checkable on
+                    // a device rather than inferred from the App Store rating count.
+                    let diag = ReviewPrompter.diagnostics
+                    SettingsRow(
+                        icon: "ladybug.fill",
+                        label: "Review prompts (debug)",
+                        value: "\(diag.fired)/\(diag.attempts) · \(diag.lastSkip ?? "—")",
+                        color: Color.theme.textSecondary
+                    )
+                    #endif
                 }
                 .listRowBackground(Color.theme.cardBackground)
             }

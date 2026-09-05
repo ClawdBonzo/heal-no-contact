@@ -170,8 +170,10 @@ struct EmergencyView: View {
             if showCompleted {
                 EmergencyCompletedOverlay {
                     // A resisted urge is the best moment to ask for a rating (throttled).
-                    ReviewPrompter.maybeRequest(requestReview, moment: .resistedUrge,
-                                                streakDays: profile?.currentStreakDays ?? 0)
+                    // Must be requested AFTER this view goes away — iOS silently drops
+                    // requestReview when the presenting scene is being dismissed.
+                    ReviewPrompter.requestAfterDismissal(requestReview, moment: .resistedUrge,
+                                                         streakDays: profile?.currentStreakDays ?? 0)
                     dismiss()
                 }
                 .transition(.scale.combined(with: .opacity))
