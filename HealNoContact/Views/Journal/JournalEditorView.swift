@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 import SwiftData
 
 struct JournalEditorView: View {
@@ -213,13 +214,16 @@ struct JournalEditorView: View {
             // Award XP for new journal entry (quests progress on their own)
             game.addXP(15, reason: String(localized: "Journal entry"))
             game.progressQuests(ofKind: .journal)
+            // fetchCount includes the entry inserted above (pending changes are counted),
+            // so it is already the new total. The old `count + 1` fired the review prompt on
+            // the 4th/9th/24th entry and unlocked Journal Keeper at 9 instead of 10.
             let count = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
             game.checkMilestoneBadges(streakDays: profile?.currentStreakDays ?? 0,
-                                      journalEntryCount: count + 1,
+                                      journalEntryCount: count,
                                       moodCheckInCount: 0)
             // Deferred: this editor dismisses itself 0.35s from here, and requestReview
             // is a no-op while the presenting scene is on its way out.
-            ReviewPrompter.requestAfterDismissal(requestReview, moment: .journalEntries(count: count + 1),
+            ReviewPrompter.requestAfterDismissal(requestReview, moment: .journalEntries(count: count),
                                                  streakDays: profile?.currentStreakDays ?? 0)
         }
 

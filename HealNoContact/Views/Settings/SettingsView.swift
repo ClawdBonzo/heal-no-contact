@@ -123,6 +123,9 @@ struct SettingsView: View {
                                                 at: profile.dailyCheckInTime
                                             )
                                             NotificationService.shared.syncPremiumReminders(notificationsEnabled: true)
+                                            // Turning notifications off cancelled everything, including a
+                                            // pending trial reminder; put it back.
+                                            NotificationService.shared.refreshTrialEndingReminder(profile: profile)
                                         }
                                     }
                                 } else {
@@ -238,6 +241,7 @@ struct SettingsView: View {
                         NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
                         NotificationService.shared.scheduleMilestoneReminders(profile: profile)
                     }
+                    NotificationService.shared.refreshTrialEndingReminder(profile: profile)
                     HapticService.notification(.warning)
                 }
                 Button("Cancel", role: .cancel) {}
@@ -337,27 +341,29 @@ private enum JournalPDF {
         if let p = profile {
             summary = """
             <table class='sum'>
-            <tr><td>No-contact since</td><td>\(esc(p.noContactStartDate.monthDay))</td></tr>
-            <tr><td>Current streak</td><td>\(p.currentStreakDays) days</td></tr>
-            <tr><td>Best streak</td><td>\(max(p.streakBestDays, p.currentStreakDays)) days</td></tr>
-            <tr><td>Goal</td><td>\(p.noContactGoalDays) days</td></tr>
+            <tr><td>\(esc(String(localized: "No-contact start")))</td><td>\(esc(p.noContactStartDate.monthDay))</td></tr>
+            <tr><td>\(esc(String(localized: "Current Streak")))</td><td>\(esc(String(localized: "\(p.currentStreakDays) days")))</td></tr>
+            <tr><td>\(esc(String(localized: "Best Streak")))</td><td>\(esc(String(localized: "\(max(p.streakBestDays, p.currentStreakDays)) days")))</td></tr>
+            <tr><td>\(esc(String(localized: "Goal")))</td><td>\(esc(String(localized: "\(p.noContactGoalDays) days")))</td></tr>
             </table>
             """
         }
 
         var entries = ""
         if journals.isEmpty {
-            entries = "<p class='empty'>No journal entries yet.</p>"
+            entries = "<p class='empty'>\(esc(String(localized: "No journal entries yet.")))</p>"
         } else {
             for j in journals {
-                let title = j.title.isEmpty ? "Untitled" : j.title
+                let title = j.title.isEmpty ? String(localized: "Untitled") : j.title
                 entries += "<div class='entry'><div class='ed'>\(df.string(from: j.createdAt))</div>"
                 entries += "<div class='et'>\(esc(title))</div><div class='eb'>\(esc(j.body))</div></div>"
             }
         }
 
+        // Arabic exports read right-to-left like the rest of the app.
+        let dir = Locale.current.language.characterDirection == .rightToLeft ? "rtl" : "ltr"
         let html = """
-        <html><head><meta charset='utf-8'><style>
+        <html dir='\(dir)'><head><meta charset='utf-8'><style>
         body{font-family:-apple-system,Helvetica,Arial;color:#1c1c1e;margin:0;}
         h1{font-size:26px;margin:0 0 4px;}
         .sub{color:#8e8e93;margin:0 0 18px;font-size:12px;}
@@ -371,10 +377,10 @@ private enum JournalPDF {
         .eb{font-size:12px;color:#3a3a3c;line-height:1.45;}
         .empty{color:#8e8e93;}
         </style></head><body>
-        <h1>Heal — My Journey</h1>
-        <p class='sub'>Exported \(df.string(from: .now))</p>
+        <h1>\(esc(String(localized: "Heal — My Journey")))</h1>
+        <p class='sub'>\(esc(String(localized: "Exported \(df.string(from: .now))")))</p>
         \(summary)
-        <h2>Journal Entries</h2>
+        <h2>\(esc(String(localized: "Journal Entries")))</h2>
         \(entries)
         </body></html>
         """

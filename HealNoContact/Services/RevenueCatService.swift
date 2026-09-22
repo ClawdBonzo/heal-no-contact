@@ -42,6 +42,11 @@ final class RevenueCatService: NSObject {
         return e.periodType == .trial || e.periodType == .intro
     }
 
+    /// False once the user has turned auto-renew off (entitlement still active until expiry).
+    var trialWillConvert: Bool {
+        customerInfo?.entitlements[Self.premiumEntitlement]?.willRenew ?? false
+    }
+
     /// When the current trial/subscription lapses, if known.
     var currentExpiration: Date? {
         customerInfo?.entitlements[Self.premiumEntitlement]?.expirationDate

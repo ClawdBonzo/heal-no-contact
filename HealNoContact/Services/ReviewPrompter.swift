@@ -73,7 +73,9 @@ enum ReviewPrompter {
         let worthy: Bool
         switch moment {
         case .resistedUrge:            worthy = streakDays >= 3
-        case .milestone(let day):      worthy = [3, 7, 14, 21, 30, 60, 90, 180, 365].contains(day)
+        // Must mirror Milestone.defaultMilestones (1, 7, 14, 21, 30, 45, 60, 90, 180, 365).
+        // Day 1 is too early to ask; a day-3 milestone never existed, so it could never fire.
+        case .milestone(let day):      worthy = day >= 7 && Milestone.defaultMilestones.contains { $0.2 == day }
         case .checkInStreak(let days): worthy = days >= 3
         case .badgeUnlocked(let r):    worthy = ["rare", "epic", "legendary"].contains(r)
         case .journalEntries(let n):   worthy = [5, 10, 25, 50].contains(n)

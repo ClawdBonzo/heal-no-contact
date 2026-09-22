@@ -1,5 +1,6 @@
 
 import SwiftUI
+import StoreKit
 import SwiftData
 
 /// Caps the dashboard's recent-mood fetch so power users with thousands of
@@ -47,6 +48,7 @@ struct DashboardView: View {
                                 animateRing = true
                                 game.syncFlame(streakDays: profile.currentStreakDays)
                                 WidgetSync.update(profile: profile)
+                                NotificationService.shared.refreshTrialEndingReminder(profile: profile)
                             }
                         }
 

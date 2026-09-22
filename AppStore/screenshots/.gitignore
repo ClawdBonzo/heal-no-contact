@@ -1,0 +1,3 @@
+# Raw simulator captures: reproducible with ./capture.sh, ~7 MB per locale per release.
+# Only the composed sets in AppStoreConnect/screenshots/designed*/ are committed.
+raw_*/

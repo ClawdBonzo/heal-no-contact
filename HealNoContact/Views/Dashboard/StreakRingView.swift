@@ -96,6 +96,10 @@ struct StreakRingView: View {
                     Text("of \(goalDays)-day goal")
                         .font(.caption)
                         .foregroundStyle(Color.theme.textTertiary)
+                        // Keep inside the ring: French and Italian ran into the stroke.
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .frame(maxWidth: 132)
                 }
 
                 // Glowing dot at arc tip

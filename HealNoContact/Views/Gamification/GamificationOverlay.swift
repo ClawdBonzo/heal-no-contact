@@ -75,6 +75,11 @@ struct GamificationOverlay: ViewModifier {
     }
 
     private func show(_ t: Toast, seconds: Double = 2.2) {
+        #if DEBUG
+        // Screenshot harness: seeding a 47-day streak unlocks badges on launch, and their
+        // toasts landed on top of the Stats and Settings App Store screenshots.
+        if UserDefaults.standard.bool(forKey: "seedDemo") { return }
+        #endif
         toastTask?.cancel()
         toast = t
         toastTask = Task { @MainActor in

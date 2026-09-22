@@ -13,7 +13,10 @@ final class AppState {
 
     /// Derives premium status from RevenueCat — always in sync
     var isPremium: Bool {
-        RevenueCatService.shared.isPremium
+        #if DEBUG
+        if DemoConfig.shared.demoPremium { return true }
+        #endif
+        return RevenueCatService.shared.isPremium
     }
 
     enum AppTab: Int, CaseIterable, Identifiable {

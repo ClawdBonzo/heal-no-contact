@@ -292,17 +292,17 @@ struct PhoenixRisingOverlay: View {
 
     private func milestoneLabel(for day: Int) -> String {
         switch day {
-        case 1:   return "The journey of a thousand miles\nbegins with a single step."
-        case 7:   return "One full week. The fog is lifting."
-        case 14:  return "Two weeks strong. You're rewriting your story."
-        case 21:  return "21 days. A new habit is forming."
-        case 30:  return "30 days. You are healing."
-        case 45:  return "45 days. The phoenix is rising."
-        case 60:  return "60 days. You chose yourself."
-        case 90:  return "90 days. Fully transformed."
-        case 180: return "Half a year. Unbreakable."
-        case 365: return "One year. You are the phoenix."
-        default:  return "Every day you choose yourself."
+        case 1:   return String(localized: "The journey of a thousand miles\nbegins with a single step.")
+        case 7:   return String(localized: "One full week. The fog is lifting.")
+        case 14:  return String(localized: "Two weeks strong. You're rewriting your story.")
+        case 21:  return String(localized: "21 days. A new habit is forming.")
+        case 30:  return String(localized: "30 days. You are healing.")
+        case 45:  return String(localized: "45 days. The phoenix is rising.")
+        case 60:  return String(localized: "60 days. You chose yourself.")
+        case 90:  return String(localized: "90 days. Fully transformed.")
+        case 180: return String(localized: "Half a year. Unbreakable.")
+        case 365: return String(localized: "One year. You are the phoenix.")
+        default:  return String(localized: "Every day you choose yourself.")
         }
     }
 }

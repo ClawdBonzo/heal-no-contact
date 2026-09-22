@@ -38,7 +38,7 @@ struct JournalListView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 8) {
                                     FilterChip(
-                                        label: "All",
+                                        label: String(localized: "All"),
                                         isSelected: filterMood == nil,
                                         action: { filterMood = nil }
                                     )
@@ -149,7 +149,7 @@ private struct JournalRowView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Text(entry.title.isEmpty ? "Untitled" : entry.title)
+                    Text(entry.title.isEmpty ? String(localized: "Untitled") : entry.title)
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(Color.theme.textPrimary)
                         .lineLimit(1)

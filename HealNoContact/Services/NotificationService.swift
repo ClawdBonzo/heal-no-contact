@@ -89,26 +89,55 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
     }
 
     /// Reminds the user the day before a free trial converts, framed around what they've
-    /// built rather than the charge. Added because both US trials (Aug 2026) cancelled on
-    /// day 3 — the trial ends before Heal's first milestone (day 7) can prove its value.
-    /// Idempotent: fixed identifier, rescheduled on every foreground.
-    func scheduleTrialEndingReminder(expiration: Date?, streakDays: Int) {
+    /// built rather than the charge. Added because both US trials (Aug 2026) cancelled early.
+    /// The streak in the text is computed for the moment the notification FIRES, from the
+    /// streak start — the user this exists for often doesn't reopen the app before then, so a
+    /// number frozen at scheduling time would be up to 6 days short. Idempotent (fixed id).
+    func scheduleTrialEndingReminder(expiration: Date?, streakStart: Date?) {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: ["trialEnding"])
         guard let expiration else { return }
-        let fire = expiration.addingTimeInterval(-24 * 3600)
-        guard fire > .now else { return }
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.year, .month, .day, .hour, .minute],
+                                       from: expiration.addingTimeInterval(-24 * 3600))
+        guard let fire = cal.date(from: comps), fire > .now else { return }
+        let days = streakStart.flatMap { cal.dateComponents([.day], from: $0, to: fire).day } ?? 0
 
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Your free trial ends tomorrow")
-        content.body = streakDays > 0
-            ? String(localized: "\(streakDays) days of no contact so far. Keep your insights, reminders and export — or cancel anytime in Settings.")
+        // "1 days" reads wrong and the catalog has no plural variants, so the streak line
+        // starts at 2.
+        content.body = days >= 2
+            ? String(localized: "\(days) days of no contact so far. Keep your insights, reminders and export — or cancel anytime in Settings.")
             : String(localized: "Keep your insights, reminders and journal export — or cancel anytime in Settings.")
-        content.sound = .default
+        // It fires exactly 24h before expiry (the cut-off to cancel without being charged), so a
+        // trial started at 1:30am would ring at 1:30am. Deliver quietly at night instead.
+        let hour = cal.component(.hour, from: fire)
+        if hour >= 22 || hour < 8 {
+            content.interruptionLevel = .passive
+        } else {
+            content.sound = .default
+        }
         content.userInfo = ["deepLink": "heal://home"]
-        let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fire)
         center.add(UNNotificationRequest(identifier: "trialEnding", content: content,
                                          trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
+    }
+
+    /// The one place that decides whether the trial-ending reminder should exist. Call it
+    /// whenever the trial, the notification setting or the streak changes (purchase, every
+    /// foreground, check-in, reset, recovery). Cancels it when the user isn't in a trial,
+    /// has turned notifications off, or has already turned auto-renew off — "keep your
+    /// insights, or cancel" makes no sense to someone who already cancelled.
+    func refreshTrialEndingReminder(profile: UserProfile?) {
+        let rc = RevenueCatService.shared
+        // Subscription info not loaded yet (cold launch): leave any pending reminder alone
+        // rather than deleting it on a guess. RootView re-runs this when the info arrives.
+        guard rc.customerInfo != nil else { return }
+        guard let profile, profile.notificationsEnabled, rc.isInTrial, rc.trialWillConvert else {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["trialEnding"])
+            return
+        }
+        scheduleTrialEndingReminder(expiration: rc.currentExpiration, streakStart: profile.currentStreakStartDate)
     }
 
     /// IDs for the premium encouragement reminders (12:00 / 18:00 / 21:00).

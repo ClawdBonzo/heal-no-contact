@@ -91,7 +91,8 @@ struct SetupPageView: View {
                     FlowLayout(spacing: 8) {
                         ForEach(durationOptions, id: \.self) { option in
                             ChipButton(
-                                text: option,
+                                // Stored value stays the English key; only the chip text is localized.
+                                text: String(localized: String.LocalizationValue(option)),
                                 isSelected: relationshipDuration == option,
                                 action: { relationshipDuration = option }
                             )
@@ -105,7 +106,7 @@ struct SetupPageView: View {
                         FlowLayout(spacing: 8) {
                             ForEach(goalOptions, id: \.self) { days in
                                 ChipButton(
-                                    text: days == 365 ? "1 year" : "\(days) days",
+                                    text: days == 365 ? String(localized: "1 year") : String(localized: "\(days) days"),
                                     isSelected: goalDays == days && !showCustomGoal,
                                     action: {
                                         showCustomGoal = false
@@ -115,7 +116,7 @@ struct SetupPageView: View {
                                 )
                             }
                             ChipButton(
-                                text: isCustomGoal ? "\(goalDays) days" : "Custom",
+                                text: isCustomGoal ? String(localized: "\(goalDays) days") : String(localized: "Custom"),
                                 isSelected: showCustomGoal || isCustomGoal,
                                 action: {
                                     withAnimation(.spring(response: 0.3)) {
@@ -181,7 +182,7 @@ struct SetupPageView: View {
 }
 
 private struct FormField<Content: View>: View {
-    let label: String
+    let label: LocalizedStringKey
     @ViewBuilder let content: Content
 
     var body: some View {
@@ -191,6 +192,9 @@ private struct FormField<Content: View>: View {
                 .foregroundStyle(Color.theme.textSecondary)
             content
         }
+        // Without this a field whose chips wrap narrower than the column (the goal row)
+        // was centered by the parent stack, out of line with the fields above it.
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

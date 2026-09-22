@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 import SwiftData
 
 struct DailyCheckInSheet: View {
@@ -177,12 +178,16 @@ struct DailyCheckInSheet: View {
             game.progressQuests(ofKind: .checkIn)
             let moodCount = (try? modelContext.fetchCount(FetchDescriptor<MoodEntry>())) ?? 0
             let journalCount = (try? modelContext.fetchCount(FetchDescriptor<JournalEntry>())) ?? 0
+            // fetchCount includes the MoodEntry inserted above (pending changes are
+            // counted), so it is already the new total — adding 1 unlocked the badge early.
             game.checkMilestoneBadges(streakDays: profile.currentStreakDays,
                                       journalEntryCount: journalCount,
-                                      moodCheckInCount: moodCount + 1)
-            ReviewPrompter.maybeRequest(requestReview,
-                                        moment: .checkInStreak(days: game.userGamification?.dailyStreakDays ?? 0),
-                                        streakDays: profile.currentStreakDays)
+                                      moodCheckInCount: moodCount)
+            // Deferred: this sheet dismisses itself at the end of this function, and
+            // requestReview is a no-op while the presenting scene is on its way out.
+            ReviewPrompter.requestAfterDismissal(requestReview,
+                                                 moment: .checkInStreak(days: game.userGamification?.dailyStreakDays ?? 0),
+                                                 streakDays: profile.currentStreakDays)
         }
 
         WidgetSync.update(profile: profile)
@@ -190,6 +195,8 @@ struct DailyCheckInSheet: View {
             NotificationService.shared.rescheduleEngagementReminders(streakDays: profile.currentStreakDays)
             NotificationService.shared.scheduleMilestoneReminders(profile: profile)
         }
+        // A reported contact resets the streak; the pending trial reminder quotes it.
+        NotificationService.shared.refreshTrialEndingReminder(profile: profile)
 
         HapticService.notification(.success)
         dismiss()
@@ -238,7 +245,7 @@ private struct MoodButton: View {
 }
 
 private struct ContactChoiceButton: View {
-    let title: String
+    let title: LocalizedStringKey
     let icon: String
     let isSelected: Bool
     let color: Color

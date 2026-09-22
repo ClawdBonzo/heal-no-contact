@@ -212,7 +212,7 @@ struct LevelUpModalView: View {
     }
 
     @ViewBuilder
-    private func levelChip(level: Int, label: String, dimmed: Bool) -> some View {
+    private func levelChip(level: Int, label: LocalizedStringKey, dimmed: Bool) -> some View {
         VStack(spacing: 4) {
             Text("\(level)")
                 .font(.system(size: 30, weight: .bold, design: .rounded))

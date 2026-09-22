@@ -10,10 +10,10 @@ struct HealingShareCard: View {
 
     private var phoenixStage: String {
         switch streakDays {
-        case 0..<7:   return "Ember"
-        case 7..<21:  return "Flame"
-        case 21..<60: return "Phoenix"
-        default:      return "Legend"
+        case 0..<7:   return String(localized: "Ember Stage")
+        case 7..<21:  return String(localized: "Flame Stage")
+        case 21..<60: return String(localized: "Phoenix Stage")
+        default:      return String(localized: "Legend Stage")
         }
     }
 
@@ -98,7 +98,7 @@ struct HealingShareCard: View {
                 }
 
                 // Phoenix stage badge
-                Text(phoenixStage + " Stage")
+                Text(phoenixStage)
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     .foregroundStyle(Color(red: 0.95, green: 0.75, blue: 0.30))
                     .padding(.horizontal, 20)
@@ -208,7 +208,7 @@ struct HealingShareButton: View {
         }
 
         let vc = UIActivityViewController(
-            activityItems: [uiImage, "Healing Day \(streakDays) \u{1F525} #HealNoContact"],
+            activityItems: [uiImage, String(localized: "Healing Day \(streakDays)") + " \u{1F525} #HealNoContact"],
             applicationActivities: nil
         )
 

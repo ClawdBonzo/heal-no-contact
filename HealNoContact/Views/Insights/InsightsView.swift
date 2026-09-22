@@ -196,7 +196,7 @@ private struct WeeklySummaryCard: View {
 
 private struct WeekStat: View {
     let value: String
-    let label: String
+    let label: LocalizedStringKey
     let icon: String
     let color: Color
 
@@ -272,7 +272,7 @@ private struct PatternsCard: View {
 
 private struct PatternRow: View {
     let icon: String
-    let label: String
+    let label: LocalizedStringKey
     let value: String
 
     var body: some View {

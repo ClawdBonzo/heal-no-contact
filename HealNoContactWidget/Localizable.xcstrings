@@ -124,7 +124,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "No Contact"
+            "value": "ไม่ติดต่อ"
           }
         },
         "id": {
@@ -194,7 +194,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "สตรีค No Contact"
+            "value": "สตรีคไม่ติดต่อ"
           }
         },
         "id": {
@@ -206,77 +206,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İletişimsiz Serisi"
-          }
-        }
-      }
-    },
-    "%lld% of %lld-day goal": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld % des %lld-Tage-Ziels"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld % de la meta de %lld días"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld % de la meta de %lld días"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld % de l’objectif de %lld jours"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld% dell’obiettivo di %lld giorni"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld% da meta de %lld dias"
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld% van je doel van %lld dagen"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld٪ من هدف %lld يومًا"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld% ของเป้าหมาย %lld วัน"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld% dari target %lld hari"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld günlük hedefin %%%lld’i"
+            "value": "İletişimsizlik Serisi"
           }
         }
       }
@@ -292,19 +222,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Check-in hecho hoy"
+            "value": "Registrado hoy"
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Check-in hecho hoy"
+            "value": "Registrado hoy"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Check-in fait aujourd’hui"
+            "value": "Suivi du jour effectué"
           }
         },
         "it": {
@@ -334,7 +264,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เช็กอินแล้ววันนี้"
+            "value": "วันนี้เช็กอินแล้ว"
           }
         },
         "id": {
@@ -346,7 +276,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bugün kontrol edildi"
+            "value": "Bugün kontrol yapıldı"
           }
         }
       }
@@ -362,19 +292,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hacer check-in"
+            "value": "Hacer registro"
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hacer check-in"
+            "value": "Registrar"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Faire le check-in"
+            "value": "Faire le point"
           }
         },
         "it": {
@@ -416,7 +346,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontrol et"
+            "value": "Kontrol Yap"
           }
         }
       }
@@ -474,7 +404,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld วัน No Contact"
+            "value": "ไม่ติดต่อ %lld วัน"
           }
         },
         "id": {
@@ -544,7 +474,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "🔥 %lld วัน No Contact"
+            "value": "🔥 ไม่ติดต่อ %lld วัน"
           }
         },
         "id": {
@@ -730,7 +660,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "❤️ Ho bisogno di aiuto adesso"
+            "value": "❤️ Mi serve aiuto ora"
           }
         },
         "pt-BR": {
@@ -894,7 +824,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "สตรีค No Contact"
+            "value": "สตรีคไม่ติดต่อ"
           }
         },
         "id": {
@@ -906,7 +836,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İletişimsiz Serisi"
+            "value": "İletişimsizlik Serisi"
           }
         }
       }
@@ -916,25 +846,25 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deine Serie zählt von selbst weiter – und ein Tipp genügt zum Einchecken."
+            "value": "Deine Serie zählt von selbst weiter – und ein Fingertipp genügt zum Einchecken."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu racha cuenta sola, y con un toque haces el check-in."
+            "value": "Tu racha avanza sola, y con un toque haces tu registro."
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu racha cuenta sola, y con un toque haces el check-in."
+            "value": "Tu racha avanza sola, y con un toque haces tu registro."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre série avance toute seule — et un tap suffit pour le check-in."
+            "value": "Votre série avance toute seule — et un simple toucher suffit pour faire le point."
           }
         },
         "it": {
@@ -1056,19 +986,19 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ein Tipp zu Atmung, Strategien und deinem Mantra, wenn der Drang kommt."
+            "value": "Mit einem Fingertipp zu Atemübungen, Strategien und deinem Mantra, wenn der Drang kommt."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un toque para respirar, estrategias y tu mantra cuando llega el impulso."
+            "value": "A un toque: respiración, estrategias de afrontamiento y tu mantra cuando llega el impulso."
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un toque para respirar, estrategias y tu mantra cuando llega el impulso."
+            "value": "Respiración, estrategias para resistir y tu mantra, a un toque cuando llega el impulso."
           }
         },
         "fr": {
@@ -1098,13 +1028,13 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "نقرة واحدة إلى التنفّس والاستراتيجيات ومانترا خاصتك عند اشتداد الرغبة."
+            "value": "نقرة واحدة للوصول إلى تمارين التنفّس واستراتيجيات التأقلم ومانتراك عند اشتداد الرغبة."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "แตะครั้งเดียวเพื่อฝึกหายใจ กลยุทธ์รับมือ และคำมั่นของคุณเมื่อความอยากมาถึง"
+            "value": "แตะครั้งเดียวเพื่อเข้าถึงการฝึกหายใจ กลยุทธ์รับมือ และคำมั่นของคุณเมื่อความอยากมาถึง"
           }
         },
         "id": {
@@ -1250,7 +1180,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mantra penyembuhanmu di layar utama atau layar kunci."
+            "value": "Mantra pemulihan pribadimu di Layar Utama atau Layar Terkunci."
           }
         },
         "tr": {
@@ -1327,6 +1257,79 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bugün ve her gün kendimi seçiyorum"
+          }
+        }
+      }
+    },
+    "%lld": {
+      "shouldTranslate": false
+    },
+    "%lld%% of %lld-day goal": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %% des %lld-Tage-Ziels"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %% del objetivo de %lld días"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %% de la meta de %lld días"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %% de l’objectif de %lld jours"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% dell’obiettivo di %lld giorni"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% da meta de %lld dias"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% van je doel van %lld dagen"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld٪ من هدف %lld يومًا"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% ของเป้าหมาย %lld วัน"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% dari target %lld hari"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%2$lld günlük hedefte %%%1$lld"
           }
         }
       }

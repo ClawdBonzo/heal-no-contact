@@ -13,13 +13,13 @@ Script support (added 2026-09-05): PIL has no HarfBuzz here, so Arabic came out 
 disconnected left-to-right glyphs — which is how the shipped ar-SA set ended up with a
 stray em dash floating on the wrong side of the headline. Arabic is now shaped with
 arabic_reshaper + python-bidi and drawn with SF Arabic Rounded, which matches the
-rounded face used for Latin. Thai combining marks are still not safe through PIL; the
-th set was built with the old CoreText pipeline and should be left alone.
+rounded face used for Latin. Thai combining marks are not safe through PIL, so Thai lines are drawn by
+render_headline.swift (CoreText) and pasted in — see coretext_band().
 
 Usage:  python3 compose.py <raw.png> <out.png> "Line one" ["Line two"]
         python3 compose.py --locale ar raw_ar/01-streak.png out.png "..." "..."
 """
-import sys, unicodedata
+import sys, os, subprocess, tempfile, unicodedata
 from PIL import Image, ImageDraw, ImageFont
 
 W, H          = 1320, 2868
@@ -42,6 +42,23 @@ ARABIC_FONT_CANDIDATES = [
     "/System/Library/Fonts/SFArabic.ttf",
     "/System/Library/Fonts/GeezaPro.ttc",
 ]
+
+def is_thai(text):
+    return any("\u0e00" <= ch <= "\u0e7f" for ch in text)
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+def coretext_band(lines, max_w):
+    """Thai headline via render_headline.swift (CoreText). PIL mis-stacks Thai
+    vowel/tone marks; CoreText shapes them correctly. Returns an RGBA band whose
+    line i starts at i * LINE_STEP from its top."""
+    fd, path = tempfile.mkstemp(suffix=".png"); os.close(fd)
+    try:
+        subprocess.run(["swift", os.path.join(HERE, "render_headline.swift"), path,
+                        str(max_w), str(FONT_SIZE), *lines], check=True, capture_output=True)
+        return Image.open(path).convert("RGBA")
+    finally:
+        try: os.remove(path)
+        except OSError: pass
 
 def is_arabic(text):
     return any("ARABIC" in unicodedata.name(ch, "") for ch in text)
@@ -95,9 +112,31 @@ def fit_line(draw, text, font_size, max_w, arabic=False):
         size -= 4
     return load_font(size, arabic)
 
+# Dynamic Island, measured off iPhone 17 Pro captures (1206x2622): black pill spanning
+# x 414.5-790.5, y 41.5-151.5. simctl draws it into some captures and not others (same
+# screen, different run), so sets came out with the pill on 3 of 8 shots. Stamping it on
+# every raw makes all shots look like the same phone.
+ISLAND = {(1206, 2622): (414.5, 41.5, 790.5, 151.5)}
+
+def stamp_island(shot):
+    box = ISLAND.get(shot.size)
+    if not box:
+        return shot
+    ss = 4                                   # supersample for anti-aliased edges
+    x0, y0, x1, y1 = box
+    pad = 4
+    w, h = int(x1 - x0) + 2 * pad, int(y1 - y0) + 2 * pad
+    ox, oy = int(x0) - pad, int(y0) - pad
+    m = Image.new("L", (w * ss, h * ss), 0)
+    ImageDraw.Draw(m).rounded_rectangle(
+        [(x0 - ox) * ss, (y0 - oy) * ss, (x1 - ox) * ss, (y1 - oy) * ss],
+        radius=(y1 - y0) / 2 * ss, fill=255)
+    shot.paste((0, 0, 0), (ox, oy), m.resize((w, h), Image.LANCZOS))
+    return shot
+
 def compose(raw_path, out_path, lines):
     canvas = gradient()
-    shot = Image.open(raw_path).convert("RGB")
+    shot = stamp_island(Image.open(raw_path).convert("RGB"))
     scale = DEVICE_W / shot.width
     shot = shot.resize((DEVICE_W, round(shot.height * scale)), Image.LANCZOS)
     # crop to the space available below the headline
@@ -108,6 +147,14 @@ def compose(raw_path, out_path, lines):
 
     d = ImageDraw.Draw(canvas)
     safe_w = W - 2 * 120
+    # CoreText for Thai AND Arabic: PIL has no font fallback, so a glyph the chosen face
+    # lacks becomes a box — which is how "100%" in the Arabic privacy headline shipped as ████.
+    if any(is_thai(l) or is_arabic(l) for l in lines[:2]):
+        band = coretext_band(lines[:2], safe_w)
+        canvas = canvas.convert("RGBA")
+        canvas.alpha_composite(band, ((W - band.width) // 2, LINE1_TOP))
+        canvas.convert("RGB").save(out_path)
+        return out_path
     for i, line in enumerate(lines[:2]):
         ar = is_arabic(line)
         drawn = shape(line)

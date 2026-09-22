@@ -152,16 +152,16 @@ private struct MoodTrendSection: View {
     }
 
     private var trend: String {
-        guard entries.count >= 2 else { return "Not enough data" }
+        guard entries.count >= 2 else { return String(localized: "Not enough data") }
         let recent = Array(entries.suffix(7))
         let older = Array(entries.prefix(max(entries.count - 7, 1)))
 
         let recentAvg = Double(recent.reduce(0) { $0 + $1.mood.numericValue }) / Double(recent.count)
         let olderAvg = Double(older.reduce(0) { $0 + $1.mood.numericValue }) / Double(older.count)
 
-        if recentAvg > olderAvg + 0.5 { return "Trending up" }
-        if recentAvg < olderAvg - 0.5 { return "Trending down" }
-        return "Stable"
+        if recentAvg > olderAvg + 0.5 { return String(localized: "Trending up") }
+        if recentAvg < olderAvg - 0.5 { return String(localized: "Trending down") }
+        return String(localized: "Stable")
     }
 
     var body: some View {
@@ -189,7 +189,7 @@ private struct MoodTrendSection: View {
                                 trend == "Trending down" ? Color.theme.healPink :
                                 Color.theme.textSecondary
                             )
-                        Text(LocalizedStringKey(trend))
+                        Text(trend)
                             .font(.subheadline.weight(.medium))
                             .foregroundStyle(Color.theme.textPrimary)
                     }

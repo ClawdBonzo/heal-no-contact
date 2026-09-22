@@ -74,11 +74,7 @@ struct RootView: View {
         }
         // Premium encouragement reminders follow the entitlement (renewals, restores, lapses).
         NotificationService.shared.syncPremiumReminders(notificationsEnabled: profile.notificationsEnabled)
-        if profile.notificationsEnabled, RevenueCatService.shared.isInTrial {
-            NotificationService.shared.scheduleTrialEndingReminder(
-                expiration: RevenueCatService.shared.currentExpiration,
-                streakDays: profile.currentStreakDays)
-        }
+        NotificationService.shared.refreshTrialEndingReminder(profile: profile)
     }
 
     /// heal://checkin · heal://sos · heal://journal · heal://home (widgets + notifications)
@@ -155,6 +151,12 @@ struct RootView: View {
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { syncWidgetsAndReminders() }
+        }
+        // The foreground sync runs before RevenueCat's own refresh returns, so a trial the user
+        // cancelled in Settings would keep its reminder until the NEXT foreground. Re-check
+        // whenever the subscription info actually changes.
+        .onChange(of: RevenueCatService.shared.customerInfo) { _, _ in
+            NotificationService.shared.refreshTrialEndingReminder(profile: profiles.first)
         }
         .onChange(of: profiles.first?.hasCompletedOnboarding) { _, done in
             if done == true { syncWidgetsAndReminders() }
@@ -255,23 +257,54 @@ final class DemoConfig {
     static let shared = DemoConfig()
     /// Stats sub-tab to force: 0 = Progress, 1 = Insights
     var statsTab: Int? = nil
-    /// Onboarding page to force (welcome = 0, commitment = 3)
+    /// Onboarding page to force (welcome = 0, setup = 2, commitment = 3)
     var onboardingPage: Int? = nil
     /// A screen to present as a cover: "letter" or "paywall"
     var presentScreen: String? = nil
+    /// Trial length to show on the demo paywall. The simulator's RevenueCat key can't load
+    /// offerings, so without this the screenshot shows no trial at all — not what an eligible
+    /// new user sees. Mirrors the ASC introductory offer (ONE_WEEK free trial).
+    var demoTrialDays: Int? = nil
+    /// Unlock premium views for the capture. The insights screenshot ("See yourself healing")
+    /// otherwise shows the locked upsell card instead of the healing score it advertises.
+    var demoPremium = false
+    /// Storefront prices for the paywall capture: the simulator can't load offerings, so every
+    /// locale's shot showed the hardcoded USD fallback ($4.99 in Germany, where it is €5.99).
+    /// Customer prices from App Store Connect, Sep 2026, keyed by the capture's region.
+    var demoCurrency: String? = nil
+    var demoPrices: [HealPlanOption: Decimal]? = nil
+    private static let storefrontPrices: [String: (String, [Decimal])] = [
+        // region: (currency, [weekly, monthly, yearly, lifetime])
+        "US": ("USD", [4.99, 9.99, 49.99, 79.99]),
+        "DE": ("EUR", [5.99, 9.99, 59.99, 89.99]), "ES": ("EUR", [5.99, 9.99, 59.99, 89.99]),
+        "FR": ("EUR", [5.99, 9.99, 59.99, 89.99]), "IT": ("EUR", [5.99, 9.99, 59.99, 89.99]),
+        "NL": ("EUR", [5.99, 9.99, 59.99, 89.99]),
+        "MX": ("MXN", [99, 199, 999, 1799]),
+        "ID": ("IDR", [89000, 169000, 799000, 1499000]),
+        "TH": ("THB", [199, 399, 1990, 2990]),
+        "TR": ("TRY", [249.99, 499.99, 2499.99, 3999.99]),
+        "SA": ("SAR", [19.99, 39.99, 199.99, 349.99]),
+        "BR": ("BRL", [29.9, 59.9, 299.9, 499.9]),
+    ]
     /// True for screens that should show onboarding (no seeded profile)
     var isOnboarding: Bool { onboardingPage != nil }
 
     func apply(screen: String, appState: AppState) {
         switch screen {
         case "welcome":    onboardingPage = 0
+        case "setup":      onboardingPage = 2
         case "commitment": onboardingPage = 3
         case "home":       appState.selectedTab = .dashboard
         case "progress":   appState.selectedTab = .stats; statsTab = 0
-        case "insights":   appState.selectedTab = .stats; statsTab = 1
+        case "insights":   appState.selectedTab = .stats; statsTab = 1; demoPremium = true
         case "settings":   appState.selectedTab = .settings
         case "letter":     appState.selectedTab = .journal; presentScreen = "letter"
-        case "paywall":    appState.selectedTab = .settings; presentScreen = "paywall"
+        case "paywall":
+            appState.selectedTab = .settings; presentScreen = "paywall"; demoTrialDays = 7
+            if let (currency, p) = Self.storefrontPrices[Locale.current.region?.identifier ?? "US"] {
+                demoCurrency = currency
+                demoPrices = [.weekly: p[0], .monthly: p[1], .yearly: p[2], .lifetime: p[3]]
+            }
         default: break
         }
     }

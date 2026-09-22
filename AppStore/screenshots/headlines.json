@@ -54,10 +54,6 @@
    "Her şeyi yaz.",
    "Hiçbirini gönderme."
   ],
-  "06-premium": [
-   "Tüm yolculuğun",
-   "kilidini aç"
-  ],
   "06-welcome": [
    "İletişimsiz sürecinde",
    "yol arkadaşın"
@@ -137,6 +133,244 @@
   "08-premium": [
    "Desbloqueie a",
    "jornada completa"
+  ]
+ },
+ "de": {
+  "01-streak": [
+   "Bleib stark —",
+   "jeden einzelnen Tag"
+  ],
+  "02-commitment": [
+   "Es beginnt mit einem",
+   "Versprechen an dich"
+  ],
+  "03-progress": [
+   "Feiere jeden",
+   "Meilenstein"
+  ],
+  "04-insights": [
+   "Sieh, wie weit",
+   "du gekommen bist"
+  ],
+  "05-letter": [
+   "Sag alles, was du",
+   "nicht senden kannst"
+  ],
+  "06-welcome": [
+   "Dein privater",
+   "No-Contact-Begleiter"
+  ],
+  "07-privacy": [
+   "Deine Daten",
+   "bleiben deine"
+  ],
+  "08-premium": [
+   "Schalte alles frei",
+   "mit Premium"
+  ]
+ },
+ "es": {
+  "01-streak": [
+   "Mantente fuerte,",
+   "cada día"
+  ],
+  "02-commitment": [
+   "Empieza con una",
+   "promesa a ti mismo"
+  ],
+  "03-progress": [
+   "Celebra cada",
+   "logro"
+  ],
+  "04-insights": [
+   "Mira cuánto",
+   "has avanzado"
+  ],
+  "05-letter": [
+   "Di todo lo que",
+   "no puedes enviar"
+  ],
+  "06-welcome": [
+   "Tu compañero",
+   "de contacto cero"
+  ],
+  "07-privacy": [
+   "Tus datos",
+   "siguen siendo tuyos"
+  ],
+  "08-premium": [
+   "Desbloquéalo todo",
+   "con Premium"
+  ]
+ },
+ "it": {
+  "01-streak": [
+   "Resta forte,",
+   "ogni giorno"
+  ],
+  "02-commitment": [
+   "Inizia con una",
+   "promessa a te stesso"
+  ],
+  "03-progress": [
+   "Festeggia ogni",
+   "traguardo"
+  ],
+  "04-insights": [
+   "Guarda quanta",
+   "strada hai fatto"
+  ],
+  "05-letter": [
+   "Di' tutto ciò che",
+   "non puoi inviare"
+  ],
+  "06-welcome": [
+   "Il tuo compagno",
+   "no contact, privato"
+  ],
+  "07-privacy": [
+   "I tuoi dati",
+   "restano tuoi"
+  ],
+  "08-premium": [
+   "Sblocca tutto",
+   "con Premium"
+  ]
+ },
+ "fr": {
+  "01-streak": [
+   "Tenez bon —",
+   "un jour après l'autre"
+  ],
+  "02-commitment": [
+   "Tout commence par",
+   "votre propre promesse"
+  ],
+  "03-progress": [
+   "Célébrez chaque",
+   "étape franchie"
+  ],
+  "04-insights": [
+   "Voyez le chemin",
+   "déjà parcouru"
+  ],
+  "05-letter": [
+   "Dites tout ce que",
+   "vous n'enverrez pas"
+  ],
+  "06-welcome": [
+   "Votre compagnon privé",
+   "du silence radio"
+  ],
+  "07-privacy": [
+   "Vos données restent",
+   "les vôtres — toujours"
+  ],
+  "08-premium": [
+   "Débloquez tout",
+   "avec Premium"
+  ]
+ },
+ "nl": {
+  "01-streak": [
+   "Blijf sterk —",
+   "elke dag opnieuw"
+  ],
+  "02-commitment": [
+   "Het begint met een",
+   "belofte aan jezelf"
+  ],
+  "03-progress": [
+   "Vier elke",
+   "mijlpaal"
+  ],
+  "04-insights": [
+   "Zie hoe ver",
+   "je gekomen bent"
+  ],
+  "05-letter": [
+   "Zeg alles wat je",
+   "niet kunt sturen"
+  ],
+  "06-welcome": [
+   "Jouw persoonlijke",
+   "no-contact-metgezel"
+  ],
+  "07-privacy": [
+   "Jouw data blijft",
+   "van jou — altijd"
+  ],
+  "08-premium": [
+   "Ontgrendel alles",
+   "met Premium"
+  ]
+ },
+ "id": {
+  "01-streak": [
+   "Tetap kuat —",
+   "setiap hari"
+  ],
+  "02-commitment": [
+   "Semua dimulai dari",
+   "janji pada dirimu"
+  ],
+  "03-progress": [
+   "Rayakan setiap",
+   "pencapaian"
+  ],
+  "04-insights": [
+   "Lihat sejauh mana",
+   "kamu melangkah"
+  ],
+  "05-letter": [
+   "Katakan semua yang",
+   "tak bisa kamu kirim"
+  ],
+  "06-welcome": [
+   "Pendamping",
+   "no contact pribadimu"
+  ],
+  "07-privacy": [
+   "Datamu tetap",
+   "milikmu — selalu"
+  ],
+  "08-premium": [
+   "Buka semua fitur",
+   "dengan Premium"
+  ]
+ },
+ "th": {
+  "01-streak": [
+   "แข็งแกร่งต่อไป —",
+   "ทุก ๆ วัน"
+  ],
+  "02-commitment": [
+   "ทุกอย่างเริ่มต้น",
+   "ที่สัญญากับตัวเอง"
+  ],
+  "03-progress": [
+   "ฉลองทุก",
+   "หลักชัยที่ไปถึง"
+  ],
+  "04-insights": [
+   "ดูสิว่าคุณ",
+   "มาไกลแค่ไหน"
+  ],
+  "05-letter": [
+   "พูดทุกอย่าง",
+   "ที่ส่งไปไม่ได้"
+  ],
+  "06-welcome": [
+   "เพื่อนคู่ใจส่วนตัว",
+   "ในการไม่ติดต่อ"
+  ],
+  "07-privacy": [
+   "ข้อมูลของคุณ",
+   "เป็นของคุณ — เสมอ"
+  ],
+  "08-premium": [
+   "ปลดล็อกทุกฟีเจอร์",
+   "ด้วย Premium"
   ]
  }
 }
