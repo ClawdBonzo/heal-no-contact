@@ -260,7 +260,7 @@ final class GameificationService {
         BadgeSpec(id: "weekly_champion",title: String(localized: "Weekly Champion"), details: String(localized: "Complete a weekly quest"),        icon: "crown.fill",       rarity: .rare),
         BadgeSpec(id: "month_warrior",  title: String(localized: "30-Day Warrior"),  details: String(localized: "One month of healing"),           icon: "shield.fill",      rarity: .epic),
         BadgeSpec(id: "rising_phoenix", title: String(localized: "Rising Phoenix"),  details: String(localized: "Reached level 5"),                icon: "flame.fill",       rarity: .epic),
-        BadgeSpec(id: "century_club",   title: String(localized: "Century Club"),    details: String(localized: "100 days free"),                  icon: "100.circle.fill",  rarity: .epic),
+        BadgeSpec(id: "century_club",   title: String(localized: "Century Club"),    details: String(localized: "100 days free"),                  icon: "medal.fill",       rarity: .epic),
         BadgeSpec(id: "fully_healed",   title: String(localized: "Fully Healed"),    details: String(localized: "Reached ultimate level"),         icon: "heart.fill",       rarity: .legendary),
     ]}
 

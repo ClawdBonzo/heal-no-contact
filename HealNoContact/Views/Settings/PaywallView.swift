@@ -199,7 +199,7 @@ struct PaywallView: View {
                             HStack(spacing: 8) {
                                 Text(ctaLabel)
                                     .font(.headline)
-                                Image(systemName: "arrow.right")
+                                Image(systemName: "arrow.forward")   // mirrors in right-to-left languages
                                     .font(.subheadline.weight(.semibold))
                             }
                         }

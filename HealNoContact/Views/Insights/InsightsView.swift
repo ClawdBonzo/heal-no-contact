@@ -137,7 +137,7 @@ private struct HealingScoreCard: View {
                     Text("\(score)")
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(Color.theme.textPrimary)
-                    Text("/ 100")
+                    Text("/ \(100)")
                         .font(.caption)
                         .foregroundStyle(Color.theme.textTertiary)
                 }
@@ -181,9 +181,9 @@ private struct WeeklySummaryCard: View {
                 .foregroundStyle(Color.theme.textPrimary)
 
             HStack(spacing: 16) {
-                WeekStat(value: "\(journalCount)", label: "Entries", icon: "book.fill", color: Color.theme.healPurple)
-                WeekStat(value: "\(checkInCount)", label: "Check-ins", icon: "checkmark.circle.fill", color: Color.theme.healTeal)
-                WeekStat(value: "\(emergencyCount)", label: "SOS Used", icon: "sos", color: Color.theme.healPink)
+                WeekStat(value: journalCount.formatted(), label: "Entries", icon: "book.fill", color: Color.theme.healPurple)
+                WeekStat(value: checkInCount.formatted(), label: "Check-ins", icon: "checkmark.circle.fill", color: Color.theme.healTeal)
+                WeekStat(value: emergencyCount.formatted(), label: "SOS Used", icon: "sos", color: Color.theme.healPink)
             }
         }
         .padding(20)

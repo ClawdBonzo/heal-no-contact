@@ -78,7 +78,7 @@ Complete setup for HealNoContact on App Store Connect with 4 subscription produc
      - Description: `Unlimited access for 1 week`
 4. Click **"Save"**
 
-✅ **Product 1 created:** `com.healnocontact.premium.weekly` ($4.99/week, 3-day trial)
+✅ **Product 1 created:** `com.healnocontact.premium.weekly` ($4.99/week, 7-day trial)
 
 ### Product 2: Monthly Subscription (BEST VALUE)
 
@@ -95,7 +95,7 @@ Complete setup for HealNoContact on App Store Connect with 4 subscription produc
      - Description: `Unlimited access for 1 month`
 4. Click **"Save"**
 
-✅ **Product 2 created:** `com.healnocontact.premium.monthly` ($9.99/month, 3-day trial, BEST VALUE)
+✅ **Product 2 created:** `com.healnocontact.premium.monthly` ($9.99/month, 7-day trial, BEST VALUE)
 
 ### Product 3: Yearly Subscription
 
@@ -112,7 +112,7 @@ Complete setup for HealNoContact on App Store Connect with 4 subscription produc
      - Description: `Unlimited access for 1 year`
 4. Click **"Save"**
 
-✅ **Product 3 created:** `com.healnocontact.premium.yearly` ($49.99/year, 3-day trial)
+✅ **Product 3 created:** `com.healnocontact.premium.yearly` ($49.99/year, 7-day trial)
 
 ### Product 4: Lifetime (Non-Consumable)
 
@@ -138,7 +138,7 @@ Complete setup for HealNoContact on App Store Connect with 4 subscription produc
 - [ ] Monthly subscription created with ID `com.healnocontact.premium.monthly` (marked BEST VALUE)
 - [ ] Yearly subscription created with ID `com.healnocontact.premium.yearly`
 - [ ] Lifetime product created with ID `com.healnocontact.premium.lifetime`
-- [ ] All subscriptions have **3-day free trial** enabled
+- [ ] All subscriptions have **7-day free trial** (was 3 days until 2026-09-05) enabled
 - [ ] All products have correct prices (Weekly $4.99, Monthly $9.99, Yearly $49.99, Lifetime $79.99)
 
 ---
@@ -213,9 +213,9 @@ In Xcode:
 | **SKU** | HealNoContact2026 | ✅ Set in ASC |
 | **Subscription Group** | HealNoContact Pro | ✅ Create in ASC |
 | | | |
-| **Product 1** | `com.healnocontact.premium.weekly` | ✅ $4.99/week, 3-day trial |
-| **Product 2** | `com.healnocontact.premium.monthly` | ✅ $9.99/month, 3-day trial, BEST VALUE |
-| **Product 3** | `com.healnocontact.premium.yearly` | ✅ $49.99/year, 3-day trial |
+| **Product 1** | `com.healnocontact.premium.weekly` | ✅ $4.99/week, 7-day trial |
+| **Product 2** | `com.healnocontact.premium.monthly` | ✅ $9.99/month, 7-day trial, BEST VALUE |
+| **Product 3** | `com.healnocontact.premium.yearly` | ✅ $49.99/year, 7-day trial |
 | **Product 4** | `com.healnocontact.premium.lifetime` | ✅ $79.99 one-time |
 | | | |
 | **RevenueCat API** | test_AFpuFmRxwiYCSJV0rgzxFqKjZDa | ✅ Already in code |

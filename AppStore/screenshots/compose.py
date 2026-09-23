@@ -134,7 +134,29 @@ def stamp_island(shot):
     shot.paste((0, 0, 0), (ox, oy), m.resize((w, h), Image.LANCZOS))
     return shot
 
-def compose(raw_path, out_path, lines):
+BADGE_GOLD = (242, 193, 78)
+
+def draw_badge(canvas, text):
+    """Small gold pill above the headline. Used on the Insights shot, which shows a
+    Premium-only screen: App Review guideline 2.3.2 wants screenshots to make clear
+    which features need a purchase."""
+    img = canvas.convert("RGBA")
+    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    f = load_font(34)
+    tw = d.textlength(text, font=f)
+    pad_x, h = 26, 50
+    w = tw + 2 * pad_x
+    x0 = (W - w) / 2
+    y0 = LINE1_TOP - h - 26          # eyebrow above the headline; below it collided with descenders
+    d.rounded_rectangle([x0, y0, x0 + w, y0 + h], radius=h / 2,
+                        fill=BADGE_GOLD + (40,), outline=BADGE_GOLD + (200,), width=3)
+    asc, desc = f.getmetrics()
+    d.text((x0 + pad_x, y0 + (h - (asc + desc)) / 2 + 1), text, font=f, fill=BADGE_GOLD + (255,))
+    img.alpha_composite(layer)
+    return img.convert("RGB")
+
+def compose(raw_path, out_path, lines, badge=None):
     canvas = gradient()
     shot = stamp_island(Image.open(raw_path).convert("RGB"))
     scale = DEVICE_W / shot.width
@@ -153,7 +175,9 @@ def compose(raw_path, out_path, lines):
         band = coretext_band(lines[:2], safe_w)
         canvas = canvas.convert("RGBA")
         canvas.alpha_composite(band, ((W - band.width) // 2, LINE1_TOP))
-        canvas.convert("RGB").save(out_path)
+        canvas = canvas.convert("RGB")
+        if badge: canvas = draw_badge(canvas, badge)
+        canvas.save(out_path)
         return out_path
     for i, line in enumerate(lines[:2]):
         ar = is_arabic(line)
@@ -161,6 +185,7 @@ def compose(raw_path, out_path, lines):
         f = fit_line(d, drawn, FONT_SIZE, safe_w, ar)
         w = d.textlength(drawn, font=f)
         d.text(((W - w) / 2, LINE1_TOP + i * LINE_STEP), drawn, font=f, fill=(255, 255, 255))
+    if badge: canvas = draw_badge(canvas, badge)
     canvas.save(out_path)
     return out_path
 

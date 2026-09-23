@@ -80,7 +80,7 @@ struct SettingsView: View {
                         SettingsRow(
                             icon: "arrow.counterclockwise",
                             label: String(localized: "Total resets"),
-                            value: "\(profile.totalResets)",
+                            value: profile.totalResets.formatted(),
                             color: Color.theme.textSecondary
                         )
                     }

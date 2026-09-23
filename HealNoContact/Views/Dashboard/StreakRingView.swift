@@ -10,6 +10,15 @@ struct StreakRingView: View {
         return min(Double(currentDays) / Double(goalDays), 1.0)
     }
 
+    /// Unit under the big number, taken from the plural-aware "%lld days" with the number removed,
+    /// so it agrees with the count (day/days; Arabic يوم / يومان / أيام / يومًا). A plain day/days
+    /// pair was wrong for most Arabic values.
+    private var dayUnit: String {
+        String(localized: "\(currentDays) days")
+            .replacingOccurrences(of: currentDays.formatted(), with: "")
+            .trimmingCharacters(in: .whitespaces.union(CharacterSet(charactersIn: "\u{200E}\u{200F}\u{061C}")))
+    }
+
     // Outer pulse ring animation
     @State private var outerPulse = false
 
@@ -89,7 +98,7 @@ struct StreakRingView: View {
                         .foregroundStyle(Color.theme.textPrimary)
                         .contentTransition(.numericText())
 
-                    Text(currentDays == 1 ? "day" : "days")
+                    Text(dayUnit)
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(Color.theme.textSecondary)
 

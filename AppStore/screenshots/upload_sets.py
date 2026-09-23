@@ -18,7 +18,7 @@ from asc import BASE, gj, H, HJ, requests   # noqa: E402
 SHOTS = os.path.join(HERE, "..", "..", "AppStoreConnect", "screenshots")
 # ASC localization -> composed set (see build_sets.py)
 MAP = {
-    "en-US": "designed", "en-GB": "designed", "en-AU": "designed", "en-CA": "designed",
+    "en-US": "designed", "en-GB": "designed_en-GB", "en-AU": "designed_en-AU", "en-CA": "designed_en-CA",
     "de-DE": "designed_de", "es-ES": "designed_es", "es-MX": "designed_es-MX",
     "fr-FR": "designed_fr", "it": "designed_it", "nl-NL": "designed_nl", "id": "designed_id",
     "th": "designed_th", "tr": "designed_tr", "ar-SA": "designed_ar", "pt-BR": "designed_pt-BR",

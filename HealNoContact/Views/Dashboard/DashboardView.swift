@@ -477,7 +477,7 @@ private struct JourneyStrip: View {
                     bigText: nextMilestone.title,
                     bottomText: String(localized: "\(remaining) days to go"),
                     progress: Double(currentDays) / Double(max(nextMilestone.dayTarget, 1)),
-                    iconName: nextMilestone.iconName
+                    iconName: nextMilestone.displayIconName
                 )
             }
         }

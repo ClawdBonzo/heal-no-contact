@@ -59,13 +59,13 @@ private struct OverallStatsSection: View {
         VStack(spacing: 12) {
             HStack(spacing: 12) {
                 StatCard(
-                    value: "\(profile.currentStreakDays)",
+                    value: profile.currentStreakDays.formatted(),
                     label: String(localized: "Current Streak"),
                     icon: "flame.fill",
                     color: Color.theme.healPurple
                 )
                 StatCard(
-                    value: "\(max(profile.streakBestDays, profile.currentStreakDays))",
+                    value: max(profile.streakBestDays, profile.currentStreakDays).formatted(),
                     label: String(localized: "Best Streak"),
                     icon: "trophy.fill",
                     color: Color.theme.healGold
@@ -73,13 +73,13 @@ private struct OverallStatsSection: View {
             }
             HStack(spacing: 12) {
                 StatCard(
-                    value: "\(profile.daysSinceBreakup)",
-                    label: String(localized: "Days Since BU"),
+                    value: profile.daysSinceBreakup.formatted(),
+                    label: String(localized: "Days Since Breakup"),
                     icon: "calendar",
                     color: Color.theme.healTeal
                 )
                 StatCard(
-                    value: "\(resistedCount)/\(emergencyCount)",
+                    value: "\(resistedCount.formatted())/\(emergencyCount.formatted())",
                     label: String(localized: "Urges Resisted"),
                     icon: "shield.fill",
                     color: Color.theme.healPink
@@ -151,17 +151,30 @@ private struct MoodTrendSection: View {
         return Double(sum) / Double(entries.count)
     }
 
-    private var trend: String {
-        guard entries.count >= 2 else { return String(localized: "Not enough data") }
+    private enum Trend { case up, down, stable, notEnoughData }
+
+    private var trend: Trend {
+        guard entries.count >= 2 else { return .notEnoughData }
         let recent = Array(entries.suffix(7))
         let older = Array(entries.prefix(max(entries.count - 7, 1)))
 
         let recentAvg = Double(recent.reduce(0) { $0 + $1.mood.numericValue }) / Double(recent.count)
         let olderAvg = Double(older.reduce(0) { $0 + $1.mood.numericValue }) / Double(older.count)
 
-        if recentAvg > olderAvg + 0.5 { return String(localized: "Trending up") }
-        if recentAvg < olderAvg - 0.5 { return String(localized: "Trending down") }
-        return String(localized: "Stable")
+        if recentAvg > olderAvg + 0.5 { return .up }
+        if recentAvg < olderAvg - 0.5 { return .down }
+        return .stable
+    }
+
+    // The arrow and colour used to compare the *localized* label against "Trending up", so in
+    // every non-English language the card always showed the neutral arrow.
+    private var trendLabel: String {
+        switch trend {
+        case .up: String(localized: "Trending up")
+        case .down: String(localized: "Trending down")
+        case .stable: String(localized: "Stable")
+        case .notEnoughData: String(localized: "Not enough data")
+        }
     }
 
     var body: some View {
@@ -172,7 +185,7 @@ private struct MoodTrendSection: View {
 
             HStack(spacing: 20) {
                 VStack(spacing: 4) {
-                    Text(String(format: "%.1f", averageMood))
+                    Text(averageMood.formatted(.number.precision(.fractionLength(1))))
                         .font(.title.weight(.bold).monospacedDigit())
                         .foregroundStyle(Color.theme.textPrimary)
                     Text("Avg / 7")
@@ -182,14 +195,14 @@ private struct MoodTrendSection: View {
 
                 VStack(spacing: 4) {
                     HStack(spacing: 4) {
-                        Image(systemName: trend == "Trending up" ? "arrow.up.right" :
-                                trend == "Trending down" ? "arrow.down.right" : "arrow.right")
+                        Image(systemName: trend == .up ? "arrow.up.forward" :
+                                trend == .down ? "arrow.down.forward" : "arrow.forward")
                             .foregroundStyle(
-                                trend == "Trending up" ? Color.theme.healTeal :
-                                trend == "Trending down" ? Color.theme.healPink :
+                                trend == .up ? Color.theme.healTeal :
+                                trend == .down ? Color.theme.healPink :
                                 Color.theme.textSecondary
                             )
-                        Text(trend)
+                        Text(trendLabel)
                             .font(.subheadline.weight(.medium))
                             .foregroundStyle(Color.theme.textPrimary)
                     }

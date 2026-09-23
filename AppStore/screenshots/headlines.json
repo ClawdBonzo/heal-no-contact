@@ -1,12 +1,12 @@
 {
  "en": {
   "01-streak": [
-   "Every day you don't",
+   "Every day you don’t",
    "text them counts"
   ],
   "02-commitment": [
    "Make the promise.",
-   "We help you keep it"
+   "We’ll help you keep it."
   ],
   "03-progress": [
    "Watch the days",
@@ -26,7 +26,7 @@
   ],
   "07-privacy": [
    "100% private.",
-   "Never leaves your phone"
+   "Stays on your phone."
   ],
   "08-premium": [
    "Unlock the full",
@@ -43,8 +43,8 @@
    "Tutmana yardım edelim"
   ],
   "03-progress": [
-   "Günlerin birikişini",
-   "izle"
+   "Günlerin nasıl",
+   "biriktiğini izle"
   ],
   "04-insights": [
    "İyileştiğini",
@@ -55,8 +55,8 @@
    "Hiçbirini gönderme."
   ],
   "06-welcome": [
-   "İletişimsiz sürecinde",
-   "yol arkadaşın"
+   "İletişimi kestiğin",
+   "süreçte yol arkadaşın"
   ],
   "07-privacy": [
    "%100 gizli.",
@@ -93,8 +93,8 @@
    "فترة الانقطاع"
   ],
   "07-privacy": [
-   "خاص 100%.",
-   "لا يغادر هاتفك"
+   "خصوصية ١٠٠٪.",
+   "لا شيء يغادر هاتفك"
   ],
   "08-premium": [
    "افتح الرحلة",
@@ -108,11 +108,11 @@
   ],
   "02-commitment": [
    "Faça a promessa.",
-   "Nós ajudamos a cumprir"
+   "Te ajudamos a cumprir"
   ],
   "03-progress": [
    "Veja os dias",
-   "somarem"
+   "se acumularem"
   ],
   "04-insights": [
    "Veja você",
@@ -123,8 +123,8 @@
    "Não envie nada."
   ],
   "06-welcome": [
-   "Seu apoio no",
-   "contato zero"
+   "Ao seu lado em cada",
+   "dia sem contato"
   ],
   "07-privacy": [
    "100% privado.",
@@ -137,7 +137,7 @@
  },
  "de": {
   "01-streak": [
-   "Bleib stark —",
+   "Bleib stark –",
    "jeden einzelnen Tag"
   ],
   "02-commitment": [
@@ -154,15 +154,15 @@
   ],
   "05-letter": [
    "Sag alles, was du",
-   "nicht senden kannst"
+   "nie abschicken kannst"
   ],
   "06-welcome": [
-   "Dein privater",
-   "No-Contact-Begleiter"
+   "Gemeinsam durch die",
+   "Kontaktsperre"
   ],
   "07-privacy": [
    "Deine Daten",
-   "bleiben deine"
+   "gehören nur dir"
   ],
   "08-premium": [
    "Schalte alles frei",
@@ -171,24 +171,24 @@
  },
  "es": {
   "01-streak": [
-   "Mantente fuerte,",
+   "Mantente fuerte",
    "cada día"
   ],
   "02-commitment": [
-   "Empieza con una",
-   "promesa a ti mismo"
+   "Empieza por hacerte",
+   "una promesa"
   ],
   "03-progress": [
    "Celebra cada",
-   "logro"
+   "hito alcanzado"
   ],
   "04-insights": [
    "Mira cuánto",
    "has avanzado"
   ],
   "05-letter": [
-   "Di todo lo que",
-   "no puedes enviar"
+   "Escribe lo que",
+   "nunca enviarás"
   ],
   "06-welcome": [
    "Tu compañero",
@@ -221,12 +221,12 @@
    "strada hai fatto"
   ],
   "05-letter": [
-   "Di' tutto ciò che",
+   "Scrivi tutto ciò che",
    "non puoi inviare"
   ],
   "06-welcome": [
-   "Il tuo compagno",
-   "no contact, privato"
+   "Il tuo alleato privato",
+   "nel no contact"
   ],
   "07-privacy": [
    "I tuoi dati",
@@ -240,7 +240,7 @@
  "fr": {
   "01-streak": [
    "Tenez bon —",
-   "un jour après l'autre"
+   "un jour après l’autre"
   ],
   "02-commitment": [
    "Tout commence par",
@@ -255,8 +255,8 @@
    "déjà parcouru"
   ],
   "05-letter": [
-   "Dites tout ce que",
-   "vous n'enverrez pas"
+   "Écrivez tout.",
+   "N’envoyez rien."
   ],
   "06-welcome": [
    "Votre compagnon privé",
@@ -294,7 +294,7 @@
   ],
   "06-welcome": [
    "Jouw persoonlijke",
-   "no-contact-metgezel"
+   "no-contact-maatje"
   ],
   "07-privacy": [
    "Jouw data blijft",
@@ -341,16 +341,16 @@
  },
  "th": {
   "01-streak": [
-   "แข็งแกร่งต่อไป —",
+   "แข็งแกร่งต่อไป",
    "ทุก ๆ วัน"
   ],
   "02-commitment": [
    "ทุกอย่างเริ่มต้น",
-   "ที่สัญญากับตัวเอง"
+   "จากคำสัญญากับตัวเอง"
   ],
   "03-progress": [
-   "ฉลองทุก",
-   "หลักชัยที่ไปถึง"
+   "ฉลองทุกหลักชัย",
+   "ที่คุณไปถึง"
   ],
   "04-insights": [
    "ดูสิว่าคุณ",
@@ -361,12 +361,12 @@
    "ที่ส่งไปไม่ได้"
   ],
   "06-welcome": [
-   "เพื่อนคู่ใจส่วนตัว",
-   "ในการไม่ติดต่อ"
+   "เพื่อนร่วมทางส่วนตัว",
+   "ในช่วงไม่ติดต่อ"
   ],
   "07-privacy": [
    "ข้อมูลของคุณ",
-   "เป็นของคุณ — เสมอ"
+   "เป็นของคุณเสมอ"
   ],
   "08-premium": [
    "ปลดล็อกทุกฟีเจอร์",

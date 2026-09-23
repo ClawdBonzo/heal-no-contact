@@ -29,8 +29,14 @@ final class Milestone {
         self.createdAt = .now
     }
 
+    /// Icon to draw. Milestones created before 1.6 stored "foot.fill", which is not an SF Symbol,
+    /// so the first milestone rendered as an empty circle; map it at display time.
+    var displayIconName: String {
+        iconName == "foot.fill" ? "shoeprints.fill" : iconName
+    }
+
     static let defaultMilestones: [(String, String, Int, String)] = [
-        (String(localized: "First Step"), String(localized: "You started your healing journey"), 1, "foot.fill"),
+        (String(localized: "First Step"), String(localized: "You started your healing journey"), 1, "shoeprints.fill"),
         (String(localized: "One Week Strong"), String(localized: "7 days of choosing yourself"), 7, "star.fill"),
         (String(localized: "Two Weeks"), String(localized: "Building new habits takes time"), 14, "leaf.fill"),
         (String(localized: "21-Day Mark"), String(localized: "New neural pathways are forming"), 21, "brain.fill"),

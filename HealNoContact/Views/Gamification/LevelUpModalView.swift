@@ -118,7 +118,7 @@ struct LevelUpModalView: View {
 
                     HStack(spacing: 12) {
                         levelChip(level: oldLevel, label: "Was", dimmed: true)
-                        Image(systemName: "arrow.right")
+                        Image(systemName: "arrow.forward")   // mirrors in right-to-left languages
                             .foregroundStyle(Color.theme.healGold)
                             .font(.body.weight(.bold))
                             .accessibilityHidden(true)

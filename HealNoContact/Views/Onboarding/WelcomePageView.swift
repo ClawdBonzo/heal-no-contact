@@ -9,76 +9,90 @@ struct WelcomePageView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        VStack(spacing: 32) {
-            Spacer()
+        VStack(spacing: 0) {
+            // The logo, title and feature rows are taller than a 6.3" screen at the old fixed
+            // spacing, so the stack overflowed and pushed the button down onto the page dots.
+            // They now scroll when they don't fit, and the button stays pinned above the dots.
+            GeometryReader { geo in
+                ScrollView {
+                    VStack(spacing: 28) {
+                        // Single large logo with heartbeat animation + glow
+                        ZStack {
+                            // Outer soft glow
+                            Circle()
+                                .fill(Color.theme.healPurple.opacity(0.18))
+                                // Kept inside the page: the onboarding pager clips at the status bar,
+                                // and a larger glow showed a hard seam there.
+                                .frame(width: 220, height: 220)
+                                .blur(radius: 32)
+                                .scaleEffect(glowPulse ? 1.15 : 0.9)
 
-            // Single large logo with heartbeat animation + glow
-            ZStack {
-                // Outer soft glow
-                Circle()
-                    .fill(Color.theme.healPurple.opacity(0.18))
-                    .frame(width: 260, height: 260)
-                    .blur(radius: 40)
-                    .scaleEffect(glowPulse ? 1.15 : 0.9)
+                            // Inner glow
+                            Circle()
+                                .fill(Color.theme.healPurple.opacity(0.25))
+                                .frame(width: 200, height: 200)
+                                .blur(radius: 25)
+                                .scaleEffect(glowPulse ? 1.12 : 0.95)
 
-                // Inner glow
-                Circle()
-                    .fill(Color.theme.healPurple.opacity(0.25))
-                    .frame(width: 200, height: 200)
-                    .blur(radius: 25)
-                    .scaleEffect(glowPulse ? 1.12 : 0.95)
+                            Image("BrandIcon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 160, height: 160)
+                                .clipShape(RoundedRectangle(cornerRadius: 38))
+                                .shadow(color: Color.theme.healPurple.opacity(0.5), radius: 24, y: 8)
+                                .scaleEffect(heartbeat ? 1.06 : 1.0)
+                        }
+                        .frame(width: 200, height: 200)   // glow draws beyond this; layout doesn't pay for it
+                        .opacity(showContent ? 1 : 0)
+                        .scaleEffect(showContent ? 1 : 0.7)
 
-                Image("BrandIcon")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 160, height: 160)
-                    .clipShape(RoundedRectangle(cornerRadius: 38))
-                    .shadow(color: Color.theme.healPurple.opacity(0.5), radius: 24, y: 8)
-                    .scaleEffect(heartbeat ? 1.06 : 1.0)
+                        VStack(spacing: 12) {
+                            Text("Heal")
+                                .font(.system(size: 52, weight: .bold, design: .rounded))
+                                .foregroundStyle(Color.theme.gradientPrimary)
+                                .opacity(showContent ? 1 : 0)
+                                .offset(y: showContent ? 0 : 20)
+
+                            Text("Your no-contact companion")
+                                .font(.title3)
+                                .foregroundStyle(Color.theme.textSecondary)
+                                .opacity(showContent ? 1 : 0)
+                                .offset(y: showContent ? 0 : 10)
+                        }
+
+                        VStack(spacing: 14) {
+                            FeatureRow(
+                                icon: "shield.checkered",
+                                title: String(localized: "Stay Strong"),
+                                subtitle: String(localized: "Track your no-contact streak with support")
+                            )
+                            FeatureRow(
+                                icon: "book.fill",
+                                title: String(localized: "Process & Reflect"),
+                                subtitle: String(localized: "Journal your healing journey privately")
+                            )
+                            FeatureRow(
+                                icon: "chart.line.uptrend.xyaxis",
+                                title: String(localized: "See Your Growth"),
+                                subtitle: String(localized: "Watch your progress and unlock milestones")
+                            )
+                            FeatureRow(
+                                icon: "sos",
+                                title: String(localized: "Emergency Support"),
+                                subtitle: String(localized: "Instant help when the urge hits")
+                            )
+                        }
+                        .padding(.horizontal, 24)
+                        .opacity(showContent ? 1 : 0)
+                    }
+                    .padding(.top, 28)
+                    .padding(.bottom, 12)
+                    .frame(maxWidth: .infinity, minHeight: geo.size.height)
+                }
+                .scrollBounceBehavior(.basedOnSize)
+                .scrollIndicators(.hidden)
+                .scrollClipDisabled()   // let the logo glow bleed past the scroll bounds
             }
-            .opacity(showContent ? 1 : 0)
-            .scaleEffect(showContent ? 1 : 0.7)
-
-            VStack(spacing: 12) {
-                Text("Heal")
-                    .font(.system(size: 52, weight: .bold, design: .rounded))
-                    .foregroundStyle(Color.theme.gradientPrimary)
-                    .opacity(showContent ? 1 : 0)
-                    .offset(y: showContent ? 0 : 20)
-
-                Text("Your no-contact companion")
-                    .font(.title3)
-                    .foregroundStyle(Color.theme.textSecondary)
-                    .opacity(showContent ? 1 : 0)
-                    .offset(y: showContent ? 0 : 10)
-            }
-
-            VStack(spacing: 14) {
-                FeatureRow(
-                    icon: "shield.checkered",
-                    title: String(localized: "Stay Strong"),
-                    subtitle: String(localized: "Track your no-contact streak with support")
-                )
-                FeatureRow(
-                    icon: "book.fill",
-                    title: String(localized: "Process & Reflect"),
-                    subtitle: String(localized: "Journal your healing journey privately")
-                )
-                FeatureRow(
-                    icon: "chart.line.uptrend.xyaxis",
-                    title: String(localized: "See Your Growth"),
-                    subtitle: String(localized: "Watch your progress and unlock milestones")
-                )
-                FeatureRow(
-                    icon: "sos",
-                    title: String(localized: "Emergency Support"),
-                    subtitle: String(localized: "Instant help when the urge hits")
-                )
-            }
-            .padding(.horizontal, 24)
-            .opacity(showContent ? 1 : 0)
-
-            Spacer()
 
             Button(action: onNext) {
                 Text("Begin Your Healing")
@@ -93,6 +107,7 @@ struct WelcomePageView: View {
             .padding(.horizontal, 32)
             .opacity(showButton ? 1 : 0)
             .offset(y: showButton ? 0 : 20)
+            .padding(.top, 12)
 
             Spacer().frame(height: 60)
         }

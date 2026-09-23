@@ -208,9 +208,9 @@ You need to create these four products in App Store Connect BEFORE you can wire 
 
 | Product ID | Reference Name | Type | Price |
 |---|---|---|---|
-| `com.healnocontact.premium.weekly` | Weekly Premium | Auto-Renewable Subscription | $4.99/week (3-day free trial) |
-| `com.healnocontact.premium.monthly` | Monthly Premium | Auto-Renewable Subscription | $9.99/month (3-day free trial) |
-| `com.healnocontact.premium.yearly` | Yearly Premium | Auto-Renewable Subscription | $49.99/year (3-day free trial) |
+| `com.healnocontact.premium.weekly` | Weekly Premium | Auto-Renewable Subscription | $4.99/week (7-day free trial) |
+| `com.healnocontact.premium.monthly` | Monthly Premium | Auto-Renewable Subscription | $9.99/month (7-day free trial) |
+| `com.healnocontact.premium.yearly` | Yearly Premium | Auto-Renewable Subscription | $49.99/year (7-day free trial) |
 | `com.healnocontact.premium.lifetime` | Lifetime | Non-Consumable | $79.99 |
 
 Live in App Store Connect as of 2026-08-17 (subscription group "HealNoContact Pro", all approved). All three subscriptions carry a 3-day introductory free trial; the app reads trial length and eligibility from StoreKit at runtime, so changing the offer in ASC needs no code change.

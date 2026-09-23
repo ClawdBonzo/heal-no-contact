@@ -6,7 +6,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "— %@"
+            "value": "– %@"
           }
         },
         "es": {
@@ -398,7 +398,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "/ 100"
+            "value": "/ ١٠٠"
           }
         },
         "th": {
@@ -426,7 +426,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ — %lld Tage ohne Kontakt!"
+            "value": "%@ – %lld Tage ohne Kontakt!"
           }
         },
         "en": {
@@ -742,7 +742,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld points de suivi"
+            "value": "%lld suivis d’humeur"
           }
         },
         "it": {
@@ -784,7 +784,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld kontrol"
+            "value": "%lld ruh hali kaydı"
           }
         }
       }
@@ -1058,7 +1058,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld/10"
+            "value": "%lld/١٠"
           }
         },
         "th": {
@@ -1086,13 +1086,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld%% abgeschlossen"
+            "value": "%lld %% abgeschlossen"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld%% completado"
+            "value": "%lld %% completado"
           }
         },
         "es-MX": {
@@ -1104,7 +1104,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld%% terminé"
+            "value": "%lld %% terminé"
           }
         },
         "it": {
@@ -1320,7 +1320,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "×%@ multiplicateur d'XP"
+            "value": "×%@ multiplicateur d’XP"
           }
         },
         "it": {
@@ -1472,7 +1472,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 dias escolhendo você mesmo"
+            "value": "7 dias se escolhendo"
           }
         },
         "nl": {
@@ -1484,7 +1484,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 أيام من اختيار نفسك"
+            "value": "٧ أيام من اختيار نفسك"
           }
         },
         "th": {
@@ -1554,7 +1554,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 أيام من قطع التواصل"
+            "value": "٧ أيام من قطع التواصل"
           }
         },
         "th": {
@@ -1624,7 +1624,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 أيام بلا تواصل"
+            "value": "٧ أيام بلا تواصل"
           }
         },
         "th": {
@@ -1682,7 +1682,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 registros no diário"
+            "value": "10 anotações no diário"
           }
         },
         "nl": {
@@ -1694,7 +1694,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 تدوينات في اليوميات"
+            "value": "١٠ تدوينات في اليوميات"
           }
         },
         "th": {
@@ -1740,7 +1740,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "20 suivis d'humeur"
+            "value": "20 suivis d’humeur"
           }
         },
         "it": {
@@ -1764,7 +1764,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "20 تسجيل حالة مزاجية"
+            "value": "٢٠ تسجيل حالة مزاجية"
           }
         },
         "th": {
@@ -1782,7 +1782,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "20 ruh hali kontrolü"
+            "value": "20 ruh hali kaydı"
           }
         }
       }
@@ -1834,7 +1834,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "علامة الـ 21 يومًا"
+            "value": "علامة الـ ٢١ يومًا"
           }
         },
         "th": {
@@ -1904,7 +1904,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "محارب الـ 30 يومًا"
+            "value": "محارب الـ ٣٠ يومًا"
           }
         },
         "th": {
@@ -1974,7 +1974,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "45 يومًا"
+            "value": "٤٥ يومًا"
           }
         },
         "th": {
@@ -2044,7 +2044,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "60 يومًا من الصمود"
+            "value": "٦٠ يومًا من الصمود"
           }
         },
         "th": {
@@ -2114,7 +2114,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "انتصار الـ 90 يومًا"
+            "value": "انتصار الـ ٩٠ يومًا"
           }
         },
         "th": {
@@ -2184,7 +2184,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "100 يوم من الحرية"
+            "value": "١٠٠ يوم من الحرية"
           }
         },
         "th": {
@@ -2254,7 +2254,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "180 يومًا من التحوّل"
+            "value": "١٨٠ يومًا من التحوّل"
           }
         },
         "th": {
@@ -2282,7 +2282,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "365 Tage — du bist neu geboren"
+            "value": "365 Tage – du bist neu geboren"
           }
         },
         "es": {
@@ -2300,7 +2300,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "365 jours — vous voilà renouvelé·e"
+            "value": "365 jours — vous renaissez"
           }
         },
         "it": {
@@ -2324,7 +2324,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "365 يومًا — لقد تجدّدت"
+            "value": "٣٦٥ يومًا — لقد تجدّدت"
           }
         },
         "th": {
@@ -2656,7 +2656,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Analyses avancées et détection des tendances d'humeur"
+            "value": "Analyses avancées et détection des tendances d’humeur"
           }
         },
         "it": {
@@ -2674,7 +2674,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geavanceerde inzichten en herkenning van stemmingspatronen"
+            "value": "Diepe inzichten en stemmingspatronen"
           }
         },
         "ar": {
@@ -2686,7 +2686,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ข้อมูลเชิงลึกขั้นสูงและการตรวจจับรูปแบบอารมณ์"
+            "value": "ข้อมูลเชิงลึกขั้นสูงและการตรวจจับรูป⁠แบบอารมณ์"
           }
         },
         "id": {
@@ -2878,7 +2878,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ansioso"
+            "value": "Com ansiedade"
           }
         },
         "nl": {
@@ -2960,7 +2960,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "المتوسط / 7"
+            "value": "المتوسط / ٧"
           }
         },
         "th": {
@@ -2988,7 +2988,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zurück zum Dashboard"
+            "value": "Zurück zur Startseite"
           }
         },
         "es": {
@@ -3048,7 +3048,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Panoya Dön"
+            "value": "Ana Sayfaya Dön"
           }
         }
       }
@@ -3164,7 +3164,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Begin met helen"
+            "value": "Begin je herstel"
           }
         },
         "ar": {
@@ -3636,7 +3636,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous prenez de l'élan. Continuez !"
+            "value": "Vous prenez de l’élan. Continuez !"
           }
         },
         "it": {
@@ -3958,7 +3958,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontrol Yap"
+            "value": "Bugün Nasılsın?"
           }
         }
       }
@@ -4080,7 +4080,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أكمل 3 مهام يومية"
+            "value": "أكمل ٣ مهام يومية"
           }
         },
         "th": {
@@ -4266,7 +4266,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Accomplissez des quêtes, gagnez de l'XP et débloquez des badges au fil de votre guérison."
+            "value": "Accomplissez des quêtes, gagnez de l’XP et débloquez des badges au fil de votre guérison."
           }
         },
         "it": {
@@ -4284,7 +4284,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Voltooi missies, verdien XP en ontgrendel badges terwijl je heelt."
+            "value": "Voltooi missies, verdien XP en ontgrendel badges terwijl je herstelt."
           }
         },
         "ar": {
@@ -4528,7 +4528,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Weiter — bleib dran"
+            "value": "Weiter – bleib dran"
           }
         },
         "es": {
@@ -4698,7 +4698,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Continue Sua Jornada"
+            "value": "Continue sua jornada"
           }
         },
         "nl": {
@@ -4868,7 +4868,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Günlük Kontrol"
+            "value": "Günlük Ruh Hali"
           }
         }
       }
@@ -4884,7 +4884,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recordatorios de ánimo diarios"
+            "value": "Mensajes diarios de motivación"
           }
         },
         "es-MX": {
@@ -4896,13 +4896,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rappels d'encouragement quotidiens"
+            "value": "Rappels d’encouragement quotidiens"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Promemoria di incoraggiamento giornalieri"
+            "value": "Promemoria motivazionali giornalieri"
           }
         },
         "pt-BR": {
@@ -5293,7 +5293,7 @@
         }
       }
     },
-    "Days Since BU": {
+    "Days Since Breakup": {
       "localizations": {
         "de": {
           "stringUnit": {
@@ -5386,7 +5386,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cher·ère %@,"
+            "value": "%@,"
           }
         },
         "it": {
@@ -5748,7 +5748,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arrasado"
+            "value": "Em pedaços"
           }
         },
         "nl": {
@@ -5806,7 +5806,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avez-vous contacté votre ex aujourd'hui ?"
+            "value": "Avez-vous contacté votre ex aujourd’hui ?"
           }
         },
         "it": {
@@ -5876,7 +5876,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "ex. : je me choisis aujourd'hui et chaque jour"
+            "value": "ex. : je me choisis aujourd’hui et chaque jour"
           }
         },
         "it": {
@@ -5964,7 +5964,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Verdien badges tijdens je helingsreis"
+            "value": "Verdien badges tijdens je herstel"
           }
         },
         "ar": {
@@ -6016,7 +6016,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Modifier l'entrée"
+            "value": "Modifier l’entrée"
           }
         },
         "it": {
@@ -6028,7 +6028,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Editar registro"
+            "value": "Editar anotação"
           }
         },
         "nl": {
@@ -6156,7 +6156,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Séances d'urgence"
+            "value": "Séances d’urgence"
           }
         },
         "it": {
@@ -6250,7 +6250,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أدخل عدد الأيام (1–365)"
+            "value": "أدخل عدد الأيام (١–٣٦٥)"
           }
         },
         "th": {
@@ -6366,7 +6366,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bilan du soir : vous avez tenu bon aujourd'hui."
+            "value": "Bilan du soir : vous avez tenu bon aujourd’hui."
           }
         },
         "it": {
@@ -6646,7 +6646,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Exportez votre journal et vos progrès en PDF"
+            "value": "Export PDF du journal et des progrès"
           }
         },
         "it": {
@@ -6664,7 +6664,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Exporteer je dagboek en voortgang als pdf"
+            "value": "Exporteer dagboek en voortgang als pdf"
           }
         },
         "ar": {
@@ -7084,7 +7084,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Volledig geheeld"
+            "value": "Volledig hersteld"
           }
         },
         "ar": {
@@ -7136,7 +7136,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtenir l'accès hebdomadaire"
+            "value": "Obtenir l’accès hebdomadaire"
           }
         },
         "it": {
@@ -7148,7 +7148,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obter Acesso Semanal"
+            "value": "Obter acesso semanal"
           }
         },
         "nl": {
@@ -7230,7 +7230,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اقضِ 24 ساعة بلا تواصل"
+            "value": "اقضِ ٢٤ ساعة بلا تواصل"
           }
         },
         "th": {
@@ -7288,7 +7288,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Grato"
+            "value": "Com gratidão"
           }
         },
         "nl": {
@@ -7854,7 +7854,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "HELINGSDAG"
+            "value": "HERSTELDAG"
           }
         },
         "ar": {
@@ -7976,7 +7976,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La guérison n'est pas linéaire."
+            "value": "La guérison n’est pas linéaire."
           }
         },
         "it": {
@@ -7994,7 +7994,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Helen verloopt niet in een rechte lijn."
+            "value": "Herstel verloopt niet in een rechte lijn."
           }
         },
         "ar": {
@@ -8064,7 +8064,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Helingsscore"
+            "value": "Herstelscore"
           }
         },
         "ar": {
@@ -8186,7 +8186,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'honnêteté demande du courage. Votre série repart à zéro, mais pas vos progrès."
+            "value": "L’honnêteté demande du courage. Votre série repart à zéro, mais pas vos progrès."
           }
         },
         "it": {
@@ -8256,7 +8256,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Plein d'espoir"
+            "value": "Plein d’espoir"
           }
         },
         "it": {
@@ -8268,7 +8268,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Esperançoso"
+            "value": "Com esperança"
           }
         },
         "nl": {
@@ -8448,7 +8448,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ich verpflichte mich zum Kontaktabbruch, weil ich Frieden, Wachstum und eine auf Selbstrespekt gebaute Zukunft verdient habe. Wenn der Drang kommt, öffne ich diese App, statt mich zu melden."
+            "value": "Ich verpflichte mich, die Kontaktsperre einzuhalten, weil ich Frieden, Wachstum und eine auf Selbstrespekt gebaute Zukunft verdient habe. Wenn der Drang kommt, öffne ich diese App, statt mich zu melden."
           }
         },
         "es": {
@@ -8466,7 +8466,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je m'engage à couper le contact parce que je mérite la paix, l'épanouissement et un avenir fondé sur le respect de moi-même. Quand l'envie me prendra, j'ouvrirai cette appli plutôt que de le·la recontacter."
+            "value": "Je m’engage à couper le contact parce que je mérite la paix, l’épanouissement et un avenir fondé sur le respect de moi-même. Quand l’envie me prendra, j’ouvrirai cette appli plutôt que de reprendre contact."
           }
         },
         "it": {
@@ -8478,7 +8478,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eu me comprometo a manter o não contato porque mereço paz, crescimento e um futuro construído sobre o respeito próprio. Quando a vontade surgir, vou abrir este app em vez de procurá-lo(a)."
+            "value": "Eu me comprometo a manter o contato zero porque mereço paz, crescimento e um futuro construído sobre o respeito próprio. Quando a vontade surgir, vou abrir este app em vez de procurá-lo(a)."
           }
         },
         "nl": {
@@ -8496,7 +8496,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ฉันมุ่งมั่นจะไม่ติดต่อ เพราะฉันสมควรได้รับความสงบ การเติบโต และอนาคตที่สร้างขึ้นบนความเคารพตัวเอง เมื่อความอยากติดต่อเกิดขึ้น ฉันจะเปิดแอปนี้แทนการติดต่อไป"
+            "value": "ฉันมุ่งมั่นจะไม่ติดต่อ เพราะฉันสมควรได้รับความ⁠สงบ การเติบโต และอนาคตที่สร้างขึ้นบนความ⁠เคารพตัวเอง เมื่อความ⁠อยากติดต่อเกิดขึ้น ฉันจะเปิดแอปนี้แทนการติดต่อไป"
           }
         },
         "id": {
@@ -8536,7 +8536,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "J'ai besoin d'aide maintenant"
+            "value": "J’ai besoin d’aide maintenant"
           }
         },
         "it": {
@@ -8588,7 +8588,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Widerstanden — mir geht es gut"
+            "value": "Widerstanden – mir geht es gut"
           }
         },
         "es": {
@@ -8606,7 +8606,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "J'ai résisté — je vais bien"
+            "value": "J’ai résisté — je vais bien"
           }
         },
         "it": {
@@ -8636,7 +8636,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ฉันอดทนได้ — ฉันโอเค"
+            "value": "ฉันห้ามใจได้ — ฉันโอเค"
           }
         },
         "id": {
@@ -8664,19 +8664,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estoy listo para comprometerme"
+            "value": "Quiero comprometerme"
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estoy listo para comprometerme"
+            "value": "Lo prometo"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je suis prêt·e à m'engager"
+            "value": "Je prends cet engagement"
           }
         },
         "it": {
@@ -8688,7 +8688,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estou pronto para me comprometer"
+            "value": "Quero assumir este compromisso"
           }
         },
         "nl": {
@@ -8734,19 +8734,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una sanación increíble. Eres inspirador."
+            "value": "Una sanación increíble. Eres una inspiración."
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una sanación increíble. Eres inspiración."
+            "value": "Una sanación increíble. Eres una inspiración."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Une guérison incroyable. Vous êtes une source d'inspiration."
+            "value": "Une guérison incroyable. Vous êtes une source d’inspiration."
           }
         },
         "it": {
@@ -8758,13 +8758,13 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cura incrível. Você é inspirador."
+            "value": "Cura incrível. Você inspira."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ongelooflijke heling. Je bent een inspiratie."
+            "value": "Ongelooflijk herstel. Je bent een inspiratiebron."
           }
         },
         "ar": {
@@ -8886,7 +8886,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Inspirez l'avenir. Expirez le passé."
+            "value": "Inspirez l’avenir. Expirez le passé."
           }
         },
         "it": {
@@ -10310,7 +10310,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Level omhoog! Je heling wordt sterker."
+            "value": "Level omhoog! Je herstel wordt steeds sterker."
           }
         },
         "ar": {
@@ -10344,7 +10344,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lebenslang"
+            "value": "Lebenslanger Zugang"
           }
         },
         "es": {
@@ -10456,7 +10456,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "سجّل مزاجك 7 مرات"
+            "value": "سجّل مزاجك ٧ مرات"
           }
         },
         "th": {
@@ -10484,7 +10484,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Halte deine Stimmung fest"
+            "value": "Stimmung festhalten"
           }
         },
         "es": {
@@ -10572,7 +10572,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notez votre humeur aujourd'hui"
+            "value": "Notez votre humeur aujourd’hui"
           }
         },
         "it": {
@@ -10654,7 +10654,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Faça seu compromisso"
+            "value": "Assuma seu compromisso"
           }
         },
         "nl": {
@@ -10794,7 +10794,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Marco Desbloqueado! 🏆"
+            "value": "Marco desbloqueado! 🏆"
           }
         },
         "nl": {
@@ -10992,7 +10992,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ressentir le manque fait partie de la guérison. Ça ne veut pas dire qu'il faut revenir en arrière."
+            "value": "Ressentir le manque fait partie de la guérison. Ça ne veut pas dire qu’il faut revenir en arrière."
           }
         },
         "it": {
@@ -11010,7 +11010,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Iemand missen hoort bij helen. Het betekent niet dat je terug moet gaan."
+            "value": "Iemand missen hoort bij herstel. Het betekent niet dat je terug moet gaan."
           }
         },
         "ar": {
@@ -11272,7 +11272,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suivi d'humeur"
+            "value": "Suivi d’humeur"
           }
         },
         "it": {
@@ -11342,7 +11342,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Évolution de l'humeur"
+            "value": "Évolution de l’humeur"
           }
         },
         "it": {
@@ -11482,7 +11482,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La plupart des envies culminent entre 10 et 20 minutes puis s'apaisent. Vous vous en sortez très bien."
+            "value": "La plupart des envies culminent entre 10 et 20 minutes puis s’apaisent. Vous vous en sortez très bien."
           }
         },
         "it": {
@@ -11506,7 +11506,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تبلغ معظم الرغبات الملحّة ذروتها خلال 10-20 دقيقة ثم تتلاشى. أنت تبلي بلاءً رائعًا."
+            "value": "تبلغ معظم الرغبات الملحّة ذروتها خلال ١٠-٢٠ دقيقة ثم تتلاشى. أنت تبلي بلاءً رائعًا."
           }
         },
         "th": {
@@ -11634,7 +11634,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Novo registro"
+            "value": "Nova anotação"
           }
         },
         "nl": {
@@ -11954,7 +11954,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beim Kontaktabbruch geht es nicht um die andere Person. Es geht darum, dass du dich für dich entscheidest."
+            "value": "Bei der Kontaktsperre geht es nicht um die andere Person. Es geht darum, dass du dich für dich entscheidest."
           }
         },
         "es": {
@@ -11972,7 +11972,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le no contact n'a rien à voir avec l'autre. Il s'agit de vous choisir, vous."
+            "value": "Le no contact n’a rien à voir avec l’autre. Il s’agit de vous choisir, vous."
           }
         },
         "it": {
@@ -11984,7 +11984,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "O contato zero não é sobre eles. É sobre você escolher a si mesmo."
+            "value": "O contato zero não é sobre eles. É sobre você se escolher."
           }
         },
         "nl": {
@@ -12060,7 +12060,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geen contact. Geen spijt. Alleen helen."
+            "value": "Geen contact. Geen spijt. Alleen herstel."
           }
         },
         "ar": {
@@ -12100,7 +12100,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aún no hay un patrón"
+            "value": "Aún sin patrón"
           }
         },
         "es-MX": {
@@ -12164,7 +12164,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontaktabbruch-Champion"
+            "value": "Kontaktsperre-Champion"
           }
         },
         "es": {
@@ -12182,7 +12182,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Champion du sans-contact"
+            "value": "Champion du no contact"
           }
         },
         "it": {
@@ -12252,7 +12252,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guérison sans contact"
+            "value": "Guérir après une rupture"
           }
         },
         "it": {
@@ -12264,7 +12264,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recuperação no não contato"
+            "value": "Recuperação com contato zero"
           }
         },
         "nl": {
@@ -12322,7 +12322,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Victoire sans contact"
+            "value": "Journée sans contact"
           }
         },
         "it": {
@@ -12386,13 +12386,13 @@
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "No buscar a esa persona es una forma de amarte a ti mismo."
+            "value": "No buscar a esa persona es una forma de amor propio."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ne pas reprendre contact, c'est aussi s'aimer soi-même."
+            "value": "Ne pas reprendre contact, c’est aussi s’aimer soi-même."
           }
         },
         "it": {
@@ -12574,7 +12574,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld günlük hedeften"
+            "value": "Hedef: %lld gün"
           }
         }
       }
@@ -12672,7 +12672,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un jour, vous raconterez comment vous avez surmonté tout ça, et votre histoire deviendra le guide de survie de quelqu'un d'autre."
+            "value": "Un jour, vous raconterez comment vous avez surmonté tout ça, et votre histoire deviendra le guide de survie de quelqu’un d’autre."
           }
         },
         "it": {
@@ -12830,7 +12830,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Een maand van helen"
+            "value": "Een maand herstel"
           }
         },
         "ar": {
@@ -13582,7 +13582,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erreur d'achat"
+            "value": "Erreur d’achat"
           }
         },
         "it": {
@@ -13634,7 +13634,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lebenslang kaufen"
+            "value": "Lebenslangen Zugang kaufen"
           }
         },
         "es": {
@@ -13652,7 +13652,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acheter l'accès à vie"
+            "value": "Acheter l’accès à vie"
           }
         },
         "it": {
@@ -13676,7 +13676,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "شراء اشتراك مدى الحياة"
+            "value": "شراء خيار مدى الحياة"
           }
         },
         "th": {
@@ -13932,7 +13932,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noter sur l'App Store"
+            "value": "Noter sur l’App Store"
           }
         },
         "it": {
@@ -14026,7 +14026,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "وصلت إلى المستوى 5"
+            "value": "وصلت إلى المستوى ٥"
           }
         },
         "th": {
@@ -14382,7 +14382,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "อดทนได้"
+            "value": "ห้ามใจได้"
           }
         },
         "id": {
@@ -14440,7 +14440,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Herstel"
+            "value": "Herstel aankopen"
           }
         },
         "ar": {
@@ -14562,7 +14562,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le fond du gouffre est devenu le socle solide sur lequel j'ai reconstruit ma vie."
+            "value": "Le fond du gouffre est devenu le socle solide sur lequel j’ai reconstruit ma vie."
           }
         },
         "it": {
@@ -14830,7 +14830,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Économisez %lld %%"
+            "value": "Économisez %lld %%"
           }
         },
         "it": {
@@ -14842,7 +14842,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ahorra %lld%%"
+            "value": "Ahorra %lld %%"
           }
         },
         "es-MX": {
@@ -14912,7 +14912,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ahorra 58%"
+            "value": "Ahorra 58 %"
           }
         },
         "es-MX": {
@@ -14936,7 +14936,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "وفّر 58%"
+            "value": "وفّر ٥٨%"
           }
         },
         "th": {
@@ -14982,7 +14982,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ahorra 67%"
+            "value": "Ahorra 67 %"
           }
         },
         "es-MX": {
@@ -15006,7 +15006,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "وفّر 67%"
+            "value": "وفّر ٦٧%"
           }
         },
         "th": {
@@ -15094,7 +15094,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontrolü Kaydet"
+            "value": "Kaydet"
           }
         }
       }
@@ -15204,7 +15204,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Buscar registros..."
+            "value": "Buscar anotações..."
           }
         },
         "nl": {
@@ -15396,7 +15396,7 @@
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ajustes"
+            "value": "Configuración"
           }
         },
         "fr": {
@@ -15682,7 +15682,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Parfois, le plus dur n'est pas de lâcher prise, mais d'apprendre à tout recommencer."
+            "value": "Parfois, le plus dur n’est pas de lâcher prise, mais d’apprendre à tout recommencer."
           }
         },
         "it": {
@@ -15822,7 +15822,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les étoiles ne peuvent briller sans l'obscurité."
+            "value": "Les étoiles ne peuvent briller sans l’obscurité."
           }
         },
         "it": {
@@ -15892,7 +15892,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Démarrer l'exercice de respiration"
+            "value": "Démarrer l’exercice de respiration"
           }
         },
         "it": {
@@ -16172,7 +16172,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arrêter l'exercice de respiration"
+            "value": "Arrêter l’exercice de respiration"
           }
         },
         "it": {
@@ -16382,7 +16382,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fort et constant. Vous vous épanouissez."
+            "value": "Des progrès solides et réguliers. Vous vous épanouissez."
           }
         },
         "it": {
@@ -16522,7 +16522,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Touchez pour une idée d'écriture"
+            "value": "Touchez pour une idée d’écriture"
           }
         },
         "it": {
@@ -16732,7 +16732,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La seule issue, c'est de traverser."
+            "value": "La seule issue, c’est de traverser."
           }
         },
         "it": {
@@ -16814,7 +16814,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "A pessoa que você está se tornando vai te custar pessoas, relacionamentos, lugares e bens materiais. Escolha você mesmo assim."
+            "value": "A pessoa que você está se tornando vai te custar pessoas, relacionamentos, lugares e bens materiais. Mesmo assim, se escolha."
           }
         },
         "nl": {
@@ -16942,7 +16942,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'envie de le·la recontacter est passagère.\nTraversons cette vague ensemble."
+            "value": "L’envie de reprendre contact est passagère.\nTraversons cette vague ensemble."
           }
         },
         "it": {
@@ -17012,7 +17012,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La blessure est l'endroit par où la lumière entre en vous."
+            "value": "La blessure est l’endroit par où la lumière entre en vous."
           }
         },
         "it": {
@@ -17204,7 +17204,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dies erscheint als tägliche Erinnerung auf deinem Dashboard"
+            "value": "Dies erscheint als tägliche Erinnerung auf deiner Startseite"
           }
         },
         "es": {
@@ -17264,7 +17264,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu, panonda günlük bir hatırlatma olarak görünecek"
+            "value": "Bu, ana sayfanda günlük bir hatırlatma olarak görünecek"
           }
         }
       }
@@ -17292,7 +17292,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cette action supprimera définitivement toutes vos entrées de journal, vos données d'humeur, vos étapes et votre profil. C'est irréversible."
+            "value": "Cette action supprimera définitivement toutes vos entrées de journal, vos données d’humeur, vos étapes et votre profil. C’est irréversible."
           }
         },
         "it": {
@@ -17304,7 +17304,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Isso vai excluir permanentemente todos os seus registros do diário, dados de humor, marcos e perfil. Não há como desfazer."
+            "value": "Isso vai excluir permanentemente todas as suas anotações do diário, seus dados de humor, seus marcos e seu perfil. Não há como desfazer."
           }
         },
         "nl": {
@@ -17362,7 +17362,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "C'est l'heure de faire le point"
+            "value": "C’est l’heure de faire le point"
           }
         },
         "it": {
@@ -17404,7 +17404,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Günlük kontrol zamanı"
+            "value": "Ruh halini kaydetme zamanı"
           }
         }
       }
@@ -18184,7 +18184,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schalte alle Funktionen frei & unterstütze die Entwicklung"
+            "value": "Schalte alles frei & unterstütze die Entwicklung"
           }
         },
         "es": {
@@ -18290,13 +18290,13 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ontgrendel alles. Steun je heling."
+            "value": "Ontgrendel alles. Steun je herstel."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "افتح كل شيء. وادعم تعافيك."
+            "value": "افتح كل شيء وادعم تعافيك."
           }
         },
         "th": {
@@ -18348,13 +18348,13 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sbloccato %@"
+            "value": "Sbloccato: %@"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Desbloqueou %@"
+            "value": "Desbloqueado: %@"
           }
         },
         "nl": {
@@ -18384,7 +18384,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ kilidi açıldı"
+            "value": "Açıldı: %@"
           }
         }
       }
@@ -18394,7 +18394,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ungesendeter Brief"
+            "value": "Unabgeschickter Brief"
           }
         },
         "es": {
@@ -18464,7 +18464,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ungesendete Briefe"
+            "value": "Unabgeschickte Briefe"
           }
         },
         "es": {
@@ -18792,7 +18792,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ความอยากที่อดทนได้"
+            "value": "ห้ามใจได้"
           }
         },
         "id": {
@@ -19164,7 +19164,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Warum entscheidest du dich\nfür keinen Kontakt?"
+            "value": "Warum entscheidest du dich\nfür die Kontaktsperre?"
           }
         },
         "es": {
@@ -19264,7 +19264,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escreva 5 entradas no diário"
+            "value": "Escreva 5 anotações no diário"
           }
         },
         "nl": {
@@ -19276,7 +19276,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اكتب 5 تدوينات في اليوميات"
+            "value": "اكتب ٥ تدوينات في اليوميات"
           }
         },
         "th": {
@@ -19334,7 +19334,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escreva uma entrada no diário"
+            "value": "Escreva uma anotação no diário"
           }
         },
         "nl": {
@@ -19474,7 +19474,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Escrever um registro"
+            "value": "Escrever uma anotação"
           }
         },
         "nl": {
@@ -19514,7 +19514,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Einen ungesendeten Brief schreiben"
+            "value": "Unabgeschickten Brief schreiben"
           }
         },
         "es": {
@@ -19584,7 +19584,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schreib alles auf, was du sagen willst.\nDieser Brief wird nie gesendet — er ist für dich."
+            "value": "Schreib alles auf, was du sagen willst.\nDieser Brief wird nie abgeschickt – er ist nur für dich."
           }
         },
         "es": {
@@ -19654,7 +19654,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schreib es dir von der Seele"
+            "value": "Alles aufschreiben"
           }
         },
         "es": {
@@ -19760,7 +19760,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schrijven helpt je emoties te verwerken en je heling bij te houden. Begin met wat er in je opkomt."
+            "value": "Schrijven helpt je emoties te verwerken en je herstel bij te houden. Begin met wat er in je opkomt."
           }
         },
         "ar": {
@@ -20022,7 +20022,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous avez le droit d'être à la fois un chef-d'œuvre et une œuvre en devenir."
+            "value": "Vous avez le droit d’être à la fois un chef-d’œuvre et une œuvre en devenir."
           }
         },
         "it": {
@@ -20232,7 +20232,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous n'avez pas besoin que l'autre vous aide à tourner la page. Vous avez besoin de paix intérieure."
+            "value": "Vous n’avez pas besoin que l’autre vous aide à tourner la page. Vous avez besoin de paix intérieure."
           }
         },
         "it": {
@@ -20302,7 +20302,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous avez résisté à l'envie.\nCela demande une vraie force."
+            "value": "Vous avez résisté à l’envie.\nCela demande une vraie force."
           }
         },
         "it": {
@@ -20332,7 +20332,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "คุณอดทนต่อความอยากได้\nนั่นต้องใช้ความเข้มแข็งอย่างแท้จริง"
+            "value": "คุณห้ามใจไม่ให้ติดต่อไปได้\nนั่นต้องใช้ความเข้มแข็งอย่างแท้จริง"
           }
         },
         "id": {
@@ -20390,7 +20390,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je bent aan je helingsreis begonnen"
+            "value": "Je bent aan je herstel begonnen"
           }
         },
         "ar": {
@@ -20886,7 +20886,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ستُعاد سلسلتك الحالية إلى 0. وسيتم الاحتفاظ بأفضل سلسلة لديك وبسجلّك."
+            "value": "ستُعاد سلسلتك الحالية إلى الصفر. وسيتم الاحتفاظ بأفضل سلسلة لديك وبسجلّك."
           }
         },
         "th": {
@@ -20932,7 +20932,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre parcours d'épanouissement commence ici"
+            "value": "Votre parcours d’épanouissement commence ici"
           }
         },
         "it": {
@@ -21020,7 +21020,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je heling wordt sterker"
+            "value": "Je herstel wordt steeds sterker"
           }
         },
         "ar": {
@@ -21072,7 +21072,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre score de guérison, la détection des tendances d'humeur et les bilans hebdomadaires font partie de Heal Premium."
+            "value": "Votre score de guérison, la détection des tendances d’humeur et les bilans hebdomadaires font partie de Heal Premium."
           }
         },
         "it": {
@@ -21090,7 +21090,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je helingsscore, herkenning van stemmingspatronen en wekelijkse overzichten zijn onderdeel van Heal Premium."
+            "value": "Je herstelscore, herkenning van stemmingspatronen en wekelijkse overzichten zijn onderdeel van Heal Premium."
           }
         },
         "ar": {
@@ -21352,7 +21352,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre lettre est conservée en privé sur cet appareil et n'est jamais transmise ailleurs."
+            "value": "Votre lettre est conservée en privé sur cet appareil et n’est jamais transmise ailleurs."
           }
         },
         "it": {
@@ -21474,7 +21474,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dein Begleiter beim Kontaktabbruch"
+            "value": "Dein Begleiter bei der Kontaktsperre"
           }
         },
         "es": {
@@ -21504,7 +21504,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seu companheiro no não contato"
+            "value": "Seu companheiro no contato zero"
           }
         },
         "nl": {
@@ -21702,7 +21702,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre valeur ne diminue pas parce que quelqu'un est incapable de la voir."
+            "value": "Votre valeur ne diminue pas parce que quelqu’un est incapable de la voir."
           }
         },
         "it": {
@@ -21872,7 +21872,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ฉันเลือกความสงบของตัวเอง มากกว่าความวุ่นวายของเขา"
+            "value": "ฉันเลือกความ⁠สงบของตัวเอง มากกว่าความ⁠วุ่นวายของเขา"
           }
         },
         "id": {
@@ -21954,7 +21954,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Günlük kontrolün seni bekliyor"
+            "value": "Bugünkü ruh hali kaydın seni bekliyor"
           }
         }
       }
@@ -21982,7 +21982,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un point rapide entretient votre élan. Comment allez-vous aujourd'hui ?"
+            "value": "Un point rapide entretient votre élan. Comment allez-vous aujourd’hui ?"
           }
         },
         "it": {
@@ -22024,7 +22024,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kısa bir kontrol ivmeni korur. Bugün nasılsın?"
+            "value": "Kısa bir ruh hali kaydı ivmeni korur. Bugün nasılsın?"
           }
         }
       }
@@ -22122,7 +22122,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld+ jours sans contact. Faites le point et ajoutez aujourd'hui à votre série."
+            "value": "%lld+ jours sans contact. Faites le point et ajoutez aujourd’hui à votre série."
           }
         },
         "it": {
@@ -22164,7 +22164,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld+ gün iletişimsiz. Kontrolünü yap ve bugünü de ekle."
+            "value": "%lld+ gün iletişimsiz. Ruh halini kaydet ve bugünü de ekle."
           }
         }
       }
@@ -22244,7 +22244,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Heilung verläuft nicht geradlinig. Komm zurück, wenn du bereit bist — heute ist ein guter Tag."
+            "value": "Heilung verläuft nicht geradlinig. Komm zurück, wenn du bereit bist – heute ist ein guter Tag."
           }
         },
         "es": {
@@ -22262,7 +22262,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La guérison n'est pas linéaire. Revenez quand vous vous sentirez prêt·e — aujourd'hui est un bon jour."
+            "value": "La guérison n’est pas linéaire. Revenez quand vous vous en sentirez capable — aujourd’hui est un bon jour."
           }
         },
         "it": {
@@ -22280,7 +22280,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Helen verloopt niet in een rechte lijn. Kom terug wanneer je er klaar voor bent — vandaag is een goede dag."
+            "value": "Herstel verloopt niet in een rechte lijn. Kom terug wanneer je er klaar voor bent — vandaag is een goede dag."
           }
         },
         "ar": {
@@ -22332,7 +22332,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre paix mérite d'être protégée"
+            "value": "Votre paix mérite d’être protégée"
           }
         },
         "it": {
@@ -22402,7 +22402,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ça fait quelques jours. Un petit pas en avant, c'est déjà un progrès."
+            "value": "Ça fait quelques jours. Un petit pas en avant, c’est déjà un progrès."
           }
         },
         "it": {
@@ -22472,7 +22472,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Une semaine, c'est un nouveau départ"
+            "value": "Une semaine, c’est un nouveau départ"
           }
         },
         "it": {
@@ -22524,7 +22524,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne Heal wieder und setze deine Reise fort — dein zukünftiges Ich wird es dir danken."
+            "value": "Öffne Heal wieder und setze deine Reise fort – dein zukünftiges Ich wird es dir danken."
           }
         },
         "es": {
@@ -22682,7 +22682,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un faux pas n'est pas la fin. Vous pouvez annuler la réinitialisation pendant %lld h."
+            "value": "Un faux pas n’est pas la fin. Vous pouvez annuler la réinitialisation pendant %lld h."
           }
         },
         "it": {
@@ -22904,7 +22904,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@/sem"
+            "value": "%@/semana"
           }
         },
         "nl": {
@@ -23032,7 +23032,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Commencer l'essai gratuit de %lld jours"
+            "value": "Commencer l’essai gratuit de %lld jours"
           }
         },
         "it": {
@@ -23044,7 +23044,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Iniciar Teste Grátis de %lld Dias"
+            "value": "Iniciar teste grátis de %lld dias"
           }
         },
         "nl": {
@@ -23102,7 +23102,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtenir l'accès mensuel"
+            "value": "Obtenir l’accès mensuel"
           }
         },
         "it": {
@@ -23114,7 +23114,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obter Acesso Mensal"
+            "value": "Obter acesso mensal"
           }
         },
         "nl": {
@@ -23172,7 +23172,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtenir l'accès annuel"
+            "value": "Obtenir l’accès annuel"
           }
         },
         "it": {
@@ -23184,7 +23184,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obter Acesso Anual"
+            "value": "Obter acesso anual"
           }
         },
         "nl": {
@@ -23242,7 +23242,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les essais gratuits se transforment en abonnement payant à la fin de la période d'essai, sauf annulation."
+            "value": "Les essais gratuits se transforment en abonnement payant à la fin de la période d’essai, sauf annulation."
           }
         },
         "it": {
@@ -23294,7 +23294,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abos verlängern sich automatisch zum oben angegebenen Preis und Zeitraum, sofern sie nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums gekündigt werden. Die Zahlung wird über deinen Apple Account abgerechnet; du kannst dein Abo jederzeit in den Einstellungen verwalten oder kündigen. Lebenslang ist ein einmaliger Kauf."
+            "value": "Abos verlängern sich automatisch zum oben angegebenen Preis und Zeitraum, sofern sie nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums gekündigt werden. Die Zahlung wird über deinen Apple Account abgerechnet; du kannst dein Abo jederzeit in den Einstellungen verwalten oder kündigen. Der lebenslange Zugang ist ein Einmalkauf."
           }
         },
         "es": {
@@ -23312,7 +23312,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les abonnements se renouvellent automatiquement au prix et pour la durée indiqués ci-dessus, sauf annulation au moins 24 heures avant la fin de la période en cours. Le paiement est débité sur votre compte Apple ; vous pouvez gérer ou annuler votre abonnement à tout moment dans les Réglages. L'accès à vie est un achat unique."
+            "value": "Les abonnements se renouvellent automatiquement au prix et pour la durée indiqués ci-dessus, sauf annulation au moins 24 heures avant la fin de la période en cours. Le paiement est débité sur votre compte Apple ; vous pouvez gérer ou annuler votre abonnement à tout moment dans les Réglages. L’accès à vie est un achat unique."
           }
         },
         "it": {
@@ -23336,7 +23336,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تتجدد الاشتراكات تلقائيًا بالسعر والمدة الموضحين أعلاه ما لم يتم إلغاؤها قبل 24 ساعة على الأقل من نهاية الفترة الحالية. يُحصَّل المبلغ من حساب Apple الخاص بك؛ ويمكنك إدارة الاشتراك أو إلغاؤه في أي وقت من الإعدادات. اشتراك مدى الحياة هو عملية شراء لمرة واحدة."
+            "value": "تتجدد الاشتراكات تلقائيًا بالسعر والمدة الموضحين أعلاه ما لم يتم إلغاؤها قبل ٢٤ ساعة على الأقل من نهاية الفترة الحالية. يُحصَّل المبلغ من حساب Apple الخاص بك؛ ويمكنك إدارة الاشتراك أو إلغاؤه في أي وقت من الإعدادات. خيار مدى الحياة عملية شراء لمرة واحدة."
           }
         },
         "th": {
@@ -23382,7 +23382,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aucun achat précédent n'a été trouvé pour ce compte Apple."
+            "value": "Aucun achat précédent n’a été trouvé pour ce compte Apple."
           }
         },
         "it": {
@@ -23522,7 +23522,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cette formule n'est pas disponible pour le moment. Vérifiez votre connexion et réessayez."
+            "value": "Cette formule n’est pas disponible pour le moment. Vérifiez votre connexion et réessayez."
           }
         },
         "it": {
@@ -23896,7 +23896,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "كل سلسلة تبدأ من اليوم 0. اعبر هذه اللحظة وسيكون اليوم 1 من نصيبك."
+            "value": "كل سلسلة تبدأ من اليوم ٠. اعبر هذه اللحظة وسيكون اليوم ١ من نصيبك."
           }
         },
         "th": {
@@ -23942,7 +23942,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "À quel point l'envie est-elle forte en ce moment ?"
+            "value": "À quel point l’envie est-elle forte en ce moment ?"
           }
         },
         "it": {
@@ -24012,7 +24012,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Intensité de l'envie"
+            "value": "Intensité de l’envie"
           }
         },
         "it": {
@@ -24362,7 +24362,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mettre en pause l'exercice de respiration"
+            "value": "Mettre en pause l’exercice de respiration"
           }
         },
         "it": {
@@ -24432,7 +24432,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reprendre l'exercice de respiration"
+            "value": "Reprendre l’exercice de respiration"
           }
         },
         "it": {
@@ -24794,7 +24794,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descartar este registro?"
+            "value": "Descartar esta anotação?"
           }
         },
         "nl": {
@@ -24922,7 +24922,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre texte n'a pas été enregistré."
+            "value": "Votre texte n’a pas été enregistré."
           }
         },
         "it": {
@@ -25202,7 +25202,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre lettre n'a pas été enregistrée."
+            "value": "Votre lettre n’a pas été enregistrée."
           }
         },
         "it": {
@@ -25284,7 +25284,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Excluir este registro?"
+            "value": "Excluir esta anotação?"
           }
         },
         "nl": {
@@ -25394,7 +25394,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ungesendeter Brief an %@"
+            "value": "Unabgeschickter Brief an %@"
           }
         },
         "es": {
@@ -25482,7 +25482,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qu'est-ce qui vous passe par la tête en ce moment ?"
+            "value": "Qu’est-ce qui vous passe par la tête en ce moment ?"
           }
         },
         "it": {
@@ -25552,7 +25552,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quel a été votre déclencheur aujourd'hui, et comment l'avez-vous géré ?"
+            "value": "Quel a été votre déclencheur aujourd’hui, et comment l’avez-vous géré ?"
           }
         },
         "it": {
@@ -25716,7 +25716,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ماذا ستقول لنفسك بعد 6 أشهر من الآن؟"
+            "value": "ماذا ستقول لنفسك بعد ٦ أشهر من الآن؟"
           }
         },
         "th": {
@@ -25762,7 +25762,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Décrivez une petite victoire d'aujourd'hui."
+            "value": "Décrivez une petite victoire d’aujourd’hui."
           }
         },
         "it": {
@@ -25832,7 +25832,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qu'avez-vous appris sur vous-même récemment ?"
+            "value": "Qu’avez-vous appris sur vous-même récemment ?"
           }
         },
         "it": {
@@ -25902,7 +25902,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je me choisis aujourd'hui et chaque jour"
+            "value": "Je me choisis aujourd’hui et chaque jour"
           }
         },
         "it": {
@@ -26072,7 +26072,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ทุกช่วงเวลาที่อดทนได้คือชัยชนะ"
+            "value": "ทุกครั้งที่ห้ามใจได้คือชัยชนะ"
           }
         },
         "id": {
@@ -26112,7 +26112,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Plus tard, vous vous remercierez d'avoir tenu bon aujourd'hui."
+            "value": "Plus tard, vous vous remercierez d’avoir tenu bon aujourd’hui."
           }
         },
         "it": {
@@ -26200,7 +26200,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Helen gebeurt moment voor moedig moment."
+            "value": "Herstel bouw je op, moedig moment na moedig moment."
           }
         },
         "ar": {
@@ -26252,7 +26252,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aujourd'hui, vous vous êtes choisi·e. Ça demande du courage."
+            "value": "Aujourd’hui, vous avez fait le choix de vous-même. Ça demande du courage."
           }
         },
         "it": {
@@ -26264,7 +26264,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hoje você escolheu a si mesmo. Isso exige coragem."
+            "value": "Hoje você se escolheu. Isso exige coragem."
           }
         },
         "nl": {
@@ -26322,7 +26322,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'envie est passagère. Vos progrès, eux, sont permanents."
+            "value": "L’envie est passagère. Vos progrès, eux, sont permanents."
           }
         },
         "it": {
@@ -26374,7 +26374,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Du überlebst nicht nur — du wächst über dich hinaus."
+            "value": "Du überlebst nicht nur – du wächst über dich hinaus."
           }
         },
         "es": {
@@ -26532,7 +26532,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre tranquillité d'esprit vaut plus que n'importe quelle réponse."
+            "value": "Votre tranquillité d’esprit vaut plus que n’importe quelle réponse."
           }
         },
         "it": {
@@ -26654,7 +26654,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Atme 5-mal tief durch — 4 Sekunden ein, 4 halten, 6 aus"
+            "value": "Atme 5-mal tief durch – 4 Sekunden ein, 4 halten, 6 aus"
           }
         },
         "es": {
@@ -26696,7 +26696,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "خذ 5 أنفاس عميقة — شهيق لمدة 4 ثوانٍ، وحبس النفس لمدة 4، وزفير لمدة 6"
+            "value": "خذ ٥ أنفاس عميقة — شهيق لمدة ٤ ثوانٍ، وحبس النفس لمدة ٤، وزفير لمدة ٦"
           }
         },
         "th": {
@@ -26724,7 +26724,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schreib in einem ungesendeten Brief auf, was du sagen willst"
+            "value": "Schreib auf, was du sagen willst – in einem Brief, den du nie abschickst"
           }
         },
         "es": {
@@ -26836,7 +26836,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اخرج في نزهة سير لمدة 10 دقائق"
+            "value": "اخرج في نزهة سير لمدة ١٠ دقائق"
           }
         },
         "th": {
@@ -26952,7 +26952,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Faites 20 pompes ou n'importe quel mouvement physique"
+            "value": "Faites 20 pompes ou n’importe quel mouvement physique"
           }
         },
         "it": {
@@ -26976,7 +26976,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قم بـ 20 تمرين ضغط أو أي حركة بدنية"
+            "value": "قم بـ ٢٠ تمرين ضغط أو أي حركة بدنية"
           }
         },
         "th": {
@@ -27092,7 +27092,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aspergez-vous le visage d'eau froide"
+            "value": "Aspergez-vous le visage d’eau froide"
           }
         },
         "it": {
@@ -27186,7 +27186,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اكتب 3 أشياء تشعر بالامتنان لها الآن"
+            "value": "اكتب ٣ أشياء تشعر بالامتنان لها الآن"
           }
         },
         "th": {
@@ -27354,7 +27354,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sieh dir deine Serie an — lass sie nicht abreißen"
+            "value": "Sieh dir deine Serie an – lass sie nicht abreißen"
           }
         },
         "es": {
@@ -27424,7 +27424,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Stell einen 10-Minuten-Timer — der Drang geht vorbei"
+            "value": "Stell einen 10-Minuten-Timer – der Drang geht vorbei"
           }
         },
         "es": {
@@ -27442,7 +27442,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lancez un minuteur de 10 minutes — l'envie va passer"
+            "value": "Lancez un minuteur de 10 minutes — l’envie va passer"
           }
         },
         "it": {
@@ -27466,7 +27466,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اضبط مؤقتًا لمدة 10 دقائق — ستمر الرغبة الملحّة"
+            "value": "اضبط مؤقتًا لمدة ١٠ دقائق — ستمر الرغبة الملحّة"
           }
         },
         "th": {
@@ -27494,7 +27494,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Drück einen Eiswürfel in der Hand — das Gefühl lenkt dein Gehirn um"
+            "value": "Drück einen Eiswürfel in der Hand – das Gefühl lenkt dein Gehirn um"
           }
         },
         "es": {
@@ -27606,7 +27606,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اقرأ مانتراك الشخصية بصوت عالٍ 3 مرات"
+            "value": "اقرأ مانتراك الشخصية بصوت عالٍ ٣ مرات"
           }
         },
         "th": {
@@ -27634,7 +27634,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schau ein lustiges Video — Lachen verändert deinen Zustand"
+            "value": "Schau ein lustiges Video – Lachen verändert deinen Zustand"
           }
         },
         "es": {
@@ -27652,7 +27652,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Regardez une vidéo drôle — le rire change votre état d'esprit"
+            "value": "Regardez une vidéo drôle — le rire change votre état d’esprit"
           }
         },
         "it": {
@@ -28287,7 +28287,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontrol yapıldı"
+            "value": "Bugün kaydedildi"
           }
         }
       }
@@ -28357,7 +28357,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Günlük kontrol"
+            "value": "Günlük ruh hali kaydı"
           }
         }
       }
@@ -28397,7 +28397,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Entrada no diário"
+            "value": "Anotação no diário"
           }
         },
         "nl": {
@@ -28933,7 +28933,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Después %@/mes. Cancela cuando quieras."
+            "value": "Después, %@/mes. Cancela cuando quieras."
           }
         },
         "es-MX": {
@@ -29003,7 +29003,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Después %@/semana. Cancela cuando quieras."
+            "value": "Después, %@/semana. Cancela cuando quieras."
           }
         },
         "es-MX": {
@@ -29073,7 +29073,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Después %@/año. Cancela cuando quieras."
+            "value": "Después, %@/año. Cancela cuando quieras."
           }
         },
         "es-MX": {
@@ -29237,7 +29237,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Missões de Hoje"
+            "value": "Missões de hoje"
           }
         },
         "nl": {
@@ -29325,7 +29325,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "อดทนต่อความอยากได้"
+            "value": "ห้ามใจไม่ให้ติดต่อไปได้"
           }
         },
         "id": {
@@ -29645,7 +29645,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "100 % sur l'appareil"
+            "value": "100 % sur l’appareil"
           }
         },
         "it": {
@@ -29669,7 +29669,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "100% على جهازك"
+            "value": "١٠٠% على جهازك"
           }
         },
         "th": {
@@ -29855,7 +29855,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aide d'urgence"
+            "value": "Aide d’urgence"
           }
         },
         "it": {
@@ -30065,7 +30065,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "J'ai besoin de redécouvrir qui je suis"
+            "value": "J’ai besoin de redécouvrir qui je suis"
           }
         },
         "it": {
@@ -30205,7 +30205,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je choisis l'évolution plutôt que le confort"
+            "value": "Je choisis l’évolution plutôt que le confort"
           }
         },
         "it": {
@@ -30257,7 +30257,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sofort Hilfe, wenn der Drang kommt"
+            "value": "Hilfe, sobald der Drang kommt"
           }
         },
         "es": {
@@ -30275,7 +30275,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "De l'aide immédiate quand l'envie vous prend"
+            "value": "De l’aide immédiate quand l’envie vous prend"
           }
         },
         "it": {
@@ -30363,7 +30363,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Schrijf privé over je helingsreis"
+            "value": "Schrijf privé over je herstel"
           }
         },
         "ar": {
@@ -30397,7 +30397,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontaktabbruch seit"
+            "value": "Kontaktsperre seit"
           }
         },
         "es": {
@@ -30427,13 +30427,13 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Início do não contato"
+            "value": "Início do contato zero"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Start no contact"
+            "value": "Startdatum no contact"
           }
         },
         "ar": {
@@ -30765,7 +30765,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cette personne m'a blessé·e et j'ai besoin d'espace pour guérir"
+            "value": "Cette personne m’a fait du mal et j’ai besoin d’espace pour guérir"
           }
         },
         "it": {
@@ -30783,7 +30783,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die persoon heeft me gekwetst en ik heb ruimte nodig om te helen"
+            "value": "Die persoon heeft me gekwetst en ik heb ruimte nodig om te herstellen"
           }
         },
         "ar": {
@@ -30853,7 +30853,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Resets totaal"
+            "value": "Aantal resets"
           }
         },
         "ar": {
@@ -30899,13 +30899,13 @@
         "es-MX": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sigue tu racha sin contacto con apoyo"
+            "value": "Lleva tu racha sin contacto, con apoyo"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suivez votre série sans contact, avec du soutien"
+            "value": "Suivez vos jours sans contact, avec du soutien"
           }
         },
         "it": {
@@ -30917,7 +30917,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acompanhe sua sequência sem contato com apoio"
+            "value": "Acompanhe sua sequência sem contato, com apoio"
           }
         },
         "nl": {
@@ -30947,7 +30947,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İletişimsiz serini destekle birlikte takip et"
+            "value": "İletişimsiz serini destek alarak takip et"
           }
         }
       }
@@ -31024,52 +31024,190 @@
     },
     "%lld days": {
       "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld day"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld days"
+                }
+              }
+            }
+          }
+        },
         "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld Tage"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Tag"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Tage"
+                }
+              }
+            }
           }
         },
         "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld días"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld día"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld días"
+                }
+              }
+            }
           }
         },
         "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld días"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld día"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld días"
+                }
+              }
+            }
           }
         },
         "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld jours"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld jour"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld jours"
+                }
+              }
+            }
           }
         },
         "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld giorni"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld giorno"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld giorni"
+                }
+              }
+            }
           }
         },
         "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld dias"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dia"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dias"
+                }
+              }
+            }
           }
         },
         "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld dagen"
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dag"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dagen"
+                }
+              }
+            }
           }
         },
         "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld يومًا"
+          "variations": {
+            "plural": {
+              "zero": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld يوم"
+                }
+              },
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld يوم"
+                }
+              },
+              "two": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld يومان"
+                }
+              },
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld أيام"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld يومًا"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld يوم"
+                }
+              }
+            }
           }
         },
         "th": {
@@ -31173,7 +31311,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Llevas %lld días sin contacto. Conserva tus estadísticas, recordatorios y la exportación, o cancela cuando quieras en Ajustes."
+            "value": "Llevas %lld días sin contacto. Conserva tus estadísticas, mensajes de motivación y la exportación, o cancela cuando quieras en Ajustes."
           }
         },
         "es-MX": {
@@ -31459,7 +31597,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conserva tus estadísticas, recordatorios y la exportación del diario, o cancela cuando quieras en Ajustes."
+            "value": "Conserva tus estadísticas, mensajes de motivación y la exportación del diario, o cancela cuando quieras en Ajustes."
           }
         },
         "es-MX": {
@@ -31891,7 +32029,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Non, j'ai tenu bon !"
+            "value": "Non, j’ai tenu bon !"
           }
         },
         "it": {
@@ -31961,7 +32099,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oui, j'ai craqué"
+            "value": "Oui, j’ai craqué"
           }
         },
         "it": {
@@ -32329,7 +32467,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Helingsdag %lld"
+            "value": "Hersteldag %lld"
           }
         },
         "ar": {
@@ -32393,7 +32531,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Registros"
+            "value": "Anotações"
           }
         },
         "nl": {
@@ -32451,7 +32589,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suivis"
+            "value": "Suivis d’humeur"
           }
         },
         "it": {
@@ -32493,7 +32631,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kontrol"
+            "value": "Ruh hali kaydı"
           }
         }
       }
@@ -33245,7 +33383,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "21 يومًا. عادة جديدة تتشكّل."
+            "value": "٢١ يومًا. عادة جديدة تتشكّل."
           }
         },
         "th": {
@@ -33309,13 +33447,13 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "30 dagen. Je bent aan het helen."
+            "value": "30 dagen. Je bent aan het herstellen."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "30 يومًا. أنت تتعافى."
+            "value": "٣٠ يومًا. أنت تتعافى."
           }
         },
         "th": {
@@ -33385,7 +33523,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "45 يومًا. العنقاء تنهض."
+            "value": "٤٥ يومًا. العنقاء تنهض."
           }
         },
         "th": {
@@ -33455,7 +33593,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "60 يومًا. اخترت نفسك."
+            "value": "٦٠ يومًا. اخترت نفسك."
           }
         },
         "th": {
@@ -33525,7 +33663,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "90 يومًا. تحوّل كامل."
+            "value": "٩٠ يومًا. تحوّل كامل."
           }
         },
         "th": {
@@ -33851,7 +33989,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aucune entrée de journal pour l'instant."
+            "value": "Aucune entrée de journal pour l’instant."
           }
         },
         "it": {
@@ -33863,7 +34001,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ainda não há registros no diário."
+            "value": "Ainda não há anotações no diário."
           }
         },
         "nl": {
@@ -33903,7 +34041,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Heal — Meine Reise"
+            "value": "Heal – Meine Reise"
           }
         },
         "es": {
@@ -34073,7 +34211,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Registros do diário"
+            "value": "Anotações do diário"
           }
         },
         "nl": {
@@ -34506,7 +34644,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أقل من 6 أشهر"
+            "value": "أقل من ٦ أشهر"
           }
         },
         "th": {
@@ -34577,7 +34715,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "من 6 أشهر إلى سنة"
+            "value": "من ٦ أشهر إلى سنة"
           }
         },
         "th": {
@@ -34719,7 +34857,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "من سنتين إلى 5 سنوات"
+            "value": "من سنتين إلى ٥ سنوات"
           }
         },
         "th": {
@@ -34790,7 +34928,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أكثر من 5 سنوات"
+            "value": "أكثر من ٥ سنوات"
           }
         },
         "th": {
@@ -34880,6 +35018,76 @@
           "stringUnit": {
             "state": "translated",
             "value": "İçgörüler"
+          }
+        }
+      }
+    },
+    "/ %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/ %lld"
           }
         }
       }

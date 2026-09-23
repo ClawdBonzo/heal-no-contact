@@ -17,9 +17,14 @@ from compose import compose
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_ROOT = os.path.join(HERE, "..", "..", "AppStoreConnect", "screenshots")
 # capture language -> (headlines.json key, output dir). ASC locales map onto these in
-# upload_sets.py (en-US/GB/AU/CA share `designed`).
+# upload_sets.py (en-US uses `designed`; en-GB/AU/CA have their own sets).
 SETS = {
     "en":    ("en",    "designed"),
+    # Same English UI and headlines, but each storefront's own prices and date format
+    # (the shared set showed US$4.99 to UK, Australian and Canadian customers).
+    "en-GB": ("en",    "designed_en-GB"),
+    "en-AU": ("en",    "designed_en-AU"),
+    "en-CA": ("en",    "designed_en-CA"),
     "de":    ("de",    "designed_de"),
     "es":    ("es",    "designed_es"),
     "es-MX": ("es",    "designed_es-MX"),   # es-MX UI strings, shared Spanish headlines
@@ -44,7 +49,9 @@ def main(langs):
             raw = os.path.join(raw_dir, f"{shot}.png")
             if not os.path.exists(raw):
                 raise SystemExit(f"ABORT: missing {raw} — run ./capture.sh {lang} <udid> raw_{lang}")
-            compose(raw, os.path.join(dst, f"{shot}.png"), lines)
+            # "Heal Premium" is the product's brand name, so it stays untranslated.
+            compose(raw, os.path.join(dst, f"{shot}.png"), lines,
+                    badge="Heal Premium" if shot == "04-insights" else None)
         print(f"{lang}: {len(heads[key])} shots -> {out}")
 
 if __name__ == "__main__":

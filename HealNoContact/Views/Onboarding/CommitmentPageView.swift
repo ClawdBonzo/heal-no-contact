@@ -127,6 +127,10 @@ struct CommitmentPageView: View {
             withAnimation(.easeOut(duration: 0.6).delay(0.3)) {
                 showPledge = true
             }
+            #if DEBUG
+            // Screenshot capture: show the pledge accepted, so the CTA isn't in its disabled grey state.
+            if DemoConfig.shared.onboardingPage == 3 { hasAgreed = true }
+            #endif
         }
     }
 }

@@ -137,7 +137,10 @@ struct SetupPageView: View {
                                     .focused($customFieldFocused)
                                     .textFieldStyle(HealTextFieldStyle())
                                     .onChange(of: customGoalText) { _, newValue in
-                                        if let value = Int(newValue), value >= 1, value <= 365 {
+                                        // Parse with the locale: Int("٣٠") is nil, so an Arabic number
+                                        // pad (Arabic-Indic digits) never updated the goal.
+                                        if let value = (try? Int(newValue, format: .number)) ?? Int(newValue),
+                                           value >= 1, value <= 365 {
                                             goalDays = value
                                         }
                                     }

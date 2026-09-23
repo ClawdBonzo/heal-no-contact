@@ -276,6 +276,9 @@ final class DemoConfig {
     private static let storefrontPrices: [String: (String, [Decimal])] = [
         // region: (currency, [weekly, monthly, yearly, lifetime])
         "US": ("USD", [4.99, 9.99, 49.99, 79.99]),
+        "GB": ("GBP", [4.99, 9.99, 49.99, 79.99]),
+        "AU": ("AUD", [7.99, 14.99, 79.99, 129.99]),
+        "CA": ("CAD", [6.99, 12.99, 69.99, 99.99]),
         "DE": ("EUR", [5.99, 9.99, 59.99, 89.99]), "ES": ("EUR", [5.99, 9.99, 59.99, 89.99]),
         "FR": ("EUR", [5.99, 9.99, 59.99, 89.99]), "IT": ("EUR", [5.99, 9.99, 59.99, 89.99]),
         "NL": ("EUR", [5.99, 9.99, 59.99, 89.99]),
@@ -319,7 +322,9 @@ enum DemoSeeder {
 
         // Profile: 47-day streak, 60-day goal (78% ring)
         let profile = UserProfile(
-            exName: "Alex",
+            // A name in the capture language's own script; Latin "Alex" read as leftover English in ar/th.
+            exName: Locale.current.language.languageCode?.identifier == "ar" ? "خالد"
+                : Locale.current.language.languageCode?.identifier == "th" ? "ต้น" : "Alex",
             relationshipDuration: "3 years",
             breakupDate: daysAgo(50),
             noContactStartDate: daysAgo(47),
@@ -362,6 +367,14 @@ enum DemoSeeder {
         for (mood, inten, ago) in moodPlan {
             let e = MoodEntry(mood: mood, intensity: inten, note: "")
             e.createdAt = daysAgo(ago)
+            context.insert(e)
+        }
+        // Two harder late-night check-ins in the first weeks, so Insights shows a real
+        // "Hardest time" instead of the empty "No pattern yet" state (which also wrapped and
+        // got cut by the tab bar in longer languages).
+        for ago in [30, 33] {
+            let e = MoodEntry(mood: .anxious, intensity: 3, note: "")
+            e.createdAt = cal.date(bySettingHour: 23, minute: 15, second: 0, of: daysAgo(ago)) ?? daysAgo(ago)
             context.insert(e)
         }
 

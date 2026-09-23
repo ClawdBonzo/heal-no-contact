@@ -25,7 +25,7 @@ struct MilestoneCardView: View {
                     )
                     .frame(width: 48, height: 48)
 
-                Image(systemName: milestone.iconName)
+                Image(systemName: milestone.displayIconName)
                     .font(.title3)
                     .foregroundStyle(
                         milestone.isUnlocked

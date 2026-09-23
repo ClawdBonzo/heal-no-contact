@@ -12,7 +12,9 @@ python3 upload_sets.py <appStoreVersionId>                      # replace + veri
 * `headlines.json`: per-language headline copy, 2 lines per shot, sentence case.
 * `build_sets.py`: maps capture language to headline key and output dir
   (es-MX captures the es-MX UI but shares the Spanish headlines).
-* `upload_sets.py`: maps ASC localization to output dir. en-US, en-GB, en-AU and en-CA all use `designed/`.
+* `upload_sets.py`: maps ASC localization to output dir. en-GB, en-AU and en-CA have their own
+  sets (`designed_en-GB` …): same English UI and headlines, but each storefront's own currency,
+  prices and date format. The shared US set once showed US$4.99 to Australians paying A$7.99.
 * `raw_*/` is gitignored. Raws are reproducible (about 7 MB per locale). Only the composed
   `AppStoreConnect/screenshots/designed*/` sets are committed.
 
@@ -22,7 +24,11 @@ python3 upload_sets.py <appStoreVersionId>                      # replace + veri
   progress, insights, letter, welcome, settings, paywall (plus `setup` for checking onboarding).
 * The harness suppresses badge toasts and unlocks premium views on `insights`, so that shot
   shows the healing score and not the upsell card.
-* `capture.sh` pins the status bar to 9:41 with full signal and battery.
+* `capture.sh` pins the status bar to 9:41 with full signal and battery, and retakes a shot
+  that is still the white launch screen (first launch after an install can take >7 s).
+* The demo seed includes two late-night low-mood check-ins so Insights shows a real
+  "Hardest time", ticks the commitment checkbox, uses per-storefront paywall prices, and uses
+  a native-script partner name for ar/th.
 * The demo mantra is localized. If a localized shot shows English, suspect a `String`-typed
   label (never reaches the catalog) and run `python3 AppStore/localization_audit.py <DerivedData>`.
 
@@ -32,6 +38,8 @@ python3 upload_sets.py <appStoreVersionId>                      # replace + veri
 * Headline: lines at y=222 and y=358.
 * The Dynamic Island is stamped onto every raw. simctl includes it only in some captures,
   which is why shipped sets once had the pill on 3 of 8 shots.
+* Shot 04 (Insights, a Premium-only screen) gets a small gold "Heal Premium" label above the
+  headline, so the screenshots make clear the feature needs a purchase (guideline 2.3.2).
 * Thai and Arabic headlines are drawn by CoreText (`render_headline.swift`). PIL here has no
   HarfBuzz and no font fallback, so Thai marks stacked wrong and "100%" in Arabic became tofu.
 

@@ -32,6 +32,13 @@ for pair in $screens; do
     exit 1
   fi
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
+  # The first launch after an install can still be on the white launch screen after 7s.
+  # The app's UI is dark, so a mostly-white frame means "not ready yet": wait and retake.
+  for retry in 1 2 3; do
+    python3 -c "from PIL import Image,ImageStat; import sys; sys.exit(0 if ImageStat.Stat(Image.open('$OUT/$name.png').convert('L')).mean[0] < 150 else 1)" && break
+    sleep 5
+    xcrun simctl io "$UDID" screenshot --type=png "$OUT/$name.png" >/dev/null 2>&1
+  done
   echo "  captured $LOC/$name"
 done
 xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
