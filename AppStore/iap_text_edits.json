@@ -1,0 +1,170 @@
+[
+ {
+  "asc_locale": "en-US",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Unlimited access for 1 year, our best value"
+ },
+ {
+  "asc_locale": "en-GB",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Unlimited access for 1 year, our best value"
+ },
+ {
+  "asc_locale": "en-AU",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Unlimited access for 1 year, our best value"
+ },
+ {
+  "asc_locale": "en-CA",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Unlimited access for 1 year, our best value"
+ },
+ {
+  "asc_locale": "de-DE",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Jährlich (BESTER PREIS)"
+ },
+ {
+  "asc_locale": "de-DE",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Unbegrenzter Zugang für 1 Jahr, unser bester Preis"
+ },
+ {
+  "asc_locale": "de-DE",
+  "product": "lifetime",
+  "field": "name",
+  "new_value": "Lebenslanger Zugang"
+ },
+ {
+  "asc_locale": "es-ES",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Anual (MEJOR OPCIÓN)"
+ },
+ {
+  "asc_locale": "es-ES",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Acceso ilimitado durante 1 año, nuestra mejor opción"
+ },
+ {
+  "asc_locale": "es-MX",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Anual (MEJOR OPCIÓN)"
+ },
+ {
+  "asc_locale": "es-MX",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Acceso ilimitado durante 1 año, nuestra mejor opción"
+ },
+ {
+  "asc_locale": "fr-FR",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Accès illimité pendant 1 an, notre meilleure offre"
+ },
+ {
+  "asc_locale": "fr-FR",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Annuel (MEILLEURE OFFRE)"
+ },
+ {
+  "asc_locale": "it",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Accesso illimitato per 1 anno al miglior prezzo"
+ },
+ {
+  "asc_locale": "nl-NL",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Jaarlijks (BESTE DEAL)"
+ },
+ {
+  "asc_locale": "nl-NL",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Onbeperkte toegang voor 1 jaar, onze beste deal"
+ },
+ {
+  "asc_locale": "nl-NL",
+  "product": "lifetime",
+  "field": "description",
+  "new_value": "Eenmalige aankoop, levenslange toegang"
+ },
+ {
+  "asc_locale": "id",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Tahunan (PALING HEMAT)"
+ },
+ {
+  "asc_locale": "id",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Akses tanpa batas selama 1 tahun, paket paling hemat"
+ },
+ {
+  "asc_locale": "id",
+  "product": "lifetime",
+  "field": "description",
+  "new_value": "Sekali bayar untuk akses selamanya"
+ },
+ {
+  "asc_locale": "th",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "รายปี (คุ้มค่าที่สุด)"
+ },
+ {
+  "asc_locale": "th",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "เข้าถึงได้ไม่จำกัด 1 ปี คุ้มค่าที่สุด"
+ },
+ {
+  "asc_locale": "tr",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Yıllık (EN AVANTAJLI)"
+ },
+ {
+  "asc_locale": "tr",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "1 yıl boyunca sınırsız erişim, en avantajlı plan"
+ },
+ {
+  "asc_locale": "ar-SA",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "سنوي (أفضل قيمة)"
+ },
+ {
+  "asc_locale": "ar-SA",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "وصول غير محدود لمدة سنة واحدة، بأفضل قيمة"
+ },
+ {
+  "asc_locale": "pt-BR",
+  "product": "yearly",
+  "field": "name",
+  "new_value": "Anual (MELHOR OFERTA)"
+ },
+ {
+  "asc_locale": "pt-BR",
+  "product": "yearly",
+  "field": "description",
+  "new_value": "Acesso ilimitado por 1 ano, nossa melhor oferta"
+ }
+]
